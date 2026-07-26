@@ -1,0 +1,235 @@
+Vous êtes designer & dev créant un site web portfolio pour **UpTempo**, un guide touristique freelance spécialisé en journeys éducatifs. Le site doit :
+- Montrer les services (excursions, formations, guidance)
+- Être engageant, avec beaucoup de visuels et icônes
+- Permettre de **switcher entre plusieurs design systems** via une navbar horizontale
+
+### **Objectif principal**
+Créer un site web responsif, single-page, qui présente UpTempo et ses services. Le site doit avoir un **design system switcher** en haut : chaque clique applique un style différent au MÊME site web, sans rechargement.
+
+---
+
+### **Architecture du design switcher**
+
+#### **1. Barre de navigation fixe (top)**
+- Position sticky/fixed, toujours visible
+- À gauche : logo UpTempo (mark + wordmark)
+- Au centre ou à droite : boutons de style (Design 1, Design 2, Design 3, etc.)
+- Exemple : `[UpTempo] ⋯ [Notion] [Editorial] [Dark]`
+- Chaque clic applique instantanément les tokens CSS (couleurs, typo, spacing) de ce style
+
+#### **2. Système de tokens CSS**
+Créer au minimum **3 design systems** distincts, stockés en JS/CSS :
+- **Design 1 (Notion) :** bleu primaire #0075de, canvas soft #f6f5f4, Inter, style Notion exact
+- **Design 2 (Warm/Editorial) :** palette terracotta/crème, serif + sans-serif, espaces larges, vibe magazine haut de gamme
+- **Design 3 (Dark/Modern) :** fond sombre (presque noir), accents vibrants (vert acid, rose, cyan), typo moderne, micro-interactions
+
+Chaque design doit redéfinir via CSS custom properties :
+- `--primary`, `--secondary`, `--accent`
+- `--canvas`, `--canvas-soft`, `--surface`
+- `--ink`, `--ink-muted`, `--hairline`
+- `--font-display`, `--font-body`, `--font-mono`
+- `--radius`, `--shadow`
+
+---
+
+### **Structure du site (contenu)**
+
+#### **Hero section**
+- Image(s) cinématique du paysage + guide en action (vraies photos ou AI-generated style cinéma)
+- Headline : "Transform Journeys into Understanding"
+- Subheading : courte accroche sur la philosophie UpTempo
+- CTA primaire : "Discover Our Programmes"
+- Doit supporter tous les design systems sans perte d'impact
+
+#### **About / Philosophy**
+- Icône + headline + 2-3 paragraphes par principe clé :
+  - 🎯 Meaningful Experiences — Memorable Moments
+  - 💡 Insightful Perspectives — Timeless Understanding
+  - 🌍 Cultural Connection — Authentic Contexts
+  - 🛠 Organizational Support — Expert Guidance
+- Visuels : icônes thématiques ou petites illustrations abstractes
+
+#### **Services (grid ou carousel)**
+- 3+ cartes : Workshops, Day Trips, Journeys (multi-day programs)
+- Chaque carte :
+  - Image (paysage type destination)
+  - Titre + description courte
+  - Badges : "BusCast", "Pulse", durée, public cible
+  - CTA subtle : "Learn more"
+
+#### **Featured Journey / Case Study**
+- Affiche "Normandy in 3 Journeys" en vedette
+- 2-3 images de lieux (Rouen, Omaha, Honfleur)
+- Résumé court + call-to-action "View Full Itinerary"
+- Format : peut être une grande card, une section en 2 colonnes, ou un slider
+
+#### **The Guide (Bio section)**
+- Photo portrait (placeholder pro ou avatar)
+- Titre : guide name (ou "Your Guide")
+- Bio court : 20+ years of cultural mediation, Masters in History & MBA, multilingual
+- Icônes pour : Languages, Expertise, Experience (20+ years)
+
+#### **Methods (visual explainer)**
+- Section "How We Build Programmes" avec timeline ou 4-step process :
+  1. **Engineering** — Define ambitious objectives, design sequences
+  2. **Narrative** — Engage through questions, not information
+  3. **Activities** — Deploy Pulse, BusCast, hands-on formats
+  4. **Field Knowledge** — First-hand expertise of every destination
+- Chaque step : petite icône + headline + description
+- Doit être visuellement distincte entre design systems
+
+#### **Formats (Pulse & BusCast highlight)**
+- 2 grandes cards ou tiles :
+  - **Pulse** : walking tour exploration icon, couleur rose/accent
+  - **BusCast** : microphone/broadcast icon, couleur indigo, brève description de chaque format
+- Icônes animées légères bienvenues
+
+#### **Call-to-action / Contact**
+- Section "Ready to Transform Your Journey?"
+- Simple form ou bouton "Request a Programme"
+- Contact info (email, phone, location hint)
+- Footer minimal : copyright, social links (si pertinent)
+
+---
+
+### **Visuels & Icônes**
+
+#### **Images**
+- Hero : image cinématographique (Normandy coast, château, groupe d'étudiants en discussion, paysage culturel)
+  - Source : générer via API si possible, ou utiliser Unsplash/Pexels CC0 links
+- Destinations : Rouen, Honfleur, Omaha, Bayeux photos (Wikimedia Commons, CC-BY)
+- Fallback gracieux si images ne chargent pas (gradient + text overlay)
+
+#### **Icônes**
+- Utiliser **Lucide React** ou **Feather Icons** (simplement embedded SVG)
+- Icônes clés :
+  - 📍 Location / destination
+  - ⏱ Duration / schedule
+  - 👥 Group / audience
+  - 🎓 Learning / education
+  - 🗣 Language / communication
+  - 🎨 Creative / art
+  - 🏛 History / heritage
+  - 🚌 Transport / journey
+  - 🎤 Microphone (BusCast)
+  - 🚶 Walking (Pulse)
+  - ⚙ Cog (methods)
+  - ✨ Sparkle (magic/experience)
+
+---
+
+### **Interactions & UX**
+
+#### **Design Switcher**
+- Navbar avec boutons nommés (ex. "Notion", "Editorial", "Dark")
+- Au clic : 
+  - Appliquer le nouveau design system (CSS custom properties)
+  - Smooth transition (0.3–0.5s fade ou no-flash)
+  - Sauvegarder le choix en `localStorage` (optionnel, pour persistance)
+  - Indiquer le style actif (underline, bold, colored pill, etc.)
+
+#### **Scroll animations**
+- Subtle fade-in on scroll pour les sections (IntersectionObserver)
+- Cards qui stagger-entrent en view
+- Pas de distraction, juste du polish
+
+#### **Responsive**
+- Desktop : full navbar, multi-column grids, large images
+- Tablet : navbar collapse à hamburger (optionnel), grids 2-up → 1-up
+- Mobile : single column, navbar simplifiée, images redimensionnées
+
+---
+
+### **Code structure (recommandé)**
+
+```
+<html>
+  <head>
+    <!-- Fonts, meta, base styles -->
+    <!-- CSS custom properties (default design) -->
+  </head>
+  <body>
+    <!-- Navbar avec design switcher -->
+    <nav class="navbar">
+      <div class="logo">UpTempo</div>
+      <div class="design-switcher">
+        <button data-design="notion" class="active">Notion</button>
+        <button data-design="editorial">Editorial</button>
+        <button data-design="dark">Dark</button>
+      </div>
+    </nav>
+
+    <!-- Main content (same HTML for all designs) -->
+    <section class="hero">...</section>
+    <section class="philosophy">...</section>
+    <section class="services">...</section>
+    <section class="journey-featured">...</section>
+    <section class="guide">...</section>
+    <section class="methods">...</section>
+    <section class="formats">...</section>
+    <section class="cta">...</section>
+    <footer>...</footer>
+
+    <script>
+      // Design system definitions (DESIGN_SYSTEMS object)
+      // Design switcher logic (applyDesign() function)
+      // Animations (IntersectionObserver, etc.)
+    </script>
+  </body>
+</html>
+```
+
+---
+
+### **Design Systems à créer (au minimum)**
+
+**Design 1 : "Notion" (ce que vous avez déjà)**
+- Primary: #0075de
+- Canvas-soft: #f6f5f4
+- Font: Inter
+- Spacing: Notion scale (generous)
+- Radius: Notion (soft 12px)
+
+**Design 2 : "Editorial / Warm"**
+- Primary: #c97c3c (terracotta)
+- Secondary: #1a1612 (near-black)
+- Canvas: #fef9f3 (cream/off-white)
+- Font-display: serif (Georgia, Playfair, etc.)
+- Font-body: sans-serif classique (Helvetica Neue, etc.)
+- Spacing: generous margins, luxury magazine feel
+- Radius: mostly square (2px) with select rounded buttons (20px)
+- Shadow: richer, more classical
+
+**Design 3 : "Dark / Modern"**
+- Background: #0f0f0f (nearly black)
+- Primary: #00ff88 (acid green) or #ff0080 (hot pink)
+- Secondary: #00d9ff (cyan)
+- Font: modern geometric sans (DM Sans, Inter variant, or Outfit)
+- Spacing: tight, modern, minimal
+- Radius: 8px–16px, consistent
+- Shadow: neon-like glows (optional, subtle)
+
+---
+
+### **Fichiers de sortie**
+- **index.html** : single file (tout compris, pas de build)
+- Peut être ouvert directement dans navigateur
+- Prêt pour print-to-PDF ou partage en ligne
+
+---
+
+### **Bonus / Optionnel**
+- Animation du logo au clique design switcher (subtle morph)
+- Micro-interactions au hover des cartes (shadow grow, slight lift)
+- Smooth scroll behavior
+- Prefers-reduced-motion respect
+- Meta tags OG / social sharing
+- Light animation on hero image (parallax, fade-in)
+
+---
+
+### **Tone & Messaging**
+- Professional mais accessible
+- Passionné (cultura, éducation, voyage)
+- Inclusif (tous publics, from teens to adults)
+- Confiant sans arrogance
