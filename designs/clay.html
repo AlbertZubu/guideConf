@@ -39,11 +39,12 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--canvas);
+    background:rgba(0,0,0,0.5);
     color:var(--body);
     font-family:'Inter',sans-serif;
-    font-size:16px;
-    line-height:1.55;
+    font-size:15px;
+    line-height:1.5;
+    min-height:100vh;
   }
   h1,h2,h3,h4{
     margin:0;
@@ -54,612 +55,342 @@
   }
   p{margin:0;}
   img{display:block;max-width:100%;}
+  ul{margin:0;padding:0;list-style:none;}
 
-  /* ---------- top nav ---------- */
+  .overlay{min-height:100vh; display:flex; justify-content:center; padding:2rem 1rem;}
+  .card{
+    width:520px; max-width:100%; background:var(--canvas); border-radius:var(--r-xl);
+    overflow:hidden; box-shadow:0 30px 70px rgba(0,0,0,0.35); height:max-content;
+  }
+
+  /* ---------- a. top nav + header ---------- */
   .top-nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:64px;
-    padding:0 40px;
-    background:var(--canvas);
-    position:sticky;
-    top:0;
-    z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    height:52px; padding:0 18px; background:var(--canvas);
     border-bottom:1px solid var(--hairline);
   }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-weight:600;
-    font-size:18px;
-  }
-  .logo .blob{
-    width:22px;height:22px;border-radius:40% 60% 55% 45%;
-    background:var(--pink);
-  }
-  .nav-menu{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--body);}
-  .nav-right{display:flex;align-items:center;gap:16px;font-size:14px;font-weight:500;}
+  .logo{display:flex; align-items:center; gap:7px; font-weight:600; font-size:15px;}
+  .logo .blob{width:18px;height:18px;border-radius:40% 60% 55% 45%;background:var(--pink);}
   .btn-primary{
-    background:var(--primary);
-    color:var(--on-primary);
-    border:none;
-    border-radius:var(--r-md);
-    padding:12px 20px;
-    font-weight:600;
-    font-size:14px;
-    font-family:'Inter',sans-serif;
-  }
-  .btn-secondary{
-    background:var(--canvas);
-    color:var(--ink);
-    border:1px solid var(--hairline);
-    border-radius:var(--r-md);
-    padding:12px 20px;
-    font-weight:600;
-    font-size:14px;
-    font-family:'Inter',sans-serif;
+    background:var(--primary); color:var(--on-primary); border:none; border-radius:var(--r-md);
+    padding:7px 14px; font-weight:600; font-size:12px; font-family:'Inter',sans-serif;
   }
 
-  /* ---------- hero ---------- */
-  .hero{
-    max-width:1280px;
-    margin:0 auto;
-    padding:72px 40px 48px;
-    display:grid;
-    grid-template-columns:7fr 5fr;
-    gap:48px;
-    align-items:center;
+  .header-block{padding:20px 20px 16px;}
+  .header-top{display:flex; justify-content:space-between; align-items:flex-start; gap:14px;}
+  .header-copy{flex:1; min-width:0;}
+  .eyebrow{
+    display:inline-block; background:var(--surface-card); color:var(--body); font-size:11px; font-weight:600;
+    letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:var(--r-pill); margin-bottom:14px;
   }
-  .hero-left .eyebrow{
-    display:inline-block;
-    background:var(--surface-card);
-    color:var(--body);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    padding:6px 14px;
-    border-radius:var(--r-pill);
-    margin-bottom:20px;
+  .header-block h1{font-size:26px; line-height:1.12; letter-spacing:-1px;}
+  .mini-polaroid{
+    flex:none; background:#fff; padding:6px 6px 12px; border-radius:8px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.15); transform:rotate(4deg); width:82px;
   }
-  .hero-left h1{
-    font-size:56px;
-    line-height:1.05;
-    letter-spacing:-2px;
-    margin-bottom:20px;
+  .mini-polaroid img{width:100%; height:66px; object-fit:cover; border-radius:4px;}
+  .mini-polaroid span{display:block; text-align:center; font-size:8.5px; font-weight:600; color:var(--ink); margin-top:4px;}
+
+  /* ---------- section shell ---------- */
+  .block{padding:18px 20px; border-top:1px solid var(--hairline);}
+  .block-label{
+    font-size:11px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--muted); margin-bottom:10px;
   }
-  .hero-left p{
-    color:var(--body);
-    font-size:17px;
-    margin-bottom:12px;
-    max-width:460px;
+  .block p{font-size:13.5px; line-height:1.55; color:var(--body); margin-bottom:8px;}
+  .block p:last-child{margin-bottom:0;}
+
+  /* ---------- c. Infos pratiques ---------- */
+  .keyfacts{display:grid; grid-template-columns:repeat(2,1fr); gap:8px;}
+  .keyfact{background:var(--surface-card); border-radius:var(--r-md); padding:10px 12px;}
+  .keyfact .label{font-size:10.5px; color:var(--muted); margin-bottom:2px; font-weight:500;}
+  .keyfact .value{font-size:13px; font-weight:600; color:var(--ink);}
+
+  /* ---------- d. Itinéraire timeline ---------- */
+  .day-tag{
+    display:inline-block; background:var(--ink); color:var(--on-primary); font-size:10.5px; font-weight:700;
+    letter-spacing:0.6px; text-transform:uppercase; padding:4px 12px; border-radius:var(--r-pill); margin:12px 0 10px;
   }
-  .hero-btns{display:flex;gap:12px;margin-top:24px;}
-  .hero-illustration-card{
-    position:relative;
-    background:var(--surface-soft);
-    border-radius:var(--r-xl);
-    height:420px;
-    overflow:hidden;
+  .day-tag:first-of-type{margin-top:0;}
+  .timeline{position:relative; padding-left:24px;}
+  .timeline::before{content:''; position:absolute; left:9px; top:2px; bottom:2px; width:2px; background:var(--hairline);}
+  .step{position:relative; margin-bottom:12px;}
+  .step:last-child{margin-bottom:0;}
+  .step-marker{
+    position:absolute; left:-24px; top:0; width:19px; height:19px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#fff; z-index:1;
   }
-  .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:0.9;}
-  .blob.b1{width:220px;height:220px;background:var(--peach);top:-40px;left:-40px;}
-  .blob.b2{width:180px;height:180px;background:var(--lavender);bottom:-30px;right:-30px;}
-  .blob.b3{width:120px;height:120px;background:var(--mint);bottom:40px;left:20px;}
-  .polaroid{
-    position:absolute;
-    top:50%;left:50%;
-    transform:translate(-50%,-50%) rotate(-5deg);
-    background:#fff;
-    padding:10px 10px 22px;
-    border-radius:10px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.18);
-    width:190px;
-  }
-  .polaroid img{
-    width:100%;
-    height:190px;
-    object-fit:cover;
-    border-radius:6px;
-  }
-  .polaroid span{
-    display:block;
-    text-align:center;
-    font-size:12px;
-    font-weight:600;
-    color:var(--ink);
-    margin-top:8px;
+  .step-marker.bus{font-size:11px;}
+
+  /* colored surfaces (Clay's bento identity, kept but stacked) */
+  .card-pink{background:var(--pink); color:var(--on-dark);}
+  .card-teal{background:var(--teal); color:var(--on-dark);}
+  .card-lavender{background:var(--lavender); color:var(--ink);}
+  .card-peach{background:var(--peach); color:var(--ink);}
+  .card-ochre{background:var(--ochre); color:var(--ink);}
+  .card-cream{background:var(--surface-card); color:var(--ink);}
+
+  .stop-card{border-radius:var(--r-lg); padding:16px;}
+  .stop-card.on-dark .stop-eyebrow{color:rgba(255,255,255,0.7);}
+  .stop-card.on-dark p{color:rgba(255,255,255,0.88);}
+  .stop-eyebrow{font-size:11px; font-weight:600; letter-spacing:0.6px; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .stop-card h3{font-size:18px; letter-spacing:-0.4px; margin-bottom:10px; line-height:1.15;}
+  .stop-thumb{width:100%; aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden; margin-bottom:10px; box-shadow:0 6px 16px rgba(0,0,0,0.12);}
+  .stop-thumb img{width:100%; height:100%; object-fit:cover;}
+  .stop-card > p.lede{margin-bottom:12px; font-size:13.5px;}
+
+  .transit-card{border-radius:var(--r-lg); padding:12px 14px;}
+  .transit-card .route{
+    font-size:11px; font-weight:600; letter-spacing:0.6px; text-transform:uppercase; color:var(--body);
+    opacity:0.75; margin-bottom:8px; display:flex; align-items:center; gap:6px;
   }
 
-  /* ---------- key facts strip ---------- */
-  .keyfacts{
-    max-width:1280px;
-    margin:0 auto;
-    padding:0 40px 56px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-  }
-  .keyfact{
-    background:var(--surface-card);
-    border-radius:var(--r-lg);
-    padding:18px 20px;
-  }
-  .keyfact .label{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:500;}
-  .keyfact .value{font-size:15px;font-weight:600;color:var(--ink);}
-
-  /* ---------- bento mosaic ---------- */
-  .section-heading{
-    max-width:1280px;
-    margin:0 auto;
-    padding:0 40px 24px;
-  }
-  .section-heading h2{
-    font-size:32px;
-    letter-spacing:-1px;
-  }
-  .bento{
-    max-width:1280px;
-    margin:0 auto;
-    padding:0 40px 96px;
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:20px;
-  }
-  .bento-card{
-    border-radius:var(--r-xl);
-    padding:32px;
-    position:relative;
-    overflow:hidden;
-  }
-  .span-6{grid-column:span 6;}
-  .span-4{grid-column:span 4;}
-  .span-3{grid-column:span 3;}
-  .span-2{grid-column:span 2;}
-
-  .bento-card.on-dark{color:var(--on-dark);}
-  .bento-card.on-dark .stop-eyebrow{color:rgba(255,255,255,0.7);}
-  .bento-card.on-dark h3{color:var(--on-dark);}
-  .bento-card.on-dark p{color:rgba(255,255,255,0.88);}
-
-  .card-pink{background:var(--pink);color:var(--on-dark);}
-  .card-teal{background:var(--teal);color:var(--on-dark);}
-  .card-lavender{background:var(--lavender);color:var(--ink);}
-  .card-peach{background:var(--peach);color:var(--ink);}
-  .card-ochre{background:var(--ochre);color:var(--ink);}
-  .card-cream{background:var(--surface-card);color:var(--ink);}
-
-  .stop-eyebrow{
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:var(--muted);
-    margin-bottom:10px;
-  }
-  .bento-card h3{
-    font-size:26px;
-    letter-spacing:-0.6px;
-    margin-bottom:14px;
-  }
-  .bento-card .thumb{
-    float:right;
-    width:120px;
-    height:120px;
-    border-radius:var(--r-lg);
-    overflow:hidden;
-    margin:0 0 16px 20px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  }
-  .bento-card .thumb img{width:100%;height:100%;object-fit:cover;}
-  .bento-card > p.lede{
-    margin-bottom:16px;
-    font-size:15px;
-  }
-  .sub-panel{
-    background:rgba(255,255,255,0.85);
-    border-radius:var(--r-md);
-    padding:18px 20px;
-    margin-top:14px;
-    color:var(--ink);
-  }
-  .card-pink .sub-panel, .card-teal .sub-panel{
-    background:rgba(255,255,255,0.14);
-    color:#fff;
-  }
+  .sub-panel{background:rgba(255,255,255,0.85); border-radius:var(--r-md); padding:12px 14px; margin-top:10px; color:var(--ink);}
+  .sub-panel:first-child{margin-top:0;}
+  .card-pink .sub-panel, .card-teal .sub-panel{background:rgba(255,255,255,0.16); color:#fff;}
   .sub-panel .badge{
-    display:inline-block;
-    background:var(--surface-strong);
-    color:var(--ink);
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:0.8px;
-    text-transform:uppercase;
-    padding:4px 12px;
-    border-radius:var(--r-pill);
-    margin-bottom:10px;
+    display:inline-block; background:var(--surface-strong); color:var(--ink); font-size:10px; font-weight:600;
+    letter-spacing:0.5px; text-transform:uppercase; padding:3px 10px; border-radius:var(--r-pill); margin-bottom:8px;
   }
-  .card-pink .sub-panel .badge, .card-teal .sub-panel .badge{
-    background:rgba(255,255,255,0.22);
-    color:#fff;
-  }
-  .sub-panel h4{
-    font-size:16px;
-    font-weight:600;
-    margin-bottom:8px;
-    color:inherit;
-  }
-  .sub-panel p{
-    font-size:14px;
-    margin-bottom:8px;
-    color:inherit;
-    opacity:0.92;
-  }
+  .card-pink .sub-panel .badge, .card-teal .sub-panel .badge{background:rgba(255,255,255,0.22); color:#fff;}
+  .sub-panel h4{font-size:14px; font-weight:600; margin-bottom:6px; color:inherit;}
+  .sub-panel p{font-size:12.5px; margin-bottom:6px; color:inherit; opacity:0.92;}
   .sub-panel p:last-child{margin-bottom:0;}
-  .taglist{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:10px;
-  }
-  .taglist span{
-    background:rgba(0,0,0,0.06);
-    font-size:12.5px;
-    font-weight:500;
-    padding:6px 12px;
-    border-radius:var(--r-pill);
-  }
-  .card-pink .taglist span, .card-teal .taglist span{
-    background:rgba(255,255,255,0.18);
-  }
-  .list-label{
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:0.8px;
-    text-transform:uppercase;
-    opacity:0.7;
-    margin-top:14px;
-    margin-bottom:2px;
-  }
-  .closing-line{
-    font-style:italic;
-    opacity:0.75;
-    font-size:14px;
-    margin-top:12px;
-  }
-  .bento-card.transit{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-  .bento-card.transit .route{
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:0.8px;
-    text-transform:uppercase;
-    opacity:0.65;
-    margin-bottom:12px;
-  }
-  .bus-icon{font-size:22px;margin-bottom:8px;}
+  .taglist{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+  .taglist span{background:rgba(0,0,0,0.06); font-size:11px; font-weight:500; padding:5px 10px; border-radius:var(--r-pill);}
+  .card-pink .taglist span, .card-teal .taglist span{background:rgba(255,255,255,0.18);}
+  .list-label{font-size:10px; font-weight:600; letter-spacing:0.6px; text-transform:uppercase; opacity:0.7; margin-top:12px; margin-bottom:2px;}
+  .closing-line{font-style:italic; opacity:0.75; font-size:12.5px; margin-top:10px;}
 
-  /* ---------- CTA band illustrated ---------- */
-  .cta-band{
-    max-width:1280px;
-    margin:0 auto 64px;
-    padding:64px 40px;
-    background:var(--surface-soft);
-    border-radius:var(--r-xl);
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-  }
-  .cta-band .route{
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:var(--muted);
-    margin-bottom:14px;
-  }
-  .cta-band h2{
-    font-size:36px;
-    letter-spacing:-1px;
-    margin-bottom:14px;
-  }
-  .cta-band p{color:var(--body);margin-bottom:24px;}
-  .cta-contact{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    font-size:13.5px;
-    color:var(--muted);
-    margin-bottom:24px;
-  }
+  /* ---------- footer with mini mountains ---------- */
+  footer{background:var(--surface-soft); padding:16px 20px 18px; border-top:1px solid var(--hairline);}
+  .footer-line{font-size:11.5px; color:var(--muted); line-height:1.6;}
+  .footer-line b{color:var(--ink);}
+  .mini-mountains{height:26px; display:flex; align-items:flex-end; margin:12px 0;}
+  .mtn{width:0; height:0; border-left:26px solid transparent; border-right:26px solid transparent; margin-left:-10px;}
+  .mtn.m1{border-bottom:22px solid var(--peach);}
+  .mtn.m2{border-bottom:26px solid var(--lavender); margin-left:-14px;}
+  .mtn.m3{border-bottom:18px solid var(--ochre); margin-left:-14px;}
+  .mtn.m4{border-bottom:24px solid var(--pink); margin-left:-14px;}
+  .legal{font-size:10px; color:var(--muted-soft); margin-top:8px; padding-top:8px; border-top:1px solid var(--hairline);}
 
-  /* ---------- footer with mountain ---------- */
-  footer{
-    background:var(--surface-soft);
-    padding:0 40px 40px;
-  }
-  .footer-grid{
-    max-width:1280px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
-    padding-bottom:32px;
-  }
-  .footer-grid h5{font-size:13px;font-weight:600;margin-bottom:10px;color:var(--ink);}
-  .footer-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
-  .footer-grid li{color:var(--muted);font-size:13px;}
-  .mountains{
-    max-width:1280px;
-    margin:0 auto;
-    height:70px;
-    display:flex;
-    align-items:flex-end;
-    gap:0;
-  }
-  .mountain{
-    width:0;height:0;
-    border-left:60px solid transparent;
-    border-right:60px solid transparent;
-    margin-left:-20px;
-  }
-  .mountain.m1{border-bottom:55px solid var(--peach);}
-  .mountain.m2{border-bottom:70px solid var(--lavender);margin-left:-30px;}
-  .mountain.m3{border-bottom:45px solid var(--ochre);margin-left:-30px;}
-  .mountain.m4{border-bottom:60px solid var(--pink);margin-left:-30px;}
-  .mountain.m5{border-bottom:35px solid var(--mint);margin-left:-30px;}
-  .footer-bottom{
-    max-width:1280px;
-    margin:24px auto 0;
-    padding-top:20px;
-    border-top:1px solid var(--hairline);
-    color:var(--muted-soft);
-    font-size:12px;
-    line-height:1.6;
-  }
-
-  @media (max-width:900px){
-    .hero{grid-template-columns:1fr;}
-    .keyfacts{grid-template-columns:repeat(2,1fr);}
-    .bento{grid-template-columns:repeat(2,1fr);}
-    .span-6,.span-4,.span-3,.span-2{grid-column:span 2;}
-    .footer-grid{grid-template-columns:repeat(2,1fr);}
-    .nav-menu{display:none;}
-  }
+  @media (max-width:400px){ .card{width:100%;} }
 </style>
 </head>
 <body>
 
-<header class="top-nav">
-  <div class="logo"><span class="blob"></span> Normandy Trips</div>
-  <nav class="nav-menu">
-    <span>Itinerary</span>
-    <span>Journeys</span>
-    <span>Experts</span>
-    <span>Contact</span>
-  </nav>
-  <div class="nav-right">
-    <span>Sign in</span>
-    <button class="btn-primary">Book now</button>
-  </div>
-</header>
+<div class="overlay">
+<div class="card">
 
-<section class="hero">
-  <div class="hero-left">
-    <span class="eyebrow">Fiche Excursion</span>
-    <h1>Normandy in 3 Journeys</h1>
+  <nav class="top-nav">
+    <div class="logo"><span class="blob"></span> Normandy Trips</div>
+    <button class="btn-primary">Book now</button>
+  </nav>
+
+  <!-- a. Header -->
+  <header class="header-block">
+    <div class="header-top">
+      <div class="header-copy">
+        <span class="eyebrow">Fiche Excursion</span>
+        <h1>Normandy in 3 Journeys</h1>
+      </div>
+      <div class="mini-polaroid">
+        <img src="../images/rouen.jpg" alt="Rouen Cathedral">
+        <span>Rouen, Day 1</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- b. Objectif pédagogique -->
+  <section class="block">
+    <div class="block-label">Objectif pédagogique</div>
     <p>A two-day educational journey exploring three of Normandy's most powerful legacies: the Middle Ages, the Second World War and Impressionism.</p>
     <p>Through historical sites, landscapes, museums and participatory activities, students discover how these three major periods shaped Normandy and continue to influence its identity today.</p>
-    <div class="hero-btns">
-      <button class="btn-primary">Book now</button>
-      <button class="btn-secondary">See the itinerary</button>
-    </div>
-  </div>
-  <div class="hero-illustration-card">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-    <div class="polaroid">
-      <img src="../images/rouen.jpg" alt="Rouen Cathedral">
-      <span>Rouen, Day 1</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<div class="keyfacts">
-  <div class="keyfact"><div class="label">Duration</div><div class="value">2 days, 1 night</div></div>
-  <div class="keyfact"><div class="label">Departure from Paris</div><div class="value">Saturday before 9:00 a.m.</div></div>
-  <div class="keyfact"><div class="label">Return to Paris</div><div class="value">Sunday before 8:00 p.m.</div></div>
-  <div class="keyfact"><div class="label">Transportation</div><div class="value">Private coach</div></div>
+  <!-- c. Infos pratiques -->
+  <section class="block">
+    <div class="block-label">Infos pratiques</div>
+    <div class="keyfacts">
+      <div class="keyfact"><div class="label">Duration</div><div class="value">2 days, 1 night</div></div>
+      <div class="keyfact"><div class="label">Departure from Paris</div><div class="value">Sat. before 9:00 a.m.</div></div>
+      <div class="keyfact"><div class="label">Return to Paris</div><div class="value">Sun. before 8:00 p.m.</div></div>
+      <div class="keyfact"><div class="label">Transportation</div><div class="value">Private coach</div></div>
+    </div>
+  </section>
+
+  <!-- d. Itinéraire -->
+  <section class="block">
+    <div class="block-label">Itinéraire</div>
+
+    <span class="day-tag">Day 1</span>
+    <div class="timeline">
+
+      <div class="step">
+        <div class="step-marker bus" style="background:var(--ochre); color:var(--ink);">🚌</div>
+        <div class="transit-card card-ochre">
+          <div class="route">Bus — Departure from Paris</div>
+          <div class="sub-panel">
+            <span class="badge">BusCast</span>
+            <h4>Introduction</h4>
+            <p>A lively introduction to the weekend, its itinerary and its three main themes. This onboard format prepares students for the journey ahead and provides the essential context needed to connect the different places and historical periods explored during the programme.</p>
+          </div>
+          <div class="sub-panel">
+            <span class="badge">Pulse</span>
+            <h4>The Motorway Service Area</h4>
+            <p>An unexpected exploration of the French motorway service area as a place of travel, consumption and everyday culture. Students examine what this reveals about French lifestyles and mobility.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker" style="background:var(--pink);">1</div>
+        <div class="stop-card card-pink on-dark">
+          <div class="stop-thumb"><img src="../images/rouen.jpg" alt="Rouen Cathedral"></div>
+          <div class="stop-eyebrow">Day 1 · Stop 1</div>
+          <h3>Rouen — The Middle-Ages Journey</h3>
+          <p class="lede">Rouen provides an exceptional setting for understanding medieval Normandy. Its cathedral, historic streets and association with Joan of Arc allow students to explore the political, religious and everyday realities of the Middle Ages directly in the places where history unfolded.</p>
+          <div class="sub-panel">
+            <span class="badge">Pulse</span>
+            <h4>Debunk the Middle Ages</h4>
+            <p>An engaging walking exploration of Rouen designed to challenge common misconceptions about medieval life.</p>
+            <p>Through observation, discussion and storytelling, students investigate how people lived, believed, worked and understood the world around them.</p>
+            <p>Rather than presenting the Middle Ages as a distant or purely dark period, the activity encourages participants to compare medieval society with their own lives and question common assumptions about the period.</p>
+            <div class="list-label">3 Topics</div>
+            <div class="taglist">
+              <span>Medieval Lifestyle: a Life to Envy – or Escape?</span>
+              <span>Gothic Cathedral: a Spaceship to Heaven</span>
+              <span>Joan of Arc: The Spy who Ended the Middle Ages</span>
+            </div>
+            <div class="list-label">Additional Activities</div>
+            <div class="taglist">
+              <span>Lunch in a Traditional Restaurant</span>
+              <span>Tasting of Local Products</span>
+              <span>Viewpoint of a Medieval Castle</span>
+            </div>
+          </div>
+          <p class="closing-line">Lunch and Free Time in Rouen</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker bus" style="background:var(--surface-card); color:var(--ink);">🚌</div>
+        <div class="transit-card card-cream">
+          <div class="route">Bus — Rouen to Omaha</div>
+          <div class="sub-panel">
+            <span class="badge">BusCast</span>
+            <h4>Letter to a Soldier</h4>
+            <p>An exploration of letters and personal correspondence written by people directly affected by the war, including soldiers, relatives and civilians. Their words provide an intimate and immediate perspective on the conflict, helping students understand not only what happened, but also how individuals experienced uncertainty, separation, fear and hope.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker" style="background:var(--teal);">2</div>
+        <div class="stop-card card-teal on-dark">
+          <div class="stop-thumb"><img src="../images/omaha.jpg" alt="Omaha Beach"></div>
+          <div class="stop-eyebrow">Day 1 · Stop 2</div>
+          <h3>Omaha — Landscapes of War</h3>
+          <p class="lede">Students explore the landscapes of the Normandy landings and discover how beaches, villages, memorials and cemeteries have become places where military history, personal memories and present-day life coexist. The experience examines how local communities rebuilt their lives while preserving the physical traces, personal stories and collective memories of the conflict.</p>
+          <div class="sub-panel">
+            <h4>D-Day by Bus</h4>
+            <p>A guided exploration of the Omaha Beach area by coach, combining historical interpretation, landscape observation and visits to major remembrance sites.</p>
+            <p>Students discover where some of the most significant events of D-Day took place and examine how geography, military planning and individual experiences shaped the events of 6 June 1944.</p>
+            <p>The activity also encourages students to consider how history is remembered, transmitted and interpreted by different generations.</p>
+            <div class="list-label">Main Stops</div>
+            <div class="taglist">
+              <span>American Cemetery</span>
+              <span>Key Site of Omaha Beach</span>
+            </div>
+            <div class="list-label">Additional Activities</div>
+            <div class="taglist">
+              <span>Tasting of Local Products</span>
+              <span>Official Ceremony Honouring Fallen Soldiers</span>
+              <span>Museum or Collection Dedicated to the Second World War</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker" style="background:var(--lavender); color:var(--ink);">3</div>
+        <div class="stop-card card-lavender">
+          <div class="stop-thumb"><img src="../images/bayeux.jpg" alt="Bayeux Cathedral"></div>
+          <div class="stop-eyebrow">Day 1 · Stop 3 · Overnight</div>
+          <h3>Bayeux — Quaint and Timeless</h3>
+          <p class="lede">After a day devoted to major historical events, Bayeux offers a quieter and more intimate experience of Normandy. Its preserved historic centre, traditional architecture and relaxed atmosphere provide the ideal setting for an overnight stay.</p>
+          <div class="list-label">Accommodation</div>
+          <div class="taglist">
+            <span>Hotel Check-in</span>
+            <span>Orientation</span>
+            <span>Traditional Dinner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span class="day-tag">Day 2</span>
+    <div class="timeline">
+
+      <div class="step">
+        <div class="step-marker bus" style="background:var(--ochre); color:var(--ink);">🚌</div>
+        <div class="transit-card card-ochre">
+          <div class="route">Bus — Bayeux to Honfleur</div>
+          <div class="sub-panel">
+            <span class="badge">BusCast</span>
+            <h4>Impressionism in 20 Minutes</h4>
+            <p>A concise and engaging introduction to Impressionism, its main innovations and Normandy's central role in its development. During the journey, students receive the essential historical and artistic context needed to recognise the movement's ideas, techniques and subjects when they arrive in Honfleur.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker" style="background:var(--peach); color:var(--ink);">4</div>
+        <div class="stop-card card-peach">
+          <div class="stop-thumb"><img src="../images/honfleur.jpg" alt="Vieux Bassin, Honfleur"></div>
+          <div class="stop-eyebrow">Day 2 · Stop 4</div>
+          <h3>Honfleur — The Arts and Delights Journey</h3>
+          <p class="lede">With its historic harbour, changing light and long association with artists, Honfleur provides an ideal environment for understanding Normandy's artistic heritage. Students explore how painters, musicians and cultural institutions have interpreted the town and transformed everyday places into sources of artistic inspiration.</p>
+          <div class="sub-panel">
+            <span class="badge">Pulse</span>
+            <h4>I lOVE MUSEUM</h4>
+            <p>An innovative and participatory approach to museums and cultural resources, designed to make museum visits engaging, accessible and memorable.</p>
+            <p>The activity is particularly suitable for students who are unfamiliar with museums, reluctant to visit them or interested in discovering new ways of observing and interpreting artworks.</p>
+            <p>Through challenges, discussions, visual observation and personal responses, participants become active visitors rather than passive spectators.</p>
+            <div class="list-label">2 Artistic Explorations</div>
+            <div class="taglist">
+              <span>Monet, Boudin and Norman Impressionism</span>
+              <span>Erik Satie: A Journey into the World of Dreams</span>
+            </div>
+          </div>
+          <p class="closing-line">Lunch and Free Time in Honfleur</p>
+          <div class="sub-panel">
+            <h4>Boat Ride</h4>
+            <p>A boat ride offers a memorable conclusion to the weekend, with remarkable views of the harbour, the Normandy coastline and the surrounding maritime landscape.</p>
+            <p>It provides a final opportunity to experience Honfleur from a different perspective and reflect on the discoveries made during the journey.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-marker bus" style="background:var(--surface-card); color:var(--ink);">🚌</div>
+        <div class="transit-card card-cream">
+          <div class="route">Bus — Return to Paris</div>
+          <p style="font-size:12.5px;">The journey closes as it began: on the road. Students head back to Paris, arriving before 8:00 p.m.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line"><b>Contact</b> — Email [votre email] · Téléphone [votre téléphone] · Site web [votre site]</div>
+    <div class="mini-mountains">
+      <div class="mtn m1"></div><div class="mtn m2"></div><div class="mtn m3"></div><div class="mtn m4"></div>
+    </div>
+    <div class="legal">Photos: Rouen (AgnosticPreachersKid, CC BY-SA 3.0), Omaha Beach (Anton Bielousov, CC BY-SA 3.0), Honfleur (Rebexho, CC BY-SA 3.0), Bayeux (AndrewHorne, domaine public) — Wikimedia Commons.</div>
+  </footer>
+
 </div>
-
-<div class="section-heading">
-  <h2>The itinerary</h2>
 </div>
-
-<div class="bento">
-
-  <!-- Rouen: pink, large -->
-  <div class="bento-card card-pink on-dark span-4">
-    <div class="thumb"><img src="../images/rouen.jpg" alt="Rouen Cathedral"></div>
-    <div class="stop-eyebrow">Day 1 · Stop 1</div>
-    <h3>Rouen — The Middle-Ages Journey</h3>
-    <p class="lede">Rouen provides an exceptional setting for understanding medieval Normandy. Its cathedral, historic streets and association with Joan of Arc allow students to explore the political, religious and everyday realities of the Middle Ages directly in the places where history unfolded.</p>
-    <div class="sub-panel">
-      <span class="badge">Pulse</span>
-      <h4>Debunk the Middle Ages</h4>
-      <p>An engaging walking exploration of Rouen designed to challenge common misconceptions about medieval life.</p>
-      <p>Through observation, discussion and storytelling, students investigate how people lived, believed, worked and understood the world around them.</p>
-      <p>Rather than presenting the Middle Ages as a distant or purely dark period, the activity encourages participants to compare medieval society with their own lives and question common assumptions about the period.</p>
-      <div class="list-label">3 Topics</div>
-      <div class="taglist">
-        <span>Medieval Lifestyle: a Life to Envy – or Escape?</span>
-        <span>Gothic Cathedral: a Spaceship to Heaven</span>
-        <span>Joan of Arc: The Spy who Ended the Middle Ages</span>
-      </div>
-      <div class="list-label">Additional Activities</div>
-      <div class="taglist">
-        <span>Lunch in a Traditional Restaurant</span>
-        <span>Tasting of Local Products</span>
-        <span>Viewpoint of a Medieval Castle</span>
-      </div>
-    </div>
-    <p class="closing-line">Lunch and Free Time in Rouen</p>
-  </div>
-
-  <!-- Transit before Rouen: ochre -->
-  <div class="bento-card card-ochre transit span-2">
-    <div class="bus-icon">🚌</div>
-    <div class="route">Bus — Departure from Paris</div>
-    <div class="sub-panel">
-      <span class="badge">BusCast</span>
-      <h4>Introduction</h4>
-      <p>A lively introduction to the weekend, its itinerary and its three main themes. This onboard format prepares students for the journey ahead and provides the essential context needed to connect the different places and historical periods explored during the programme.</p>
-    </div>
-    <div class="sub-panel">
-      <span class="badge">Pulse</span>
-      <h4>The Motorway Service Area</h4>
-      <p>An unexpected exploration of the French motorway service area as a place of travel, consumption and everyday culture. Students examine what this reveals about French lifestyles and mobility.</p>
-    </div>
-  </div>
-
-  <!-- Omaha: teal, large -->
-  <div class="bento-card card-teal on-dark span-4">
-    <div class="thumb"><img src="../images/omaha.jpg" alt="Omaha Beach"></div>
-    <div class="stop-eyebrow">Day 1 · Stop 2</div>
-    <h3>Omaha — Landscapes of War</h3>
-    <p class="lede">Students explore the landscapes of the Normandy landings and discover how beaches, villages, memorials and cemeteries have become places where military history, personal memories and present-day life coexist. The experience examines how local communities rebuilt their lives while preserving the physical traces, personal stories and collective memories of the conflict.</p>
-    <div class="sub-panel">
-      <h4>D-Day by Bus</h4>
-      <p>A guided exploration of the Omaha Beach area by coach, combining historical interpretation, landscape observation and visits to major remembrance sites.</p>
-      <p>Students discover where some of the most significant events of D-Day took place and examine how geography, military planning and individual experiences shaped the events of 6 June 1944.</p>
-      <p>The activity also encourages students to consider how history is remembered, transmitted and interpreted by different generations.</p>
-      <div class="list-label">Main Stops</div>
-      <div class="taglist">
-        <span>American Cemetery</span>
-        <span>Key Site of Omaha Beach</span>
-      </div>
-      <div class="list-label">Additional Activities</div>
-      <div class="taglist">
-        <span>Tasting of Local Products</span>
-        <span>Official Ceremony Honouring Fallen Soldiers</span>
-        <span>Museum or Collection Dedicated to the Second World War</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Transit before Omaha: cream -->
-  <div class="bento-card card-cream transit span-2">
-    <div class="bus-icon">🚌</div>
-    <div class="route">Bus — Rouen to Omaha</div>
-    <div class="sub-panel">
-      <span class="badge">BusCast</span>
-      <h4>Letter to a Soldier</h4>
-      <p>An exploration of letters and personal correspondence written by people directly affected by the war, including soldiers, relatives and civilians. Their words provide an intimate and immediate perspective on the conflict, helping students understand not only what happened, but also how individuals experienced uncertainty, separation, fear and hope.</p>
-    </div>
-  </div>
-
-  <!-- Bayeux: lavender -->
-  <div class="bento-card card-lavender span-3">
-    <div class="thumb"><img src="../images/bayeux.jpg" alt="Bayeux Cathedral"></div>
-    <div class="stop-eyebrow">Day 1 · Stop 3 · Overnight</div>
-    <h3>Bayeux — Quaint and Timeless</h3>
-    <p class="lede">After a day devoted to major historical events, Bayeux offers a quieter and more intimate experience of Normandy. Its preserved historic centre, traditional architecture and relaxed atmosphere provide the ideal setting for an overnight stay.</p>
-    <div class="list-label">Accommodation</div>
-    <div class="taglist">
-      <span>Hotel Check-in</span>
-      <span>Orientation</span>
-      <span>Traditional Dinner</span>
-    </div>
-  </div>
-
-  <!-- Transit before Honfleur: ochre -->
-  <div class="bento-card card-ochre transit span-3">
-    <div class="bus-icon">🚌</div>
-    <div class="route">Bus — Bayeux to Honfleur</div>
-    <div class="sub-panel">
-      <span class="badge">BusCast</span>
-      <h4>Impressionism in 20 Minutes</h4>
-      <p>A concise and engaging introduction to Impressionism, its main innovations and Normandy's central role in its development. During the journey, students receive the essential historical and artistic context needed to recognise the movement's ideas, techniques and subjects when they arrive in Honfleur.</p>
-    </div>
-  </div>
-
-  <!-- Honfleur: peach, full width -->
-  <div class="bento-card card-peach span-6">
-    <div class="thumb"><img src="../images/honfleur.jpg" alt="Vieux Bassin, Honfleur"></div>
-    <div class="stop-eyebrow">Day 2 · Stop 4</div>
-    <h3>Honfleur — The Arts and Delights Journey</h3>
-    <p class="lede">With its historic harbour, changing light and long association with artists, Honfleur provides an ideal environment for understanding Normandy's artistic heritage. Students explore how painters, musicians and cultural institutions have interpreted the town and transformed everyday places into sources of artistic inspiration.</p>
-    <div class="sub-panel">
-      <span class="badge">Pulse</span>
-      <h4>I lOVE MUSEUM</h4>
-      <p>An innovative and participatory approach to museums and cultural resources, designed to make museum visits engaging, accessible and memorable.</p>
-      <p>The activity is particularly suitable for students who are unfamiliar with museums, reluctant to visit them or interested in discovering new ways of observing and interpreting artworks.</p>
-      <p>Through challenges, discussions, visual observation and personal responses, participants become active visitors rather than passive spectators.</p>
-      <div class="list-label">2 Artistic Explorations</div>
-      <div class="taglist">
-        <span>Monet, Boudin and Norman Impressionism</span>
-        <span>Erik Satie: A Journey into the World of Dreams</span>
-      </div>
-    </div>
-    <p class="closing-line">Lunch and Free Time in Honfleur</p>
-    <div class="sub-panel">
-      <h4>Boat Ride</h4>
-      <p>A boat ride offers a memorable conclusion to the weekend, with remarkable views of the harbour, the Normandy coastline and the surrounding maritime landscape.</p>
-      <p>It provides a final opportunity to experience Honfleur from a different perspective and reflect on the discoveries made during the journey.</p>
-    </div>
-  </div>
-
-</div>
-
-<div class="cta-band">
-  <div class="route">Bus — Return to Paris</div>
-  <h2>Turn this itinerary into your next trip</h2>
-  <p>Three periods, one region, two unforgettable days.</p>
-  <div class="cta-contact">
-    <span>Email — [votre email]</span>
-    <span>Téléphone — [votre téléphone]</span>
-    <span>Site web — [votre site]</span>
-  </div>
-  <button class="btn-primary">Book now</button>
-</div>
-
-<footer>
-  <div class="footer-grid">
-    <div>
-      <h5>The Itinerary</h5>
-      <ul><li>Rouen</li><li>Omaha</li><li>Bayeux</li><li>Honfleur</li></ul>
-    </div>
-    <div>
-      <h5>Formats</h5>
-      <ul><li>Pulse</li><li>BusCast</li></ul>
-    </div>
-    <div>
-      <h5>Practical</h5>
-      <ul><li>Duration</li><li>Transportation</li><li>Accommodation</li></ul>
-    </div>
-    <div>
-      <h5>About</h5>
-      <ul><li>Contact</li><li>Privacy</li><li>Terms</li></ul>
-    </div>
-  </div>
-  <div class="mountains">
-    <div class="mountain m1"></div>
-    <div class="mountain m2"></div>
-    <div class="mountain m3"></div>
-    <div class="mountain m4"></div>
-    <div class="mountain m5"></div>
-  </div>
-  <div class="footer-bottom">
-    Photos: Rouen (AgnosticPreachersKid, CC BY-SA 3.0), Omaha Beach (Anton Bielousov, CC BY-SA 3.0), Honfleur (Rebexho, CC BY-SA 3.0), Bayeux (AndrewHorne, domaine public) — Wikimedia Commons.
-  </div>
-</footer>
 
 </body>
 </html>
