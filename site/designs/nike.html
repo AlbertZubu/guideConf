@@ -18,7 +18,8 @@
     --ink:#111111; --ink-muted:#707072; --ink-faint:#9e9ea0; --hairline:#cacacb;
     --on-primary:#ffffff; --on-dark:#ffffff;
     --pulse:#ed1aa0; --pulse-ink:#ffffff; --buscast:#1151ff; --buscast-ink:#ffffff;
-    --anchor:#6BFF5C; --anchor-ink:#111111; --echo:#FFE94D; --echo-ink:#111111;
+    --fmt-yellow:#FFE94D; --fmt-green:#6BFF5C; --fmt-ink:#111111;
+    --divider:rgba(163,163,166,.5);
     --font-display:'Archivo Black','Arial Black',sans-serif; --font-body:Helvetica,Arial,sans-serif;
     --radius-sm:18px; --radius-md:24px; --radius-lg:30px; --radius-full:9999px;
     --shadow-sm:0 2px 4px rgba(0,0,0,.15);
@@ -49,7 +50,7 @@
   .frame img{ width:100%; height:100%; object-fit:cover; }
   .frame.fallback{ display:flex; align-items:flex-end; background:linear-gradient(150deg, var(--secondary), var(--accent)); }
   .frame.fallback::after{ content:attr(data-alt); padding:16px; font-size:13px; font-weight:700; color:#fff; font-family:'Inter',sans-serif; }
-  .frame--square{ aspect-ratio:1/1; border-radius:var(--radius-md); clip-path:none; }
+  .frame--short{ aspect-ratio:2/1; border-radius:var(--radius-md); clip-path:none; }
 
   .navbar{ position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h); display:flex; align-items:center; gap:20px; padding:0 24px; background:#fff; border-bottom:2px solid var(--ink); }
   .logo{ text-decoration:none; color:var(--ink); font-size:20px; letter-spacing:-.5px; }
@@ -65,18 +66,18 @@
   .hero__frame .frame{ aspect-ratio:16/7; box-shadow:var(--shadow-lg); clip-path:none; border-radius:var(--radius-lg) var(--radius-lg) 0 0; }
 
   .principles{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-  .principle{ padding:30px 22px; border-left:2px solid var(--ink); }
+  .principle{ padding:30px 22px; border-left:1px dotted var(--divider); }
   .principle:first-child{ border-left:none; }
   .principle__media{ margin-bottom:18px; }
   .principle h3{ font-size:16px; letter-spacing:0; margin-bottom:12px; }
   .principle p{ font-size:14px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   @media (max-width:980px){ .principles{ grid-template-columns:1fr 1fr; } .principle:nth-child(3){ border-left:none; } }
-  @media (max-width:560px){ .principles{ grid-template-columns:1fr; } .principle{ border-left:none; border-top:2px solid var(--ink); } .principle:first-child{ border-top:none; } }
+  @media (max-width:560px){ .principles{ grid-template-columns:1fr; } .principle{ border-left:none; border-top:1px dotted var(--divider); } .principle:first-child{ border-top:none; } }
 
   /* ---------- Puzzle grid — reusable bento-style layout (Ways to Travel, Featured) ---------- */
-  .puzzle-grid{ display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:170px; gap:16px; }
+  .puzzle-grid{ display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:minmax(170px, auto); gap:16px; }
   .puzzle-cell{ display:flex; flex-direction:column; overflow:hidden; padding:26px; border-radius:var(--radius-lg); border:2px solid var(--ink); background:var(--canvas-soft); box-shadow:inset 0 6px 16px rgba(0,0,0,.07); }
-  .puzzle-cell--lg{ grid-column:span 2; grid-row:span 2; justify-content:flex-end; }
+  .puzzle-cell--lg{ grid-column:span 2; grid-row:span 2; }
   .puzzle-cell h3{ font-size:22px; letter-spacing:-.3px; margin:10px 0 8px; }
   .puzzle-cell--lg h3{ font-size:34px; }
   .puzzle-cell p{ font-size:14.5px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
@@ -88,17 +89,17 @@
   .badge--pulse{ background:var(--pulse); color:#fff; } .badge--buscast{ background:var(--buscast); color:#fff; }
   .card-link{ display:inline-flex; align-items:center; gap:6px; font-family:'Inter',sans-serif; font-size:13px; font-weight:800; text-transform:uppercase; color:var(--ink); text-decoration:none; white-space:nowrap; }
 
-  /* ---------- Excursion carousel — auto-rotating, 2 cards centered + 1 peeking on each side ---------- */
-  .excursions{ margin-top:56px; padding-top:40px; border-top:2px solid var(--ink); }
-  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px; flex-wrap:wrap; }
-  .excursions__head h3{ font-size:18px; letter-spacing:0; }
-  .excursions__viewport{ overflow:hidden; max-width:700px; margin:0 auto; }
-  .excursion-carousel{ display:flex; gap:18px; width:max-content; animation:excursion-marquee 80s linear infinite; }
+  /* ---------- Excursion carousel — nested inside the Journeys card, auto-rotating, 2 cards centered + 1 peeking on each side ---------- */
+  .excursions{ margin-top:18px; padding-top:16px; border-top:1px dotted var(--divider); }
+  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:16px; flex-wrap:wrap; }
+  .excursions__head h3{ font-size:14px; letter-spacing:0; }
+  .excursions__viewport{ overflow:hidden; width:100%; }
+  .excursion-carousel{ display:flex; gap:14px; width:max-content; animation:excursion-marquee 80s linear infinite; }
   .excursion-carousel:hover{ animation-play-state:paused; }
   @keyframes excursion-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-  .excursion-card{ flex:0 0 220px; overflow:hidden; text-decoration:none; color:inherit; }
-  @media (max-width:760px){ .excursions__viewport{ max-width:100%; } .excursion-card{ flex:0 0 170px; } }
-  .excursion-card__media{ aspect-ratio:1/1; background:var(--surface-alt); position:relative; clip-path:polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+  .excursion-card{ flex:0 0 188px; overflow:hidden; text-decoration:none; color:inherit; }
+  @media (max-width:560px){ .excursion-card{ flex:0 0 150px; } }
+  .excursion-card__media{ aspect-ratio:5/4; background:var(--surface-alt); position:relative; clip-path:polygon(0 0, 100% 0, 100% 90%, 0 100%); }
   .excursion-card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
   .excursion-card__media.fallback{ background:linear-gradient(150deg, var(--secondary), var(--accent)); }
   .excursion-card__body{ padding:10px 0 0; }
@@ -113,46 +114,34 @@
   .fiche-modal__close{ position:absolute; top:12px; right:12px; z-index:2; width:36px; height:36px; border-radius:50%; border:none; background:rgba(0,0,0,.72); color:#fff; font-size:20px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .fiche-modal__close:hover{ background:rgba(0,0,0,.9); }
 
-  .featured{ background:var(--ink); color:#fff; padding:50px; clip-path:polygon(0 3%, 100% 0, 100% 100%, 0 97%); }
-  .featured .eyebrow{ color:var(--pulse); }
-  .featured h2{ margin-top:12px; font-size:clamp(24px,2.8vw,34px); }
-  .featured > .wrap-head{ max-width:640px; margin-bottom:34px; }
-  .featured > .wrap-head p.body-lg{ margin-top:14px; color:rgba(255,255,255,.75); }
-  .featured-quad{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-  .featured-mini{ display:grid; grid-template-columns:110px 1fr; gap:16px; align-items:center; }
-  .featured-mini__frame{ aspect-ratio:4/3; box-shadow:var(--shadow-lg); }
-  .featured-mini .eyebrow{ font-size:11px; }
-  .featured-mini h3{ font-size:17px; letter-spacing:-.3px; margin:6px 0 4px; }
-  .featured-mini p{ font-size:13px; line-height:1.45; color:rgba(255,255,255,.72); font-family:'Inter',sans-serif; margin-bottom:10px; }
-  .featured-mini .card-link{ color:#fff; }
-  @media (max-width:900px){ .featured{ padding:36px 22px; } .featured-quad{ grid-template-columns:1fr; } }
-  @media (max-width:560px){ .featured-mini{ grid-template-columns:80px 1fr; } }
+  .cell-excursions{ display:flex; gap:10px; margin:14px 0; }
+  .cell-excursion{ display:flex; flex-direction:column; align-items:center; gap:6px; width:64px; text-decoration:none; color:inherit; }
+  .cell-excursion .frame{ width:64px; height:64px; border-radius:12px; clip-path:none; }
+  .cell-excursion span{ font-size:10px; font-weight:700; line-height:1.2; text-align:center; font-family:'Inter',sans-serif; color:var(--ink-muted); }
 
   .guide{ display:grid; grid-template-columns:320px 1fr; gap:56px; align-items:center; }
   .guide__photo{ width:100%; aspect-ratio:1/1; border-radius:var(--radius-lg); background:linear-gradient(150deg, var(--secondary), var(--accent)); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg); }
   .guide__photo span{ font-size:64px; font-family:var(--font-display); color:#fff; }
   .guide__facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:30px; }
-  .guide__fact{ padding:18px 20px; border-left:2px solid var(--ink); }
+  .guide__fact{ padding:18px 20px; border-left:1px dotted var(--divider); }
   .guide__fact:first-child{ border-left:none; padding-left:0; }
   .guide__fact svg{ color:var(--secondary); margin-bottom:8px; }
   .guide__fact b{ display:block; font-size:14px; font-weight:800; text-transform:uppercase; font-family:'Inter',sans-serif; } .guide__fact span{ font-size:13px; color:var(--ink-muted); font-family:'Inter',sans-serif; }
-  @media (max-width:840px){ .guide{ grid-template-columns:1fr; text-align:center; } .guide__photo{ max-width:280px; margin:0 auto; } .guide__facts{ grid-template-columns:1fr; text-align:left; } .guide__fact{ border-left:none; border-top:2px solid var(--ink); padding-left:0; } .guide__fact:first-child{ border-top:none; } }
+  @media (max-width:840px){ .guide{ grid-template-columns:1fr; text-align:center; } .guide__photo{ max-width:280px; margin:0 auto; } .guide__facts{ text-align:left; } }
 
   .methods-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-  .method{ padding:0 22px; border-left:2px solid var(--ink); } .method:first-child{ border-left:none; padding-left:0; }
-  .method__media{ width:100%; aspect-ratio:16/10; margin-bottom:18px; border-radius:var(--radius-md) 0 var(--radius-md) 0; background:var(--surface-alt); overflow:hidden; }
-  .method__media img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .method__media.fallback{ background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .method{ padding:0 22px; border-left:1px dotted var(--divider); } .method:first-child{ border-left:none; padding-left:0; }
+  .method__icon{ width:56px; height:56px; border-radius:50%; margin-bottom:18px; background:var(--canvas-soft); display:flex; align-items:center; justify-content:center; color:var(--secondary); }
   .method h3{ font-size:16px; margin-bottom:10px; } .method p{ font-size:14px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   @media (max-width:900px){ .methods-grid{ grid-template-columns:1fr 1fr; } .method:nth-child(3){ border-left:none; padding-left:0; } }
-  @media (max-width:560px){ .methods-grid{ grid-template-columns:1fr; } .method{ border-left:none; border-top:2px solid var(--ink); padding:22px 0 0; } .method:first-child{ border-top:none; } }
+  @media (max-width:560px){ .methods-grid{ grid-template-columns:1fr; } .method{ border-left:none; border-top:1px dotted var(--divider); padding:22px 0 0; } .method:first-child{ border-top:none; } }
 
   .formats{ display:grid; grid-template-columns:1fr 1fr; gap:4px; }
   .format-card{ padding:40px; color:#fff; }
   .format-card--pulse{ background:var(--pulse); }
   .format-card--buscast{ background:var(--buscast); }
-  .format-card--anchor{ background:var(--anchor); color:var(--anchor-ink); }
-  .format-card--echo{ background:var(--echo); color:var(--echo-ink); }
+  .format-card--anchor{ background:var(--fmt-yellow); color:var(--fmt-ink); }
+  .format-card--echo{ background:var(--fmt-green); color:var(--fmt-ink); }
   .format-card--anchor .format-card__icon, .format-card--echo .format-card__icon{ background:rgba(0,0,0,.08); }
   .format-card--anchor .format-card__examples span, .format-card--echo .format-card__examples span{ background:rgba(0,0,0,.08); }
   .format-card__icon{ width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
@@ -195,7 +184,7 @@
         <span class="eyebrow" style="color:var(--pulse)">Freelance Educational Guiding</span>
         <h1 class="h-xl">Transform Journeys Into Understanding</h1>
         <p class="hero__sub">UpTempo designs excursions, workshops and multi-day programmes that turn a destination into a lesson worth remembering — built on field knowledge, participatory formats and a genuine sense of place.</p>
-        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:#fff;color:#111;">Discover Our Programmes</a><a href="#featured" class="btn btn--ghost">See a Full Journey</a></div>
+        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:#fff;color:#111;">Discover Our Programmes</a><a href="#services" class="btn btn--ghost">See a Full Journey</a></div>
       </div>
       <div class="hero__frame reveal"><div class="frame" data-alt="Normandy coastline — Étretat cliffs"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Etretat_beach_and_cliffs.JPG" alt="Étretat cliffs, Normandy coastline" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
     </section>
@@ -204,10 +193,10 @@
       <div class="wrap">
         <div class="section-head reveal"><span class="eyebrow">Philosophy</span><h2 class="h-lg">Four Principles Behind Every Programme</h2><p class="body-lg">Every excursion, workshop or journey we design is built on the same foundations — regardless of destination, age group or subject.</p></div>
         <div class="principles reveal-stagger">
-          <div class="principle reveal" style="--i:0"><div class="frame frame--square principle__media" data-alt="Meaningful Experiences"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hospices_de_beaune_toit.jpg" alt="Hospices de Beaune roof" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Meaningful Experiences</h3><p>We design for memorable moments, not checklists of sights. Every stop earns its place because it makes an idea click, not because it's famous.</p></div>
-          <div class="principle reveal" style="--i:1"><div class="frame frame--square principle__media" data-alt="Insightful Perspectives"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Little_Venice_in_Colmar_01.jpg" alt="Petite Venise, Colmar" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Insightful Perspectives</h3><p>We favour questions over information. Participants leave with a way of looking at history, art or landscape they can reuse long after the trip.</p></div>
-          <div class="principle reveal" style="--i:2"><div class="frame frame--square principle__media" data-alt="Cultural Connection"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vieux_bassin_Honfleur.JPG" alt="Vieux Bassin, Honfleur" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Cultural Connection</h3><p>Places are explored in their authentic context — local life, food and everyday culture sit alongside monuments and museums.</p></div>
-          <div class="principle reveal" style="--i:3"><div class="frame frame--square principle__media" data-alt="Organizational Support"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carnac_M%C3%A9nec_alignments.jpg" alt="Carnac megalith alignments" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Organizational Support</h3><p>Transport, timing, permits, backup plans — the logistics are handled with the same care as the content, so teachers and group leaders can just show up.</p></div>
+          <div class="principle reveal" style="--i:0"><div class="frame frame--short principle__media" data-alt="Meaningful Experiences"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hospices_de_beaune_toit.jpg" alt="Hospices de Beaune roof" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Meaningful Experiences</h3><p>We design for memorable moments, not checklists of sights. Every stop earns its place because it makes an idea click, not because it's famous.</p></div>
+          <div class="principle reveal" style="--i:1"><div class="frame frame--short principle__media" data-alt="Insightful Perspectives"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Little_Venice_in_Colmar_01.jpg" alt="Petite Venise, Colmar" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Insightful Perspectives</h3><p>We favour questions over information. Participants leave with a way of looking at history, art or landscape they can reuse long after the trip.</p></div>
+          <div class="principle reveal" style="--i:2"><div class="frame frame--short principle__media" data-alt="Cultural Connection"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vieux_bassin_Honfleur.JPG" alt="Vieux Bassin, Honfleur" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Cultural Connection</h3><p>Places are explored in their authentic context — local life, food and everyday culture sit alongside monuments and museums.</p></div>
+          <div class="principle reveal" style="--i:3"><div class="frame frame--short principle__media" data-alt="Organizational Support"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carnac_M%C3%A9nec_alignments.jpg" alt="Carnac megalith alignments" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Organizational Support</h3><p>Transport, timing, permits, backup plans — the logistics are handled with the same care as the content, so teachers and group leaders can just show up.</p></div>
         </div>
       </div>
     </section>
@@ -216,43 +205,29 @@
       <div class="wrap">
         <div class="section-head reveal"><span class="eyebrow">Services</span><h2 class="h-lg">Ways to Travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region programme — every format is built on the same core methods.</p></div>
         <div class="puzzle-grid reveal-stagger">
-          <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Short, high-energy sessions — in the classroom or on site — that open up a topic before or after a trip.</p><a href="../../catalogue/normandy-in-3-journeys/gallery.html" class="card-link" onclick="event.preventDefault(); openFicheModal(this.href);">Learn more →</a></div>
-          <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Day Trips</h3><p>Single-day excursions to a nearby town or landscape, with an onboard narrative to bridge the journey.</p><a href="#featured" class="card-link">Learn more →</a></div>
-          <div class="puzzle-cell puzzle-cell--lg reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Journeys</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format.</p><a href="#featured" class="card-link">Learn more →</a></div>
-        </div>
-
-        <div class="excursions">
-          <div class="excursions__head">
-            <h3>Explore Our Excursions</h3>
-            <a href="../../catalogue/index.html" class="card-link">View The Full Catalogue →</a>
+          <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Short, high-energy sessions — in the classroom or on site — that open up a topic before or after a trip.</p>
+            <div class="cell-excursions">
+              <a class="cell-excursion" href="../../catalogue/normandy-in-3-journeys/normandy-in-3-journeys.html"><div class="frame" data-alt="Normandy"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rouen_-_Gros_horloge_%282%29.jpg" alt="Normandy in 3 Journeys" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Normandy in 3 Journeys</span></a>
+              <a class="cell-excursion" href="../../catalogue/index.html#excursion-loire-valley"><div class="frame" data-alt="Loire Valley"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chambord._France.jpg" alt="The Loire in 3 Chapters" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>The Loire in 3 Chapters</span></a>
+            </div>
+            <a href="../../catalogue/normandy-in-3-journeys/gallery.html" class="card-link" onclick="event.preventDefault(); openFicheModal(this.href);">Learn more →</a></div>
+          <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Day Trips</h3><p>Single-day excursions to a nearby town or landscape, with an onboard narrative to bridge the journey.</p>
+            <div class="cell-excursions">
+              <a class="cell-excursion" href="../../catalogue/index.html#excursion-provence"><div class="frame" data-alt="Provence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg" alt="Provence in Light and Stone" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Provence in Light and Stone</span></a>
+              <a class="cell-excursion" href="../../catalogue/index.html#excursion-paris"><div class="frame" data-alt="Paris"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg" alt="Paris in a Day" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Paris in a Day</span></a>
+            </div>
+            <a href="#services" class="card-link">Learn more →</a></div>
+          <div class="puzzle-cell puzzle-cell--lg reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Journeys</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format.</p>
+            <div class="excursions">
+              <div class="excursions__head">
+                <h3>Explore Our Excursions</h3>
+                <a href="../../catalogue/index.html" class="card-link">View The Full Catalogue →</a>
+              </div>
+              <div class="excursions__viewport"><div class="excursion-carousel" id="excursionCarousel"></div></div>
+            </div>
           </div>
-          <div class="excursions__viewport"><div class="excursion-carousel" id="excursionCarousel"></div></div>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="featured">
-      <div class="wrap"><div class="featured reveal">
-        <div class="wrap-head"><span class="eyebrow">Featured Journeys</span><h2>Three Journeys Worth a Detour</h2><p class="body-lg">A sample of our flagship multi-day programmes — each one chains several destinations into a single continuous narrative.</p></div>
-        <div class="featured-quad reveal-stagger">
-          <div class="featured-mini reveal" style="--i:0">
-            <div class="frame featured-mini__frame" data-alt="Rouen — Gros Horloge"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rouen_-_Gros_horloge_%282%29.jpg" alt="Rue du Gros-Horloge, Rouen" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-            <div><span class="eyebrow">Normandy</span><h3>Normandy in 3 Journeys</h3><p>Rouen's Middle Ages, Omaha's WWII memory, and Honfleur's Impressionism.</p><a href="../../catalogue/normandy-in-3-journeys/normandy-in-3-journeys.html" class="card-link">View Itinerary →</a></div>
-          </div>
-          <div class="featured-mini reveal" style="--i:1">
-            <div class="frame featured-mini__frame" data-alt="Château de Chambord"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chambord._France.jpg" alt="Château de Chambord" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-            <div><span class="eyebrow">Loire Valley</span><h3>The Loire in 3 Chapters</h3><p>Royal architecture, Renaissance gardens and Da Vinci's legacy.</p><a href="../../catalogue/index.html#excursion-loire-valley" class="card-link">View Itinerary →</a></div>
-          </div>
-          <div class="featured-mini reveal" style="--i:2">
-            <div class="frame featured-mini__frame" data-alt="Gordes, Provence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg" alt="Gordes hilltop village, Provence" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-            <div><span class="eyebrow">Provence</span><h3>Provence in Light and Stone</h3><p>Roman heritage, Impressionism at Arles, and hilltop village life.</p><a href="../../catalogue/index.html#excursion-provence" class="card-link">View Itinerary →</a></div>
-          </div>
-          <div class="featured-mini reveal" style="--i:3">
-            <div class="frame featured-mini__frame" data-alt="Eiffel Tower, Paris"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg" alt="Eiffel Tower from Trocadéro" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-            <div><span class="eyebrow">Paris</span><h3>Paris in a Day</h3><p>Royal and religious power, modern history, and the birth of Impressionism.</p><a href="../../catalogue/index.html#excursion-paris" class="card-link">View Itinerary →</a></div>
-          </div>
-        </div>
-      </div></div>
     </section>
 
     <section class="section section--alt" id="guide">
@@ -271,10 +246,10 @@
     <section class="section" id="methods">
       <div class="wrap"><div class="section-head reveal"><span class="eyebrow">Methods</span><h2 class="h-lg">How We Build Programmes</h2><p class="body-lg">Four steps turn a destination brief into a finished, field-tested programme.</p></div>
         <div class="methods-grid reveal-stagger">
-          <div class="method reveal" style="--i:0"><div class="method__media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cit%C3%A9_de_Carcassonne_%E2%80%93_Porte_d%E2%80%99Aude.jpg" alt="Cité de Carcassonne" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Engineering</h3><p>We define ambitious learning objectives first, then design the sequence of stops and activities that will actually deliver them.</p></div>
-          <div class="method reveal" style="--i:1"><div class="method__media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Facade_of_Reims_Cathedral.jpg" alt="Reims Cathedral façade" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Narrative</h3><p>Each programme is written as a story with open questions, not a list of facts.</p></div>
-          <div class="method reveal" style="--i:2"><div class="method__media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Promenade_des_Anglais_(Nice),_France.jpg" alt="Promenade des Anglais, Nice" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Activities</h3><p>We deploy Pulse and BusCast formats, along with hands-on exercises, to keep participants active.</p></div>
-          <div class="method reveal" style="--i:3"><div class="method__media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Beynac_6.jpg" alt="Château de Beynac" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Field Knowledge</h3><p>Every destination has been walked, timed and scouted first-hand.</p></div>
+          <div class="method reveal" style="--i:0"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg></div><h3>Engineering</h3><p>We define ambitious learning objectives first, then design the sequence of stops and activities that will actually deliver them.</p></div>
+          <div class="method reveal" style="--i:1"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Narrative</h3><p>Each programme is written as a story with open questions, not a list of facts.</p></div>
+          <div class="method reveal" style="--i:2"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Activities</h3><p>We deploy Pulse and BusCast formats, along with hands-on exercises, to keep participants active.</p></div>
+          <div class="method reveal" style="--i:3"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Field Knowledge</h3><p>Every destination has been walked, timed and scouted first-hand.</p></div>
         </div>
       </div>
     </section>
