@@ -88,6 +88,15 @@
   .badge{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:5px 10px; border-radius:var(--radius-full); background:var(--canvas-soft); color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .badge--pulse{ background:var(--pulse); color:#fff; } .badge--buscast{ background:var(--buscast); color:#fff; }
   .card-link{ display:inline-flex; align-items:center; gap:6px; font-family:'Inter',sans-serif; font-size:13px; font-weight:800; text-transform:uppercase; color:var(--ink); text-decoration:none; white-space:nowrap; }
+  .mini-ctas{ display:flex; gap:8px; flex-wrap:wrap; margin:14px 0; }
+  .mini-cta{ font-family:'Inter',sans-serif; font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.3px; padding:8px 14px; border-radius:var(--radius-full); border:2px solid var(--ink); color:var(--ink); text-decoration:none; white-space:nowrap; }
+  .mini-cta:hover{ background:var(--ink); color:#fff; }
+  .mini-cta--solid{ background:var(--ink); color:#fff; }
+  .mini-cta--solid:hover{ background:var(--secondary); border-color:var(--secondary); }
+  .format-mini{ display:flex; gap:10px; align-items:flex-start; margin-top:14px; }
+  .format-mini__icon{ flex:none; width:34px; height:34px; border-radius:50%; background:var(--canvas-soft); display:flex; align-items:center; justify-content:center; color:var(--secondary); }
+  .format-mini b{ display:block; font-size:13px; font-family:'Inter',sans-serif; }
+  .format-mini p{ font-size:13px; line-height:1.45; color:var(--ink-muted); font-family:'Inter',sans-serif; }
 
   /* ---------- Excursion carousel — nested inside the Journeys card, auto-rotating, 2 cards centered + 1 peeking on each side ---------- */
   .excursions{ margin-top:18px; padding-top:16px; border-top:1px dotted var(--divider); }
@@ -122,9 +131,10 @@
   .guide{ display:grid; grid-template-columns:320px 1fr; gap:56px; align-items:center; }
   .guide__photo{ width:100%; aspect-ratio:1/1; border-radius:var(--radius-lg); background:linear-gradient(150deg, var(--secondary), var(--accent)); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg); }
   .guide__photo span{ font-size:64px; font-family:var(--font-display); color:#fff; }
-  .guide__facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:30px; }
+  .guide__facts{ display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:30px; }
   .guide__fact{ padding:18px 20px; border-left:1px dotted var(--divider); }
   .guide__fact:first-child{ border-left:none; padding-left:0; }
+  .guide__fact--full{ grid-column:1/-1; border-left:none; padding-left:0; border-top:1px dotted var(--divider); padding-top:20px; margin-top:6px; }
   .guide__fact svg{ color:var(--secondary); margin-bottom:8px; }
   .guide__fact b{ display:block; font-size:14px; font-weight:800; text-transform:uppercase; font-family:'Inter',sans-serif; } .guide__fact span{ font-size:13px; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   @media (max-width:840px){ .guide{ grid-template-columns:1fr; text-align:center; } .guide__photo{ max-width:280px; margin:0 auto; } .guide__facts{ text-align:left; } }
@@ -133,6 +143,8 @@
   .method{ padding:0 22px; border-left:1px dotted var(--divider); } .method:first-child{ border-left:none; padding-left:0; }
   .method__icon{ width:56px; height:56px; border-radius:50%; margin-bottom:18px; background:var(--canvas-soft); display:flex; align-items:center; justify-content:center; color:var(--secondary); }
   .method h3{ font-size:16px; margin-bottom:10px; } .method p{ font-size:14px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
+  .method__sub{ font-family:'Inter',sans-serif; font-size:14px; font-weight:800; color:var(--ink); line-height:1.4; padding-bottom:10px; margin-bottom:10px; border-bottom:1px dotted var(--divider); }
+  .method__body{ font-size:13.5px; line-height:1.65; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   @media (max-width:900px){ .methods-grid{ grid-template-columns:1fr 1fr; } .method:nth-child(3){ border-left:none; padding-left:0; } }
   @media (max-width:560px){ .methods-grid{ grid-template-columns:1fr; } .method{ border-left:none; border-top:1px dotted var(--divider); padding:22px 0 0; } .method:first-child{ border-top:none; } }
 
@@ -181,46 +193,59 @@
   <main id="top">
     <section class="hero">
       <div class="hero__inner reveal in">
-        <span class="eyebrow" style="color:var(--pulse)">Freelance Educational Guiding</span>
-        <h1 class="h-xl">Transform Journeys Into Understanding</h1>
-        <p class="hero__sub">UpTempo designs excursions, workshops and multi-day programmes that turn a destination into a lesson worth remembering — built on field knowledge, participatory formats and a genuine sense of place.</p>
-        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:#fff;color:#111;">Discover Our Programmes</a><a href="#services" class="btn btn--ghost">See a Full Journey</a></div>
+        <span class="eyebrow" style="color:var(--pulse)">Learning &amp; Experience Engineering</span>
+        <h1 class="h-xl">Transform activities Into Understanding</h1>
+        <p class="hero__sub">UpTempo designs workshops, programmes and excursions that turn a destination into a lesson worth remembering — built on field knowledge, participatory formats and a genuine sense of place.</p>
+        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:#fff;color:#111;">Go to Catalogue</a><a href="#services" class="btn btn--ghost">Booster Acivities</a></div>
       </div>
       <div class="hero__frame reveal"><div class="frame" data-alt="Normandy coastline — Étretat cliffs"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Etretat_beach_and_cliffs.JPG" alt="Étretat cliffs, Normandy coastline" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
     </section>
 
     <section class="section" id="philosophy" style="padding-top:60px;">
       <div class="wrap">
-        <div class="section-head reveal"><span class="eyebrow">Philosophy</span><h2 class="h-lg">Four Principles Behind Every Programme</h2><p class="body-lg">Every excursion, workshop or journey we design is built on the same foundations — regardless of destination, age group or subject.</p></div>
+        <div class="section-head reveal"><span class="eyebrow">the Philosophy</span><h2 class="h-lg">Four Principles Behind Every move</h2><p class="body-lg">Every excursion, workshop or activity we design is built on the same foundations — regardless of destination, age group or subject.</p></div>
         <div class="principles reveal-stagger">
-          <div class="principle reveal" style="--i:0"><div class="frame frame--short principle__media" data-alt="Meaningful Experiences"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hospices_de_beaune_toit.jpg" alt="Hospices de Beaune roof" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Meaningful Experiences</h3><p>We design for memorable moments, not checklists of sights. Every stop earns its place because it makes an idea click, not because it's famous.</p></div>
-          <div class="principle reveal" style="--i:1"><div class="frame frame--short principle__media" data-alt="Insightful Perspectives"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Little_Venice_in_Colmar_01.jpg" alt="Petite Venise, Colmar" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Insightful Perspectives</h3><p>We favour questions over information. Participants leave with a way of looking at history, art or landscape they can reuse long after the trip.</p></div>
-          <div class="principle reveal" style="--i:2"><div class="frame frame--short principle__media" data-alt="Cultural Connection"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vieux_bassin_Honfleur.JPG" alt="Vieux Bassin, Honfleur" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Cultural Connection</h3><p>Places are explored in their authentic context — local life, food and everyday culture sit alongside monuments and museums.</p></div>
-          <div class="principle reveal" style="--i:3"><div class="frame frame--short principle__media" data-alt="Organizational Support"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carnac_M%C3%A9nec_alignments.jpg" alt="Carnac megalith alignments" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Organizational Support</h3><p>Transport, timing, permits, backup plans — the logistics are handled with the same care as the content, so teachers and group leaders can just show up.</p></div>
+          <div class="principle reveal" style="--i:0"><div class="frame frame--short principle__media" data-alt="Meaningful Experiences"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hospices_de_beaune_toit.jpg" alt="Hospices de Beaune roof" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Meaningful Experiences Memorable Moments</h3><p>We design for memorable moments, not checklists of sights. Every stop earns its place because it makes an idea click, not because it's famous.</p></div>
+          <div class="principle reveal" style="--i:1"><div class="frame frame--short principle__media" data-alt="Insightful Perspectives"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Little_Venice_in_Colmar_01.jpg" alt="Petite Venise, Colmar" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Insightful Perspectives Timeless Understanding</h3><p>We favour questions over information. Participants leave with a way of looking at history, art or landscape they can reuse long after the trip.</p></div>
+          <div class="principle reveal" style="--i:2"><div class="frame frame--short principle__media" data-alt="Cultural Connection"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vieux_bassin_Honfleur.JPG" alt="Vieux Bassin, Honfleur" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Cultural Connection Authentic Contexts</h3><p>Places are explored in their authentic context — local life, food and everyday culture sit alongside monuments and museums.</p></div>
+          <div class="principle reveal" style="--i:3"><div class="frame frame--short principle__media" data-alt="Organizational Support"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carnac_M%C3%A9nec_alignments.jpg" alt="Carnac megalith alignments" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><h3>Organizational Support Expert Guidance</h3><p>Transport, timing, permits, backup plans — the logistics are handled with the same care as the content, so teachers and group leaders can just show up.</p></div>
         </div>
       </div>
     </section>
 
     <section class="section section--alt" id="services">
       <div class="wrap">
-        <div class="section-head reveal"><span class="eyebrow">Services</span><h2 class="h-lg">Ways to Travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region programme — every format is built on the same core methods.</p></div>
+        <div class="section-head reveal"><span class="eyebrow">the Services</span><h2 class="h-lg">Ways to Travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region programme — we surely have something that fits your educational needs, your timing and your level of energy.</p></div>
         <div class="puzzle-grid reveal-stagger">
-          <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Short, high-energy sessions — in the classroom or on site — that open up a topic before or after a trip.</p>
+          <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p>
             <div class="cell-excursions">
               <a class="cell-excursion" href="../../catalogue/normandy-in-3-journeys/normandy-in-3-journeys.html"><div class="frame" data-alt="Normandy"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rouen_-_Gros_horloge_%282%29.jpg" alt="Normandy in 3 Journeys" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Normandy in 3 Journeys</span></a>
               <a class="cell-excursion" href="../../catalogue/index.html#excursion-loire-valley"><div class="frame" data-alt="Loire Valley"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chambord._France.jpg" alt="The Loire in 3 Chapters" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>The Loire in 3 Chapters</span></a>
             </div>
             <a href="../../catalogue/normandy-in-3-journeys/gallery.html" class="card-link" onclick="event.preventDefault(); openFicheModal(this.href);">Learn more →</a></div>
-          <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Day Trips</h3><p>Single-day excursions to a nearby town or landscape, with an onboard narrative to bridge the journey.</p>
+          <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Explorations</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
+            <div class="mini-ctas">
+              <a href="#services" class="mini-cta">In Your City</a>
+              <a href="#services" class="mini-cta">Out of Town</a>
+              <a href="../../catalogue/index.html" class="mini-cta mini-cta--solid">Come Discover</a>
+            </div>
             <div class="cell-excursions">
               <a class="cell-excursion" href="../../catalogue/index.html#excursion-provence"><div class="frame" data-alt="Provence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg" alt="Provence in Light and Stone" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Provence in Light and Stone</span></a>
               <a class="cell-excursion" href="../../catalogue/index.html#excursion-paris"><div class="frame" data-alt="Paris"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg" alt="Paris in a Day" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Paris in a Day</span></a>
             </div>
             <a href="#services" class="card-link">Learn more →</a></div>
-          <div class="puzzle-cell puzzle-cell--lg reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Journeys</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format.</p>
+          <div class="puzzle-cell puzzle-cell--lg reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format. Available in two formats:</p>
+            <div class="format-mini">
+              <div class="format-mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="11" rx="3"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg></div>
+              <div><b>Classic</b><p>Round-trip by coach from Paris. Best suited to larger groups, or groups looking for comfort and ease.</p></div>
+            </div>
+            <div class="format-mini">
+              <div class="format-mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="13" rx="4"/><path d="M4 11h16"/><circle cx="8" cy="19" r="1"/><circle cx="16" cy="19" r="1"/><path d="M7 16l-2 3M17 16l2 3"/></svg></div>
+              <div><b>Intrepid</b><p>High-speed train from Paris, with local coach transfers on arrival. Designed for smaller groups (up to 18 participants), it saves time and reaches destinations further afield.</p></div>
+            </div>
             <div class="excursions">
               <div class="excursions__head">
-                <h3>Explore Our Excursions</h3>
+                <h3></h3>
                 <a href="../../catalogue/index.html" class="card-link">View The Full Catalogue →</a>
               </div>
               <div class="excursions__viewport"><div class="excursion-carousel" id="excursionCarousel"></div></div>
@@ -236,8 +261,8 @@
         <div><span class="eyebrow">The Guide</span><h2 class="h-lg">Your Guide</h2><p class="body-lg">Over 20 years of cultural mediation across museums, heritage sites and school programmes. A Master's in History and an MBA sit behind every itinerary — enough academic depth to be rigorous, and enough operational rigor to run smoothly on the day.</p>
           <div class="guide__facts">
             <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h9v6H8l-3 3v-3H4z"/><path d="M12 12h8v6h-3v3l-3-3h-2z"/></svg><b>3 Languages</b><span>French · English · Spanish</span></div>
-            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6.5 11.8v4.6c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.6"/></svg><b>History &amp; MBA</b><span>Master's + management training</span></div>
-            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><b>20+ Years</b><span>Cultural mediation experience</span></div>
+            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6.5 11.8v4.6c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.6"/></svg><b>Academics</b><span>Professional Tour Guide Accreditation (French Ministry of Culture).Master's Degree in History and History of Art.Master of Business Administration (MBA)</span></div>
+            <div class="guide__fact guide__fact--full"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><b>Field experience</b><span>Cultural mediation: more than 20 years guiding demanding international audiences across France and Europe.Study abroad programs: extensive experience designing and delivering educational programs aligned with university curricula.Diverse audiences: educational travel for students, cultural tours for adults and senior travelers.</span></div>
           </div>
         </div>
       </div>
@@ -246,10 +271,10 @@
     <section class="section" id="methods">
       <div class="wrap"><div class="section-head reveal"><span class="eyebrow">Methods</span><h2 class="h-lg">How We Build Programmes</h2><p class="body-lg">Four steps turn a destination brief into a finished, field-tested programme.</p></div>
         <div class="methods-grid reveal-stagger">
-          <div class="method reveal" style="--i:0"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg></div><h3>Engineering</h3><p>We define ambitious learning objectives first, then design the sequence of stops and activities that will actually deliver them.</p></div>
-          <div class="method reveal" style="--i:1"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Narrative</h3><p>Each programme is written as a story with open questions, not a list of facts.</p></div>
-          <div class="method reveal" style="--i:2"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Activities</h3><p>We deploy Pulse and BusCast formats, along with hands-on exercises, to keep participants active.</p></div>
-          <div class="method reveal" style="--i:3"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Field Knowledge</h3><p>Every destination has been walked, timed and scouted first-hand.</p></div>
+          <div class="method reveal" style="--i:0"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg></div><h3>Engineering</h3><p class="method__sub">Ecational excellence starts with intentional engineering.</p><p class="method__body">Define ambitious educational objectives. Engineer every sequence around those objectives. Build the right balance between learning, discovery, interaction and free time. Design a coherent experience rather than a succession of visits. Refine every detail through continuous field experience.</p></div>
+          <div class="method reveal" style="--i:1"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Narrative</h3><p class="method__sub">Engagement begins with the right questions, not with more information.</p><p class="method__body">Connect the destination with contemporary issues. Challenge assumptions and common narratives. Stimulate curiosity through questions and discussion. Turn information into understanding. Keep participants intellectually engaged from beginning to end.</p></div>
+          <div class="method reveal" style="--i:2"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Targeted Activities</h3><p class="method__sub">Different learning objectives require different learning formats.</p><p class="method__body">Deploy dedicated learning formats for specific objectives. Alternate rhythm, interaction and reflection. Match the learning method to the group's energy. Use proprietary activities such as Pulse and BusCast. Maximize engagement while avoiding cognitive overload.</p></div>
+          <div class="method reveal" style="--i:3"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Field Knowledge</h3><p class="method__sub">Exceptional programs are built on exceptional knowledge of the field.</p><p class="method__body">Build on first-hand knowledge of every destination. Identify opportunities invisible from a desk. Select places for their educational value. Recommend the best options for each group's objectives. Turn local knowledge into better educational experiences.</p></div>
         </div>
       </div>
     </section>
