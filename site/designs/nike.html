@@ -80,6 +80,19 @@
   .badge{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:5px 10px; border-radius:var(--radius-full); background:var(--canvas-soft); color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .badge--pulse{ background:var(--pulse); color:#fff; } .badge--buscast{ background:var(--buscast); color:#fff; }
   .card-link{ display:inline-flex; align-items:center; gap:6px; font-family:'Inter',sans-serif; font-size:13px; font-weight:800; text-transform:uppercase; color:var(--ink); text-decoration:none; white-space:nowrap; }
+
+  /* ---------- Excursion carousel ---------- */
+  .excursions{ margin-top:56px; padding-top:40px; border-top:2px solid var(--ink); }
+  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px; flex-wrap:wrap; }
+  .excursions__head h3{ font-size:18px; letter-spacing:0; }
+  .excursion-carousel{ display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .excursion-card{ flex:0 0 190px; scroll-snap-align:start; overflow:hidden; text-decoration:none; color:inherit; }
+  .excursion-card__media{ aspect-ratio:1/1; background:var(--surface-alt); position:relative; clip-path:polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+  .excursion-card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .excursion-card__media.fallback{ background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .excursion-card__body{ padding:10px 0 0; }
+  .excursion-card__region{ font-family:'Inter',sans-serif; font-size:10px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; color:var(--secondary); }
+  .excursion-card h4{ font-size:13px; margin:4px 0 0; line-height:1.25; }
   @media (max-width:760px){ .service-block{ grid-template-columns:1fr; gap:10px; } }
 
   .featured{ background:var(--ink); color:#fff; padding:60px; clip-path:polygon(0 3%, 100% 0, 100% 100%, 0 97%); }
@@ -180,6 +193,14 @@
           <div class="service-block reveal" style="--i:1"><div class="service-block__label">02</div><div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span><span class="badge">All levels</span></div><h3>Day Trips</h3><p>Single-day excursions to a nearby town or landscape — a full arc of departure, discovery and return, with an onboard narrative to bridge the journey.</p></div><a href="#featured" class="card-link">Learn more →</a></div>
           <div class="service-block reveal" style="--i:2"><div class="service-block__label">03</div><div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Journeys</h3><p>Multi-day programmes across a region, chaining several destinations and themes into one continuous narrative — our flagship format.</p></div><a href="#featured" class="card-link">Learn more →</a></div>
         </div>
+
+        <div class="excursions">
+          <div class="excursions__head">
+            <h3>Explore Our Excursions</h3>
+            <a href="../../catalogue/index.html" class="card-link">View The Full Catalogue →</a>
+          </div>
+          <div class="excursion-carousel" id="excursionCarousel"></div>
+        </div>
       </div>
     </section>
 
@@ -250,7 +271,9 @@
     </div>
   </footer>
 
+<script src="../../excursions-data.js"></script>
 <script>
+renderExcursionCarousel('excursionCarousel', (slug) => '../../catalogue/index.html#excursion-' + slug);
 const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } }); }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>

@@ -62,13 +62,14 @@
   .hero__frame .frame{ aspect-ratio:16/7; }
   @media (max-width:720px){ .hero__frame .frame{ aspect-ratio:4/5; } }
 
-  /* quiet editorial list — no cards, thin dividers */
-  .principles{ display:flex; flex-direction:column; }
-  .principle{ display:grid; grid-template-columns:1fr 2.4fr; gap:30px; padding:34px 0; border-top:1px solid var(--hairline); }
-  .principles > .principle:first-child{ border-top:none; }
-  .principle h3{ font-size:20px; font-weight:500; }
-  .principle p{ font-size:15.5px; line-height:1.65; color:var(--ink-muted); }
-  @media (max-width:700px){ .principle{ grid-template-columns:1fr; gap:8px; } }
+  /* quiet editorial grid — thin dividers, 2x2 */
+  .principles{ display:grid; grid-template-columns:1fr 1fr; }
+  .principle{ padding:32px 30px; border-top:1px solid var(--hairline); }
+  .principle:nth-child(odd){ border-right:1px solid var(--hairline); }
+  .principle:nth-child(-n+2){ border-top:none; }
+  .principle h3{ font-size:19px; font-weight:500; margin-bottom:8px; }
+  .principle p{ font-size:15px; line-height:1.6; color:var(--ink-muted); }
+  @media (max-width:700px){ .principles{ grid-template-columns:1fr; } .principle:nth-child(odd){ border-right:none; } .principle:nth-child(-n+2){ border-top:1px solid var(--hairline); } .principle:first-child{ border-top:none; } }
 
   .services{ display:flex; flex-direction:column; }
   .service-row{ display:grid; grid-template-columns:1fr 2.4fr auto; gap:30px; align-items:center; padding:32px 0; border-top:1px solid var(--hairline); }
@@ -79,6 +80,19 @@
   .service-row h3{ font-size:22px; font-weight:500; margin-bottom:6px; }
   .service-row p{ font-size:15px; line-height:1.6; color:var(--ink-muted); }
   .card-link{ display:inline-flex; align-items:center; gap:6px; font-family:'Inter',sans-serif; font-size:13.5px; font-weight:500; color:var(--ink); text-decoration:underline; white-space:nowrap; }
+
+  /* ---------- Excursion carousel ---------- */
+  .excursions{ margin-top:56px; }
+  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+  .excursions__head h3{ font-family:var(--font-display); font-size:20px; font-weight:300; }
+  .excursion-carousel{ display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .excursion-card{ flex:0 0 200px; scroll-snap-align:start; border-radius:var(--radius-lg); overflow:hidden; text-decoration:none; color:inherit; }
+  .excursion-card__media{ aspect-ratio:4/3; background:var(--surface-alt); position:relative; border-radius:var(--radius-lg); overflow:hidden; }
+  .excursion-card__media img{ width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(.15); }
+  .excursion-card__media.fallback{ background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .excursion-card__body{ padding:10px 2px 0; }
+  .excursion-card__region{ font-family:'Inter',sans-serif; font-size:10.5px; font-weight:500; letter-spacing:.4px; text-transform:uppercase; color:var(--ink-faint); }
+  .excursion-card h4{ font-size:14px; font-weight:400; margin:4px 0 0; line-height:1.3; }
   @media (max-width:760px){ .service-row{ grid-template-columns:1fr; gap:10px; } }
 
   .featured{ background:var(--surface); border:1px solid var(--hairline); border-radius:var(--radius-lg); padding:52px; }
@@ -99,11 +113,13 @@
   .guide__fact b{ font-size:14.5px; font-weight:600; } .guide__fact span{ font-size:14px; color:var(--ink-muted); }
   @media (max-width:700px){ .guide{ grid-template-columns:1fr; text-align:center; } .guide__facts{ text-align:left; } }
 
-  .methods-grid{ display:flex; flex-direction:column; }
-  .method{ display:grid; grid-template-columns:60px 1fr; gap:24px; padding:28px 0; border-top:1px solid var(--hairline); }
-  .methods-grid > .method:first-child{ border-top:none; }
-  .method__num{ font-family:var(--font-display); font-size:26px; font-weight:300; color:var(--ink-faint); }
-  .method h3{ font-size:18px; font-weight:500; margin-bottom:8px; } .method p{ font-size:14.5px; line-height:1.6; color:var(--ink-muted); }
+  .methods-grid{ display:grid; grid-template-columns:1fr 1fr; }
+  .method{ padding:26px 28px; border-top:1px solid var(--hairline); }
+  .methods-grid .method:nth-child(odd){ border-right:1px solid var(--hairline); }
+  .methods-grid .method:nth-child(-n+2){ border-top:none; }
+  .method__num{ display:block; font-family:var(--font-display); font-size:24px; font-weight:300; color:var(--ink-faint); margin-bottom:10px; }
+  .method h3{ font-size:17px; font-weight:500; margin-bottom:8px; } .method p{ font-size:14px; line-height:1.6; color:var(--ink-muted); }
+  @media (max-width:700px){ .methods-grid{ grid-template-columns:1fr; } .methods-grid .method:nth-child(odd){ border-right:none; } .methods-grid .method:nth-child(-n+2){ border-top:1px solid var(--hairline); } .methods-grid .method:first-child{ border-top:none; } }
 
   .formats{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
   .format-card{ border:1px solid var(--hairline); border-radius:var(--radius-lg); padding:32px; }
@@ -169,6 +185,14 @@
           <div class="service-row reveal" style="--i:0"><div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3></div><p>Short, high-energy sessions — in the classroom or on site — that use games, objects and discussion to open up a topic before or after a trip.</p><a href="../../catalogue/normandy-in-3-journeys/gallery.html" class="card-link">Learn more</a></div>
           <div class="service-row reveal" style="--i:1"><div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Day Trips</h3></div><p>Single-day excursions to a nearby town or landscape — a full arc of departure, discovery and return, with an onboard narrative to bridge the journey.</p><a href="#featured" class="card-link">Learn more</a></div>
           <div class="service-row reveal" style="--i:2"><div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span></div><h3>Journeys</h3></div><p>Multi-day programmes across a region, chaining several destinations and themes into one continuous narrative — our flagship format.</p><a href="#featured" class="card-link">Learn more</a></div>
+        </div>
+
+        <div class="excursions">
+          <div class="excursions__head">
+            <h3>Explore our excursions</h3>
+            <a href="../../catalogue/index.html" class="card-link">View the full catalogue</a>
+          </div>
+          <div class="excursion-carousel" id="excursionCarousel"></div>
         </div>
       </div>
     </section>
@@ -238,7 +262,9 @@
     </div>
   </footer>
 
+<script src="../../excursions-data.js"></script>
 <script>
+renderExcursionCarousel('excursionCarousel', (slug) => '../../catalogue/index.html#excursion-' + slug);
 const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } }); }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>

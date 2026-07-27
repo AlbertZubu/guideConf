@@ -86,14 +86,16 @@
   .hero__frame .frame{ aspect-ratio:16/8; box-shadow:var(--shadow-lg); }
   @media (max-width:720px){ .hero__frame .frame{ aspect-ratio:4/5; } }
 
-  /* ---------- Philosophy: full-bleed alternating panels ---------- */
-  .principles{ display:flex; flex-direction:column; }
-  .principle-panel{ padding:90px 0; border-top:1px solid var(--hairline); }
-  .principle-panel:first-of-type{ border-top:none; }
-  .principle-panel__grid{ display:grid; grid-template-columns:56px 1fr; gap:28px; align-items:start; max-width:760px; margin:0 auto; text-align:left; }
-  .principle-panel__icon{ width:56px; height:56px; border-radius:50%; background:var(--canvas-soft); display:flex; align-items:center; justify-content:center; color:var(--primary); }
-  .principle-panel h3{ font-size:26px; font-weight:600; letter-spacing:-.3px; margin-bottom:12px; }
-  .principle-panel p{ font-size:17px; line-height:1.55; color:var(--ink-muted); }
+  /* ---------- Philosophy: 2x2 grid ---------- */
+  .principles{ display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:900px; margin:0 auto; }
+  .principle-panel{ padding:48px; border-top:1px solid var(--hairline); }
+  .principle-panel:nth-child(odd){ border-right:1px solid var(--hairline); }
+  .principle-panel:nth-child(-n+2){ border-top:none; }
+  .principle-panel__grid{ display:grid; grid-template-columns:52px 1fr; gap:20px; align-items:start; text-align:left; }
+  .principle-panel__icon{ width:52px; height:52px; border-radius:50%; background:var(--canvas-soft); display:flex; align-items:center; justify-content:center; color:var(--primary); }
+  .principle-panel h3{ font-size:22px; font-weight:600; letter-spacing:-.3px; margin-bottom:10px; }
+  .principle-panel p{ font-size:15.5px; line-height:1.55; color:var(--ink-muted); }
+  @media (max-width:700px){ .principles{ grid-template-columns:1fr; } .principle-panel:nth-child(odd){ border-right:none; } .principle-panel:nth-child(-n+2){ border-top:1px solid var(--hairline); } .principle-panel:first-child{ border-top:none; } }
 
   /* ---------- Services: full-width sequential panels ---------- */
   .service-panel{ padding:80px 0; }
@@ -109,6 +111,20 @@
   .service-panel p{ font-size:17px; line-height:1.55; color:var(--ink-muted); text-align:left; margin-bottom:20px; }
   .service-panel__text{ text-align:left; }
   @media (max-width:900px){ .service-panel__grid{ grid-template-columns:1fr; direction:ltr !important; } .service-panel__grid > *{ direction:ltr; } }
+
+  /* ---------- Excursion carousel ---------- */
+  .excursions{ margin-top:64px; }
+  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px; flex-wrap:wrap; }
+  .excursions__head h3{ font-size:22px; font-weight:600; letter-spacing:-.3px; text-align:left; }
+  .excursion-carousel{ display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .excursion-card{ flex:0 0 220px; scroll-snap-align:start; border-radius:var(--radius-lg); overflow:hidden; background:var(--surface); text-decoration:none; color:inherit; transition:transform .2s ease, box-shadow .2s ease; }
+  .excursion-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+  .excursion-card__media{ aspect-ratio:4/3; background:var(--surface-alt); position:relative; }
+  .excursion-card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .excursion-card__media.fallback{ background:linear-gradient(150deg, var(--primary), var(--secondary)); }
+  .excursion-card__body{ padding:12px 4px 16px; }
+  .excursion-card__region{ font-size:10.5px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; color:var(--primary); }
+  .excursion-card h4{ font-size:14px; font-weight:600; margin:4px 0 0; line-height:1.3; }
 
   /* ---------- Featured Journey ---------- */
   .featured__grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; text-align:left; }
@@ -250,7 +266,7 @@
 
       <div class="service-panel reveal">
         <div class="wrap service-panel__grid">
-          <div class="frame fallback" data-alt="Workshops — hands-on, in the classroom or on site"></div>
+          <div class="frame" data-alt="Workshops — hands-on, in the classroom or on site"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Math_Workshop_Portland_7_(9610679810).jpg" alt="Hands-on educational workshop" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
           <div class="service-panel__text">
             <div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span><span class="badge">Any group size</span></div>
             <h3>Workshops</h3>
@@ -282,6 +298,14 @@
             <a href="#featured" class="btn btn--ghost">Learn more</a>
           </div>
         </div>
+      </div>
+
+      <div class="wrap excursions">
+        <div class="excursions__head">
+          <h3>Explore Our Excursions</h3>
+          <a href="../../catalogue/index.html" class="btn btn--ghost">View the full catalogue</a>
+        </div>
+        <div class="excursion-carousel" id="excursionCarousel"></div>
       </div>
     </section>
 
@@ -385,7 +409,9 @@
     </div>
   </footer>
 
+<script src="../../excursions-data.js"></script>
 <script>
+renderExcursionCarousel('excursionCarousel', (slug) => '../../catalogue/index.html#excursion-' + slug);
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
 }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });

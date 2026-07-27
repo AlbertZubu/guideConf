@@ -85,18 +85,14 @@ main iframe {
 const DESIGNS = [
   { key: "notion", label: "Notion" },
   { key: "claude", label: "Claude" },
-  { key: "discord", label: "Discord" },
   { key: "apple", label: "Apple" },
   { key: "airbnb", label: "Airbnb" },
   { key: "slack", label: "Slack" },
   { key: "nike", label: "Nike" },
   { key: "mastercard", label: "Mastercard" },
-  { key: "hashicorp", label: "HashiCorp" },
   { key: "elevenlabs", label: "ElevenLabs" },
-  { key: "pinterest", label: "Pinterest" },
   { key: "clay", label: "Clay" },
   { key: "airtable", label: "Airtable" },
-  { key: "nintendo", label: "Nintendo '01" },
 ];
 
 const STORAGE_KEY = "uptempo-design-gallery-active";
@@ -118,7 +114,7 @@ function selectDesign(key) {
 }
 
 const saved = window.localStorage.getItem(STORAGE_KEY);
-const initial = DESIGNS.some((d) => d.key === saved) ? saved : "notion";
+const initial = DESIGNS.some((d) => d.key === saved) ? saved : "nike";
 selectDesign(initial);
 </script>
 

@@ -7,7 +7,7 @@
 /* =============================================================
    DESIGN SYSTEMS — token sets lifted from real brand design-system
    analyses (Design styles.zip). :root holds the "notion" theme by
-   default; .theme-claude / .theme-discord override the same custom
+   default; .theme-claude / .theme-apple override the same custom
    properties. Add a new .theme-* block to add a switcher option —
    components never reference raw colors, only these tokens.
    ============================================================= */
@@ -77,37 +77,6 @@
     0 12px 32px rgba(20, 20, 19, 0.08);
 
   --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.theme-discord {
-  --background: #0a0d3a;
-  --foreground: #ffffff;
-  --card: #1e2353;
-  --card-foreground: #ffffff;
-  --popover: #1e2353;
-  --popover-foreground: #ffffff;
-  --primary: #5865f2;
-  --primary-foreground: #ffffff;
-  --secondary: #23272a;
-  --secondary-foreground: #ffffff;
-  --muted: #1e2353;
-  --muted-foreground: #9aa0e8;
-  --accent: #1e2353;
-  --accent-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.14);
-  --input: rgba(255, 255, 255, 0.14);
-  --ring: #5865f2;
-  --radius: 0.875rem;
-
-  --pulse: #ec48bd;
-  --pulse-foreground: #ffffff;
-  --buscast: #35ed7e;
-  --buscast-foreground: #08130c;
-  --shadow-soft: 0 0 0 1px rgba(88, 101, 242, 0.25), 0 8px 24px rgba(88, 101, 242, 0.35),
-    0 2px 8px rgba(0, 0, 0, 0.4);
-
-  --font-display: 'Unbounded', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -261,37 +230,6 @@
   --font-body: 'MarkForMC', 'Sofia Sans', Arial, sans-serif;
 }
 
-.theme-hashicorp {
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #15181e;
-  --card-foreground: #ffffff;
-  --popover: #15181e;
-  --popover-foreground: #ffffff;
-  --primary: #2b89ff;
-  --primary-foreground: #ffffff;
-  --secondary: #7b42bc;
-  --secondary-foreground: #ffffff;
-  --muted: #1f232b;
-  --muted-foreground: #b2b6bd;
-  --accent: #1f232b;
-  --accent-foreground: #ffffff;
-  --border: #3b3d45;
-  --input: #3b3d45;
-  --ring: #2b89ff;
-  --radius: 0.5rem;
-
-  --pulse: #e62b1e;
-  --pulse-foreground: #ffffff;
-  --buscast: #14c6cb;
-  --buscast-foreground: #0a0d0f;
-  --shadow-soft: 0 0 0 1px rgba(43, 137, 255, 0.2), 0 8px 24px rgba(43, 137, 255, 0.25),
-    0 2px 8px rgba(0, 0, 0, 0.5);
-
-  --font-display: 'hashicorpSans', 'Inter', system-ui, sans-serif;
-  --font-body: 'hashicorpSans', 'Inter', system-ui, sans-serif;
-}
-
 .theme-elevenlabs {
   --background: #f5f5f5;
   --foreground: #0c0a09;
@@ -320,36 +258,6 @@
 
   --font-display: 'Fraunces', 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.theme-pinterest {
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #f6f6f3;
-  --card-foreground: #000000;
-  --popover: #ffffff;
-  --popover-foreground: #000000;
-  --primary: #e60023;
-  --primary-foreground: #ffffff;
-  --secondary: #7e238b;
-  --secondary-foreground: #ffffff;
-  --muted: #fbfbf9;
-  --muted-foreground: #62625b;
-  --accent: #e5e5e0;
-  --accent-foreground: #000000;
-  --border: #dadad3;
-  --input: #dadad3;
-  --ring: #e60023;
-  --radius: 1rem;
-
-  --pulse: #617bff;
-  --pulse-foreground: #ffffff;
-  --buscast: #262622;
-  --buscast-foreground: #ffffff;
-  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.1);
-
-  --font-display: 'Pin Sans', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: 'Pin Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .theme-clay {
@@ -410,36 +318,6 @@
 
   --font-display: 'Haas Grotesk', 'Inter', sans-serif;
   --font-body: 'Haas Grotesk', 'Inter', sans-serif;
-}
-
-.theme-nintendo {
-  --background: #7a8aba;
-  --foreground: #21242e;
-  --card: #ffffff;
-  --card-foreground: #21242e;
-  --popover: #ffffff;
-  --popover-foreground: #21242e;
-  --primary: #e60012;
-  --primary-foreground: #ffffff;
-  --secondary: #3d4f97;
-  --secondary-foreground: #ffffff;
-  --muted: #dedede;
-  --muted-foreground: #3d4f97;
-  --accent: #9fbee7;
-  --accent-foreground: #21242e;
-  --border: #5a5f8c;
-  --input: #5a5f8c;
-  --ring: #e60012;
-  --radius: 0.375rem;
-
-  --pulse: #f68d1f;
-  --pulse-foreground: #21242e;
-  --buscast: #ecab37;
-  --buscast-foreground: #21242e;
-  --shadow-soft: 0 2px 4px rgba(0, 0, 0, 0.3), 0 6px 14px rgba(0, 0, 0, 0.25);
-
-  --font-display: 'Arial Black', Arial, sans-serif;
-  --font-body: Arial, sans-serif;
 }
 
 @theme inline {

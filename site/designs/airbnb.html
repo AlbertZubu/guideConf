@@ -84,6 +84,20 @@
   .service-card h3{ font-size:22px; font-weight:800; margin-bottom:6px; }
   .service-card p{ font-size:14.5px; line-height:1.55; color:var(--ink-muted); margin-bottom:14px; }
   .card-link{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700; color:var(--ink); text-decoration:underline; }
+
+  /* ---------- Excursion carousel ---------- */
+  .excursions{ margin-top:56px; }
+  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+  .excursions__head h3{ font-size:20px; font-weight:800; }
+  .excursion-carousel{ display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .excursion-card{ flex:0 0 200px; scroll-snap-align:start; border-radius:var(--radius-lg); overflow:hidden; text-decoration:none; color:inherit; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease; }
+  .excursion-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+  .excursion-card__media{ aspect-ratio:1/1; background:var(--surface-alt); position:relative; border-radius:var(--radius-lg); overflow:hidden; }
+  .excursion-card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .excursion-card__media.fallback{ background:linear-gradient(150deg, var(--primary), var(--secondary)); }
+  .excursion-card__body{ padding:10px 2px 0; }
+  .excursion-card__region{ font-size:10.5px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; color:var(--primary); }
+  .excursion-card h4{ font-size:14px; font-weight:800; margin:4px 0 0; line-height:1.3; }
   @media (max-width:980px){ .services{ grid-template-columns:1fr; } }
 
   .featured{ background:var(--surface-alt); border-radius:var(--radius-lg); padding:56px; }
@@ -187,7 +201,7 @@
         <div class="section-head reveal"><span class="eyebrow">Services</span><h2 class="h-lg">Three ways to travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region programme — every format is built on the same core methods.</p></div>
         <div class="services reveal-stagger">
           <div class="service-card reveal" style="--i:0">
-            <div class="service-card__media"><div class="frame fallback" data-alt="Workshops — hands-on, in the classroom or on site"></div></div>
+            <div class="service-card__media"><div class="frame" data-alt="Workshops — hands-on, in the classroom or on site"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Math_Workshop_Portland_7_(9610679810).jpg" alt="Hands-on educational workshop" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
             <div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span><span class="badge">Any group size</span></div>
             <h3>Workshops</h3><p>Short, high-energy sessions — in the classroom or on site — that use games, objects and discussion to open up a topic before or after a trip.</p>
             <a href="../../catalogue/normandy-in-3-journeys/gallery.html" class="card-link">Learn more</a>
@@ -204,6 +218,14 @@
             <h3>Journeys</h3><p>Multi-day programmes across a region, chaining several destinations and themes into one continuous narrative — our flagship format.</p>
             <a href="#featured" class="card-link">Learn more</a>
           </div>
+        </div>
+
+        <div class="excursions">
+          <div class="excursions__head">
+            <h3>Explore Our Excursions</h3>
+            <a href="../../catalogue/index.html" class="card-link">View the full catalogue</a>
+          </div>
+          <div class="excursion-carousel" id="excursionCarousel"></div>
         </div>
       </div>
     </section>
@@ -305,7 +327,9 @@
     </div>
   </footer>
 
+<script src="../../excursions-data.js"></script>
 <script>
+renderExcursionCarousel('excursionCarousel', (slug) => '../../catalogue/index.html#excursion-' + slug);
 const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } }); }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>

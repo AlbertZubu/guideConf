@@ -6,18 +6,14 @@ import { useEffect, useState } from "react";
 export const DESIGN_SYSTEMS = [
   { key: "notion", label: "Notion" },
   { key: "claude", label: "Claude" },
-  { key: "discord", label: "Discord" },
   { key: "apple", label: "Apple" },
   { key: "airbnb", label: "Airbnb" },
   { key: "slack", label: "Slack" },
   { key: "nike", label: "Nike" },
   { key: "mastercard", label: "Mastercard" },
-  { key: "hashicorp", label: "HashiCorp" },
   { key: "elevenlabs", label: "ElevenLabs" },
-  { key: "pinterest", label: "Pinterest" },
   { key: "clay", label: "Clay" },
   { key: "airtable", label: "Airtable" },
-  { key: "nintendo", label: "Nintendo '01" },
 ] as const;
 
 export type DesignKey = (typeof DESIGN_SYSTEMS)[number]["key"];
@@ -37,7 +33,7 @@ function applyThemeClass(key: DesignKey) {
 export function useDesignSystem() {
   const [design, setDesign] = useState<DesignKey>(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    return isDesignKey(saved) ? saved : "notion";
+    return isDesignKey(saved) ? saved : "nike";
   });
 
   useEffect(() => {

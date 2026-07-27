@@ -91,7 +91,6 @@ const DESIGNS = [
   { key: "nike", label: "Nike" },
   { key: "mastercard", label: "Mastercard" },
   { key: "elevenlabs", label: "ElevenLabs" },
-  { key: "pinterest", label: "Pinterest" },
   { key: "clay", label: "Clay" },
   { key: "airtable", label: "Airtable" },
 ];
@@ -115,7 +114,7 @@ function selectDesign(key) {
 }
 
 const saved = window.localStorage.getItem(STORAGE_KEY);
-const initial = DESIGNS.some((d) => d.key === saved) ? saved : "notion";
+const initial = DESIGNS.some((d) => d.key === saved) ? saved : "nike";
 selectDesign(initial);
 </script>
 

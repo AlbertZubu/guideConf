@@ -155,6 +155,20 @@
   .card-link:hover svg{ transform:translateX(3px); }
   @media (max-width:980px){ .services{ grid-template-columns:1fr; } }
 
+  /* ---------- Excursion carousel ---------- */
+  .excursions{ margin-top:56px; }
+  .excursions__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+  .excursions__head h3{ font-family:var(--font-display); font-size:20px; font-weight:700; letter-spacing:-.2px; }
+  .excursion-carousel{ display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .excursion-card{ flex:0 0 210px; scroll-snap-align:start; border-radius:var(--radius-lg); overflow:hidden; background:var(--surface); border:1px solid var(--hairline); text-decoration:none; color:inherit; transition:transform .2s ease, box-shadow .2s ease; }
+  .excursion-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-sm); }
+  .excursion-card__media{ aspect-ratio:4/3; background:var(--surface-alt); position:relative; }
+  .excursion-card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .excursion-card__media.fallback{ background:linear-gradient(150deg, var(--primary), var(--secondary)); }
+  .excursion-card__body{ padding:12px 14px 16px; }
+  .excursion-card__region{ font-size:10.5px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--primary); }
+  .excursion-card h4{ font-family:var(--font-display); font-size:14px; font-weight:700; margin:4px 0 0; line-height:1.3; }
+
   /* ---------- Featured Journey ---------- */
   .featured{ background:var(--secondary); color:var(--on-dark); border-radius:var(--radius-lg); padding:56px; overflow:hidden; }
   .featured .eyebrow{ color:var(--accent); } .featured .eyebrow::before{ background:var(--accent); }
@@ -333,7 +347,7 @@
 
           <div class="service-card reveal" style="--i:0">
             <div class="service-card__media">
-              <div class="frame fallback" data-alt="Workshops — hands-on, in the classroom or on site"></div>
+              <div class="frame" data-alt="Workshops — hands-on, in the classroom or on site"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Math_Workshop_Portland_7_(9610679810).jpg" alt="Hands-on educational workshop" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
             </div>
             <div class="service-card__body">
               <div class="badges">
@@ -383,6 +397,14 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="excursions">
+          <div class="excursions__head">
+            <h3>Explore Our Excursions</h3>
+            <a href="../../catalogue/index.html" class="card-link">View the full catalogue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="excursion-carousel" id="excursionCarousel"></div>
         </div>
       </div>
     </section>
@@ -552,7 +574,9 @@
     </div>
   </footer>
 
+<script src="../../excursions-data.js"></script>
 <script>
+renderExcursionCarousel('excursionCarousel', (slug) => '../../catalogue/index.html#excursion-' + slug);
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
