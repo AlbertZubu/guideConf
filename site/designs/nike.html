@@ -15,7 +15,7 @@
   :root{
     --primary:#111111; --primary-active:#000000; --secondary:#1151ff; --accent:#ed1aa0;
     --canvas:#ffffff; --canvas-soft:#f5f5f5; --surface:#ffffff; --surface-alt:#e5e5e5;
-    --ink:#111111; --ink-muted:#707072; --ink-faint:#9e9ea0; --hairline:#cacacb;
+    --ink:#111111; --ink-muted:#55565a; --ink-faint:#9e9ea0; --hairline:#cacacb;
     --on-primary:#ffffff; --on-dark:#ffffff;
     --pulse:#ed1aa0; --pulse-ink:#ffffff; --buscast:#1151ff; --buscast-ink:#ffffff;
     --fmt-yellow:#FFE94D; --fmt-green:#6BFF5C; --fmt-ink:#111111;
@@ -128,20 +128,23 @@
   .cell-excursion span{ font-size:10px; font-weight:700; line-height:1.2; text-align:center; font-family:'Inter',sans-serif; color:var(--ink-muted); }
 
   .guide{ display:grid; grid-template-columns:320px 1fr; gap:56px; align-items:center; }
-  .guide__photo{ width:100%; aspect-ratio:1/1; border-radius:var(--radius-lg); background:linear-gradient(150deg, var(--secondary), var(--accent)); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg); }
+  .guide__photo{ position:relative; width:100%; aspect-ratio:1/1; border-radius:var(--radius-lg); background:linear-gradient(150deg, var(--secondary), var(--accent)); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg); overflow:hidden; }
   .guide__photo span{ font-size:64px; font-family:var(--font-display); color:#fff; }
+  .guide__photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .guide__facts{ display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:30px; }
   .guide__fact{ padding:18px 20px; border-left:1px dotted var(--divider); }
   .guide__fact:first-child{ border-left:none; padding-left:0; }
   .guide__fact--full{ grid-column:1/-1; border-left:none; padding-left:0; border-top:1px dotted var(--divider); padding-top:20px; margin-top:6px; }
-  .guide__fact svg{ color:var(--secondary); margin-bottom:8px; }
-  .guide__fact b{ display:block; font-size:14px; font-weight:800; text-transform:uppercase; font-family:'Inter',sans-serif; } .guide__fact span{ font-size:13px; color:var(--ink-muted); font-family:'Inter',sans-serif; }
+  .guide__fact svg{ margin-bottom:8px; }
+  .guide__fact b{ display:block; font-size:13px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; font-family:'Inter',sans-serif; color:var(--ink); }
+  .guide__fact span{ font-size:13.5px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .field-exp{ margin-top:10px; display:flex; flex-direction:column; gap:10px; }
+  .field-exp b{ font-size:13px; letter-spacing:0; text-transform:none; margin-bottom:2px; }
   @media (max-width:840px){ .guide{ grid-template-columns:1fr; text-align:center; } .guide__photo{ max-width:280px; margin:0 auto; } .guide__facts{ text-align:left; } }
 
   .methods-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
   .method{ padding:0 22px; border-left:1px dotted var(--divider); } .method:first-child{ border-left:none; padding-left:0; }
-  .method__icon{ width:56px; height:56px; border-radius:50%; margin-bottom:18px; background:var(--canvas-soft); display:flex; align-items:center; justify-content:center; color:var(--secondary); }
+  .method__icon{ width:56px; height:56px; border-radius:50%; margin-bottom:18px; display:flex; align-items:center; justify-content:center; }
   .method h3{ font-size:16px; margin-bottom:10px; } .method p{ font-size:14px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .method__sub{ font-family:'Inter',sans-serif; font-size:14px; font-weight:800; color:var(--ink); line-height:1.4; padding-bottom:10px; margin-bottom:10px; border-bottom:1px dotted var(--divider); }
   .method ul{ margin:0; padding-left:16px; }
@@ -197,7 +200,7 @@
         <p class="hero__sub">UpTempo designs workshops, programmes and excursions that turn a destination into a lesson worth remembering — built on field knowledge, participatory formats and a genuine sense of place.</p>
         <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:#fff;color:#111;">Go to Catalogue</a><a href="#services" class="btn btn--ghost">Booster Acivities</a></div>
       </div>
-      <div class="hero__frame reveal"><div class="frame" data-alt="Normandy coastline — Étretat cliffs"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Etretat_beach_and_cliffs.JPG" alt="Étretat cliffs, Normandy coastline" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
+      <div class="hero__frame reveal"><div class="frame" data-alt="Group exploring a historic European town"><img src="../../hero.png" alt="Group of participants exploring a historic European town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
     </section>
 
     <section class="section" id="philosophy" style="padding-top:60px;">
@@ -256,12 +259,12 @@
 
     <section class="section section--alt" id="guide">
       <div class="wrap guide reveal">
-        <div><div class="guide__photo"><span>UT</span></div></div>
+        <div><div class="guide__photo"><span>UT</span><img src="../../cv.png" alt="Portrait of your guide" loading="lazy" onerror="this.remove();"></div></div>
         <div><span class="eyebrow">The Guide</span><h2 class="h-lg">Your Guide</h2><p class="body-lg">Over 20 years of cultural mediation across museums, heritage sites and school programmes. A Master's in History and an MBA sit behind every itinerary — enough academic depth to be rigorous, and enough operational rigor to run smoothly on the day.</p>
           <div class="guide__facts">
-            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h9v6H8l-3 3v-3H4z"/><path d="M12 12h8v6h-3v3l-3-3h-2z"/></svg><b>3 Languages</b><span>French · English · Spanish</span></div>
-            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6.5 11.8v4.6c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.6"/></svg><b>Academics</b><span>Professional Tour Guide Accreditation (French Ministry of Culture).Master's Degree in History and History of Art.Master of Business Administration (MBA)</span></div>
-            <div class="guide__fact guide__fact--full"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><b>Field experience</b>
+            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#1151ff"><path d="M4 4h9v6H8l-3 3v-3H4z"/><path d="M12 12h8v6h-3v3l-3-3h-2z"/></svg><b>3 Languages</b><span>French · English · Spanish</span></div>
+            <div class="guide__fact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ed1aa0"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6.5 11.8v4.6c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.6"/></svg><b>Academics</b><span>Professional Tour Guide Accreditation (French Ministry of Culture).Master's Degree in History and History of Art.Master of Business Administration (MBA)</span></div>
+            <div class="guide__fact guide__fact--full"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#2f9e22"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><b>Field experience</b>
               <div class="field-exp">
                 <div><b>Cultural Mediation</b><span>20+ years guiding international audiences across France and Europe.</span></div>
                 <div><b>Study Abroad Programs</b><span>Extensive experience designing educational programs aligned with university curricula.</span></div>
@@ -276,10 +279,10 @@
     <section class="section" id="methods">
       <div class="wrap"><div class="section-head reveal"><span class="eyebrow">Methods</span><h2 class="h-lg">How We Build Programmes</h2><p class="body-lg">Four steps turn a destination brief into a finished, field-tested programme.</p></div>
         <div class="methods-grid reveal-stagger">
-          <div class="method reveal" style="--i:0"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg></div><h3>Engineering</h3><p class="method__sub">Educational excellence starts with intentional engineering.</p><ul><li>Define ambitious educational objectives.</li><li>Engineer every sequence around those objectives.</li><li>Build the right balance between learning, discovery, interaction and free time.</li><li>Design a coherent experience rather than a succession of visits.</li><li>Refine every detail through continuous field experience.</li></ul></div>
-          <div class="method reveal" style="--i:1"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Narrative</h3><p class="method__sub">Engagement begins with the right questions, not with more information.</p><ul><li>Connect the destination with contemporary issues.</li><li>Challenge assumptions and common narratives.</li><li>Stimulate curiosity through questions and discussion.</li><li>Turn information into understanding.</li><li>Keep participants intellectually engaged from beginning to end.</li></ul></div>
-          <div class="method reveal" style="--i:2"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Learning Activities</h3><p class="method__sub">Different learning objectives require different learning formats.</p><ul><li>Deploy dedicated learning formats for specific objectives.</li><li>Alternate rhythm, interaction and reflection.</li><li>Match the learning method to the group's energy.</li><li>Use proprietary activities such as Pulse and BusCast.</li><li>Maximize engagement while avoiding cognitive overload.</li></ul></div>
-          <div class="method reveal" style="--i:3"><div class="method__icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Field Knowledge</h3><p class="method__sub">Exceptional programs are built on exceptional knowledge of the field.</p><ul><li>Build on first-hand knowledge of every destination.</li><li>Identify opportunities invisible from a desk.</li><li>Select places for their educational value.</li><li>Recommend the best options for each group's objectives.</li><li>Turn local knowledge into better educational experiences.</li></ul></div>
+          <div class="method reveal" style="--i:0"><div class="method__icon" style="background:rgba(202,160,0,.14); color:#caa000"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.77z"/></svg></div><h3>Engineering</h3><p class="method__sub">Educational excellence starts with intentional engineering.</p><ul><li>Define ambitious educational objectives.</li><li>Engineer every sequence around those objectives.</li><li>Build the right balance between learning, discovery, interaction and free time.</li><li>Design a coherent experience rather than a succession of visits.</li><li>Refine every detail through continuous field experience.</li></ul></div>
+          <div class="method reveal" style="--i:1"><div class="method__icon" style="background:rgba(237,26,160,.12); color:#ed1aa0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Narrative</h3><p class="method__sub">Engagement begins with the right questions, not with more information.</p><ul><li>Connect the destination with contemporary issues.</li><li>Challenge assumptions and common narratives.</li><li>Stimulate curiosity through questions and discussion.</li><li>Turn information into understanding.</li><li>Keep participants intellectually engaged from beginning to end.</li></ul></div>
+          <div class="method reveal" style="--i:2"><div class="method__icon" style="background:rgba(17,81,255,.12); color:#1151ff"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Learning Activities</h3><p class="method__sub">Different learning objectives require different learning formats.</p><ul><li>Deploy dedicated learning formats for specific objectives.</li><li>Alternate rhythm, interaction and reflection.</li><li>Match the learning method to the group's energy.</li><li>Use proprietary activities such as Pulse and BusCast.</li><li>Maximize engagement while avoiding cognitive overload.</li></ul></div>
+          <div class="method reveal" style="--i:3"><div class="method__icon" style="background:rgba(46,157,46,.12); color:#2f9e22"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Field Knowledge</h3><p class="method__sub">Exceptional programs are built on exceptional knowledge of the field.</p><ul><li>Build on first-hand knowledge of every destination.</li><li>Identify opportunities invisible from a desk.</li><li>Select places for their educational value.</li><li>Recommend the best options for each group's objectives.</li><li>Turn local knowledge into better educational experiences.</li></ul></div>
         </div>
         <blockquote class="quote"><span class="quote__mark">&ldquo;</span><p>Real learning happens in real places—and takes different forms depending on time, depth and rhythm.</p></blockquote>
       </div>

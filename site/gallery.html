@@ -3,65 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UpTempo — 11 designs du site complet</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>UpTempo — Site</title>
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; height: 100%; }
-body { font-family: 'Inter', sans-serif; }
-
-/* Barre de navigation horizontale, fixe, toujours visible — permet de
-   naviguer d'un design à l'autre sans recharger toute la page (seul le
-   cadre du bas change). */
-.switcher {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 52px;
-  z-index: 999999;
-  display: flex;
-  align-items: center;
-  gap: .35rem;
-  padding: 0 .75rem;
-  background: #14171c;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: thin;
-}
-.switcher .brand {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: .85rem;
-  padding-right: .6rem;
-  margin-right: .3rem;
-  border-right: 1px solid rgba(255,255,255,.15);
-  flex-shrink: 0;
-}
-.switcher button {
-  flex-shrink: 0;
-  font-family: 'Inter', sans-serif;
-  font-size: .78rem;
-  font-weight: 600;
-  color: #b7bcc4;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 999px;
-  padding: .4rem .8rem;
-  cursor: pointer;
-  transition: all .15s ease;
-}
-.switcher button:hover { color: #ffffff; border-color: rgba(255,255,255,.35); }
-.switcher button.active {
-  background: #ffffff;
-  color: #14171c;
-  border-color: #ffffff;
-}
 
 main {
   position: fixed;
-  top: 52px; left: 0; right: 0; bottom: 0;
+  inset: 0;
 }
 main iframe {
   width: 100%;
@@ -73,41 +22,9 @@ main iframe {
 </head>
 <body>
 
-<nav class="switcher no-print" id="switcher">
-  <span class="brand">UpTempo — Site</span>
-</nav>
-
 <main>
-  <iframe id="frame" title="Aperçu du design sélectionné"></iframe>
+  <iframe src="designs/nike.html" title="UpTempo — site"></iframe>
 </main>
-
-<script>
-const DESIGNS = [
-  { key: "nike", label: "Nike" },
-];
-
-const STORAGE_KEY = "uptempo-site-gallery-active";
-const nav = document.getElementById("switcher");
-const frame = document.getElementById("frame");
-
-DESIGNS.forEach((d) => {
-  const btn = document.createElement("button");
-  btn.textContent = d.label;
-  btn.dataset.key = d.key;
-  btn.addEventListener("click", () => selectDesign(d.key));
-  nav.appendChild(btn);
-});
-
-function selectDesign(key) {
-  frame.src = `designs/${key}.html`;
-  nav.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.key === key));
-  window.localStorage.setItem(STORAGE_KEY, key);
-}
-
-const saved = window.localStorage.getItem(STORAGE_KEY);
-const initial = DESIGNS.some((d) => d.key === saved) ? saved : "nike";
-selectDesign(initial);
-</script>
 
 </body>
 </html>
