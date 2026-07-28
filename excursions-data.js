@@ -114,13 +114,16 @@ const EXCURSIONS = [
 
 /* Renders the horizontal carousel used on site/designs/*.html pages.
    `linkResolver` lets each page point non-built excursions at its own
-   relative path to catalogue/index.html#slug (2 levels up from site/designs/). */
+   relative path to catalogue/index.html#slug (2 levels up from site/designs/).
+   The "built" excursion (Normandy) opens in the fiche modal instead of
+   navigating away — see openFicheModal()/closeFicheModal() below. */
 function renderExcursionCarousel(containerId, linkResolver) {
   const el = document.getElementById(containerId);
   if (!el) return;
   el.innerHTML = EXCURSIONS.map((ex) => {
     const href = ex.built ? ex.link : linkResolver(ex.slug);
-    return `<a class="excursion-card" href="${href}">
+    const onclick = ex.built ? ` onclick="event.preventDefault(); openFicheModal('${href}');"` : "";
+    return `<a class="excursion-card" href="${href}"${onclick}>
       <div class="excursion-card__media"><img src="${ex.image}" alt="${ex.title}" loading="lazy" onerror="this.closest('.excursion-card__media').classList.add('fallback');this.remove();"></div>
       <div class="excursion-card__body">
         <span class="excursion-card__region">${ex.region}</span>
@@ -129,3 +132,37 @@ function renderExcursionCarousel(containerId, linkResolver) {
     </a>`;
   }).join("");
 }
+
+/* Fiche modal — every page that includes this script must also include
+   the #ficheModalOverlay / #ficheModalFrame markup (see the shared
+   .fiche-modal-overlay block added to each site/designs/*.html file).
+   Closes on close-button click, backdrop click, or Escape. */
+function openFicheModal(url) {
+  const overlay = document.getElementById("ficheModalOverlay");
+  const frame = document.getElementById("ficheModalFrame");
+  if (!overlay || !frame) return;
+  frame.src = url;
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeFicheModal() {
+  const overlay = document.getElementById("ficheModalOverlay");
+  const frame = document.getElementById("ficheModalFrame");
+  if (!overlay) return;
+  overlay.classList.remove("open");
+  document.body.style.overflow = "";
+  if (frame) frame.src = "about:blank";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("ficheModalOverlay");
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeFicheModal();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeFicheModal();
+  });
+});
