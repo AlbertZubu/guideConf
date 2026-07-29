@@ -78,7 +78,7 @@
   .puzzle-row{ display:flex; align-items:stretch; gap:16px; }
   .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell{ flex:1 1 0; min-width:0; }
   .puzzle-col{ display:flex; flex-direction:column; gap:16px; }
-  .puzzle-col--split > .puzzle-cell{ flex:1 1 0; }
+  .puzzle-col--split > .puzzle-cell{ flex:1 1 0; min-height:220px; }
   .puzzle-cell{ display:flex; flex-direction:column; overflow:hidden; padding:26px; border-radius:var(--radius-lg); border:2px solid var(--ink); background:var(--canvas-soft); box-shadow:inset 0 6px 16px rgba(0,0,0,.07); }
   .puzzle-cell h3{ font-size:22px; letter-spacing:-.3px; margin:10px 0 8px; }
   .puzzle-cell p{ font-size:14.5px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
@@ -224,20 +224,20 @@
         <div class="puzzle-grid reveal-stagger">
           <div class="puzzle-row">
             <div class="puzzle-col puzzle-col--split">
-              <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p></div>
-              <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p></div>
+              <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p><a href="../../catalogue/services.html#workshops" class="card-link">Learn more →</a></div>
+              <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p><a href="../../catalogue/services.html#visits" class="card-link">Learn more →</a></div>
             </div>
             <div class="puzzle-cell reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
               <div class="mini-ctas">
-                <a href="#services" class="mini-cta">In Your City</a>
-                <a href="#services" class="mini-cta">Out of Town</a>
+                <a href="../../catalogue/services.html#in-your-city" class="mini-cta">In Your City</a>
+                <a href="../../catalogue/services.html#out-of-town" class="mini-cta">Out of Town</a>
                 <a href="../../catalogue/index.html" class="mini-cta mini-cta--solid">Come Discover</a>
               </div>
               <div class="cell-excursions">
                 <a class="cell-excursion" href="../../catalogue/index.html#excursion-provence"><div class="frame" data-alt="Provence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg" alt="Provence in Light and Stone" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Provence in Light and Stone</span></a>
                 <a class="cell-excursion" href="../../catalogue/index.html#excursion-paris"><div class="frame" data-alt="Paris"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg" alt="Paris in a Day" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Paris in a Day</span></a>
               </div>
-              <a href="#services" class="card-link">Learn more →</a></div>
+              <a href="../../catalogue/services.html#full-days" class="card-link">Learn more →</a></div>
           </div>
           <div class="puzzle-cell reveal" style="--i:3"><div class="service-block__label">04</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format. Available in two formats:</p>
             <div class="format-mini">
