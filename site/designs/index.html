@@ -74,15 +74,18 @@
   @media (max-width:560px){ .principles{ grid-template-columns:1fr; } .principle{ border-left:none; border-top:1px dotted var(--divider); } .principle:first-child{ border-top:none; } }
 
   /* ---------- Puzzle grid — reusable bento-style layout (Ways to Travel, Featured) ---------- */
-  .puzzle-grid{ display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:minmax(170px, auto); gap:16px; }
+  .puzzle-grid{ display:flex; flex-direction:column; gap:16px; }
+  .puzzle-row{ display:flex; align-items:stretch; gap:16px; }
+  .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell{ flex:1 1 0; min-width:0; }
+  .puzzle-col{ display:flex; flex-direction:column; gap:16px; }
+  .puzzle-col--split > .puzzle-cell{ flex:1 1 0; }
   .puzzle-cell{ display:flex; flex-direction:column; overflow:hidden; padding:26px; border-radius:var(--radius-lg); border:2px solid var(--ink); background:var(--canvas-soft); box-shadow:inset 0 6px 16px rgba(0,0,0,.07); }
-  .puzzle-cell--lg{ grid-column:span 2; grid-row:span 2; }
   .puzzle-cell h3{ font-size:22px; letter-spacing:-.3px; margin:10px 0 8px; }
-  .puzzle-cell--lg h3{ font-size:34px; }
   .puzzle-cell p{ font-size:14.5px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .puzzle-cell .card-link{ margin-top:auto; padding-top:16px; }
+  .puzzle-grid.reveal-stagger .puzzle-cell{ transition-delay:calc(var(--i,0) * 90ms); }
   .service-block__label{ font-size:14px; font-weight:900; letter-spacing:1px; }
-  @media (max-width:560px){ .puzzle-grid{ grid-template-columns:1fr; grid-auto-rows:auto; } .puzzle-cell--lg{ grid-column:span 1; grid-row:auto; } }
+  @media (max-width:560px){ .puzzle-row{ flex-direction:column; } .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell, .puzzle-col--split > .puzzle-cell{ flex:none; } }
   .badges{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
   .badge{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:5px 10px; border-radius:var(--radius-full); background:var(--canvas-soft); color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .badge--pulse{ background:var(--pulse); color:#fff; } .badge--buscast{ background:var(--buscast); color:#fff; }
@@ -219,24 +222,24 @@
       <div class="wrap">
         <div class="section-head reveal"><span class="eyebrow">the Services</span><h2 class="h-lg">Ways to Travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region programme — we surely have something that fits your educational needs, your timing and your level of energy.</p></div>
         <div class="puzzle-grid reveal-stagger">
-          <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p>
-            <div class="cell-excursions">
-              <a class="cell-excursion" href="../../catalogue/normandy-in-3-journeys/normandy-in-3-journeys.html"><div class="frame" data-alt="Normandy"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rouen_-_Gros_horloge_%282%29.jpg" alt="Normandy in 3 Journeys" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Normandy in 3 Journeys</span></a>
-              <a class="cell-excursion" href="../../catalogue/index.html#excursion-loire-valley"><div class="frame" data-alt="Loire Valley"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chambord._France.jpg" alt="The Loire in 3 Chapters" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>The Loire in 3 Chapters</span></a>
+          <div class="puzzle-row">
+            <div class="puzzle-col puzzle-col--split">
+              <div class="puzzle-cell reveal" style="--i:0"><div class="service-block__label">01</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p></div>
+              <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p></div>
             </div>
-            <a href="../../catalogue/normandy-in-3-journeys/gallery.html" class="card-link" onclick="event.preventDefault(); openFicheModal(this.href);">Learn more →</a></div>
-          <div class="puzzle-cell reveal" style="--i:1"><div class="service-block__label">02</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Explorations</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
-            <div class="mini-ctas">
-              <a href="#services" class="mini-cta">In Your City</a>
-              <a href="#services" class="mini-cta">Out of Town</a>
-              <a href="../../catalogue/index.html" class="mini-cta mini-cta--solid">Come Discover</a>
-            </div>
-            <div class="cell-excursions">
-              <a class="cell-excursion" href="../../catalogue/index.html#excursion-provence"><div class="frame" data-alt="Provence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg" alt="Provence in Light and Stone" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Provence in Light and Stone</span></a>
-              <a class="cell-excursion" href="../../catalogue/index.html#excursion-paris"><div class="frame" data-alt="Paris"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg" alt="Paris in a Day" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Paris in a Day</span></a>
-            </div>
-            <a href="#services" class="card-link">Learn more →</a></div>
-          <div class="puzzle-cell puzzle-cell--lg reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format. Available in two formats:</p>
+            <div class="puzzle-cell reveal" style="--i:2"><div class="service-block__label">03</div><div class="badges"><span class="badge badge--buscast">BusCast</span><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
+              <div class="mini-ctas">
+                <a href="#services" class="mini-cta">In Your City</a>
+                <a href="#services" class="mini-cta">Out of Town</a>
+                <a href="../../catalogue/index.html" class="mini-cta mini-cta--solid">Come Discover</a>
+              </div>
+              <div class="cell-excursions">
+                <a class="cell-excursion" href="../../catalogue/index.html#excursion-provence"><div class="frame" data-alt="Provence"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg" alt="Provence in Light and Stone" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Provence in Light and Stone</span></a>
+                <a class="cell-excursion" href="../../catalogue/index.html#excursion-paris"><div class="frame" data-alt="Paris"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg" alt="Paris in a Day" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><span>Paris in a Day</span></a>
+              </div>
+              <a href="#services" class="card-link">Learn more →</a></div>
+          </div>
+          <div class="puzzle-cell reveal" style="--i:3"><div class="service-block__label">04</div><div class="badges"><span class="badge badge--pulse">Pulse</span><span class="badge badge--buscast">BusCast</span><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format. Available in two formats:</p>
             <div class="format-mini">
               <div class="format-mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="11" rx="3"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg></div>
               <div><b>Classic</b><p>Round-trip by coach from Paris. Best suited to larger groups, or groups looking for comfort and ease.</p></div>
