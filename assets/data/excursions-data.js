@@ -3,13 +3,25 @@
    - the horizontal carousel embedded on the homepage (index.html)
    - catalogue/index.html (the full catalogue overview)
    Only "normandy" is a fully built product (React app + 10-brand
-   design gallery, under catalogue/normandy-in-3-journeys/). The other
-   11 are catalogue-only entries: a teaser card that links to their
-   anchor on catalogue/index.html.
-   Image URLs are real Wikimedia Commons photos; every <img> using
-   this data should keep the same onerror graceful-fallback pattern
-   used everywhere else on the site.
+   design gallery, under catalogue/normandy-in-3-journeys/). All the
+   others are catalogue-only entries: a teaser card that links to their
+   anchor on catalogue/index.html. They were carried over from the
+   previous site (uptempo.media/guide), translated into English, and
+   their photos now live in assets/images/excursions/.
+   `image` is always written relative to the SITE ROOT; resolve it with
+   excursionImage(ex) so it works from both / and /catalogue/. Every
+   <img> using this data should keep the same onerror graceful-fallback
+   pattern used everywhere else on the site.
    ============================================================= */
+
+/* Directory the site is served from, derived from this script's own URL,
+   so the same relative image paths work from any page depth. */
+const EXCURSION_BASE = (() => {
+  const src = document.currentScript && document.currentScript.src;
+  return src ? src.replace(/assets\/data\/excursions-data\.js.*$/, "") : "";
+})();
+function excursionImage(ex) { return EXCURSION_BASE + ex.image; }
+
 const EXCURSIONS = [
   {
     slug: "normandy",
@@ -17,98 +29,146 @@ const EXCURSIONS = [
     region: "Normandy",
     stops: ["Rouen — Middle Ages", "Omaha — WWII", "Honfleur — Impressionism"],
     blurb: "A two-day journey through three of Normandy's most powerful legacies: the Middle Ages, the Second World War, and Impressionism.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Rouen_-_Gros_horloge_%282%29.jpg",
+    image: "assets/images/excursions/normandy_rouen.jpg",
     link: "catalogue/normandy-in-3-journeys/gallery.html",
     catalogueLink: "../catalogue/normandy-in-3-journeys/gallery.html",
     built: true
   },
   {
-    slug: "loire-valley",
-    title: "The Loire in 3 Chapters",
+    slug: "monet",
+    title: "In the Footsteps of Claude Monet",
+    region: "Normandy",
+    stops: ["Giverny — Monet's house and gardens", "Honfleur — Harbour of the first Impressionists", "Étretat — Cliffs and light"],
+    blurb: "Following Monet and the masters of light — an immersion in the Norman landscapes that shaped the Impressionist revolution.",
+    image: "assets/images/excursions/normandie_etretat.jpg"
+  },
+  {
+    slug: "d-day",
+    title: "Memory of the Landings",
+    region: "Normandy",
+    stops: ["Caen Memorial — The war in context", "Omaha Beach — The landings"],
+    blurb: "A complete route across the beaches and memorial sites of D-Day, to understand the military, diplomatic and human stakes of the Battle of Normandy.",
+    image: "assets/images/excursions/normandie_ww2.jpeg"
+  },
+  {
+    slug: "medieval-normandy",
+    title: "Medieval Normandy",
+    region: "Normandy",
+    stops: ["Rouen — Ducal power", "Bayeux — The Tapestry", "Mont Saint-Michel — Faith and architecture"],
+    blurb: "From the power of the dukes to the great cathedrals — a journey into medieval Normandy, between faith, politics and architectural masterpieces.",
+    image: "assets/images/excursions/normandie_medieval.png"
+  },
+  {
+    slug: "loire-chateaux",
+    title: "Châteaux and Architecture",
     region: "Loire Valley",
-    stops: ["Chambord — Royal Architecture", "Chenonceau — Renaissance Gardens", "Clos Lucé — Da Vinci's Renaissance"],
-    blurb: "A journey through the Loire Valley's royal age — three chapters of architecture, gardens and Renaissance genius.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chambord._France.jpg"
+    stops: ["Chambord — Royal grandeur", "Blois — Sculpted façades"],
+    blurb: "A plunge into royal grandeur: sculpted façades, double-helix staircases and the symbols of power.",
+    image: "assets/images/excursions/loire_chambord.webp"
   },
   {
-    slug: "provence",
-    title: "Provence in Light and Stone",
+    slug: "loire-renaissance",
+    title: "Lights of the Renaissance",
+    region: "Loire Valley",
+    stops: ["Chenonceau — Renaissance elegance", "Clos Lucé — Leonardo da Vinci"],
+    blurb: "Between art, invention and elegance — a living tribute to Leonardo da Vinci and the humanist spirit of the Renaissance.",
+    image: "assets/images/excursions/loire_chenonceau.jpeg"
+  },
+  {
+    slug: "loire-gardens",
+    title: "Gardens of the Loire Valley",
+    region: "Loire Valley",
+    stops: ["Villandry — The French formal garden", "Cheverny — Estate and grounds"],
+    blurb: "The art of the French garden: symmetry, colour and harmony across the valley's finest estates.",
+    image: "assets/images/excursions/loire_jardins.webp"
+  },
+  {
+    slug: "gothic-cathedrals",
+    title: "Gothic at Its Peak: The Two Finest Cathedrals",
+    region: "Northern France",
+    stops: ["Amiens — The Gothic summit", "Beauvais — The highest vault", "Saint-Denis (Paris) — Where Gothic began"],
+    blurb: "A reading of the great Gothic cathedrals as true machines of light and stone, at the heart of France's spiritual and political history.",
+    image: "assets/images/excursions/nord_cathedral.avif"
+  },
+  {
+    slug: "christmas-markets",
+    title: "Christmas Markets",
+    region: "Northern France",
+    stops: ["Arras — Flemish squares and lights", "Bruges — Artisan markets"],
+    blurb: "A winter immersion in Flemish architecture, lights, artisan markets and the Christmas traditions of northern France and Belgium.",
+    image: "assets/images/excursions/nord_noel.jpeg"
+  },
+  {
+    slug: "flanders",
+    title: "Lights of Flanders",
+    region: "Northern France",
+    stops: ["Lille — Trade and urban culture", "Bruges — Art of the Flemish cities"],
+    blurb: "From Lille to Bruges — the great Flemish cities, shaped by trade, art and an urban culture at the crossroads of northern Europe.",
+    image: "assets/images/excursions/nord_bruges.jpeg"
+  },
+  {
+    slug: "reims",
+    title: "Reims, Capital of Champagne",
+    region: "Eastern France",
+    stops: ["Reims — The coronation cathedral", "Reims — Champagne cellars"],
+    blurb: "From the coronation cathedral to the champagne cellars — a day to understand the place of Reims in French history and the Champagne art of living.",
+    image: "assets/images/excursions/est_reims.webp"
+  },
+  {
+    slug: "troyes",
+    title: "Troyes, City of Medieval Colour",
+    region: "Eastern France",
+    stops: ["Troyes — Half-timbered houses", "Troyes — Flamboyant stained glass"],
+    blurb: "Half-timbered houses, flamboyant stained glass and preserved lanes — a plunge into the medieval city and its recovered colours.",
+    image: "assets/images/excursions/est_vitrail.jpeg"
+  },
+  {
+    slug: "great-war",
+    title: "Memory of the Great War",
+    region: "Eastern France",
+    stops: ["Belleau Wood Cemetery — Remembrance", "Château-Thierry — The Western Front", "Museum of the Great War, Meaux — Collections"],
+    blurb: "A day across the emblematic sites of the Western Front, to understand 1914–18: its battles, its memorials, and how remembrance was built.",
+    image: "assets/images/excursions/est_ww1.png"
+  },
+  {
+    slug: "aix-calanques",
+    title: "Aix-en-Provence and the Calanques",
     region: "Provence",
-    stops: ["Pont du Gard — Roman Heritage", "Arles — Van Gogh & Impressionism", "Gordes — Hilltop Villages"],
-    blurb: "Three layers of Provence — Roman engineering, Impressionist light and hilltop village life.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_pano.jpg"
+    stops: ["Aix-en-Provence — Cézanne and the art of living", "Cassis — The calanques"],
+    blurb: "Between Aix, Cézanne and the calanques of Cassis — a journey linking the Provençal art of living, history, Mediterranean landscapes and southern light.",
+    image: "assets/images/excursions/provence_aix.jpg"
   },
   {
-    slug: "alsace",
-    title: "Alsace: Borders and Bread",
-    region: "Alsace",
-    stops: ["Strasbourg — European History", "Colmar — Half-Timbered Old Town", "Natzweiler-Struthof — WWII Memory"],
-    blurb: "A journey along France's eastern border — European history, half-timbered heritage and the memory of war.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Little_Venice_in_Colmar_01.jpg"
+    slug: "marseille-calanques",
+    title: "Marseille and the Calanques",
+    region: "Provence",
+    stops: ["Marseille — France's oldest city", "Cassis — The calanques"],
+    blurb: "From France's oldest city to the calanques — an immersion in Mediterranean culture, its ports, its landscapes and its contrasts.",
+    image: "assets/images/excursions/provence_marseille.jpeg"
   },
   {
-    slug: "brittany",
-    title: "Brittany: Stones and Tides",
-    region: "Brittany",
-    stops: ["Carnac — Megaliths", "Saint-Malo — Corsairs & Maritime History", "Quimper — Breton Culture"],
-    blurb: "Three faces of Brittany — deep prehistory, maritime history and living Breton culture.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Carnac_M%C3%A9nec_alignments.jpg"
+    slug: "provence-stones",
+    title: "Stones of Provence",
+    region: "Provence",
+    stops: ["Avignon — The papal palace", "Arles — Roman heritage", "Pont du Gard — Roman engineering"],
+    blurb: "From Avignon to the Pont du Gard — an itinerary between Roman heritage and papal palaces, reading Provence through its stones and its civilisations.",
+    image: "assets/images/excursions/provence_pontdugard.jpeg"
   },
   {
-    slug: "paris",
-    title: "Paris in a Day: Power, Faith & Art",
-    region: "Paris",
-    stops: ["Notre-Dame & Louvre — Power & Faith", "Eiffel Tower & Trocadéro — Modern History", "Montmartre — Impressionism"],
-    blurb: "A single day across Paris — royal and religious power, modern history and the birth of Impressionism.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Eiffel_tower_from_trocadero.jpg"
+    slug: "bordeaux-estuary",
+    title: "Bordeaux, City of Stone and Estuary",
+    region: "Bordeaux",
+    stops: ["Bordeaux — UNESCO-listed quays", "Arcachon — The basin", "Dune du Pilat — Ocean landscapes"],
+    blurb: "From the UNESCO-listed quays to the Dune du Pilat — a journey linking the historic centre, the Arcachon Basin and vast ocean landscapes.",
+    image: "assets/images/excursions/bordeaux_arcachon.jpg"
   },
   {
-    slug: "burgundy",
-    title: "Burgundy: Monks, Wine & Dukes",
-    region: "Burgundy",
-    stops: ["Vézelay — Pilgrimage & Romanesque", "Beaune — Hospices & Wine Route", "Cluny — Monastic History"],
-    blurb: "Three chapters of Burgundy — pilgrimage roads, ducal wealth and monastic influence.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hospices_de_beaune_toit.jpg"
-  },
-  {
-    slug: "champagne",
-    title: "Champagne: Kings and Cellars",
-    region: "Champagne",
-    stops: ["Reims — Coronation Cathedral", "WWI Battlefields — Memory", "Champagne Cellars — Know-How"],
-    blurb: "A journey through Champagne — coronation history, the memory of the Great War and centuries of cellar craft.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Facade_of_Reims_Cathedral.jpg"
-  },
-  {
-    slug: "dordogne",
-    title: "Dordogne: Deep Time",
-    region: "Dordogne",
-    stops: ["Lascaux — Prehistoric Caves", "Sarlat — Medieval Town", "Château de Beynac — Castles"],
-    blurb: "A journey into deep time — prehistoric art, a perfectly preserved medieval town and clifftop castles.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Beynac_6.jpg"
-  },
-  {
-    slug: "riviera",
-    title: "The Riviera: Belle Époque to Modern Art",
-    region: "French Riviera",
-    stops: ["Nice — Belle Époque Promenade", "Vence & Cimiez — Matisse & Chagall", "Monaco — Principality History"],
-    blurb: "Three eras of the French Riviera — Belle Époque grandeur, modern art and a small principality's history.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Promenade_des_Anglais_(Nice),_France.jpg"
-  },
-  {
-    slug: "nantes",
-    title: "Nantes & the Atlantic: Memory and Machines",
-    region: "Nantes / Atlantic Coast",
-    stops: ["Nantes — Slave Trade Memory", "Machines de l'Île — Industrial Art", "Saint-Nazaire — WWII Submarine Base"],
-    blurb: "A journey along the Atlantic — memory, industrial imagination and wartime history.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Elephant_de_nantes.jpg"
-  },
-  {
-    slug: "cathar-country",
-    title: "Cathar Country: Castles and Crusades",
-    region: "Occitanie",
-    stops: ["Carcassonne — Fortress City", "Peyrepertuse — Cathar Castles", "Toulouse — Occitan Capital"],
-    blurb: "A journey through Cathar country — a fortress city, mountaintop ruins and the Occitan capital.",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Cit%C3%A9_de_Carcassonne_%E2%80%93_Porte_d%E2%80%99Aude.jpg"
+    slug: "bordeaux-vineyards",
+    title: "Bordeaux, Vineyards and Landscapes",
+    region: "Bordeaux",
+    stops: ["Bordeaux — Cité du Vin", "Saint-Émilion — Classified vineyard landscapes"],
+    blurb: "Between Bordeaux and Saint-Émilion — the classified vineyard landscapes, the Cité du Vin and the know-how that shapes the Bordeaux wine region.",
+    image: "assets/images/excursions/bordeaux_vins.jpeg"
   }
 ];
 
@@ -124,7 +184,7 @@ function renderExcursionCarousel(containerId, linkResolver) {
     const href = ex.built ? ex.link : linkResolver(ex.slug);
     const onclick = ex.built ? ` onclick="event.preventDefault(); openFicheModal('${href}');"` : "";
     return `<a class="excursion-card" href="${href}"${onclick}>
-      <div class="excursion-card__media"><img src="${ex.image}" alt="${ex.title}" loading="lazy" onerror="this.closest('.excursion-card__media').classList.add('fallback');this.remove();"></div>
+      <div class="excursion-card__media"><img src="${excursionImage(ex)}" alt="${ex.title}" loading="lazy" onerror="this.closest('.excursion-card__media').classList.add('fallback');this.remove();"></div>
       <div class="excursion-card__body">
         <span class="excursion-card__region">${ex.region}</span>
         <h4>${ex.title}</h4>
