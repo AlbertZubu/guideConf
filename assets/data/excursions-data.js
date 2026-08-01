@@ -1,6 +1,6 @@
 /* =============================================================
    EXCURSIONS — shared catalogue data, consumed by:
-   - the horizontal carousel embedded in every site/designs/*.html page
+   - the horizontal carousel embedded on the homepage (index.html)
    - catalogue/index.html (the full catalogue overview)
    Only "normandy" is a fully built product (React app + 10-brand
    design gallery, under catalogue/normandy-in-3-journeys/). The other
@@ -18,7 +18,7 @@ const EXCURSIONS = [
     stops: ["Rouen — Middle Ages", "Omaha — WWII", "Honfleur — Impressionism"],
     blurb: "A two-day journey through three of Normandy's most powerful legacies: the Middle Ages, the Second World War, and Impressionism.",
     image: "https://commons.wikimedia.org/wiki/Special:FilePath/Rouen_-_Gros_horloge_%282%29.jpg",
-    link: "../../catalogue/normandy-in-3-journeys/gallery.html",
+    link: "catalogue/normandy-in-3-journeys/gallery.html",
     catalogueLink: "../catalogue/normandy-in-3-journeys/gallery.html",
     built: true
   },
@@ -112,9 +112,9 @@ const EXCURSIONS = [
   }
 ];
 
-/* Renders the horizontal carousel used on site/designs/*.html pages.
+/* Renders the horizontal carousel used on the homepage (index.html).
    `linkResolver` lets each page point non-built excursions at its own
-   relative path to catalogue/index.html#slug (2 levels up from site/designs/).
+   relative path to catalogue/index.html#slug.
    The "built" excursion (Normandy) opens in the fiche modal instead of
    navigating away — see openFicheModal()/closeFicheModal() below. */
 function renderExcursionCarousel(containerId, linkResolver) {
@@ -135,7 +135,7 @@ function renderExcursionCarousel(containerId, linkResolver) {
 
 /* Fiche modal — every page that includes this script must also include
    the #ficheModalOverlay / #ficheModalFrame markup (see the shared
-   .fiche-modal-overlay block added to each site/designs/*.html file).
+   .fiche-modal-overlay block on the homepage, index.html).
    Closes on close-button click, backdrop click, or Escape. */
 function openFicheModal(url) {
   const overlay = document.getElementById("ficheModalOverlay");
