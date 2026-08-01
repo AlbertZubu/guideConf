@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Dossier de travail local (mockups, fichiers d'échange)
+swap/
