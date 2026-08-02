@@ -1,0 +1,70 @@
+/* =============================================================
+   VARIATION 4 — "Pattern"
+   Airtable's idea: the left edge of the itinerary is not a line but a
+   motif that runs the whole height of the day. The rail becomes a
+   ticked ribbon, the nodes rounded squares sitting on it, and the
+   day column gets a matching ruled ground.
+   ============================================================= */
+
+:root{
+  --node:34px;
+  --node-gap:18px;
+  --radius-md:12px;
+  --radius-lg:14px;
+  --canvas-soft:#f4f4f6;
+}
+
+/* The ribbon: a 8px band of repeated ticks in the site blue, at 12%
+   so it stays a texture and never competes with the content. */
+.track::before{
+  width:8px; left:calc(var(--node) / 2 - 4px);
+  background:repeating-linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--primary) 55%, transparent) 0 4px,
+    transparent 4px 9px
+  );
+  top:4px; bottom:4px;
+}
+
+.step__num{
+  border-radius:9px;
+  box-shadow:0 0 0 5px var(--canvas);
+}
+.step--transit .step__num{
+  background:var(--canvas); border:1px solid var(--primary); color:var(--primary);
+}
+.step--stop .step__num{ background:var(--ink); }
+
+/* Day column: same rhythm, one degree quieter, behind everything. */
+.day{ position:relative; }
+.day__head{
+  border-bottom:1px solid var(--hairline-soft); padding-bottom:12px;
+}
+.day__tag{ border-radius:8px; }
+
+/* Blocks become squarer to match the ribbon's geometry. */
+.transit{ border-radius:var(--radius-md); }
+.stop__media{ border-radius:var(--radius-md); height:160px; }
+/* The same tick, reused at block scale: a 4px ribbon painted inside the
+   left padding rather than a border, so it repeats cleanly at any height. */
+.activity{
+  border-radius:var(--radius-md); padding-left:22px;
+  background-color:var(--canvas-soft);
+  background-image:repeating-linear-gradient(180deg, var(--pulse) 0 4px, transparent 4px 9px);
+  background-size:4px 100%;
+  background-repeat:no-repeat;
+  background-position:10px 0;
+}
+.listing li{ border-bottom-style:dotted; }
+.legend__item{ border-left:none; padding-left:18px; background-size:4px 100%; background-repeat:no-repeat; }
+.legend__item--pulse{ background-image:repeating-linear-gradient(180deg, var(--pulse) 0 4px, transparent 4px 9px); }
+.legend__item--buscast{ background-image:repeating-linear-gradient(180deg, var(--buscast) 0 4px, transparent 4px 9px); }
+
+/* Hero: the ribbon shows up once, under the title, as a signature. */
+.hero__sub{
+  padding-top:18px;
+  background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.75) 0 5px, transparent 5px 11px);
+  background-size:100% 4px;
+  background-repeat:no-repeat;
+  background-position:0 0;
+}

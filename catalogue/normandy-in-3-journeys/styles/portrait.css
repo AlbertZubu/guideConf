@@ -1,0 +1,50 @@
+/* =============================================================
+   VARIATION 3 — "Portrait"
+   Mastercard's left motif: each stop is a round photograph of the town
+   pinned on the rail, with its number as a satellite badge. The
+   itinerary can be read by its faces alone, before any text.
+   ============================================================= */
+
+:root{
+  --node:60px;
+  --node-gap:20px;
+  --radius-md:18px;
+}
+
+/* Rail sits behind the portraits, tinted so the circles read as pinned. */
+.track::before{ width:2px; background:var(--hairline-soft); left:calc(var(--node) / 2 - 1px); }
+
+.step__node{ height:var(--node); }
+.step__photo{
+  display:block; width:var(--node); height:var(--node); border-radius:50%;
+  object-fit:cover; box-shadow:0 8px 20px rgba(0,0,0,.16), 0 0 0 4px var(--canvas);
+}
+/* the number becomes a small satellite clipped to the portrait's edge */
+.step--stop .step__num{
+  position:absolute; right:-4px; bottom:-4px;
+  width:24px; height:24px; font-size:11px;
+  background:var(--primary); color:#fff; box-shadow:0 0 0 3px var(--canvas);
+}
+/* transit keeps a plain node, deliberately smaller than a portrait */
+.step--transit .step__photo{ display:none; }   /* transit steps have no town to show */
+.step--transit .step__node{ display:flex; justify-content:center; }
+.step--transit .step__num{
+  width:32px; height:32px; margin-top:8px;
+  background:var(--canvas); border:2px solid var(--primary); color:var(--primary);
+  box-shadow:0 0 0 4px var(--canvas);
+}
+.step--transit .step__num svg{ width:16px; height:16px; }
+
+/* The portrait already shows the town, so the stop header is text-only
+   and the photo band only comes back where it carries a Pulse flag. */
+.stop__media{ height:118px; }
+.stop__title{ font-size:24px; }
+.stop__eyebrow{ color:var(--primary); }
+
+.hero__title{ font-size:48px; }
+.hero__facts b{ font-size:13px; }
+
+.transit{ background:var(--surface-dark); }
+.transit__cast h4{ color:#fff; }
+
+.day__tag{ background:var(--primary); }

@@ -1,0 +1,29 @@
+/* =============================================================
+   REFERENCE — the Nike fiche, reworked into the site's own language
+   -------------------------------------------------------------
+   The reference skin lives in base.css so the six variations all
+   inherit it. This file only holds what belongs to the reference
+   alone: the banner treatment pushed slightly further, and the
+   restraint rule about hairlines (one line per idea, never two
+   parallel ones).
+   ============================================================= */
+
+/* A single hairline under the title, nothing else in the copy area —
+   the facts strip below already does the separating. */
+.hero__copy{ padding-bottom:26px; }
+.hero__title{ font-size:56px; }
+.hero__sub{
+  margin-top:18px; padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.22);
+  max-width:560px;
+}
+
+/* Numbered nodes are the loudest thing on the rail: give them the
+   display face at full size so the eye counts the stops first. */
+.step__num{ font-size:14px; }
+.step--stop .step__num{ box-shadow:0 0 0 4px var(--canvas); }
+
+/* Stop titles sit tight under their photo, Nike-style. */
+.stop__title{ font-size:28px; }
+.stop__sub{ color:var(--ink-muted); }
+.stop__sub::before{ content:""; display:inline-block; width:16px; height:1px; background:var(--primary); vertical-align:middle; margin-right:8px; }

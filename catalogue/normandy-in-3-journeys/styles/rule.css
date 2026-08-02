@@ -1,0 +1,57 @@
+/* =============================================================
+   VARIATION 1 — "Rule"
+   Notion's left border, taken as the organising principle: no filled
+   cards at all, every block is announced by a coloured left rule and
+   separated by a single hairline. The quietest of the six.
+   ============================================================= */
+
+:root{
+  --surface-dark:#17181b;
+  --canvas-soft:#fbfbfa;
+  --radius-md:4px;
+  --radius-lg:6px;
+  --radius-sm:3px;
+}
+
+/* Hero: photo band on top, copy on white underneath — the banner stops
+   being a poster and becomes a masthead. */
+.hero{ background:var(--canvas); color:var(--ink); }
+.hero__media{ position:relative; height:210px; }
+.hero__media img{ opacity:1; }
+.hero__media::after{ background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.28) 100%); }
+.hero__copy{ margin:26px var(--gutter) 0; padding:0 0 0 22px; border-left:4px solid var(--ink); max-width:none; }
+.hero__eyebrow{ color:var(--primary); opacity:1; }
+.hero__title{ font-size:44px; }
+.hero__sub{ color:var(--ink-muted); }
+.hero__themes li{ border-color:var(--hairline); color:var(--ink-muted); }
+.hero__facts{ border-top:1px solid var(--hairline-soft); margin-top:24px; }
+.hero__facts li{ border-left-color:var(--hairline-soft); border-bottom-color:var(--hairline-soft); }
+.hero__facts span{ color:var(--ink-faint); opacity:1; }
+.hero__facts b{ color:var(--ink); }
+
+/* Rail: dotted, so it reads as a margin rule rather than a timeline. */
+.track::before{ width:0; border-left:1px dashed var(--hairline); }
+.step__num{ background:var(--canvas); color:var(--ink); border:1px solid var(--ink); box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ border-style:dashed; color:var(--ink-muted); border-color:var(--hairline); }
+
+/* Transit: light, marked by a rule instead of a dark fill. */
+.transit{ background:var(--canvas); color:var(--ink); border-left:3px solid var(--ink); border-radius:0; padding:4px 0 4px 18px; }
+.transit__route{ color:var(--ink-faint); }
+.transit__cast{ border-top:1px solid var(--hairline-soft); }
+.transit__cast p{ color:var(--ink-muted); }
+
+/* Stops: left rule in the accent of the stop's own format. */
+.stop{ border-left:3px solid var(--primary); padding-left:18px; }
+.stop__media{ border-radius:var(--radius-md); height:150px; }
+.stop__sub{ color:var(--ink-muted); }
+.activity{ background:transparent; border-left:3px solid var(--pulse); border-radius:0; padding:2px 0 2px 14px; margin:16px 0; }
+.activity h4{ font-size:14px; }
+.stop__closing{ border-top:none; border-left:3px solid var(--hairline); padding:2px 0 2px 14px; margin-top:14px; font-style:italic; font-weight:600; }
+
+.legend__item{ border-left-width:3px; }
+.closing{ background:var(--canvas); color:var(--ink); border-top:1px solid var(--hairline-soft); }
+.closing__copy{ border-left:4px solid var(--ink); padding-left:20px; }
+.closing__route{ color:var(--ink-faint); }
+.closing__sub{ color:var(--ink-muted); }
+.closing__contact li{ border-bottom-color:var(--hairline-soft); }
+.closing__contact span{ color:var(--ink-faint); }

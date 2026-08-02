@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UpTempo — Excursion Catalogue</title>
-<meta name="description" content="The full UpTempo excursion catalogue — educational journeys across France.">
+<meta name="description" content="The full UpTempo excursion catalogue — educational journeys across France, sorted by region.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,14 +23,36 @@
   header.top{ padding:28px 0 8px; }
   header.top .back{ font-size:13.5px; font-weight:600; color:#0075de; display:inline-flex; align-items:center; gap:6px; }
   header.top h1{ font-size:clamp(30px,4.4vw,44px); font-weight:800; letter-spacing:-1px; margin:18px 0 10px; }
-  header.top p{ font-size:17px; line-height:1.55; color:#615d59; max-width:640px; margin:0 0 36px; }
+  header.top p{ font-size:17px; line-height:1.55; color:#615d59; max-width:640px; margin:0 0 24px; }
 
-  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; padding-bottom:80px; }
+  /* Region jump bar — sticky so the region you're in stays reachable */
+  .region-nav{
+    position:sticky; top:0; z-index:20; display:flex; gap:8px; flex-wrap:wrap;
+    padding:14px 0; margin-bottom:8px;
+    background:#f6f5f4; border-bottom:1px solid #e2e0dd;
+  }
+  .region-nav a{
+    font-size:12px; font-weight:700; letter-spacing:.4px; text-transform:uppercase;
+    padding:7px 13px; border-radius:999px; border:1px solid #d9d6d2; color:#41403c;
+  }
+  .region-nav a:hover{ border-color:#141413; color:#141413; }
+
+  /* Region block — the thin rule under the heading is the only separator used */
+  .region{ padding-top:44px; scroll-margin-top:64px; }
+  .region__head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+    padding-bottom:12px; margin-bottom:26px; border-bottom:1px solid #dcd9d5;
+  }
+  .region__head h2{ font-size:23px; font-weight:800; letter-spacing:-.4px; margin:0; }
+  .region__count{ font-size:12px; font-weight:600; letter-spacing:.4px; text-transform:uppercase; color:#8b8781; white-space:nowrap; }
+
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
   @media (max-width:980px){ .grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
+  .regions{ padding-bottom:80px; }
 
   .excursion{
-    scroll-margin-top:24px;
+    scroll-margin-top:88px;
     background:#fff; border:1px solid #e6e6e6; border-radius:16px; overflow:hidden;
     display:flex; flex-direction:column;
     transition:box-shadow .25s ease, transform .25s ease;
@@ -49,9 +71,19 @@
   .excursion__stops li{ font-size:12.5px; color:#41403c; display:flex; align-items:baseline; gap:6px; }
   .excursion__stops li::before{ content:"—"; color:#a39e98; flex:none; }
   .excursion__cta{ margin-top:auto; }
-  .btn{ display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:700; padding:10px 16px; border-radius:999px; background:#0075de; color:#fff; }
+  .btn{ display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:700; padding:10px 16px; border-radius:999px; background:#0075de; color:#fff; border:none; font-family:inherit; cursor:pointer; }
   .btn:hover{ background:#005bab; }
-  .built-badge{ position:absolute; top:12px; left:12px; background:rgba(0,0,0,.7); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:5px 10px; border-radius:999px; }
+  /* above the absolutely-positioned photo, which is painted after it in the DOM */
+  .built-badge{ position:absolute; z-index:1; top:12px; left:12px; background:rgba(0,0,0,.7); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:5px 10px; border-radius:999px; }
+
+  /* Fiche modal — same markup/behaviour as the homepage, see excursions-data.js */
+  .fiche-modal-overlay{ display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.65); align-items:center; justify-content:center; padding:24px; }
+  .fiche-modal-overlay.open{ display:flex; }
+  .fiche-modal{ position:relative; width:100%; max-width:1240px; height:90vh; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.35); }
+  .fiche-modal iframe{ width:100%; height:100%; border:none; display:block; }
+  .fiche-modal__close{ position:absolute; top:12px; right:12px; z-index:2; width:36px; height:36px; border-radius:50%; border:none; background:rgba(0,0,0,.72); color:#fff; font-size:20px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .fiche-modal__close:hover{ background:rgba(0,0,0,.9); }
+  @media (max-width:640px){ .fiche-modal-overlay{ padding:0; } .fiche-modal{ height:100%; border-radius:0; } }
 </style>
 </head>
 <body>
@@ -60,19 +92,54 @@
   <header class="top">
     <a class="back" href="../index.html">← Back to UpTempo</a>
     <h1>Excursion Catalogue</h1>
-    <p>Every excursion UpTempo designs follows the same method: layered history, one strong cultural thread, and a route that's been walked and timed first-hand. "Normandy in 3 Journeys" is our fully built flagship — browse it in 10 design styles. The rest of the catalogue below shows the scope of what we design across France.</p>
+    <p>Every excursion UpTempo designs follows the same method: layered history, one strong cultural thread, and a route that's been walked and timed first-hand. "Normandy in 3 Journeys" is our fully built flagship — open the fiche to browse it in every design variation. The rest of the catalogue below shows the scope of what we design across France, region by region.</p>
   </header>
 
-  <div class="grid" id="catalogueGrid"></div>
+  <nav class="region-nav" id="regionNav" aria-label="Jump to a region"></nav>
+
+  <div class="regions" id="catalogueRegions"></div>
+</div>
+
+<div class="fiche-modal-overlay" id="ficheModalOverlay">
+  <div class="fiche-modal">
+    <button type="button" class="fiche-modal__close" aria-label="Close" onclick="closeFicheModal();">×</button>
+    <iframe id="ficheModalFrame" title="Normandy in 3 Journeys — fiche excursion"></iframe>
+  </div>
 </div>
 
 <script src="../assets/data/excursions-data.js"></script>
 <script>
-const grid = document.getElementById('catalogueGrid');
-grid.innerHTML = EXCURSIONS.map((ex) => `
+/* Group by region, keeping the order in which regions first appear in the
+   shared data file — that order is already the geographic one we want. */
+const byRegion = [];
+EXCURSIONS.forEach((ex) => {
+  let group = byRegion.find((g) => g.region === ex.region);
+  if (!group) { group = { region: ex.region, slug: regionSlug(ex.region), items: [] }; byRegion.push(group); }
+  group.items.push(ex);
+});
+function regionSlug(region) { return 'region-' + region.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+
+document.getElementById('regionNav').innerHTML = byRegion
+  .map((g) => `<a href="#${g.slug}">${g.region}</a>`)
+  .join('');
+
+document.getElementById('catalogueRegions').innerHTML = byRegion.map((g) => `
+  <section class="region" id="${g.slug}">
+    <div class="region__head">
+      <h2>${g.region}</h2>
+      <span class="region__count">${g.items.length} excursion${g.items.length > 1 ? 's' : ''}</span>
+    </div>
+    <div class="grid">
+      ${g.items.map(excursionCard).join('')}
+    </div>
+  </section>
+`).join('');
+
+function excursionCard(ex) {
+  return `
   <article class="excursion" id="excursion-${ex.slug}">
     <div class="excursion__media" data-alt="${ex.title}">
-      ${ex.built ? '<span class="built-badge">Flagship — 10 designs</span>' : ''}
+      ${ex.built ? '<span class="built-badge">Flagship — full fiche</span>' : ''}
       <img src="${excursionImage(ex)}" alt="${ex.title}" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();">
     </div>
     <div class="excursion__body">
@@ -80,10 +147,10 @@ grid.innerHTML = EXCURSIONS.map((ex) => `
       <h3>${ex.title}</h3>
       <p class="blurb">${ex.blurb}</p>
       <ul class="excursion__stops">${ex.stops.map((s) => `<li>${s}</li>`).join('')}</ul>
-      ${ex.built ? `<div class="excursion__cta"><a class="btn" href="${ex.catalogueLink}">View the fiche <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>` : ''}
+      ${ex.built ? `<div class="excursion__cta"><button type="button" class="btn" onclick="openFicheModal('${ex.catalogueLink}');">View the fiche <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button></div>` : ''}
     </div>
-  </article>
-`).join('');
+  </article>`;
+}
 
 const hash = window.location.hash;
 if (hash) {

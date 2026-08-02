@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UpTempo — 14 designs de fiche excursion</title>
+<title>UpTempo — Fiche excursion : référence et 6 variations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,8 +13,8 @@ html, body { margin: 0; padding: 0; height: 100%; }
 body { font-family: 'Inter', sans-serif; }
 
 /* Barre de navigation horizontale, fixe, toujours visible — permet de
-   naviguer d'un design à l'autre sans recharger toute la page (seul le
-   cadre du bas change). */
+   naviguer d'une variation à l'autre sans recharger toute la page (seul
+   le cadre du bas change). */
 .switcher {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -58,6 +58,14 @@ body { font-family: 'Inter', sans-serif; }
   color: #14171c;
   border-color: #ffffff;
 }
+/* La référence garde un repère visuel : c'est elle qu'on compare aux autres. */
+.switcher button.is-reference { border-color: rgba(255,255,255,.4); color: #ffffff; }
+.switcher button.is-reference.active { color: #14171c; }
+.switcher .sep {
+  width: 1px; height: 22px; flex-shrink: 0;
+  background: rgba(255,255,255,.15);
+  margin: 0 .35rem;
+}
 
 main {
   position: fixed;
@@ -78,43 +86,47 @@ main iframe {
 </nav>
 
 <main>
-  <iframe id="frame" title="Aperçu du design sélectionné"></iframe>
+  <iframe id="frame" title="Aperçu de la variation sélectionnée"></iframe>
 </main>
 
 <script>
+/* Une seule fiche (fiche.html), une feuille de style par variation.
+   `reference` est le design de départ — le Nike retravaillé ; les six
+   suivantes reprennent chacune un ingrédient retenu sur les anciens
+   styles (bordure gauche, bandeau, portraits, trame, noir adouci,
+   organisation en tuiles). */
 const DESIGNS = [
-  { key: "notion", label: "Notion" },
-  { key: "claude", label: "Claude" },
-  { key: "apple", label: "Apple" },
-  { key: "airbnb", label: "Airbnb" },
-  { key: "slack", label: "Slack" },
-  { key: "nike", label: "Nike" },
-  { key: "mastercard", label: "Mastercard" },
-  { key: "elevenlabs", label: "ElevenLabs" },
-  { key: "clay", label: "Clay" },
-  { key: "airtable", label: "Airtable" },
+  { key: "reference", label: "Référence", reference: true },
+  { key: "rule",      label: "1 · Rule" },
+  { key: "banner",    label: "2 · Banner" },
+  { key: "portrait",  label: "3 · Portrait" },
+  { key: "pattern",   label: "4 · Pattern" },
+  { key: "ink",       label: "5 · Ink" },
+  { key: "bento",     label: "6 · Bento" },
 ];
 
 const STORAGE_KEY = "uptempo-design-gallery-active";
 const nav = document.getElementById("switcher");
 const frame = document.getElementById("frame");
 
-DESIGNS.forEach((d) => {
+DESIGNS.forEach((d, i) => {
+  if (i === 1) nav.appendChild(Object.assign(document.createElement("span"), { className: "sep" }));
   const btn = document.createElement("button");
   btn.textContent = d.label;
   btn.dataset.key = d.key;
+  if (d.reference) btn.classList.add("is-reference");
   btn.addEventListener("click", () => selectDesign(d.key));
   nav.appendChild(btn);
 });
 
 function selectDesign(key) {
-  frame.src = `designs/${key}.html`;
+  frame.src = `fiche.html?style=${key}`;
   nav.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.key === key));
   window.localStorage.setItem(STORAGE_KEY, key);
 }
 
 const saved = window.localStorage.getItem(STORAGE_KEY);
-const initial = DESIGNS.some((d) => d.key === saved) ? saved : "nike";
+const initial = DESIGNS.some((d) => d.key === saved) ? saved : "reference";
 selectDesign(initial);
 </script>
 

@@ -1,0 +1,51 @@
+/* =============================================================
+   VARIATION 5 — "Ink"
+   Claude's dark bus blocks, minus the aggression. The transit blocks
+   stay dark because that contrast is what makes the itinerary
+   readable at a glance, but the black is warmed and lifted
+   (#2a2825 rather than #000) and the paper around it is off-white,
+   so the two never collide at full contrast.
+   ============================================================= */
+
+:root{
+  --canvas:#fbfaf8;
+  --canvas-soft:#f2efea;
+  --canvas-sink:#e8e4dd;
+  --surface-dark:#2a2825;        /* warm charcoal — the softened black */
+  --surface-dark-soft:#37342f;
+  --on-dark:#f7f4ef;
+  --on-dark-muted:#b9b3a9;
+  --hairline:#ddd7cd;
+  --hairline-soft:#eae5dc;
+  --hairline-dark:rgba(247,244,239,.16);
+  --ink:#211f1c;
+  --ink-muted:#5c574f;
+  --ink-faint:#948d82;
+  --radius-md:14px;
+  --radius-lg:18px;
+}
+
+.hero{ background:var(--surface-dark); }
+.hero__media img{ opacity:.55; }
+.hero__media::after{
+  background:linear-gradient(180deg, rgba(42,40,37,.42) 0%, rgba(42,40,37,.62) 45%, rgba(42,40,37,.94) 100%);
+}
+.hero__eyebrow{ color:var(--on-dark); }
+
+/* The rail is inked too, so the dark blocks feel threaded rather than dropped in. */
+.track::before{ background:var(--hairline); }
+.step--stop .step__num{ background:var(--surface-dark); box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ background:var(--canvas); border-color:var(--surface-dark); color:var(--surface-dark); }
+
+.transit{ background:var(--surface-dark); }
+.transit__cast{ border-top-color:var(--hairline-dark); }
+.transit__cast h4{ color:var(--on-dark); }
+
+/* Paper side: warm, low-contrast, no hard black anywhere. */
+.stop__title{ color:var(--ink); }
+.stop__sub{ color:var(--accent); }
+.activity{ background:var(--canvas-soft); }
+.day__tag{ background:var(--surface-dark); }
+.closing{ background:var(--surface-dark); }
+.brandbar__mark{ background:var(--surface-dark); }
+.legend__item b{ color:var(--ink); }

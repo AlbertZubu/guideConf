@@ -2,8 +2,8 @@
    EXCURSIONS — shared catalogue data, consumed by:
    - the horizontal carousel embedded on the homepage (index.html)
    - catalogue/index.html (the full catalogue overview)
-   Only "normandy" is a fully built product (React app + 10-brand
-   design gallery, under catalogue/normandy-in-3-journeys/). All the
+   Only "normandy" is a fully built product (React app + the fiche and
+   its design variations, under catalogue/normandy-in-3-journeys/). All the
    others are catalogue-only entries: a teaser card that links to their
    anchor on catalogue/index.html. They were carried over from the
    previous site (uptempo.media/guide), translated into English, and
