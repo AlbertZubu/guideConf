@@ -45,7 +45,7 @@
 .day__tag{ background:var(--ink); }
 .legend__item{ border-left:none; padding:14px; border:2px solid var(--ink); border-radius:var(--radius-md); }
 .legend__item--pulse{ box-shadow:inset 4px 0 0 var(--pulse); }
-.legend__item--buscast{ box-shadow:inset 4px 0 0 var(--buscast); }
+.legend__item--clutch{ box-shadow:inset 4px 0 0 var(--clutch); }
 
 .closing{ background:var(--ink); }
 .intro{ border-bottom:2px solid var(--ink); }

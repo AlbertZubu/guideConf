@@ -58,7 +58,7 @@
 .listing li{ border-bottom-style:dotted; }
 .legend__item{ border-left:none; padding-left:18px; background-size:4px 100%; background-repeat:no-repeat; }
 .legend__item--pulse{ background-image:repeating-linear-gradient(180deg, var(--pulse) 0 4px, transparent 4px 9px); }
-.legend__item--buscast{ background-image:repeating-linear-gradient(180deg, var(--buscast) 0 4px, transparent 4px 9px); }
+.legend__item--clutch{ background-image:repeating-linear-gradient(180deg, var(--clutch) 0 4px, transparent 4px 9px); }
 
 /* Hero: the ribbon shows up once, under the title, as a signature. */
 .hero__sub{
