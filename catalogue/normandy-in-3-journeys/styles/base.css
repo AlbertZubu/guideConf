@@ -30,8 +30,8 @@
   --accent:#ed1aa0;
   --pulse:#ed1aa0;
   --pulse-ink:#ffffff;
-  --buscast:#1151ff;
-  --buscast-ink:#ffffff;
+  --clutch:#1151ff;
+  --clutch-ink:#ffffff;
 
   /* hairlines — the fiche separates with lines, not with boxes */
   --hairline:#cacacb;
@@ -163,7 +163,7 @@ ul,ol{margin:0;padding:0;list-style:none;}
   color:var(--ink); margin-bottom:3px;
 }
 .legend__item--pulse{ border-left-color:var(--pulse); }
-.legend__item--buscast{ border-left-color:var(--buscast); }
+.legend__item--clutch{ border-left-color:var(--clutch); }
 
 /* ---------- Itinerary ---------- */
 .itinerary{ padding:34px var(--gutter) 40px; }
@@ -247,7 +247,7 @@ ul,ol{margin:0;padding:0;list-style:none;}
   font-size:9.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
 }
 .tag--pulse{ background:var(--pulse); color:var(--pulse-ink); }
-.tag--buscast{ background:var(--buscast); color:var(--buscast-ink); }
+.tag--clutch{ background:var(--clutch); color:var(--clutch-ink); }
 
 /* ---------- Closing band ---------- */
 .closing{
