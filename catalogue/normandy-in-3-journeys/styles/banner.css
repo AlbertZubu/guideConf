@@ -16,9 +16,6 @@
 .hero__eyebrow{ color:var(--accent); opacity:1; letter-spacing:.2em; }
 .hero__title{ font-size:50px; }
 .hero__sub{ color:var(--on-dark-muted); }
-.hero__themes li{
-  border:none; background:rgba(255,255,255,.12); color:#fff;
-}
 
 /* facts as a headline row: the value first, the label under it */
 .hero__facts{
@@ -47,7 +44,7 @@
 
 .stop__media{ height:0; padding-bottom:56.25%; }
 .stop__media img{ position:absolute; inset:0; }
-.transit{ background:var(--ink); }
+.transit{ background:var(--surface-dark-soft); }
 .closing{ background:var(--ink); }
 .closing__title{ font-size:30px; }
 

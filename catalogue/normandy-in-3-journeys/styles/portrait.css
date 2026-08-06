@@ -44,7 +44,7 @@
 .hero__title{ font-size:48px; }
 .hero__facts b{ font-size:13px; }
 
-.transit{ background:var(--surface-dark); }
+.transit{ background:var(--surface-dark-soft); }
 .transit__cast h4{ color:#fff; }
 
 .day__tag{ background:var(--primary); }

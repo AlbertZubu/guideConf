@@ -1,0 +1,97 @@
+/* =============================================================
+   PRINT VARIANT 3 — "Fiche condensée" : A4 portrait, two pages.
+   Day 1 as a two-column grid fills the first page, Day 2 and the
+   return leg fill the second. Narrower than the landscape spread, so
+   each stop is trimmed to its headline activity and its listings
+   collapse to compact rows. Same skin as the reference (colours,
+   type, photos) — only the layout and the density change.
+   ============================================================= */
+@import url("reference.css");
+
+@media print{
+  @page{ size:A4 portrait; margin:10mm 12mm; }
+
+  html, body{ background:#fff; padding:0; }
+  .fiche{ width:100%; max-width:none; box-shadow:none; }
+
+  .brandbar{ padding:3px 0 5px; }
+  .brandbar__logo{ font-size:12px; }
+
+  /* hero, condensed to two thin rows */
+  .hero{ overflow:hidden; }
+  .hero__copy{ padding:14px 20px 8px; }
+  .hero__eyebrow{ display:none; }
+  .hero__title{ font-size:24px; line-height:1.02; }
+  .hero__sub{ display:none; }
+  .hero__facts{ border-top:none; }
+  .hero__facts li{ padding:7px 20px; }
+  .hero__facts span{ font-size:7.5px; margin-bottom:2px; }
+  .hero__facts b{ font-size:11px; }
+
+  /* objectif pédagogique — one line, the grid needs the vertical room */
+  .intro{ display:flex; align-items:baseline; gap:12px; padding:6px 0; grid-template-columns:none; border-bottom:1px solid var(--hairline-soft); }
+  .intro__text .label, .intro__legend .label{ display:none; }
+  .intro__text{ padding:0; }
+  .intro__text p{ font-size:9.5px; }
+  .intro__text p + p{ display:none; }
+  .intro__legend{ padding:0; border-left:1px solid var(--hairline-soft); padding-left:12px; flex:none; }
+  .legend{ flex-direction:row; gap:12px; }
+  .legend__item{ font-size:0; padding-left:8px; white-space:nowrap; }
+  .legend__item b{ font-size:8.5px; margin-bottom:0; }
+
+  .itinerary{ padding:6px 0 0; }
+  .itinerary__head{ margin-bottom:6px; break-after:avoid; }
+
+  .days{ display:block; }
+  .day{ break-before:page; }
+  .day:first-child{ break-before:avoid; }
+  .day + .day{ border-left:none; padding-left:0; margin-left:0; }
+  .day__head{ margin-bottom:8px; }
+
+  /* one day = a two-column grid of cards, read left to right, top to bottom */
+  .track{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .track::before{ display:none; }
+  .step{ padding-bottom:0; }
+  .step__node{ display:none; }
+
+  .transit{ padding:7px; border-radius:7px; }
+  .transit__route{ display:none; }
+  .transit__title{ font-size:10.5px; line-height:1.15; }
+  .transit__cast{ margin-top:5px; padding-top:5px; }
+  .transit__cast .tag{ transform:scale(.75); transform-origin:left center; }
+  .transit__cast h4{ font-size:8px; line-height:1.2; margin:2px 0 0; }
+
+  .stop__media{ height:52px; margin-bottom:4px; border-radius:6px; }
+  .stop__eyebrow{ display:none; }
+  .stop__title{ font-size:13px; margin:0 0 1px; }
+  .stop__sub{ font-size:7.5px; margin-bottom:3px; }
+  .stop > p:not([class]){ display:none; } /* the narrative line — the activity headline carries the gist here */
+
+  .activity{ padding:0; margin:3px 0 0; background:none; }
+  .activity .tag{ transform:scale(.75); transform-origin:left center; margin-bottom:2px; }
+  .activity h4{ font-size:8.5px; line-height:1.2; margin-bottom:0; }
+  .activity > p{ display:none; }
+  .activity .listing{ display:none; }
+
+  .listing{ margin-top:3px; }
+  .listing__label{ font-size:6px; margin-bottom:2px; }
+  .listing ul{ display:flex; flex-direction:column; gap:1px; }
+  .listing li{ font-size:7.5px; padding:0; border-bottom:none; line-height:1.25; }
+  .listing--extra li::before{ display:none; }
+
+  .stop__closing{ margin-top:4px; padding:4px 8px; font-size:7.5px; }
+  .stop__closing svg{ width:9px; height:9px; }
+
+  .step, .transit, .activity, .listing{ break-inside:avoid; }
+  .stop__media{ break-after:avoid; }
+  .stop__title, .stop__sub{ break-after:avoid; }
+
+  .closing{ margin-top:10px; break-inside:avoid; padding:12px 16px; }
+  .closing__route{ font-size:7.5px; }
+  .closing__title{ font-size:15px; margin:3px 0 4px; }
+  .closing__sub{ font-size:8.5px; }
+  .closing__contact li{ padding:5px 0; }
+  .closing__contact span{ font-size:7.5px; }
+  .closing__contact b{ font-size:9.5px; }
+  .fineprint{ font-size:6.5px; padding:5px 16px 6px; }
+}

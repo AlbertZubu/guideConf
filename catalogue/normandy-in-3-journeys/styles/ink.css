@@ -37,7 +37,7 @@
 .step--stop .step__num{ background:var(--surface-dark); box-shadow:0 0 0 4px var(--canvas); }
 .step--transit .step__num{ background:var(--canvas); border-color:var(--surface-dark); color:var(--surface-dark); }
 
-.transit{ background:var(--surface-dark); }
+.transit{ background:var(--surface-dark-soft); }
 .transit__cast{ border-top-color:var(--hairline-dark); }
 .transit__cast h4{ color:var(--on-dark); }
 

@@ -23,7 +23,6 @@
 .hero__eyebrow{ color:var(--primary); opacity:1; }
 .hero__title{ font-size:44px; }
 .hero__sub{ color:var(--ink-muted); }
-.hero__themes li{ border-color:var(--hairline); color:var(--ink-muted); }
 .hero__facts{ border-top:1px solid var(--hairline-soft); margin-top:24px; }
 .hero__facts li{ border-left-color:var(--hairline-soft); border-bottom-color:var(--hairline-soft); }
 .hero__facts span{ color:var(--ink-faint); opacity:1; }

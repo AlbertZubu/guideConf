@@ -1,0 +1,101 @@
+/* =============================================================
+   PRINT VARIANT 1 — "Poster" : A4 landscape, one page.
+   The whole excursion at a glance: a thin header, one line of
+   context, then the four stops as a single horizontal timeline.
+   Everything below stop-title level is trimmed — this is an
+   overview, not the full fiche. Same skin as the reference (colours,
+   type, photos) — only the density and the layout change.
+   ============================================================= */
+@import url("reference.css");
+
+@media print{
+  @page{ size:A4 landscape; margin:8mm 10mm; }
+
+  html, body{ background:#fff; padding:0; }
+  .fiche{ width:100%; max-width:none; box-shadow:none; }
+
+  .brandbar{ padding:5px 0 8px; }
+  .brandbar__logo{ font-size:13px; }
+  .brandbar__tag{ font-size:9px; padding:4px 10px; }
+
+  /* hero collapses to a single compact banner row */
+  .hero{ display:flex; align-items:center; height:104px; overflow:hidden; }
+  .hero__media::after{ background:linear-gradient(90deg, rgba(15,16,18,.74) 0%, rgba(15,16,18,.5) 100%); }
+  .hero__copy{ padding:0 26px; max-width:none; flex:none; }
+  .hero__eyebrow{ display:none; }
+  .hero__title{ font-size:27px; line-height:1.02; }
+  .hero__sub{ display:none; }
+  .hero__facts{ display:flex; border-top:none; flex:1; }
+  .hero__facts li{ border-left:1px solid var(--hairline-dark); border-bottom:none; padding:0 24px; display:flex; flex-direction:column; justify-content:center; }
+  .hero__facts li:first-child{ border-left:1px solid var(--hairline-dark); }
+  .hero__facts span{ font-size:8.5px; margin-bottom:3px; }
+  .hero__facts b{ font-size:14px; }
+
+  /* objectif pédagogique — one line, the poster leads with the itinerary */
+  .intro{ display:flex; align-items:baseline; gap:10px; padding:8px 0; grid-template-columns:none; border-bottom:1px solid var(--hairline-soft); }
+  .intro__text .label, .intro__legend .label{ display:none; }
+  .intro__text{ padding:0; }
+  .intro__text p{ font-size:10.5px; line-height:1.4; }
+  .intro__text p + p{ display:none; }
+  .intro__legend{ padding:0; border-left:1px solid var(--hairline-soft); padding-left:16px; flex:none; }
+  .legend{ flex-direction:row; gap:16px; }
+  .legend__item{ font-size:0; padding-left:10px; white-space:nowrap; }
+  .legend__item b{ font-size:9px; margin-bottom:0; }
+
+  .itinerary{ padding:12px 0 0; }
+  .itinerary__head{ margin-bottom:9px; }
+  .itinerary__head .label{ font-size:10px; margin:0; }
+  .itinerary__note{ font-size:9px; }
+
+  /* both days as one continuous horizontal timeline */
+  .days{ display:flex; flex-direction:row; align-items:flex-start; gap:0; grid-template-columns:none; }
+  .day{ display:flex; flex-direction:column; flex:none; }
+  .day + .day{ border-left:1px solid var(--hairline-soft); padding-left:13px; margin-left:13px; }
+  .day__head{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:10px; }
+  .day__tag{ font-size:9.5px; padding:4px 11px; }
+  .day__route{ font-size:8.5px; }
+
+  .track{ display:flex; flex-direction:row; gap:8px; }
+  .track::before{ display:none; }
+  .step{ display:flex; flex-direction:column; gap:6px; padding-bottom:0; }
+  .step__node{ width:auto; display:flex; justify-content:center; }
+  .step__num{ width:20px; height:20px; font-size:9px; }
+  .step__num svg{ width:12px; height:12px; }
+  .step__photo{ display:none; }
+
+  .step--transit{ width:100px; }
+  .step--stop{ width:140px; }
+
+  /* transit — headline, plus the two cast lines as short captions */
+  .transit{ padding:9px; border-radius:8px; }
+  .transit__route{ display:none; }
+  .transit__title{ font-size:10.5px; line-height:1.15; }
+  .transit__cast{ margin-top:6px; padding-top:6px; }
+  .transit__cast .tag{ transform:scale(.78); transform-origin:left center; }
+  .transit__cast h4{ font-size:8px; line-height:1.25; font-weight:700; margin:3px 0 0; }
+
+  /* stop — thumbnail, title, headline activity, additional activities as chips */
+  .stop__media{ height:88px; margin-bottom:6px; border-radius:7px; }
+  .stop__eyebrow{ display:none; }
+  .stop__title{ font-size:16px; margin:0 0 1px; }
+  .stop__sub{ font-size:8px; margin-bottom:5px; }
+  .stop__sub::before{ width:9px; margin-right:4px; }
+  .stop > p:not([class]){ display:none; }
+
+  .activity{ background:none; padding:0; margin:0 0 7px; border-radius:0; }
+  .activity .tag{ transform:scale(.85); transform-origin:left center; margin-bottom:4px; }
+  .activity h4{ font-size:11px; line-height:1.2; margin-bottom:0; }
+  .activity > p{ display:none; }
+  .activity .listing{ display:none; }
+
+  .listing{ display:none; }
+  .listing--extra{ display:block; margin-top:0; }
+  .listing--extra .listing__label{ font-size:6.5px; letter-spacing:.08em; margin-bottom:4px; }
+  .listing--extra ul{ display:flex; flex-direction:column; gap:3px; }
+  .listing--extra li{ font-size:8.5px; font-weight:600; padding:0; border-bottom:none; line-height:1.25; }
+  .listing--extra li::before{ display:none; }
+  .stop__closing{ display:none; }
+
+  .closing{ display:none; }
+  .fineprint{ display:none; }
+}
