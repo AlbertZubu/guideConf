@@ -1,0 +1,63 @@
+/* =============================================================
+   VARIANT 3 — "Brume"
+   High-key and frosted: the hero flips to LIGHT — a white veil
+   over the photo with dark type on top. Cool slate inks, deep
+   teal as the anchor color, coral as the single warm accent.
+   Destination cards are pure white on the misted paper, so the
+   grouping reads through borders and the teal transit blocks.
+   Loads AFTER fiche-styles/reference.css and only re-tints it.
+   ============================================================= */
+
+:root{
+  --canvas:#ffffff;
+  --canvas-soft:#eef3f4;
+  --canvas-sink:#dce4e6;
+  --surface-dark:#12403c;        /* deep teal keeps the transit blocks anchored */
+  --surface-dark-soft:#175550;
+  --on-dark:#f2fbfa;
+  --on-dark-muted:#a8cdc9;
+  --hairline:#c9d6d8;
+  --hairline-soft:#e2eaeb;
+  --hairline-dark:rgba(18,64,60,.16);
+  --ink:#132a2c;
+  --ink-muted:#4f6a6c;
+  --ink-faint:#8aa0a2;
+  --primary:#0e7490;
+  --accent:#f43f5e;
+  --pulse:#f43f5e;  --pulse-ink:#ffffff;
+  --clutch:#0e7490; --clutch-ink:#ffffff;
+  --pastel-bg:#e8f4f6;
+  --pastel-ink:#0e7490;
+
+  --card:#ffffff;
+  --card-ink:#132a2c;
+  --card-ink-muted:#4f6a6c;
+  --card-ink-faint:#8aa0a2;
+  --card-line:rgba(19,42,44,.14);
+  --card-soft:#eef3f4;
+  --card-accent:#0e7490;
+  --card-pastel-bg:#e8f4f6;
+  --card-pastel-ink:#0e7490;
+}
+
+.fiche{ box-shadow:0 24px 60px rgba(0,0,0,.14); }
+
+/* Hero flips light: white veil over the photo, dark type on mist. */
+.hero{ background:#e8eff0; color:var(--ink); }
+.hero__media img{ opacity:1; }
+.hero__media::after{ background:linear-gradient(270deg, rgba(232,239,240,0) 45%, rgba(232,239,240,.94) 100%); }
+.hero__eyebrow{ color:var(--primary); }
+.hero__sub{ color:var(--ink-muted); }
+.hero__facts span{ color:var(--ink-muted); opacity:1; }
+
+.step--stop .step__num{ background:var(--primary); color:#fff; box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ background:#ffffff; border-color:var(--primary); color:var(--primary); }
+
+/* Transit: solid teal, no glass. */
+.transit{ background:var(--surface-dark-soft); border:none; }
+
+.day__tag{ background:var(--primary); color:#fff; }
+.closing{ background:var(--surface-dark); }
+.brandbar__mark{ background:var(--primary); }
+.legend__item b{ color:var(--ink); }
+.listing--extra li::before{ background:var(--accent); color:#fff; }

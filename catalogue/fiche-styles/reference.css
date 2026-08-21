@@ -1,0 +1,130 @@
+/* =============================================================
+   FICHE EXCURSION — REFERENCE SKIN : "Nocturne"
+   -------------------------------------------------------------
+   Loaded by catalogue/fiche-template.html on top of the Normandy
+   base.css. Three ingredients:
+     - the "Banner" hero (copy left / photo right, the practical
+       facts — duration, nights — promoted to headline size);
+     - the "Nocturne" palette: deep indigo paper, periwinkle +
+       warm gold, photos held at high opacity;
+     - LIGHT DESTINATION CARDS: everything that happens in one
+       place (Rouen, Caen, Bayeux…) sits on a light card, while
+       transit stays dark glass — so the eye instantly separates
+       "on the road" from "on site", and every activity of a
+       sector reads as one group.
+   Variant skins (encre / solaire / brume) load AFTER this file:
+   they re-tint the global tokens plus the --card-* tokens that
+   drive the destination cards.
+   ============================================================= */
+
+:root{
+  /* nocturne globals */
+  --canvas:#101320;
+  --canvas-soft:#171b2c;
+  --canvas-sink:#07080d;
+  --surface-dark:#1b2138;
+  --surface-dark-soft:#202741;
+  --on-dark:#edf0ff;
+  --on-dark-muted:#9aa3c7;
+  --hairline:#2a3050;
+  --hairline-soft:#1f2438;
+  --hairline-dark:rgba(237,240,255,.14);
+  --ink:#edf0ff;
+  --ink-muted:#aeb5d6;
+  --ink-faint:#6d7498;
+  --primary:#7c96ff;
+  --accent:#ffc966;
+  --pulse:#ffc966;  --pulse-ink:#241a05;
+  --clutch:#7c96ff; --clutch-ink:#0c1226;
+  --pastel-bg:rgba(255,201,102,.14);
+  --pastel-ink:#ffc966;
+  --radius-md:14px;
+  --radius-lg:18px;
+
+  /* destination cards — the light island every variant re-tints */
+  --card:#f4f5fb;
+  --card-ink:#171b30;
+  --card-ink-muted:#494f6e;
+  --card-ink-faint:#7b8099;
+  --card-line:rgba(23,27,48,.14);
+  --card-soft:rgba(27,33,56,.07);
+  --card-accent:#8f6a0a;
+  --card-pastel-bg:rgba(255,178,44,.16);
+  --card-pastel-ink:#8a5a10;
+}
+
+.fiche{ box-shadow:0 24px 60px rgba(0,0,0,.55); }
+
+/* ---------- Hero — Banner's layout over the indigo ---------- */
+.hero{ display:grid; grid-template-columns:1.25fr .75fr; background:var(--surface-dark); }
+.hero__media{ position:relative; grid-column:2; grid-row:1 / span 2; }
+.hero__media img{ opacity:.85; height:100%; }
+.hero__media::after{ background:linear-gradient(270deg, rgba(27,33,56,0) 45%, rgba(27,33,56,.92) 100%); }
+.hero__copy{ grid-column:1; grid-row:1; padding:46px 34px 30px var(--gutter); }
+.hero__eyebrow{ color:var(--accent); opacity:1; letter-spacing:.2em; }
+.hero__title{ font-size:50px; }
+.hero__sub{ color:var(--on-dark-muted); }
+
+/* facts as a headline row: the value first, the label under it */
+.hero__facts{
+  grid-column:1; grid-row:2; align-self:end;
+  grid-template-columns:repeat(2,1fr);
+  border-top:1px solid var(--hairline-dark);
+}
+.hero__facts li{
+  display:flex; flex-direction:column-reverse; gap:4px;
+  padding:14px var(--gutter) 14px var(--gutter);
+}
+.hero__facts li:nth-child(3n+1){ border-left:1px solid var(--hairline-dark); }
+.hero__facts li:nth-child(2n+1){ border-left:none; padding-right:18px; }
+.hero__facts li:nth-child(2n){ padding-left:18px; }
+.hero__facts li:nth-last-child(-n+3){ border-bottom:1px solid var(--hairline-dark); }
+.hero__facts li:nth-last-child(-n+2){ border-bottom:none; }
+.hero__facts b{ font-family:var(--font-display); font-size:16px; text-transform:uppercase; letter-spacing:-.01em; }
+.hero__facts span{ margin:0; }
+
+/* ---------- Rail — periwinkle nodes glow on the dark paper ---------- */
+.track::before{ background:var(--hairline); }
+.step--stop .step__num{ background:var(--primary); color:#0c1226; box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ background:var(--canvas); border-color:var(--primary); color:var(--primary); }
+
+/* Transit stays dark glass: tinted transparency, "on the road". */
+.transit{ background:rgba(124,150,255,.08); border:1px solid rgba(124,150,255,.18); }
+.transit__cast{ border-top-color:var(--hairline-dark); }
+.transit__cast h4{ color:var(--on-dark); }
+
+/* ---------- Destination cards — "on site" is a light island ----------
+   One card = one sector (Rouen, Caen, Bayeux…): its photo, its story,
+   its activities and its meal/overnight note, grouped on light paper
+   that the dark transit blocks can never be confused with. */
+.stop{
+  background:var(--card); color:var(--card-ink);
+  border:1px solid var(--card-line);
+  border-radius:var(--radius-lg);
+  padding:18px;
+}
+.stop__media{ background:var(--card-soft); }
+.stop__eyebrow{ color:var(--card-ink-faint); }
+.stop__title{ color:var(--card-ink); }
+.stop__sub{ color:var(--card-accent); }
+.stop p{ color:var(--card-ink-muted); }
+.activity{ background:var(--card-soft); }
+.activity h4{ color:var(--card-ink); }
+.activity p{ color:var(--card-ink-muted); }
+.listing__label{ color:var(--card-ink-faint); }
+.listing li{ color:var(--card-ink); border-bottom-color:var(--card-line); }
+.stop__closing{ background:var(--card-pastel-bg); color:var(--card-pastel-ink); }
+.listing--extra li::before{ background:var(--accent); color:#241a05; }
+
+/* ---------- Furniture ---------- */
+.day__tag{ background:var(--primary); color:#0c1226; }
+.closing{ background:#0b0e1a; }
+.brandbar__mark{ background:var(--accent); }
+.legend__item b{ color:var(--on-dark); }
+
+@media (max-width:900px){
+  .hero{ grid-template-columns:1fr; }
+  .hero__media{ grid-column:1; grid-row:1; height:200px; }
+  .hero__copy{ grid-row:2; }
+  .hero__facts{ grid-row:3; }
+}

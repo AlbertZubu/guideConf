@@ -147,7 +147,7 @@ function excursionCard(ex) {
       <h3>${ex.title}</h3>
       <p class="blurb">${ex.blurb}</p>
       <ul class="excursion__stops">${ex.stops.map((s) => `<li>${s}</li>`).join('')}</ul>
-      ${ex.built ? `<div class="excursion__cta"><button type="button" class="btn" onclick="openFicheModal('${ex.catalogueLink}');">View the fiche <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button></div>` : ''}
+      ${ex.hasFiche ? `<div class="excursion__cta"><button type="button" class="btn" onclick="openFicheModal('${ex.catalogueLink}');">View the fiche <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button></div>` : ''}
     </div>
   </article>`;
 }

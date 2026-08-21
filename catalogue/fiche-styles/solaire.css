@@ -1,0 +1,63 @@
+/* =============================================================
+   VARIANT 2 — "Solaire"
+   Sun-baked Provence palette: cream paper, terracotta where the
+   reference has indigo, olive as the second voice. The photos
+   are pushed warm with a light sepia wash so every image sits in
+   the same golden light. Destination cards are a lighter cream
+   than the paper, warm-lined.
+   Loads AFTER fiche-styles/reference.css and only re-tints it.
+   ============================================================= */
+
+:root{
+  --canvas:#fbf4e8;
+  --canvas-soft:#f4e9d3;
+  --canvas-sink:#eadbbf;
+  --surface-dark:#7a2e12;        /* terracotta takes the dark role */
+  --surface-dark-soft:#8f3a19;
+  --on-dark:#fff1e2;
+  --on-dark-muted:#f0c5a4;
+  --hairline:#dcc9a8;
+  --hairline-soft:#ecdfc6;
+  --hairline-dark:rgba(255,241,226,.22);
+  --ink:#3d2413;
+  --ink-muted:#7c5a3c;
+  --ink-faint:#ab8d69;
+  --primary:#c2410c;
+  --accent:#597d1f;
+  --pulse:#c2410c;  --pulse-ink:#fff1e2;
+  --clutch:#597d1f; --clutch-ink:#f4ffdd;
+  --pastel-bg:#f2e2bd;
+  --pastel-ink:#7a5410;
+
+  --card:#fffaf0;
+  --card-ink:#3d2413;
+  --card-ink-muted:#7c5a3c;
+  --card-ink-faint:#ab8d69;
+  --card-line:rgba(61,36,19,.15);
+  --card-soft:rgba(194,65,12,.07);
+  --card-accent:#597d1f;
+  --card-pastel-bg:#f2e2bd;
+  --card-pastel-ink:#7a5410;
+}
+
+.fiche{ box-shadow:0 24px 60px rgba(0,0,0,.18); }
+
+/* Hero: warm wash over the photo, terracotta melt from the copy side. */
+.hero__media img{ opacity:.92; filter:sepia(.25) saturate(1.15); }
+.hero__media::after{ background:linear-gradient(270deg, rgba(122,46,18,.05) 45%, rgba(122,46,18,.85) 100%); }
+.hero__eyebrow{ color:#ffd9a8; }
+
+/* Every photo on the sheet gets the same golden light. */
+.stop__media img{ filter:sepia(.15) saturate(1.05); }
+
+.step--stop .step__num{ background:var(--primary); color:#fff; box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ background:var(--canvas); border-color:var(--primary); color:var(--primary); }
+
+/* Transit: solid terracotta, no glass. */
+.transit{ background:var(--surface-dark-soft); border:none; }
+
+.day__tag{ background:var(--primary); color:#fff; }
+.closing{ background:var(--surface-dark); }
+.brandbar__mark{ background:var(--primary); }
+.legend__item b{ color:var(--ink); }
+.listing--extra li::before{ background:var(--accent); color:#f4ffdd; }

@@ -1,0 +1,60 @@
+/* =============================================================
+   VARIANT 1 — "Encre"
+   The former reference: the Normandy "Ink" palette — warm
+   charcoal on off-white paper, the site's blue and pink kept as
+   the two voices. Destination cards go pure white on the cream
+   paper, hairline-boxed, so the grouping survives the light
+   background.
+   Loads AFTER fiche-styles/reference.css and only re-tints it.
+   ============================================================= */
+
+:root{
+  --canvas:#fbfaf8;
+  --canvas-soft:#f2efea;
+  --canvas-sink:#e8e4dd;
+  --surface-dark:#2a2825;        /* warm charcoal — the softened black */
+  --surface-dark-soft:#37342f;
+  --on-dark:#f7f4ef;
+  --on-dark-muted:#b9b3a9;
+  --hairline:#ddd7cd;
+  --hairline-soft:#eae5dc;
+  --hairline-dark:rgba(247,244,239,.16);
+  --ink:#211f1c;
+  --ink-muted:#5c574f;
+  --ink-faint:#948d82;
+  --primary:#1151ff;
+  --accent:#ed1aa0;
+  --pulse:#ed1aa0;  --pulse-ink:#ffffff;
+  --clutch:#1151ff; --clutch-ink:#ffffff;
+  --pastel-bg:#fdeee0;
+  --pastel-ink:#8a4b1f;
+
+  --card:#ffffff;
+  --card-ink:#211f1c;
+  --card-ink-muted:#5c574f;
+  --card-ink-faint:#948d82;
+  --card-line:rgba(33,31,28,.13);
+  --card-soft:#f2efea;
+  --card-accent:#ed1aa0;
+  --card-pastel-bg:#fdeee0;
+  --card-pastel-ink:#8a4b1f;
+}
+
+.fiche{ box-shadow:0 24px 60px rgba(0,0,0,.18); }
+
+/* Hero: charcoal melt, photo at full strength. */
+.hero__media img{ opacity:1; }
+.hero__media::after{ background:linear-gradient(270deg, rgba(42,40,37,0) 55%, rgba(42,40,37,.65) 100%); }
+
+/* Rail back to inked charcoal. */
+.step--stop .step__num{ background:var(--surface-dark); color:#fff; box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ background:var(--canvas); border-color:var(--surface-dark); color:var(--surface-dark); }
+
+/* Transit: solid warm charcoal, no glass. */
+.transit{ background:var(--surface-dark-soft); border:none; }
+
+.day__tag{ background:var(--surface-dark); color:#fff; }
+.closing{ background:var(--surface-dark); }
+.brandbar__mark{ background:var(--surface-dark); }
+.legend__item b{ color:var(--ink); }
+.listing--extra li::before{ background:var(--accent); color:#fff; }

@@ -32,7 +32,8 @@ const EXCURSIONS = [
     image: "assets/images/excursions/normandy_rouen.jpg",
     link: "catalogue/normandy-in-3-journeys/gallery.html",
     catalogueLink: "../catalogue/normandy-in-3-journeys/gallery.html",
-    built: true
+    built: true,
+    hasFiche: true
   },
   {
     slug: "monet",
@@ -40,7 +41,10 @@ const EXCURSIONS = [
     region: "Normandy",
     stops: ["Giverny — Monet's house and gardens", "Honfleur — Harbour of the first Impressionists", "Étretat — Cliffs and light"],
     blurb: "Following Monet and the masters of light — an immersion in the Norman landscapes that shaped the Impressionist revolution.",
-    image: "assets/images/excursions/normandie_etretat.jpg"
+    image: "assets/images/excursions/normandie_etretat.jpg",
+    link: "catalogue/fiche-template.html?slug=monet",
+    catalogueLink: "../catalogue/fiche-template.html?slug=monet",
+    hasFiche: true
   },
   {
     slug: "d-day",
@@ -48,7 +52,10 @@ const EXCURSIONS = [
     region: "Normandy",
     stops: ["Caen Memorial — The war in context", "Omaha Beach — The landings"],
     blurb: "A complete route across the beaches and memorial sites of D-Day, to understand the military, diplomatic and human stakes of the Battle of Normandy.",
-    image: "assets/images/excursions/normandie_ww2.jpeg"
+    image: "assets/images/excursions/normandie_ww2.jpeg",
+    link: "catalogue/fiche-template.html?slug=d-day",
+    catalogueLink: "../catalogue/fiche-template.html?slug=d-day",
+    hasFiche: true
   },
   {
     slug: "medieval-normandy",
@@ -56,7 +63,10 @@ const EXCURSIONS = [
     region: "Normandy",
     stops: ["Rouen — Ducal power", "Bayeux — The Tapestry", "Mont Saint-Michel — Faith and architecture"],
     blurb: "From the power of the dukes to the great cathedrals — a journey into medieval Normandy, between faith, politics and architectural masterpieces.",
-    image: "assets/images/excursions/normandie_medieval.png"
+    image: "assets/images/excursions/normandie_medieval.png",
+    link: "catalogue/fiche-template.html?slug=medieval-normandy",
+    catalogueLink: "../catalogue/fiche-template.html?slug=medieval-normandy",
+    hasFiche: true
   },
   {
     slug: "loire-chateaux",
@@ -64,7 +74,10 @@ const EXCURSIONS = [
     region: "Loire Valley",
     stops: ["Chambord — Royal grandeur", "Blois — Sculpted façades"],
     blurb: "A plunge into royal grandeur: sculpted façades, double-helix staircases and the symbols of power.",
-    image: "assets/images/excursions/loire_chambord.webp"
+    image: "assets/images/excursions/loire_chambord.webp",
+    link: "catalogue/fiche-template.html?slug=loire-chateaux",
+    catalogueLink: "../catalogue/fiche-template.html?slug=loire-chateaux",
+    hasFiche: true
   },
   {
     slug: "loire-renaissance",
@@ -72,7 +85,10 @@ const EXCURSIONS = [
     region: "Loire Valley",
     stops: ["Chenonceau — Renaissance elegance", "Clos Lucé — Leonardo da Vinci"],
     blurb: "Between art, invention and elegance — a living tribute to Leonardo da Vinci and the humanist spirit of the Renaissance.",
-    image: "assets/images/excursions/loire_chenonceau.jpeg"
+    image: "assets/images/excursions/loire_chenonceau.jpeg",
+    link: "catalogue/fiche-template.html?slug=loire-renaissance",
+    catalogueLink: "../catalogue/fiche-template.html?slug=loire-renaissance",
+    hasFiche: true
   },
   {
     slug: "loire-gardens",
@@ -80,7 +96,10 @@ const EXCURSIONS = [
     region: "Loire Valley",
     stops: ["Villandry — The French formal garden", "Cheverny — Estate and grounds"],
     blurb: "The art of the French garden: symmetry, colour and harmony across the valley's finest estates.",
-    image: "assets/images/excursions/loire_jardins.webp"
+    image: "assets/images/excursions/loire_jardins.webp",
+    link: "catalogue/fiche-template.html?slug=loire-gardens",
+    catalogueLink: "../catalogue/fiche-template.html?slug=loire-gardens",
+    hasFiche: true
   },
   {
     slug: "gothic-cathedrals",
@@ -88,7 +107,10 @@ const EXCURSIONS = [
     region: "Northern France",
     stops: ["Amiens — The Gothic summit", "Beauvais — The highest vault", "Saint-Denis (Paris) — Where Gothic began"],
     blurb: "A reading of the great Gothic cathedrals as true machines of light and stone, at the heart of France's spiritual and political history.",
-    image: "assets/images/excursions/nord_cathedral.avif"
+    image: "assets/images/excursions/nord_cathedral.avif",
+    link: "catalogue/fiche-template.html?slug=gothic-cathedrals",
+    catalogueLink: "../catalogue/fiche-template.html?slug=gothic-cathedrals",
+    hasFiche: true
   },
   {
     slug: "christmas-markets",
@@ -96,7 +118,10 @@ const EXCURSIONS = [
     region: "Northern France",
     stops: ["Arras — Flemish squares and lights", "Bruges — Artisan markets"],
     blurb: "A winter immersion in Flemish architecture, lights, artisan markets and the Christmas traditions of northern France and Belgium.",
-    image: "assets/images/excursions/nord_noel.jpeg"
+    image: "assets/images/excursions/nord_noel.jpeg",
+    link: "catalogue/fiche-template.html?slug=christmas-markets",
+    catalogueLink: "../catalogue/fiche-template.html?slug=christmas-markets",
+    hasFiche: true
   },
   {
     slug: "flanders",
@@ -104,15 +129,21 @@ const EXCURSIONS = [
     region: "Northern France",
     stops: ["Lille — Trade and urban culture", "Bruges — Art of the Flemish cities"],
     blurb: "From Lille to Bruges — the great Flemish cities, shaped by trade, art and an urban culture at the crossroads of northern Europe.",
-    image: "assets/images/excursions/nord_bruges.jpeg"
+    image: "assets/images/excursions/nord_bruges.jpeg",
+    link: "catalogue/fiche-template.html?slug=flanders",
+    catalogueLink: "../catalogue/fiche-template.html?slug=flanders",
+    hasFiche: true
   },
   {
     slug: "reims",
     title: "Reims, Capital of Champagne",
     region: "Eastern France",
     stops: ["Reims — The coronation cathedral", "Reims — Champagne cellars"],
-    blurb: "From the coronation cathedral to the champagne cellars — a day to understand the place of Reims in French history and the Champagne art of living.",
-    image: "assets/images/excursions/est_reims.webp"
+    blurb: "From the coronation cathedral to the champagne cellars — two days to understand the place of Reims in French history and the Champagne art of living.",
+    image: "assets/images/excursions/est_reims.webp",
+    link: "catalogue/fiche-template.html?slug=reims",
+    catalogueLink: "../catalogue/fiche-template.html?slug=reims",
+    hasFiche: true
   },
   {
     slug: "troyes",
@@ -120,15 +151,21 @@ const EXCURSIONS = [
     region: "Eastern France",
     stops: ["Troyes — Half-timbered houses", "Troyes — Flamboyant stained glass"],
     blurb: "Half-timbered houses, flamboyant stained glass and preserved lanes — a plunge into the medieval city and its recovered colours.",
-    image: "assets/images/excursions/est_vitrail.jpeg"
+    image: "assets/images/excursions/est_vitrail.jpeg",
+    link: "catalogue/fiche-template.html?slug=troyes",
+    catalogueLink: "../catalogue/fiche-template.html?slug=troyes",
+    hasFiche: true
   },
   {
     slug: "great-war",
     title: "Memory of the Great War",
     region: "Eastern France",
     stops: ["Belleau Wood Cemetery — Remembrance", "Château-Thierry — The Western Front", "Museum of the Great War, Meaux — Collections"],
-    blurb: "A day across the emblematic sites of the Western Front, to understand 1914–18: its battles, its memorials, and how remembrance was built.",
-    image: "assets/images/excursions/est_ww1.png"
+    blurb: "Two days across the emblematic sites of the Western Front, to understand 1914–18: its battles, its memorials, and how remembrance was built.",
+    image: "assets/images/excursions/est_ww1.png",
+    link: "catalogue/fiche-template.html?slug=great-war",
+    catalogueLink: "../catalogue/fiche-template.html?slug=great-war",
+    hasFiche: true
   },
   {
     slug: "aix-calanques",
@@ -136,7 +173,10 @@ const EXCURSIONS = [
     region: "Provence",
     stops: ["Aix-en-Provence — Cézanne and the art of living", "Cassis — The calanques"],
     blurb: "Between Aix, Cézanne and the calanques of Cassis — a journey linking the Provençal art of living, history, Mediterranean landscapes and southern light.",
-    image: "assets/images/excursions/provence_aix.jpg"
+    image: "assets/images/excursions/provence_aix.jpg",
+    link: "catalogue/fiche-template.html?slug=aix-calanques",
+    catalogueLink: "../catalogue/fiche-template.html?slug=aix-calanques",
+    hasFiche: true
   },
   {
     slug: "marseille-calanques",
@@ -144,7 +184,10 @@ const EXCURSIONS = [
     region: "Provence",
     stops: ["Marseille — France's oldest city", "Cassis — The calanques"],
     blurb: "From France's oldest city to the calanques — an immersion in Mediterranean culture, its ports, its landscapes and its contrasts.",
-    image: "assets/images/excursions/provence_marseille.jpeg"
+    image: "assets/images/excursions/provence_marseille.jpeg",
+    link: "catalogue/fiche-template.html?slug=marseille-calanques",
+    catalogueLink: "../catalogue/fiche-template.html?slug=marseille-calanques",
+    hasFiche: true
   },
   {
     slug: "provence-stones",
@@ -152,7 +195,10 @@ const EXCURSIONS = [
     region: "Provence",
     stops: ["Avignon — The papal palace", "Arles — Roman heritage", "Pont du Gard — Roman engineering"],
     blurb: "From Avignon to the Pont du Gard — an itinerary between Roman heritage and papal palaces, reading Provence through its stones and its civilisations.",
-    image: "assets/images/excursions/provence_pontdugard.jpeg"
+    image: "assets/images/excursions/provence_pontdugard.jpeg",
+    link: "catalogue/fiche-template.html?slug=provence-stones",
+    catalogueLink: "../catalogue/fiche-template.html?slug=provence-stones",
+    hasFiche: true
   },
   {
     slug: "bordeaux-estuary",
@@ -160,7 +206,10 @@ const EXCURSIONS = [
     region: "Bordeaux",
     stops: ["Bordeaux — UNESCO-listed quays", "Arcachon — The basin", "Dune du Pilat — Ocean landscapes"],
     blurb: "From the UNESCO-listed quays to the Dune du Pilat — a journey linking the historic centre, the Arcachon Basin and vast ocean landscapes.",
-    image: "assets/images/excursions/bordeaux_arcachon.jpg"
+    image: "assets/images/excursions/bordeaux_arcachon.jpg",
+    link: "catalogue/fiche-template.html?slug=bordeaux-estuary",
+    catalogueLink: "../catalogue/fiche-template.html?slug=bordeaux-estuary",
+    hasFiche: true
   },
   {
     slug: "bordeaux-vineyards",
@@ -168,7 +217,10 @@ const EXCURSIONS = [
     region: "Bordeaux",
     stops: ["Bordeaux — Cité du Vin", "Saint-Émilion — Classified vineyard landscapes"],
     blurb: "Between Bordeaux and Saint-Émilion — the classified vineyard landscapes, the Cité du Vin and the know-how that shapes the Bordeaux wine region.",
-    image: "assets/images/excursions/bordeaux_vins.jpeg"
+    image: "assets/images/excursions/bordeaux_vins.jpeg",
+    link: "catalogue/fiche-template.html?slug=bordeaux-vineyards",
+    catalogueLink: "../catalogue/fiche-template.html?slug=bordeaux-vineyards",
+    hasFiche: true
   }
 ];
 
@@ -181,8 +233,8 @@ function renderExcursionCarousel(containerId, linkResolver) {
   const el = document.getElementById(containerId);
   if (!el) return;
   el.innerHTML = EXCURSIONS.map((ex) => {
-    const href = ex.built ? ex.link : linkResolver(ex.slug);
-    const onclick = ex.built ? ` onclick="event.preventDefault(); openFicheModal('${href}');"` : "";
+    const href = ex.hasFiche ? ex.link : linkResolver(ex.slug);
+    const onclick = ex.hasFiche ? ` onclick="event.preventDefault(); openFicheModal('${href}');"` : "";
     return `<a class="excursion-card" href="${href}"${onclick}>
       <div class="excursion-card__media"><img src="${excursionImage(ex)}" alt="${ex.title}" loading="lazy" onerror="this.closest('.excursion-card__media').classList.add('fallback');this.remove();"></div>
       <div class="excursion-card__body">

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UpTempo — Fiche excursion</title>
+<!--
+  Generic renderer for every catalogue excursion that isn't the Normandy
+  flagship: same markup skeleton as normandy-in-3-journeys/fiche.html, but
+  the content comes from assets/data/excursion-fiches.js instead of being
+  hand-written per file, since these 17 fiches share one structure and
+  only differ in copy. Usage: fiche-template.html?slug=<excursion-slug>
+
+  Skins live in fiche-styles/: the reference is "Nocturne" (dark indigo
+  paper, "Banner" hero with the facts promoted to headline size, and every
+  destination grouped on a LIGHT card so on-site sectors read apart from
+  the dark transit blocks), and ?style=encre|solaire|brume|cypres loads
+  one of four re-tinted variants on top of it. The floating skin bar at the
+  bottom of the page switches between the five; content is identical in
+  all of them.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="normandy-in-3-journeys/styles/base.css">
+<link rel="stylesheet" href="fiche-styles/reference.css">
+<script>
+  /* Variant skins are a stylesheet layered on top of the reference:
+     ?style=<key> → fiche-styles/<key>.css. Unknown keys fall back to the
+     reference so a bad link never shows an unstyled page. */
+  const FICHE_SKINS = ["encre", "solaire", "brume", "cypres"];
+  const FICHE_SKIN = (() => {
+    const asked = new URLSearchParams(window.location.search).get("style");
+    return FICHE_SKINS.includes(asked) ? asked : "reference";
+  })();
+  if (FICHE_SKIN !== "reference") {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = `fiche-styles/${FICHE_SKIN}.css`;
+    document.head.appendChild(link);
+  }
+  document.documentElement.dataset.style = FICHE_SKIN;
+</script>
+<style>
+  /* Every fiche now runs 2 days / 1 night, so they all use the shared
+     two-column .days grid built for Normandy's 2-day itinerary. The
+     solo layout below is kept as a fallback for any future single-day
+     fiche: a lone day gets a narrower, centred column instead of
+     stretching full width, which would blow the paragraph measure out
+     past a readable line length. */
+  .days.days--solo{ display:block; max-width:640px; margin:0 auto; }
+  .fiche-missing{ padding:80px 40px; text-align:center; font-family:'Archivo',sans-serif; color:#55565a; }
+  /* Only one real photo exists per excursion (carried over from the
+     catalogue card) — most stops fall back to this gradient placeholder
+     rather than showing a mismatched photo borrowed from another stop.
+     The stop name overlay keeps it from reading as a broken image. */
+  .stop__media.is-fallback{ display:flex; align-items:flex-end; }
+  .stop__media.is-fallback::after{ content:attr(data-alt); padding:14px; font-size:12px; font-weight:700; color:var(--on-dark); }
+  /* Floating skin bar — reference + the three variants. Purely a viewing
+     aid, so it stays out of print. */
+  .skinbar{
+    position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:99;
+    display:flex; gap:4px; padding:5px;
+    background:rgba(20,23,28,.88); border-radius:9999px;
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    box-shadow:0 10px 28px rgba(0,0,0,.28);
+  }
+  .skinbar a{
+    font-family:'Inter','Archivo',sans-serif; font-size:11.5px; font-weight:600;
+    color:#b7bcc4; text-decoration:none; white-space:nowrap;
+    padding:7px 13px; border-radius:9999px; transition:color .15s ease;
+  }
+  .skinbar a:hover{ color:#ffffff; }
+  .skinbar a.active{ background:#ffffff; color:#14171c; }
+  @media print{ .skinbar{ display:none; } }
+</style>
+</head>
+<body>
+
+<nav class="skinbar" id="skinbar" aria-label="Variantes visuelles"></nav>
+<article class="fiche" id="fiche"></article>
+
+<script src="../assets/data/excursion-fiches.js"></script>
+<script>
+(() => {
+  const BUS_SVG = BUS_ICON;
+  const LUNCH_SVG = LUNCH_ICON;
+
+  const slug = new URLSearchParams(window.location.search).get("slug");
+  const data = slug && EXCURSION_FICHES[slug];
+  const root = document.getElementById("fiche");
+
+  /* Skin bar: reference + the three variants, keeping ?slug intact. */
+  const SKIN_LABELS = { reference: "Référence", encre: "1 · Encre", solaire: "2 · Solaire", brume: "3 · Brume", cypres: "4 · Cyprès" };
+  const skinbar = document.getElementById("skinbar");
+  Object.entries(SKIN_LABELS).forEach(([key, label]) => {
+    const a = document.createElement("a");
+    const params = new URLSearchParams(window.location.search);
+    if (key === "reference") params.delete("style"); else params.set("style", key);
+    a.href = `${window.location.pathname}?${params.toString()}`;
+    a.textContent = label;
+    if (key === FICHE_SKIN) a.classList.add("active");
+    skinbar.appendChild(a);
+  });
+
+  if (!data) {
+    root.innerHTML = `<div class="fiche-missing">This fiche isn't available yet.</div>`;
+    return;
+  }
+
+  document.title = `${data.title} — Fiche excursion`;
+
+  function escapeAttr(s) { return String(s).replace(/"/g, "&quot;"); }
+
+  function renderCasts(casts) {
+    return (casts || []).map((c) => `
+      <div class="transit__cast">
+        <span class="tag tag--${c.tag}">${c.tag === "pulse" ? "Pulse" : "Clutch"}</span>
+        <h4>${c.title}</h4>
+        ${c.text ? `<p>${c.text}</p>` : ""}
+      </div>`).join("");
+  }
+
+  function renderTransitStep(step) {
+    return `
+      <li class="step step--transit">
+        <div class="step__node">
+          <span class="step__photo" aria-hidden="true"></span>
+          <span class="step__num" aria-hidden="true">${BUS_SVG}</span>
+        </div>
+        <div class="step__body">
+          <div class="transit">
+            <p class="transit__route">${step.route}</p>
+            <h3 class="transit__title">${step.title}</h3>
+            ${renderCasts(step.casts)}
+          </div>
+        </div>
+      </li>`;
+  }
+
+  function renderActivity(a) {
+    return `
+      <div class="activity">
+        ${a.tag ? `<span class="tag tag--${a.tag}">${a.tag === "pulse" ? "Pulse" : "Clutch"}</span>` : ""}
+        <h4>${a.title}</h4>
+        ${(a.paragraphs || []).map((p) => `<p>${p}</p>`).join("")}
+      </div>`;
+  }
+
+  function renderListing(listing, extra) {
+    if (!listing) return "";
+    return `
+      <div class="listing${extra ? " listing--extra" : ""}">
+        <p class="listing__label">${listing.label}</p>
+        <ul>${listing.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+      </div>`;
+  }
+
+  function renderStopStep(step) {
+    const nodePhoto = step.image ? `<img class="step__photo" src="${escapeAttr("../" + step.image)}" alt="" onerror="this.remove();">` : "";
+    const media = step.image
+      ? `<div class="stop__media"><img src="${escapeAttr("../" + step.image)}" alt="${escapeAttr(step.alt || step.title)}" onerror="this.closest('.stop__media').classList.add('is-fallback');this.remove();"></div>`
+      : `<div class="stop__media is-fallback" data-alt="${escapeAttr(step.title)}"></div>`;
+    return `
+      <li class="step step--stop">
+        <div class="step__node">
+          ${nodePhoto}
+          <span class="step__num">${step.num}</span>
+        </div>
+        <div class="step__body">
+          <div class="stop">
+            ${media}
+            <p class="stop__eyebrow">${step.eyebrow}</p>
+            <h3 class="stop__title">${step.title}</h3>
+            <p class="stop__sub">${step.sub}</p>
+            ${(step.paragraphs || []).map((p) => `<p>${p}</p>`).join("")}
+            ${(step.activities || []).map(renderActivity).join("")}
+            ${renderListing(step.listing, false)}
+            ${renderListing(step.extra, true)}
+            ${step.closingNote ? `<p class="stop__closing">${LUNCH_SVG}${step.closingNote}</p>` : ""}
+          </div>
+        </div>
+      </li>`;
+  }
+
+  function renderStep(step) {
+    return step.type === "transit" ? renderTransitStep(step) : renderStopStep(step);
+  }
+
+  function renderDay(day) {
+    return `
+      <section class="day" id="day-${day.tag.toLowerCase().replace(/[^a-z0-9]+/g, "-")}">
+        <header class="day__head">
+          <span class="day__tag">${day.tag}</span>
+          <span class="day__route">${day.route}</span>
+        </header>
+        <ol class="track">${day.steps.map(renderStep).join("")}</ol>
+      </section>`;
+  }
+
+  root.innerHTML = `
+    <header class="brandbar">
+      <span class="brandbar__logo"><span class="brandbar__mark" aria-hidden="true"></span>UpTempo</span>
+      <span class="brandbar__tag">Fiche excursion</span>
+    </header>
+
+    <section class="hero">
+      <div class="hero__media">
+        <img src="${escapeAttr("../" + data.heroImage)}" alt="${escapeAttr(data.heroAlt)}" onerror="this.closest('.hero__media').classList.add('is-fallback');this.remove();">
+      </div>
+      <div class="hero__copy">
+        <span class="hero__eyebrow">${data.eyebrow}</span>
+        <h1 class="hero__title">${data.title}</h1>
+        <p class="hero__sub">${data.sub}</p>
+      </div>
+      <ul class="hero__facts">
+        ${data.facts.map((f) => `<li><span>${f.label}</span><b>${f.value}</b></li>`).join("")}
+      </ul>
+    </section>
+
+    <section class="intro">
+      <div class="intro__text">
+        <h2 class="label">Objectif pédagogique</h2>
+        ${data.intro.map((p) => `<p>${p}</p>`).join("")}
+      </div>
+      <div class="intro__legend">
+        <h2 class="label">Signature formats</h2>
+        <ul class="legend">
+          ${data.formats.map((f) => `<li class="legend__item legend__item--${f.cls}"><b>${f.name}</b>${f.text}</li>`).join("")}
+        </ul>
+      </div>
+    </section>
+
+    <section class="itinerary">
+      <div class="itinerary__head">
+        <h2 class="label">Itinéraire</h2>
+        <p class="itinerary__note">${data.days.length > 1 ? "Two days, read left to right." : "One day, read top to bottom."}</p>
+      </div>
+      <div class="days${data.days.length === 1 ? " days--solo" : ""}">
+        ${data.days.map(renderDay).join("")}
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing__copy">
+        <p class="closing__route">Bus / Train — Return to Paris</p>
+        <h3 class="closing__title">See You on the Next Journey</h3>
+        <p class="closing__sub">${data.closingSub}</p>
+      </div>
+      <ul class="closing__contact">
+        <li><span>Email</span><b>[votre email]</b></li>
+        <li><span>Téléphone</span><b>[votre téléphone]</b></li>
+        <li><span>Site web</span><b>[votre site]</b></li>
+      </ul>
+    </section>
+
+    <footer class="fineprint">${data.fineprint}</footer>
+  `;
+})();
+</script>
+
+</body>
+</html>

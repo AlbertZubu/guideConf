@@ -1,0 +1,66 @@
+/* =============================================================
+   VARIANT 4 — "Cyprès"
+   Vegetal and light: pale sage paper, with the deep fir green
+   reserved for the hero, the transit blocks and the closing band
+   — so the sheet reads bright while "on the road" still drops
+   into the dark green. Emerald carries the rail and structure,
+   copper is the single warm accent, and the photos are gently
+   desaturated so they sit in the same quiet light.
+   Destination cards are pure white on the sage paper.
+   Loads AFTER fiche-styles/reference.css and only re-tints it.
+   ============================================================= */
+
+:root{
+  --canvas:#f3f7f1;
+  --canvas-soft:#e8efe4;
+  --canvas-sink:#d7e2d2;
+  --surface-dark:#1e3b2c;        /* deep fir — hero, transit, closing only */
+  --surface-dark-soft:#254735;
+  --on-dark:#eef7ef;
+  --on-dark-muted:#a9c7b1;
+  --hairline:#c4d3c2;
+  --hairline-soft:#dde7da;
+  --hairline-dark:rgba(238,247,239,.18);
+  --ink:#1c2b20;
+  --ink-muted:#4e6354;
+  --ink-faint:#82957f;
+  --primary:#2e7d51;
+  --accent:#c26a3a;
+  --pulse:#c26a3a;  --pulse-ink:#fff3ea;
+  --clutch:#2e7d51; --clutch-ink:#eafff2;
+  --pastel-bg:#f6e3d3;
+  --pastel-ink:#8a4a22;
+
+  --card:#ffffff;
+  --card-ink:#1c2b20;
+  --card-ink-muted:#4e6354;
+  --card-ink-faint:#82957f;
+  --card-line:rgba(28,43,32,.14);
+  --card-soft:#eef4ec;
+  --card-accent:#b05e33;
+  --card-pastel-bg:#f6e3d3;
+  --card-pastel-ink:#8a4a22;
+}
+
+.fiche{ box-shadow:0 24px 60px rgba(20,40,28,.18); }
+
+/* Hero: deep fir melt, the photo kept bright and slightly hushed. */
+.hero__media img{ opacity:.95; filter:saturate(.9); }
+.hero__media::after{ background:linear-gradient(270deg, rgba(30,59,44,0) 45%, rgba(30,59,44,.88) 100%); }
+.hero__eyebrow{ color:#f0b58a; }
+
+/* Every photo on the sheet gets the same quiet treatment. */
+.stop__media img{ filter:saturate(.92); }
+
+/* Rail: emerald nodes on the sage paper. */
+.step--stop .step__num{ background:var(--primary); color:#eafff2; box-shadow:0 0 0 4px var(--canvas); }
+.step--transit .step__num{ background:var(--canvas); border-color:var(--primary); color:var(--primary); }
+
+/* Transit: solid deep fir, no glass — the only dark left on the sheet. */
+.transit{ background:var(--surface-dark-soft); border:none; }
+
+.day__tag{ background:var(--primary); color:#eafff2; }
+.closing{ background:var(--surface-dark); }
+.brandbar__mark{ background:var(--accent); }
+.legend__item b{ color:var(--ink); }
+.listing--extra li::before{ background:var(--accent); color:#fff3ea; }
