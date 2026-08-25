@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UpTempo — Fiche excursion</title>
+<title>UpTempo — Excursion Fiche</title>
 <!--
   Generic renderer for every catalogue excursion that isn't the Normandy
   flagship: same markup skeleton as normandy-in-3-journeys/fiche.html, but
@@ -11,11 +11,13 @@
   hand-written per file, since these 17 fiches share one structure and
   only differ in copy. Usage: fiche-template.html?slug=<excursion-slug>
 
-  Skins live in fiche-styles/: the reference is "Nocturne" (dark indigo
-  paper, "Banner" hero with the facts promoted to headline size, and every
-  destination grouped on a LIGHT card so on-site sectors read apart from
-  the dark transit blocks), and ?style=encre|solaire|brume|cypres loads
-  one of four re-tinted variants on top of it. The floating skin bar at the
+  Two data shapes are rendered: OVERVIEW fiches (no `days`) show
+  objective / destinations / highlights / optional activities with no
+  itinerary; LEGACY fiches (with `days`) keep the two-day rail. Skins
+  live in fiche-styles/: the reference is "Nocturne" (dark indigo paper,
+  "Banner" hero with the facts promoted to headline size, light cards),
+  and ?style=encre|solaire|brume|cypres loads one of four re-tinted
+  variants on top of it. The floating skin bar at the
   bottom of the page switches between the five; content is identical in
   all of them.
 -->
@@ -77,7 +79,7 @@
 </head>
 <body>
 
-<nav class="skinbar" id="skinbar" aria-label="Variantes visuelles"></nav>
+<nav class="skinbar" id="skinbar" aria-label="Visual variants"></nav>
 <article class="fiche" id="fiche"></article>
 
 <script src="../assets/data/excursion-fiches.js"></script>
@@ -85,6 +87,7 @@
 (() => {
   const BUS_SVG = BUS_ICON;
   const LUNCH_SVG = LUNCH_ICON;
+  const TAG_LABELS = { pulse: "Pulse", clutch: "Clutch", echo: "Echo", unbound: "Unbound" };
 
   const slug = new URLSearchParams(window.location.search).get("slug");
   const data = slug && EXCURSION_FICHES[slug];
@@ -108,14 +111,14 @@
     return;
   }
 
-  document.title = `${data.title} — Fiche excursion`;
+  document.title = `${data.title} — Excursion Fiche`;
 
   function escapeAttr(s) { return String(s).replace(/"/g, "&quot;"); }
 
   function renderCasts(casts) {
     return (casts || []).map((c) => `
       <div class="transit__cast">
-        <span class="tag tag--${c.tag}">${c.tag === "pulse" ? "Pulse" : "Clutch"}</span>
+        <span class="tag tag--${c.tag}">${TAG_LABELS[c.tag] || c.tag}</span>
         <h4>${c.title}</h4>
         ${c.text ? `<p>${c.text}</p>` : ""}
       </div>`).join("");
@@ -141,7 +144,7 @@
   function renderActivity(a) {
     return `
       <div class="activity">
-        ${a.tag ? `<span class="tag tag--${a.tag}">${a.tag === "pulse" ? "Pulse" : "Clutch"}</span>` : ""}
+        ${a.tag ? `<span class="tag tag--${a.tag}">${TAG_LABELS[a.tag] || a.tag}</span>` : ""}
         <h4>${a.title}</h4>
         ${(a.paragraphs || []).map((p) => `<p>${p}</p>`).join("")}
       </div>`;
@@ -201,7 +204,7 @@
   root.innerHTML = `
     <header class="brandbar">
       <span class="brandbar__logo"><span class="brandbar__mark" aria-hidden="true"></span>UpTempo</span>
-      <span class="brandbar__tag">Fiche excursion</span>
+      <span class="brandbar__tag">Excursion fiche</span>
     </header>
 
     <section class="hero">
@@ -218,28 +221,62 @@
       </ul>
     </section>
 
-    <section class="intro">
+    <section class="intro${data.days ? "" : " intro--overview"}">
       <div class="intro__text">
-        <h2 class="label">Objectif pédagogique</h2>
+        <h2 class="label">Pedagogical objective</h2>
         ${data.intro.map((p) => `<p>${p}</p>`).join("")}
       </div>
+      ${data.days ? `
       <div class="intro__legend">
         <h2 class="label">Signature formats</h2>
         <ul class="legend">
           ${data.formats.map((f) => `<li class="legend__item legend__item--${f.cls}"><b>${f.name}</b>${f.text}</li>`).join("")}
         </ul>
-      </div>
+      </div>` : ""}
     </section>
 
+    ${data.days ? `
     <section class="itinerary">
       <div class="itinerary__head">
-        <h2 class="label">Itinéraire</h2>
+        <h2 class="label">Itinerary</h2>
         <p class="itinerary__note">${data.days.length > 1 ? "Two days, read left to right." : "One day, read top to bottom."}</p>
       </div>
       <div class="days${data.days.length === 1 ? " days--solo" : ""}">
         ${data.days.map(renderDay).join("")}
       </div>
+    </section>` : `
+    <section class="destinations">
+      <h2 class="label">Destinations</h2>
+      <ol class="dest">
+        ${data.destinations.map((d) => `<li>
+          <div class="dest__media${d.image ? "" : " is-fallback"}">${d.image ? `<img src="${escapeAttr("../" + d.image)}" alt="" onerror="this.closest('.dest__media').classList.add('is-fallback');this.remove();">` : ""}</div>
+          <div class="dest__body"><b>${d.name}</b></div>
+        </li>`).join("")}
+      </ol>
     </section>
+
+    <section class="hlsec">
+      <h2 class="label">Highlights</h2>
+      <ul class="hl">${data.highlights.map((h) => { const o = typeof h === "string" ? { text: h } : h; return `<li>
+        <div class="hl__media${o.image ? "" : " is-fallback"}">${o.image ? `<img src="${escapeAttr("../" + o.image)}" alt="" onerror="this.closest('.hl__media').classList.add('is-fallback');this.remove();">` : ""}</div>
+        <div class="hl__body"><b>${o.text}</b>${o.desc ? `<span>${o.desc}</span>` : ""}</div>
+      </li>`; }).join("")}</ul>
+    </section>
+
+    <section class="mods-sec">
+      <h2 class="label">Activities</h2>
+      <p class="mods-lead">Every journey can be enriched with a selection of these optional signature activities — chosen with you when the programme is built, to match your group and its objectives.</p>
+      ${data.formats.map((f) => {
+        const items = data.activities.filter((a) => a.tag === f.cls);
+        if (!items.length) return "";
+        return `<div class="modgroup">
+          <div class="modgroup__head"><span class="tag tag--${f.cls}">${f.name}</span><span class="modgroup__desc">${f.text}</span></div>
+          <div class="mods">
+            ${items.map((a) => `<div class="modcard"><span class="tag tag--${a.tag}">${TAG_LABELS[a.tag] || a.tag}</span><h4>${a.title}</h4><p>${a.text}</p></div>`).join("")}
+          </div>
+        </div>`;
+      }).join("")}
+    </section>`}
 
     <section class="closing">
       <div class="closing__copy">
@@ -248,9 +285,9 @@
         <p class="closing__sub">${data.closingSub}</p>
       </div>
       <ul class="closing__contact">
-        <li><span>Email</span><b>[votre email]</b></li>
-        <li><span>Téléphone</span><b>[votre téléphone]</b></li>
-        <li><span>Site web</span><b>[votre site]</b></li>
+        <li><span>Email</span><b>[your email]</b></li>
+        <li><span>Phone</span><b>[your phone]</b></li>
+        <li><span>Website</span><b>[your website]</b></li>
       </ul>
     </section>
 

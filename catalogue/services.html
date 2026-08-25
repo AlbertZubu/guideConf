@@ -58,6 +58,11 @@
   .service-card__media.fallback::after{ content:attr(data-alt); padding:14px; font-size:12.5px; font-weight:700; color:#fff; }
   .service-card__body{ padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
   .service-card__body h4{ font-family:var(--font-body); font-weight:800; text-transform:none; font-size:17px; letter-spacing:-.2px; margin:0 0 8px; }
+  .service-card__kicker{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint, #9e9ea0); margin:-4px 0 8px; }
+  .dest-mini-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:14px; }
+  .dest-mini{ border:1px solid var(--hairline, #cacacb); border-radius:14px; padding:12px 14px; background:var(--canvas, #fff); }
+  .dest-mini b{ display:block; font-size:13.5px; font-weight:800; letter-spacing:-.2px; }
+  .dest-mini span{ display:block; font-size:11px; color:var(--ink-muted, #55565a); margin-top:2px; line-height:1.35; }
   .service-card__body p{ font-size:14px; line-height:1.55; color:var(--ink-muted); }
   .service-card__body ul{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:5px; }
   .service-card__body li{ font-size:13px; color:var(--ink-muted); display:flex; align-items:baseline; gap:6px; }
@@ -103,7 +108,8 @@
       <article class="service-card">
         <div class="service-card__media" data-alt="Autonomous Language Learning"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stack_of_multicolored_books_on_a_table.jpg" alt="Autonomous Language Learning" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
         <div class="service-card__body">
-          <h4>Autonomous Language Learning</h4>
+          <h4>A.L.L.</h4>
+          <p class="service-card__kicker">Autonomous Language Learning</p>
           <p>Methods, resources and habits that let students keep learning French on their own — efficiently and effectively — for the rest of their stay.</p>
         </div>
       </article>
@@ -214,6 +220,16 @@
           <p>Formats for this category are still being defined. Once ready, it will bring the same full-day depth to destinations beyond the city — check back soon, or get in touch to discuss a custom day trip today.</p>
         </div>
       </article>
+    </div>
+    <!-- Classic day-trip destinations around Paris — small tiles beside the
+         explainer card above. -->
+    <div class="dest-mini-grid">
+      <div class="dest-mini"><b>Versailles</b><span>The palace of palaces</span></div>
+      <div class="dest-mini"><b>Chartres</b><span>The cathedral of cathedrals</span></div>
+      <div class="dest-mini"><b>Chantilly</b><span>The château of the princes</span></div>
+      <div class="dest-mini"><b>Vaux-le-Vicomte</b><span>The model for Versailles</span></div>
+      <div class="dest-mini"><b>Auvers-sur-Oise</b><span>Van Gogh's last village</span></div>
+      <div class="dest-mini"><b>Compiègne</b><span>Imperial château and forest</span></div>
     </div>
   </section>
 

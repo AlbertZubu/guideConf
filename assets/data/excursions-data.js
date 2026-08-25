@@ -2,12 +2,13 @@
    EXCURSIONS — shared catalogue data, consumed by:
    - the horizontal carousel embedded on the homepage (index.html)
    - catalogue/index.html (the full catalogue overview)
-   Only "normandy" is a fully built product (React app + the fiche and
-   its design variations, under catalogue/normandy-in-3-journeys/). All the
-   others are catalogue-only entries: a teaser card that links to their
-   anchor on catalogue/index.html. They were carried over from the
-   previous site (uptempo.media/guide), translated into English, and
-   their photos now live in assets/images/excursions/.
+   Every excursion (flagship included) now renders through
+   catalogue/fiche-template.html + assets/data/excursion-fiches.js.
+   The old bespoke Normandy build (React app + multi-design fiche) is
+   kept under catalogue/normandy-in-3-journeys/ but no longer linked.
+   Entries were carried over from the previous site
+   (uptempo.media/guide), translated into English, and their photos
+   live in assets/images/excursions/.
    `image` is always written relative to the SITE ROOT; resolve it with
    excursionImage(ex) so it works from both / and /catalogue/. Every
    <img> using this data should keep the same onerror graceful-fallback
@@ -24,34 +25,33 @@ function excursionImage(ex) { return EXCURSION_BASE + ex.image; }
 
 const EXCURSIONS = [
   {
-    slug: "normandy",
-    title: "Normandy in 3 Journeys",
+    slug: "normandy-grand-tour",
+    title: "The Normandy Grand Tour",
     region: "Normandy",
-    stops: ["Rouen — Middle Ages", "Omaha — WWII", "Honfleur — Impressionism"],
-    blurb: "A two-day journey through three of Normandy's most powerful legacies: the Middle Ages, the Second World War, and Impressionism.",
+    stops: ["Rouen — Middle Ages", "Bayeux — The Tapestry", "Omaha — Remembrance", "Honfleur — Impressionism & the seaside"],
+    blurb: "The complete first encounter with Normandy — medieval power in Rouen and Bayeux, remembrance at Omaha, and Impressionist light over the harbour of Honfleur.",
     image: "assets/images/excursions/normandy_rouen.jpg",
-    link: "catalogue/normandy-in-3-journeys/gallery.html",
-    catalogueLink: "../catalogue/normandy-in-3-journeys/gallery.html",
-    built: true,
+    link: "catalogue/fiche-template.html?slug=normandy-grand-tour",
+    catalogueLink: "../catalogue/fiche-template.html?slug=normandy-grand-tour",
     hasFiche: true
   },
   {
-    slug: "monet",
-    title: "In the Footsteps of Claude Monet",
+    slug: "impressionist-normandy",
+    title: "The Birthplace of Impressionism",
     region: "Normandy",
-    stops: ["Giverny — Monet's house and gardens", "Honfleur — Harbour of the first Impressionists", "Étretat — Cliffs and light"],
-    blurb: "Following Monet and the masters of light — an immersion in the Norman landscapes that shaped the Impressionist revolution.",
+    stops: ["Rouen — Monet's cathedral", "Honfleur & Étretat — The painters' coast", "Giverny — Monet's house and gardens"],
+    blurb: "Why did modern art happen here? Two days in the landscapes where painting learned to chase the light — from Monet's cathedral to his garden.",
     image: "assets/images/excursions/normandie_etretat.jpg",
-    link: "catalogue/fiche-template.html?slug=monet",
-    catalogueLink: "../catalogue/fiche-template.html?slug=monet",
+    link: "catalogue/fiche-template.html?slug=impressionist-normandy",
+    catalogueLink: "../catalogue/fiche-template.html?slug=impressionist-normandy",
     hasFiche: true
   },
   {
     slug: "d-day",
-    title: "Memory of the Landings",
+    title: "D-Day: The Five Beaches",
     region: "Normandy",
-    stops: ["Caen Memorial — The war in context", "Omaha Beach — The landings"],
-    blurb: "A complete route across the beaches and memorial sites of D-Day, to understand the military, diplomatic and human stakes of the Battle of Normandy.",
+    stops: ["Caen — The Memorial", "Sword · Juno · Gold — The Allied east", "Omaha · Utah — The American west"],
+    blurb: "Every D-Day beach in one journey — Sword, Juno, Gold, Omaha and Utah — with the stakes of each sector and every point of view, including the French civilians and the German soldiers.",
     image: "assets/images/excursions/normandie_ww2.jpeg",
     link: "catalogue/fiche-template.html?slug=d-day",
     catalogueLink: "../catalogue/fiche-template.html?slug=d-day",
@@ -59,10 +59,10 @@ const EXCURSIONS = [
   },
   {
     slug: "medieval-normandy",
-    title: "Medieval Normandy",
+    title: "Normandy's Golden Age",
     region: "Normandy",
-    stops: ["Rouen — Ducal power", "Bayeux — The Tapestry", "Mont Saint-Michel — Faith and architecture"],
-    blurb: "From the power of the dukes to the great cathedrals — a journey into medieval Normandy, between faith, politics and architectural masterpieces.",
+    stops: ["Rouen — The medieval capital", "Caen & Bayeux — The Conqueror's cities", "Mont Saint-Michel — The Wonder"],
+    blurb: "The Middle Ages that made Normandy a power — the Conqueror's castle, the Tapestry, the great cathedral, and the abbey on the rock.",
     image: "assets/images/excursions/normandie_medieval.png",
     link: "catalogue/fiche-template.html?slug=medieval-normandy",
     catalogueLink: "../catalogue/fiche-template.html?slug=medieval-normandy",
@@ -70,10 +70,10 @@ const EXCURSIONS = [
   },
   {
     slug: "loire-chateaux",
-    title: "Châteaux and Architecture",
+    title: "The Château Revolution",
     region: "Loire Valley",
-    stops: ["Chambord — Royal grandeur", "Blois — Sculpted façades"],
-    blurb: "A plunge into royal grandeur: sculpted façades, double-helix staircases and the symbols of power.",
+    stops: ["Chambord — The manifesto in stone", "Blois — Four centuries in one courtyard", "Chenonceau — Pure elegance"],
+    blurb: "How the Renaissance turned fortresses into palaces — two innovations, tuffeau stone and the mullioned window, and the whole paradigm flips.",
     image: "assets/images/excursions/loire_chambord.webp",
     link: "catalogue/fiche-template.html?slug=loire-chateaux",
     catalogueLink: "../catalogue/fiche-template.html?slug=loire-chateaux",
@@ -83,8 +83,8 @@ const EXCURSIONS = [
     slug: "loire-renaissance",
     title: "Lights of the Renaissance",
     region: "Loire Valley",
-    stops: ["Chenonceau — Renaissance elegance", "Clos Lucé — Leonardo da Vinci"],
-    blurb: "Between art, invention and elegance — a living tribute to Leonardo da Vinci and the humanist spirit of the Renaissance.",
+    stops: ["Chenonceau — The ladies' château", "Amboise — Leonardo's last home", "Chambord — François I's dream"],
+    blurb: "The intellectual, economic and artistic revolution of the Renaissance, told through three great châteaux — with Leonardo da Vinci at its heart.",
     image: "assets/images/excursions/loire_chenonceau.jpeg",
     link: "catalogue/fiche-template.html?slug=loire-renaissance",
     catalogueLink: "../catalogue/fiche-template.html?slug=loire-renaissance",
@@ -92,10 +92,10 @@ const EXCURSIONS = [
   },
   {
     slug: "loire-gardens",
-    title: "Gardens of the Loire Valley",
+    title: "Gardens of the Renaissance",
     region: "Loire Valley",
-    stops: ["Villandry — The French formal garden", "Cheverny — Estate and grounds"],
-    blurb: "The art of the French garden: symmetry, colour and harmony across the valley's finest estates.",
+    stops: ["Chenonceau — Gardens over the water", "Chambord — Nature on a royal scale", "Villandry — The formal garden, perfected"],
+    blurb: "The whole Renaissance, read through its most photogenic invention: the garden — geometry, colour and staging four centuries before Instagram.",
     image: "assets/images/excursions/loire_jardins.webp",
     link: "catalogue/fiche-template.html?slug=loire-gardens",
     catalogueLink: "../catalogue/fiche-template.html?slug=loire-gardens",
@@ -105,8 +105,8 @@ const EXCURSIONS = [
     slug: "gothic-cathedrals",
     title: "Gothic at Its Peak: The Two Finest Cathedrals",
     region: "Northern France",
-    stops: ["Amiens — The Gothic summit", "Beauvais — The highest vault", "Saint-Denis (Paris) — Where Gothic began"],
-    blurb: "A reading of the great Gothic cathedrals as true machines of light and stone, at the heart of France's spiritual and political history.",
+    stops: ["Saint-Denis — Where Gothic began", "Amiens — The Gothic summit", "Beauvais — The highest vault"],
+    blurb: "Gothic through the places that determined its destiny — the basilica where it was invented, the cathedral where it peaked, and the choir that flew too high.",
     image: "assets/images/excursions/nord_cathedral.avif",
     link: "catalogue/fiche-template.html?slug=gothic-cathedrals",
     catalogueLink: "../catalogue/fiche-template.html?slug=gothic-cathedrals",
@@ -114,10 +114,10 @@ const EXCURSIONS = [
   },
   {
     slug: "christmas-markets",
-    title: "Christmas Markets",
+    title: "Christmas, the Flemish Way",
     region: "Northern France",
-    stops: ["Arras — Flemish squares and lights", "Bruges — Artisan markets"],
-    blurb: "A winter immersion in Flemish architecture, lights, artisan markets and the Christmas traditions of northern France and Belgium.",
+    stops: ["Arras — The Grand'Place market", "Lille — The European city", "Ghent & Bruges — Flanders under the lights"],
+    blurb: "Four cities where the magic of Christmas is a local art form — markets, lights, beer and traditions with deep medieval roots.",
     image: "assets/images/excursions/nord_noel.jpeg",
     link: "catalogue/fiche-template.html?slug=christmas-markets",
     catalogueLink: "../catalogue/fiche-template.html?slug=christmas-markets",
@@ -127,8 +127,8 @@ const EXCURSIONS = [
     slug: "flanders",
     title: "Lights of Flanders",
     region: "Northern France",
-    stops: ["Lille — Trade and urban culture", "Bruges — Art of the Flemish cities"],
-    blurb: "From Lille to Bruges — the great Flemish cities, shaped by trade, art and an urban culture at the crossroads of northern Europe.",
+    stops: ["Lille — The European city", "Ghent & Bruges — Flemish splendour", "Ostend — The North Sea"],
+    blurb: "A historic and cultural region straddling two countries — the great Flemish cities, their canals and belfries, and the light of the North Sea.",
     image: "assets/images/excursions/nord_bruges.jpeg",
     link: "catalogue/fiche-template.html?slug=flanders",
     catalogueLink: "../catalogue/fiche-template.html?slug=flanders",
@@ -138,8 +138,8 @@ const EXCURSIONS = [
     slug: "reims",
     title: "Reims, Capital of Champagne",
     region: "Eastern France",
-    stops: ["Reims — The coronation cathedral", "Reims — Champagne cellars"],
-    blurb: "From the coronation cathedral to the champagne cellars — two days to understand the place of Reims in French history and the Champagne art of living.",
+    stops: ["Reims — The coronation cathedral", "Reims — The chalk cellars", "Reims — Art Deco rebirth"],
+    blurb: "From the coronation cathedral to the champagne cellars — one day to understand the place of Reims in French history and the Champagne art of living.",
     image: "assets/images/excursions/est_reims.webp",
     link: "catalogue/fiche-template.html?slug=reims",
     catalogueLink: "../catalogue/fiche-template.html?slug=reims",
@@ -161,7 +161,7 @@ const EXCURSIONS = [
     title: "Memory of the Great War",
     region: "Eastern France",
     stops: ["Belleau Wood Cemetery — Remembrance", "Château-Thierry — The Western Front", "Museum of the Great War, Meaux — Collections"],
-    blurb: "Two days across the emblematic sites of the Western Front, to understand 1914–18: its battles, its memorials, and how remembrance was built.",
+    blurb: "One day across the emblematic sites of the Western Front, to understand 1914–18: its battles, its memorials, and how remembrance was built.",
     image: "assets/images/excursions/est_ww1.png",
     link: "catalogue/fiche-template.html?slug=great-war",
     catalogueLink: "../catalogue/fiche-template.html?slug=great-war",
@@ -233,9 +233,10 @@ function renderExcursionCarousel(containerId, linkResolver) {
   const el = document.getElementById(containerId);
   if (!el) return;
   el.innerHTML = EXCURSIONS.map((ex) => {
-    const href = ex.hasFiche ? ex.link : linkResolver(ex.slug);
-    const onclick = ex.hasFiche ? ` onclick="event.preventDefault(); openFicheModal('${href}');"` : "";
-    return `<a class="excursion-card" href="${href}"${onclick}>
+    /* Carousel cards always land on the catalogue (anchored to the
+       excursion) — the fiche modal is opened from the catalogue page. */
+    const href = linkResolver(ex.slug);
+    return `<a class="excursion-card" href="${href}">
       <div class="excursion-card__media"><img src="${excursionImage(ex)}" alt="${ex.title}" loading="lazy" onerror="this.closest('.excursion-card__media').classList.add('fallback');this.remove();"></div>
       <div class="excursion-card__body">
         <span class="excursion-card__region">${ex.region}</span>

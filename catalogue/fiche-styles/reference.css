@@ -34,8 +34,12 @@
   --ink-faint:#6d7498;
   --primary:#7c96ff;
   --accent:#ffc966;
-  --pulse:#ffc966;  --pulse-ink:#241a05;
-  --clutch:#7c96ff; --clutch-ink:#0c1226;
+  /* activity identifiers — the SITE's color code (index.html),
+     kept identical across every skin: */
+  --pulse:#ed1aa0;   --pulse-ink:#ffffff;
+  --clutch:#1151ff;  --clutch-ink:#ffffff;
+  --echo:#FFE94D;    --echo-ink:#111111;
+  --unbound:#6BFF5C; --unbound-ink:#111111;
   --pastel-bg:rgba(255,201,102,.14);
   --pastel-ink:#ffc966;
   --radius-md:14px;
@@ -115,6 +119,69 @@
 .listing li{ color:var(--card-ink); border-bottom-color:var(--card-line); }
 .stop__closing{ background:var(--card-pastel-bg); color:var(--card-pastel-ink); }
 .listing--extra li::before{ background:var(--accent); color:#241a05; }
+
+/* Echo & Unbound — the third and fourth signature formats. */
+.tag--echo{ background:var(--echo); color:var(--echo-ink); }
+.legend__item--echo{ border-left-color:var(--echo); }
+.tag--unbound{ background:var(--unbound); color:var(--unbound-ink); }
+.legend__item--unbound{ border-left-color:var(--unbound); }
+
+/* ---------- Overview layout (no-itinerary fiches) ----------
+   Objective as a wide editorial column, destinations as photo cards,
+   highlights split against a large image, and the activity library
+   grouped by format — every family wearing the site's color code.
+   Light surfaces re-tint per skin via the --card-* tokens. */
+.intro--overview{ grid-template-columns:1fr; }
+.intro--overview .intro__text{ padding-right:0; max-width:840px; }
+.intro--overview .intro__text p:first-of-type{ font-size:17.5px; line-height:1.6; font-weight:500; color:var(--ink); }
+
+.destinations, .hlsec{ padding:36px var(--gutter); border-bottom:1px solid var(--hairline-soft); }
+
+/* Destinations — one photo card per place, numbered */
+.dest{ display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:14px; counter-reset:dest; }
+.dest li{ background:var(--card); color:var(--card-ink); border:1px solid var(--card-line); border-radius:var(--radius-lg); overflow:hidden; }
+.dest__media{ position:relative; height:118px; background:var(--card-soft); }
+.dest__media img{ width:100%; height:100%; object-fit:cover; }
+.dest__media.is-fallback{ background:linear-gradient(140deg,var(--primary),var(--accent)); }
+.dest__body{ padding:13px 15px 15px; }
+.dest__body::before{
+  counter-increment:dest; content:counter(dest,decimal-leading-zero);
+  display:block; margin-bottom:6px;
+  font-size:10px; font-weight:800; letter-spacing:.1em; color:var(--card-accent);
+}
+.dest b{ display:block; font-family:var(--font-display); font-size:15px; text-transform:uppercase; letter-spacing:-.01em; }
+
+/* Highlights — grid of features, one round image each */
+.hl{ display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:18px 26px; }
+.hl li{ display:flex; align-items:center; gap:14px; }
+.hl__media{
+  flex:none; width:66px; height:66px; border-radius:50%; overflow:hidden;
+  border:1px solid var(--hairline); background:var(--canvas-soft);
+}
+.hl__media img{ width:100%; height:100%; object-fit:cover; }
+.hl__media.is-fallback{ background:linear-gradient(140deg,var(--primary),var(--accent)); }
+.hl__body b{ display:block; font-size:14px; font-weight:800; line-height:1.3; color:var(--ink); margin-bottom:3px; }
+.hl__body span{ display:block; font-size:12px; font-weight:500; line-height:1.45; color:var(--ink-muted); }
+
+/* Activities — the library, grouped by format */
+.mods-sec{ padding:36px var(--gutter) 48px; }
+.mods-lead{ font-size:13px; line-height:1.55; color:var(--ink-muted); max-width:560px; margin:-4px 0 26px; }
+.modgroup + .modgroup{ margin-top:30px; }
+.modgroup__head{
+  display:flex; align-items:baseline; gap:12px;
+  padding-bottom:10px; margin-bottom:14px;
+  border-bottom:1px solid var(--hairline-soft);
+}
+.modgroup__head .tag{ font-size:10.5px; padding:5px 13px; }
+.modgroup__desc{ font-size:12px; line-height:1.5; color:var(--ink-faint); }
+.mods{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.modcard{ background:var(--card); color:var(--card-ink); border:1px solid var(--card-line); border-radius:var(--radius-lg); padding:18px; }
+.modcard .tag{ margin-bottom:9px; }
+.modcard h4{ font-family:var(--font-display); font-size:15px; text-transform:uppercase; letter-spacing:-.01em; color:var(--card-ink); margin:0 0 8px; }
+.modcard p{ font-size:12.5px; line-height:1.55; color:var(--card-ink-muted); }
+@media (max-width:900px){
+  .mods{ grid-template-columns:1fr; }
+}
 
 /* ---------- Furniture ---------- */
 .day__tag{ background:var(--primary); color:#0c1226; }
