@@ -86,6 +86,10 @@
   .puzzle-cell p{ font-size:14.5px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .puzzle-cell .card-link{ margin-top:auto; padding-top:16px; }
   .puzzle-grid.reveal-stagger .puzzle-cell{ transition-delay:calc(var(--i,0) * 90ms); }
+  /* Pastel identity per service category — mirrored on each category's own page. */
+  .puzzle-cell--workshops{ background:#ece7fa; }
+  .puzzle-cell--visits{ background:#e2f4ec; }
+  .puzzle-cell--fulldays{ background:#fdeee0; }
   @media (max-width:560px){ .puzzle-row{ flex-direction:column; } .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell, .puzzle-col--split > .puzzle-cell{ flex:none; } }
   .badges{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
   .badge{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:5px 10px; border-radius:var(--radius-full); background:var(--canvas-soft); color:var(--ink-muted); font-family:'Inter',sans-serif; }
@@ -256,37 +260,37 @@
         <div class="puzzle-grid reveal-stagger">
           <div class="puzzle-row">
             <div class="puzzle-col puzzle-col--split">
-              <div class="puzzle-cell reveal" style="--i:0"><div class="badges"><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p>
+              <div class="puzzle-cell puzzle-cell--workshops reveal" style="--i:0"><div class="badges"><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p>
                 <div class="cell-thumbs">
-                  <a href="catalogue/services.html#workshops" title="Frenchness 101"><div class="frame" data-alt="Frenchness 101"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rue_de_Paris.jpg" alt="Frenchness 101" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
-                  <a href="catalogue/services.html#workshops" title="Autonomous Language Learning"><div class="frame" data-alt="Language"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stack_of_multicolored_books_on_a_table.jpg" alt="Autonomous Language Learning" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
-                  <a href="catalogue/services.html#workshops" title="Table Talk Games"><div class="frame" data-alt="Table Talk"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Backgammon_board.jpg" alt="Table Talk Games" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
+                  <a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" title="Frenchness 101"><div class="frame" data-alt="Frenchness 101"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rue_de_Paris.jpg" alt="Frenchness 101" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
+                  <a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" title="Autonomous Language Learning"><div class="frame" data-alt="Language"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stack_of_multicolored_books_on_a_table.jpg" alt="Autonomous Language Learning" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
+                  <a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" title="Table Talk Games"><div class="frame" data-alt="Table Talk"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Backgammon_board.jpg" alt="Table Talk Games" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
                 </div>
-                <div class="cell-foot"><a href="catalogue/services.html#workshops" class="card-link">Learn more →</a></div>
+                <div class="cell-foot"><a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a></div>
               </div>
-              <div class="puzzle-cell reveal" style="--i:1"><div class="badges"><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p>
+              <div class="puzzle-cell puzzle-cell--visits reveal" style="--i:1"><div class="badges"><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p>
                 <div class="cell-thumbs">
-                  <a href="catalogue/services.html#visits" title="Winter Ready"><div class="frame" data-alt="Winter Ready"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Paris_sous_la_neige.jpg" alt="Winter Ready" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
-                  <a href="catalogue/services.html#visits" title="Events"><div class="frame" data-alt="Events"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Football_match.jpg" alt="Events" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
-                  <a href="catalogue/services.html#visits" title="Craft and Masters"><div class="frame" data-alt="Craft"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bread_Baker.jpg" alt="Craft and Masters" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
+                  <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Winter Ready"><div class="frame" data-alt="Winter Ready"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Paris_sous_la_neige.jpg" alt="Winter Ready" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
+                  <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Events"><div class="frame" data-alt="Events"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Football_match.jpg" alt="Events" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
+                  <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Craft and Masters"><div class="frame" data-alt="Craft"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bread_Baker.jpg" alt="Craft and Masters" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
                 </div>
-                <div class="cell-foot"><a href="catalogue/services.html#visits" class="card-link">Learn more →</a></div>
+                <div class="cell-foot"><a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a></div>
               </div>
             </div>
-            <div class="puzzle-cell reveal" style="--i:2"><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
+            <div class="puzzle-cell puzzle-cell--fulldays reveal" style="--i:2"><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
               <div class="mini-ctas mini-ctas--spread">
-                <a href="catalogue/services.html#in-your-city" class="mini-cta">In Your City</a>
-                <a href="catalogue/services.html#out-of-town" class="mini-cta">Out of Town</a>
+                <a href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;" class="mini-cta">In Your City</a>
+                <a href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;" class="mini-cta">Out of Town</a>
               </div>
               <div class="day-grid">
-                <a class="day-item" href="catalogue/services.html#in-your-city"><div class="frame" data-alt="Taste &amp; Learn"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/March%C3%A9_proven%C3%A7al.jpg" alt="Taste &amp; Learn" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Taste &amp; Learn</b><p>One theme, talks and visits, punctuated by two tasting moments.</p></div></a>
-                <a class="day-item" href="catalogue/services.html#in-your-city"><div class="frame" data-alt="Trek"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Walking_tour.jpg" alt="Trek" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Trek</b><p>An urban hike where walking is the thread running through the day.</p></div></a>
-                <a class="day-item" href="catalogue/services.html#in-your-city"><div class="frame" data-alt="Lab"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Art_class.jpg" alt="Lab" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Lab</b><p>An intensive day of hands-on project work — leave with something made.</p></div></a>
-                <a class="day-item" href="catalogue/services.html#out-of-town"><div class="frame" data-alt="Out of Town"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Village_d%27Eygali%C3%A8res_et_Alpilles_2.jpg" alt="Out of Town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Out of Town</b><p>The same full-day depth, taken beyond the city. In development.</p></div></a>
+                <a class="day-item" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Taste &amp; Learn"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/March%C3%A9_proven%C3%A7al.jpg" alt="Taste &amp; Learn" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Taste &amp; Learn</b><p>One theme, talks and visits, punctuated by two tasting moments.</p></div></a>
+                <a class="day-item" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Trek"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Walking_tour.jpg" alt="Trek" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Trek</b><p>An urban hike where walking is the thread running through the day.</p></div></a>
+                <a class="day-item" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Lab"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Art_class.jpg" alt="Lab" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Lab</b><p>An intensive day of hands-on project work — leave with something made.</p></div></a>
+                <a class="day-item" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Out of Town"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Village_d%27Eygali%C3%A8res_et_Alpilles_2.jpg" alt="Out of Town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Out of Town</b><p>The same full-day depth, taken beyond the city. In development.</p></div></a>
               </div>
               <div class="cell-foot">
                 <a href="catalogue/index.html" class="mini-cta mini-cta--solid">Come Discover</a>
-                <a href="catalogue/services.html#full-days" class="card-link">Learn more →</a>
+                <a href="catalogue/services-full-days.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a>
               </div>
             </div>
           </div>

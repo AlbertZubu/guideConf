@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UpTempo — Workshops</title>
+<meta name="description" content="UpTempo workshops — practical, linguistic and cultural tools students can use throughout their stay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#111111; --secondary:#1151ff; --accent:#ed1aa0;
+    --canvas:#ffffff; --canvas-soft:#f5f5f5; --surface-alt:#e5e5e5;
+    --ink:#111111; --ink-muted:#55565a; --ink-faint:#9e9ea0; --hairline:#cacacb;
+    --pulse:#ed1aa0; --clutch:#1151ff;
+    --divider:rgba(163,163,166,.5);
+    --font-display:'Archivo Black','Arial Black',sans-serif; --font-body:'Inter',Helvetica,Arial,sans-serif;
+    --radius-md:18px; --radius-lg:26px; --radius-full:9999px;
+  }
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;} html,body{margin:0;padding:0;}
+  body{ background:var(--canvas); color:var(--ink); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  img{max-width:100%; display:block;} a{color:inherit; text-decoration:none;}
+  h1,h2,h3{ margin:0; font-family:var(--font-display); text-transform:uppercase; } p{ margin:0; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--secondary); }
+
+  header.top{ padding:36px 0 8px; }
+  header.top .back{ font-size:13.5px; font-weight:700; color:var(--secondary); display:inline-flex; align-items:center; gap:6px; }
+  header.top .back:hover{ text-decoration:underline; }
+  header.top h1{ font-size:clamp(32px,5vw,54px); letter-spacing:-1px; line-height:1; margin:16px 0 14px; }
+  header.top p{ font-size:17px; line-height:1.6; color:var(--ink-muted); max-width:680px; margin:0 0 28px; }
+
+  .quicknav{ display:flex; gap:10px; flex-wrap:wrap; padding-bottom:44px; border-bottom:1px solid var(--hairline); margin-bottom:56px; }
+  .quicknav a{ font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:9px 16px; border-radius:var(--radius-full); border:2px solid var(--ink); }
+  .quicknav a:hover{ background:var(--ink); color:#fff; }
+
+  .service-section{ padding-bottom:80px; scroll-margin-top:24px; }
+  .service-section__head{ max-width:720px; margin-bottom:34px; }
+  .service-section__head h2{ font-size:clamp(26px,3.6vw,40px); letter-spacing:-.5px; margin:8px 0 14px; }
+  .service-section__head p{ font-size:15.5px; line-height:1.6; color:var(--ink-muted); margin:0 0 8px; }
+
+  .sub-head{ display:flex; align-items:baseline; gap:12px; margin:44px 0 20px; }
+  .sub-head h3{ font-size:20px; letter-spacing:-.3px; font-family:var(--font-body); font-weight:800; text-transform:none; }
+  .sub-head p{ font-size:14px; color:var(--ink-muted); }
+
+  .service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .service-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px){ .service-grid{ grid-template-columns:1fr; } }
+
+  .service-card{
+    background:var(--canvas-soft); border:2px solid var(--ink); border-radius:var(--radius-lg);
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .service-card__media{ aspect-ratio:4/3; background:var(--surface-alt); position:relative; }
+  .service-card__media img{ width:100%; height:100%; object-fit:cover; }
+  .service-card__media.fallback{ display:flex; align-items:flex-end; background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .service-card__media.fallback::after{ content:attr(data-alt); padding:14px; font-size:12.5px; font-weight:700; color:#fff; }
+  .service-card__body{ padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
+  .service-card__body h4{ font-family:var(--font-body); font-weight:800; text-transform:none; font-size:17px; letter-spacing:-.2px; margin:0 0 8px; }
+  .service-card__kicker{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint, #9e9ea0); margin:-4px 0 8px; }
+  .dest-mini-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:14px; }
+  .dest-mini{ border:1px solid var(--hairline, #cacacb); border-radius:14px; padding:12px 14px; background:var(--canvas, #fff); }
+  .dest-mini b{ display:block; font-size:13.5px; font-weight:800; letter-spacing:-.2px; }
+  .dest-mini span{ display:block; font-size:11px; color:var(--ink-muted, #55565a); margin-top:2px; line-height:1.35; }
+  .service-card__body p{ font-size:14px; line-height:1.55; color:var(--ink-muted); }
+  .service-card__body ul{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:5px; }
+  .service-card__body li{ font-size:13px; color:var(--ink-muted); display:flex; align-items:baseline; gap:6px; }
+  .service-card__body li::before{ content:"—"; color:var(--ink-faint); flex:none; }
+  .service-card--soon{ opacity:.7; }
+  .soon-tag{ position:absolute; top:12px; left:12px; background:rgba(17,17,17,.75); color:#fff; font-size:10.5px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; padding:5px 10px; border-radius:var(--radius-full); }
+
+  footer.bottom{ padding:20px 0 60px; border-top:1px solid var(--hairline); margin-top:20px; }
+  footer.bottom p{ font-size:13px; color:var(--ink-faint); }
+
+  /* Page tint — this category's pastel identity, mirrored on the homepage card. */
+  :root{ --tint:#ece7fa; --tint-deep:#6a4fc9; }
+  .service-card{ background:var(--tint); }
+  header.top .eyebrow, header.top .back{ color:var(--tint-deep); }
+  .quicknav a.current{ background:var(--ink); color:#fff; pointer-events:none; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="back" href="../index.html#services">← Back to UpTempo</a>
+    <span class="eyebrow" style="display:block; margin-top:16px;">UpTempo Services</span>
+    <h1>Workshops</h1>
+    <p>Focused sessions built for study-abroad programs — each workshop addresses one concrete need and goes deep on a single theme, so participants leave able to act, not just to know.</p>
+  </header>
+
+  <nav class="quicknav">
+    <a class="current" href="#">Workshops</a>
+    <a href="services-visits.html">Visits</a>
+    <a href="services-full-days.html">Full Days</a>
+  </nav>
+
+  <section class="service-section" id="workshops">
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Frenchness 101"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rue_de_Paris.jpg" alt="Frenchness 101" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Frenchness 101</h4>
+          <p>For students who have just arrived in France. It gives them the key landmarks they need to navigate French culture, pick up the right reflexes and start using the right tools from day one.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Autonomous Language Learning"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stack_of_multicolored_books_on_a_table.jpg" alt="Autonomous Language Learning" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>A.L.L.</h4>
+          <p class="service-card__kicker">Autonomous Language Learning</p>
+          <p>Methods, resources and habits that let students keep learning French on their own — efficiently and effectively — for the rest of their stay.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Table Talk Games"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Backgammon_board.jpg" alt="Table Talk Games" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Table Talk Games</h4>
+          <p>Board-game sessions that get participants talking in a relaxed, natural atmosphere. Games lower the barrier to speaking and practising the language without feeling like a traditional class — though every session is carefully prepared, pedagogically and linguistically, in advance.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="bottom">
+    <p>Looking for a multi-day journey instead? See the <a href="index.html" style="color:var(--secondary); font-weight:700;">Excursion Catalogue →</a></p>
+  </footer>
+</div>
+
+</body>
+</html>
