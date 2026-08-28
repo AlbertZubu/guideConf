@@ -148,6 +148,18 @@
   .day-item b{ display:block; font-family:'Inter',sans-serif; font-size:12.5px; font-weight:800; letter-spacing:.2px; line-height:1.2; }
   .day-item p{ font-size:12px; line-height:1.45; color:var(--ink-muted); font-family:'Inter',sans-serif; margin-top:4px; }
   .cell-foot{ margin-top:auto; padding-top:8px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  /* Full Days splits into two clearly separated families: the formats run
+     where the group is based, and day trips out of Paris. */
+  .day-group{ margin-top:18px; }
+  .day-group__head{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; text-decoration:none; color:inherit; }
+  .day-group__head b{ font-family:'Inter',sans-serif; font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.7px; }
+  .day-group__head span{ font-family:'Inter',sans-serif; font-size:12px; line-height:1.4; color:var(--ink-muted); }
+  .day-group__head:hover b{ text-decoration:underline; }
+  .day-group .day-grid{ margin:12px 0 0; }
+  .dest-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .dest-chip{ font-family:'Inter',sans-serif; font-size:12.5px; font-weight:700; padding:7px 13px; border-radius:var(--radius-full); border:1.5px solid var(--hairline); background:var(--canvas); color:inherit; text-decoration:none; white-space:nowrap; }
+  .dest-chip:hover{ border-color:var(--ink); }
+  .dest-chip--more{ border-style:dashed; color:var(--ink-muted); }
   @media (max-width:760px){ .day-grid{ grid-template-columns:1fr; } }
 
   .guide{ display:grid; grid-template-columns:320px 1fr; gap:56px; align-items:center; }
@@ -278,15 +290,23 @@
               </div>
             </div>
             <div class="puzzle-cell puzzle-cell--fulldays reveal" style="--i:2"><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
-              <div class="mini-ctas mini-ctas--spread">
-                <a href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;" class="mini-cta">In Your City</a>
-                <a href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;" class="mini-cta">Out of Town</a>
-              </div>
-              <div class="day-grid">
+              <div class="day-group">
+                <a class="day-group__head" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><b>In Your City</b><span>Three formats, run where your group is based.</span></a>
+                <div class="day-grid">
                 <a class="day-item" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Taste &amp; Learn"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/March%C3%A9_proven%C3%A7al.jpg" alt="Taste &amp; Learn" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Taste &amp; Learn</b><p>One theme, talks and visits, punctuated by two tasting moments.</p></div></a>
                 <a class="day-item" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Trek"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Walking_tour.jpg" alt="Trek" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Trek</b><p>An urban hike where walking is the thread running through the day.</p></div></a>
                 <a class="day-item" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Lab"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Art_class.jpg" alt="Lab" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Lab</b><p>An intensive day of hands-on project work — leave with something made.</p></div></a>
-                <a class="day-item" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;"><div class="frame" data-alt="Out of Town"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Village_d%27Eygali%C3%A8res_et_Alpilles_2.jpg" alt="Out of Town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div><div><b>Out of Town</b><p>The same full-day depth, taken beyond the city. In development.</p></div></a>
+                </div>
+              </div>
+              <div class="day-group">
+                <a class="day-group__head" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;"><b>Out of Town</b><span>The same full day, taken outside Paris — for example:</span></a>
+                <div class="dest-chips">
+                  <a class="dest-chip" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;">Versailles</a>
+                  <a class="dest-chip" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;">Giverny</a>
+                  <a class="dest-chip" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;">Chartres</a>
+                  <a class="dest-chip" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;">Reims</a>
+                  <a class="dest-chip dest-chip--more" href="catalogue/services-full-days.html#out-of-town" onclick="openFicheModal(this.href);return false;">and more →</a>
+                </div>
               </div>
               <div class="cell-foot">
                 <a href="catalogue/index.html" class="mini-cta mini-cta--solid">Come Discover</a>
