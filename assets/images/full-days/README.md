@@ -9,8 +9,10 @@ Filenames are referenced directly in the markup — keep them as listed.
 | `taste-and-learn.jpg`   | Taste & Learn  |
 | `trek.jpg`              | Trek           |
 | `lab.jpg`               | Lab            |
+| `out-of-town.jpg`       | Out of Town    |
 
-Out of Town still uses a Wikimedia photo — it has no dedicated image yet.
+Out of Town appears only on the Full Days page — the homepage card lists
+destination names as chips instead of showing an image.
 
 Both usages crop with `object-fit: cover` and centre the image: the
 homepage renders a 58 px square tile, the format card a 4:3 panel. Keep
