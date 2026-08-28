@@ -20,6 +20,10 @@
     --pulse:#ed1aa0; --pulse-ink:#ffffff; --clutch:#1151ff; --clutch-ink:#ffffff;
     --fmt-yellow:#FFE94D; --fmt-green:#6BFF5C; --fmt-ink:#111111;
     --divider:rgba(163,163,166,.5);
+    /* Service-category papers: the site's own blue / pink / yellow hues
+       desaturated into the --canvas-soft band, so they tint the card
+       without introducing colours the palette doesn't already use. */
+    --paper-workshops:#eceef7; --paper-visits:#f7ecf3; --paper-fulldays:#f5f2e4;
     --font-display:'Archivo Black','Arial Black',sans-serif; --font-body:Helvetica,Arial,sans-serif;
     --radius-sm:18px; --radius-md:24px; --radius-lg:30px; --radius-full:9999px;
     --shadow-sm:0 2px 4px rgba(0,0,0,.15);
@@ -87,9 +91,9 @@
   .puzzle-cell .card-link{ margin-top:auto; padding-top:16px; }
   .puzzle-grid.reveal-stagger .puzzle-cell{ transition-delay:calc(var(--i,0) * 90ms); }
   /* Pastel identity per service category — mirrored on each category's own page. */
-  .puzzle-cell--workshops{ background:#ece7fa; }
-  .puzzle-cell--visits{ background:#e2f4ec; }
-  .puzzle-cell--fulldays{ background:#fdeee0; }
+  .puzzle-cell--workshops{ background:var(--paper-workshops); }
+  .puzzle-cell--visits{ background:var(--paper-visits); }
+  .puzzle-cell--fulldays{ background:var(--paper-fulldays); }
   @media (max-width:560px){ .puzzle-row{ flex-direction:column; } .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell, .puzzle-col--split > .puzzle-cell{ flex:none; } }
   .badges{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
   .badge{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:5px 10px; border-radius:var(--radius-full); background:var(--canvas-soft); color:var(--ink-muted); font-family:'Inter',sans-serif; }
