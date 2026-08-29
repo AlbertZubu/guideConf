@@ -35,6 +35,12 @@
   .quicknav a{ font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:9px 16px; border-radius:var(--radius-full); border:2px solid var(--ink); }
   .quicknav a:hover{ background:var(--ink); color:#fff; }
 
+  .immersion{ display:flex; gap:14px; align-items:baseline; flex-wrap:wrap;
+    border-left:4px solid var(--secondary); background:var(--canvas-soft);
+    border-radius:0 14px 14px 0; padding:16px 20px; margin:0 0 30px; max-width:760px; }
+  .immersion b{ font-size:12px; font-weight:800; letter-spacing:.9px; text-transform:uppercase;
+    color:var(--secondary); white-space:nowrap; }
+  .immersion span{ flex:1 1 320px; font-size:15px; line-height:1.6; color:var(--ink-muted); }
   .service-section{ padding-bottom:80px; scroll-margin-top:24px; }
   .service-section__head{ max-width:720px; margin-bottom:34px; }
   .service-section__head h2{ font-size:clamp(26px,3.6vw,40px); letter-spacing:-.5px; margin:8px 0 14px; }
@@ -60,15 +66,17 @@
   .service-card__body h4{ font-family:var(--font-body); font-weight:800; text-transform:none; font-size:17px; letter-spacing:-.2px; margin:0 0 8px; }
   .service-card__kicker{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint, #9e9ea0); margin:-4px 0 8px; }
   .dest-mini-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:14px; }
-  .dest-mini{ border:1px solid var(--hairline, #cacacb); border-radius:14px; padding:12px 14px; background:var(--canvas, #fff); }
+  .dest-mini{ border:1px solid var(--hairline, #cacacb); border-radius:14px; overflow:hidden; background:var(--canvas, #fff); }
+  .dest-mini__media{ aspect-ratio:4/3; background:var(--surface-alt, #e5e5e5); }
+  .dest-mini__media img{ width:100%; height:100%; object-fit:cover; }
+  .dest-mini__media.fallback{ background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .dest-mini__body{ padding:10px 12px 12px; }
   .dest-mini b{ display:block; font-size:13.5px; font-weight:800; letter-spacing:-.2px; }
   .dest-mini span{ display:block; font-size:11px; color:var(--ink-muted, #55565a); margin-top:2px; line-height:1.35; }
   .service-card__body p{ font-size:14px; line-height:1.55; color:var(--ink-muted); }
   .service-card__body ul{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:5px; }
   .service-card__body li{ font-size:13px; color:var(--ink-muted); display:flex; align-items:baseline; gap:6px; }
   .service-card__body li::before{ content:"—"; color:var(--ink-faint); flex:none; }
-  .service-card--soon{ opacity:.7; }
-  .soon-tag{ position:absolute; top:12px; left:12px; background:rgba(17,17,17,.75); color:#fff; font-size:10.5px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; padding:5px 10px; border-radius:var(--radius-full); }
 
   footer.bottom{ padding:20px 0 60px; border-top:1px solid var(--hairline); margin-top:20px; }
   footer.bottom p{ font-size:13px; color:var(--ink-faint); }
@@ -169,6 +177,10 @@
       <p>Full-day experiences built to take the time to explore a subject properly — layering different approaches into one deeper experience. Full Days fall into two broad categories.</p>
     </div>
 
+    <div class="immersion">
+      <b>Run in French</b>
+      <span>Every Full Day is led in French, pitched at your group's level. Participants learn the subject and practise the language in the same breath — the day does the teaching, so neither ever feels like a class.</span>
+    </div>
     <div class="sub-head" id="in-your-city">
       <h3>In Your City</h3>
       <p>Full days organised in the city where participants live or are staying — three formats.</p>
@@ -182,9 +194,9 @@
         </div>
       </article>
       <article class="service-card">
-        <div class="service-card__media" data-alt="Trek"><img src="../assets/images/full-days/trek.jpg" alt="Trek" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__media" data-alt="Urban Trek"><img src="../assets/images/full-days/trek.jpg" alt="Urban Trek" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
         <div class="service-card__body">
-          <h4>Trek</h4>
+          <h4>Urban Trek</h4>
           <p>An urban hike built around walking and discovery. The day has a light sporting dimension while staying accessible, grounded in gentle physical activity. The route is punctuated with breaks, tastings and visits — but walking stays the thread running through the whole experience.</p>
         </div>
       </article>
@@ -210,26 +222,51 @@
       <p>Full days organised outside the city where participants live or are staying.</p>
     </div>
     <div class="service-grid">
-      <article class="service-card service-card--soon">
-        <div class="service-card__media" data-alt="Out of Town — coming soon" style="position:relative;">
-          <span class="soon-tag">In development</span>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Out of Town">
           <img src="../assets/images/full-days/out-of-town.jpg" alt="Out of Town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();">
         </div>
         <div class="service-card__body">
           <h4>Out of Town</h4>
-          <p>Formats for this category are still being defined. Once ready, it will bring the same full-day depth to destinations beyond the city — check back soon, or get in touch to discuss a custom day trip today.</p>
+          <p>The same full-day depth, taken beyond the city — a château, a cathedral or a village reached by coach or train, then explored properly. Tell us where your group should go and we build the day around it.</p>
         </div>
       </article>
     </div>
     <!-- Classic day-trip destinations around Paris — small tiles beside the
          explainer card above. -->
     <div class="dest-mini-grid">
-      <div class="dest-mini"><b>Versailles</b><span>The palace of palaces</span></div>
-      <div class="dest-mini"><b>Chartres</b><span>The cathedral of cathedrals</span></div>
-      <div class="dest-mini"><b>Chantilly</b><span>The château of the princes</span></div>
-      <div class="dest-mini"><b>Vaux-le-Vicomte</b><span>The model for Versailles</span></div>
-      <div class="dest-mini"><b>Auvers-sur-Oise</b><span>Van Gogh's last village</span></div>
-      <div class="dest-mini"><b>Compiègne</b><span>Imperial château and forest</span></div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/versailles.jpg" alt="Versailles" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Versailles</b><span>The palace of palaces</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/giverny.jpg" alt="Giverny" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Giverny</b><span>Monet's house and gardens</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/reims.jpg" alt="Reims" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Reims</b><span>Coronations and champagne</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/chartres.jpg" alt="Chartres" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Chartres</b><span>The cathedral of cathedrals</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/chantilly.jpg" alt="Chantilly" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Chantilly</b><span>The château of the princes</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/vaux-le-vicomte.jpg" alt="Vaux-le-Vicomte" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Vaux-le-Vicomte</b><span>The model for Versailles</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/auvers-sur-oise.jpg" alt="Auvers-sur-Oise" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Auvers-sur-Oise</b><span>Van Gogh's last village</span></div>
+      </div>
+      <div class="dest-mini">
+        <div class="dest-mini__media"><img src="../assets/images/destinations/compiegne.jpg" alt="Compiègne" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="dest-mini__body"><b>Compiègne</b><span>Imperial château and forest</span></div>
+      </div>
     </div>
   </section>
 
