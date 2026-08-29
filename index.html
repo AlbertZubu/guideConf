@@ -85,11 +85,22 @@
   .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell{ flex:1 1 0; min-width:0; }
   .puzzle-col{ display:flex; flex-direction:column; gap:16px; }
   .puzzle-col--split > .puzzle-cell{ flex:1 1 auto; }
-  .puzzle-cell{ display:flex; flex-direction:column; padding:26px; border-radius:var(--radius-lg); border:2px solid var(--ink); background:var(--canvas-soft); box-shadow:inset 0 6px 16px rgba(0,0,0,.07); }
+  .puzzle-cell{ position:relative; display:flex; flex-direction:column; padding:26px; border-radius:var(--radius-lg); border:2px solid var(--ink); background:var(--canvas-soft); box-shadow:inset 0 6px 16px rgba(0,0,0,.07); }
   .puzzle-cell h3{ font-size:22px; letter-spacing:-.3px; margin:10px 0 8px; }
   .puzzle-cell p{ font-size:14.5px; line-height:1.55; color:var(--ink-muted); font-family:'Inter',sans-serif; }
   .puzzle-cell .card-link{ margin-top:auto; padding-top:16px; }
   .puzzle-grid.reveal-stagger .puzzle-cell{ transition-delay:calc(var(--i,0) * 90ms); }
+  /* Whole-card link: an overlay anchor covers the cell so a click anywhere
+     opens the category. Only the blocks that carry their own links are
+     lifted above it — headings and body copy stay under the overlay so
+     they remain part of the clickable surface. */
+  .cell-overlay{ position:absolute; inset:0; z-index:1; border-radius:inherit; }
+  .puzzle-cell{ cursor:pointer; }
+  .puzzle-cell .cell-thumbs,
+  .puzzle-cell .cell-foot,
+  .puzzle-cell .day-group,
+  .puzzle-cell .excursions{ position:relative; z-index:2; }
+  .puzzle-cell:hover{ border-color:var(--secondary); }
   /* Pastel identity per service category — mirrored on each category's own page. */
   .puzzle-cell--workshops{ background:var(--paper-workshops); }
   .puzzle-cell--visits{ background:var(--paper-visits); }
@@ -276,7 +287,7 @@
         <div class="puzzle-grid reveal-stagger">
           <div class="puzzle-row">
             <div class="puzzle-col puzzle-col--split">
-              <div class="puzzle-cell puzzle-cell--workshops reveal" style="--i:0"><div class="badges"><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p>
+              <div class="puzzle-cell puzzle-cell--workshops reveal" style="--i:0"><a class="cell-overlay" href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" aria-label="See all workshops"></a><div class="badges"><span class="badge">2–4h</span></div><h3>Workshops</h3><p>Focused sessions built to address one concrete need and go deep on a single theme. Workshops deliver a fast, tangible pedagogical boost—participants leave able to act, not just to know.</p>
                 <div class="cell-thumbs">
                   <a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" title="Frenchness 101"><div class="frame" data-alt="Frenchness 101"><img src="assets/images/workshops/frenchness-101.jpg" alt="Frenchness 101" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
                   <a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" title="A.L.L. — Autonomous Language Learning"><div class="frame" data-alt="A.L.L."><img src="assets/images/workshops/all.jpg" alt="Autonomous Language Learning" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
@@ -284,7 +295,7 @@
                 </div>
                 <div class="cell-foot"><a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a></div>
               </div>
-              <div class="puzzle-cell puzzle-cell--visits reveal" style="--i:1"><div class="badges"><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p>
+              <div class="puzzle-cell puzzle-cell--visits reveal" style="--i:1"><a class="cell-overlay" href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" aria-label="See all visits"></a><div class="badges"><span class="badge">1–3h</span></div><h3>Visits</h3><p>A single site, given the time it deserves — one museum, monument or landmark, explored in depth with a guide who makes the details make sense.</p>
                 <div class="cell-thumbs">
                   <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Winter Ready"><div class="frame" data-alt="Winter Ready"><img src="assets/images/visits/winter-ready.jpg" alt="Winter Ready" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
                   <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Events"><div class="frame" data-alt="Events"><img src="assets/images/visits/events.jpg" alt="Events" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
@@ -293,7 +304,7 @@
                 <div class="cell-foot"><a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a></div>
               </div>
             </div>
-            <div class="puzzle-cell puzzle-cell--fulldays reveal" style="--i:2"><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
+            <div class="puzzle-cell puzzle-cell--fulldays reveal" style="--i:2"><a class="cell-overlay" href="catalogue/services-full-days.html" onclick="openFicheModal(this.href);return false;" aria-label="See all full days"></a><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day, paced the way your group needs it — one subject, several connected places, one continuous thread of discovery from morning to evening.</p>
               <div class="day-group">
                 <a class="day-group__head" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><b>In Your City</b><span>Three formats, run where your group is based.</span></a>
                 <div class="day-grid">
@@ -317,7 +328,7 @@
               </div>
             </div>
           </div>
-          <div class="puzzle-cell reveal" style="--i:3"><div class="badges"><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format. Available in two formats:</p>
+          <div class="puzzle-cell reveal" style="--i:3"><a class="cell-overlay" href="catalogue/index.html" aria-label="See the excursion catalogue"></a><div class="badges"><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative — our flagship format. Available in two formats:</p>
             <div class="format-mini">
               <div class="format-mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="11" rx="3"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg></div>
               <div><b>Classic</b><p>Round-trip by coach from Paris. Best suited to larger groups, or groups looking for comfort and ease.</p></div>
