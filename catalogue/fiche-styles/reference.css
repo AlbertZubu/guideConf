@@ -131,6 +131,15 @@
    highlights split against a large image, and the activity library
    grouped by format — every family wearing the site's color code.
    Light surfaces re-tint per skin via the --card-* tokens. */
+/* Immersion note — every journey runs in French; stated once, under the
+   pedagogical objective, so it reads as a property of the programme. */
+.immersion-note{
+  margin-top:18px; padding:14px 18px; border-left:3px solid var(--clutch);
+  background:var(--card-bg, rgba(255,255,255,.06)); border-radius:0 12px 12px 0;
+  font-size:14.5px; line-height:1.6;
+}
+.immersion-note b{ color:var(--clutch); text-transform:uppercase; letter-spacing:.06em; font-size:12px; }
+
 .intro--overview{ grid-template-columns:1fr; }
 .intro--overview .intro__text{ padding-right:0; max-width:840px; }
 .intro--overview .intro__text p:first-of-type{ font-size:17.5px; line-height:1.6; font-weight:500; color:var(--ink); }

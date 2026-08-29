@@ -30,7 +30,7 @@ const DEFAULT_FORMATS = [
 ];
 
 const CLOSING_DEFAULT = "Tell us your dates, your group and what you'd like them to walk away understanding — we'll adjust the programme around it.";
-const FINEPRINT_DEFAULT = "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives.";
+const FINEPRINT_DEFAULT = "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives.";
 
 const EXCURSION_FICHES = {
 
@@ -95,7 +95,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Bayeux or Honfleur depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Bayeux or Honfleur depending on season and availability."
   },
 
   "d-day": {
@@ -150,7 +150,7 @@ const EXCURSION_FICHES = {
         text: "An onboard comparison of war in 1944 and war today — technology, strategy, intelligence, logistics — tracing what has transformed beyond recognition and what, strikingly, has not." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Arromanches or Bayeux depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Arromanches or Bayeux depending on season and availability."
   },
 
   "impressionist-normandy": {
@@ -206,7 +206,7 @@ const EXCURSION_FICHES = {
         text: "For centuries art fought over one question: colour or line? Colourists against draughtsmen, from the Renaissance to the Academy. This onboard sequence shows how Impressionism finally answered the oldest argument in art history." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Honfleur or Le Havre depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Honfleur or Le Havre depending on season and availability."
   },
 
   "medieval-normandy": {
@@ -259,7 +259,7 @@ const EXCURSION_FICHES = {
         text: "Vikings turned vassals, conquerors turned rivals of their own king — an onboard tour of the very different political roles the duchy of Normandy played through the history of France, and why the kingdom never quite trusted it." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Granville or Saint-Malo depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Granville or Saint-Malo depending on season and availability."
   },
 
   "loire-chateaux": {
@@ -318,7 +318,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Tours or Blois depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Tours or Blois depending on season and availability."
   },
 
   "loire-renaissance": {
@@ -379,7 +379,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Tours or Amboise depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Tours or Amboise depending on season and availability."
   },
 
   "loire-gardens": {
@@ -438,7 +438,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Tours depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Tours depending on season and availability."
   },
 
   "gothic-cathedrals": {
@@ -494,7 +494,7 @@ const EXCURSION_FICHES = {
         text: "Gothic isn't just an architecture — it's the mentality of an era. An onboard plunge into how people of the time spoke, thought and believed: their fears, their sense of time, their idea of God and light — the worldview these buildings were built to express." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Amiens or Beauvais depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Amiens or Beauvais depending on season and availability."
   },
 
   "christmas-markets": {
@@ -542,7 +542,7 @@ const EXCURSION_FICHES = {
         text: "Saint Nicholas before Santa, lights against the northern dark, markets born of medieval fairs — an onboard tour of the Christmas traditions specific to Flanders, and why this region stages the season like nowhere else in Europe." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Seasonal journey (late November to late December). Accommodation in Ghent or Lille depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Seasonal journey (late November to late December). Accommodation in Ghent or Lille depending on season and availability."
   },
 
   flanders: {
@@ -589,7 +589,7 @@ const EXCURSION_FICHES = {
         text: "Saint Nicholas before Santa, lights against the northern dark, markets born of medieval fairs — an onboard tour of the Christmas traditions specific to Flanders, and why this region stages the season like nowhere else in Europe." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Ghent or Ostend depending on season and availability."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Ghent or Ostend depending on season and availability."
   },
 
   /* ================= EASTERN FRANCE ================= */
@@ -639,7 +639,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives."
   },
 
   troyes: {
@@ -691,7 +691,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives."
   },
 
   "great-war": {
@@ -747,7 +747,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives."
   },
 
   /* ================= PROVENCE ================= */
@@ -803,7 +803,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Cassis."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Cassis."
   },
 
   "marseille-calanques": {
@@ -856,7 +856,7 @@ const EXCURSION_FICHES = {
         text: "An onboard geology briefing on the coast ahead: how these narrow limestone fjords were carved, why the water is that colour, and why the whole coastline is now a protected national park." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Cassis."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Cassis."
   },
 
   "provence-stones": {
@@ -912,7 +912,7 @@ const EXCURSION_FICHES = {
         text: "An onboard portrait of Van Gogh's Arles year — the light that drew him, the frenzy that consumed him, and the three hundred works it produced — so students walk his streets knowing what happened there." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Arles."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Arles."
   },
 
   /* ================= BORDEAUX ================= */
@@ -975,7 +975,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Bordeaux."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Bordeaux."
   },
 
   "bordeaux-vineyards": {
@@ -1030,7 +1030,7 @@ const EXCURSION_FICHES = {
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
     closingSub: CLOSING_DEFAULT,
-    fineprint: "Educational journey designed by UpTempo — itinerary, timings and activities adjusted to each group's age, size and objectives. Accommodation in Bordeaux."
+    fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Bordeaux."
   }
 
 };
