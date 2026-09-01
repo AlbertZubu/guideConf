@@ -20,13 +20,7 @@
     { key: "editorial", label: "Éditorial",
       font: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" },
     { key: "magazine",  label: "Magazine",
-      font: "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" },
-    { key: "brutal",    label: "Brutal" },
-    { key: "terminal",  label: "Terminal",
-      font: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" },
-    { key: "aurora",    label: "Aurora" },
-    { key: "bubble",    label: "Bubble",
-      font: "https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" }
+      font: "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" }
   ];
   var KEYS = THEMES.map(function (t) { return t.key; });
   var STORE = "uptempo-design";

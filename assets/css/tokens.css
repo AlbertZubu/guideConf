@@ -50,8 +50,13 @@
   --border-w:2px;
 
   /* depth */
-  --shadow-sm:0 2px 4px rgba(0,0,0,.15);
-  --shadow-lg:0 16px 32px rgba(0,0,0,.18);
+  /* Two layers per shadow: a tight one that seats the object on the
+     surface, and a wide diffuse one that lifts it off the background.
+     That pairing is what reads as volume rather than as a drop shadow. */
+  --shadow-sm:0 1px 2px rgba(17,17,20,.06), 0 4px 10px -4px rgba(17,17,20,.10);
+  --shadow-md:0 1px 2px rgba(17,17,20,.05), 0 10px 26px -14px rgba(17,17,20,.20);
+  --shadow-lg:0 2px 4px rgba(17,17,20,.06), 0 24px 54px -22px rgba(17,17,20,.30);
+  --shadow-xl:0 3px 6px rgba(17,17,20,.07), 0 40px 80px -30px rgba(17,17,20,.38);
 
   /* Activity formats — the brand's semantic code.
      Deliberately CONSTANT across every theme: these four colours

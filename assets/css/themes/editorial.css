@@ -16,6 +16,7 @@
   --display-case:none; --display-tracking:-.02em;
   --radius-sm:0; --radius-md:0; --radius-lg:0; --radius-full:0; --border-w:1px;
   --shadow-sm:none; --shadow-lg:none;
+  --shadow-md:none; --shadow-xl:none;
   --card:var(--surface); --card-ink:var(--ink); --card-ink-muted:var(--ink-muted);
   --card-ink-faint:var(--ink-faint); --card-line:var(--hairline);
   --card-soft:rgba(20,19,15,.05); --card-accent:var(--accent);
