@@ -1,0 +1,63 @@
+/* =============================================================
+   DESIGN TOKENS — the contract every page and every theme share.
+   These are the REFERENCE values: the design the site has today.
+   A theme file (assets/css/themes/<name>.css) is layered on top
+   and only redefines this same list, so switching a theme never
+   touches layout — only colour, type and shape.
+   Loaded by every page; the switcher injects the theme after it.
+   ============================================================= */
+:root{
+  /* surfaces */
+  --canvas:#ffffff;
+  --canvas-soft:#f5f5f5;
+  --canvas-sink:#e7e6e4;
+  --surface:#ffffff;
+  --surface-alt:#e5e5e5;
+  --surface-dark:#1f2024;
+  --surface-dark-soft:#2a2b30;
+
+  /* text */
+  --ink:#111111;
+  --ink-muted:#55565a;
+  --ink-faint:#9e9ea0;
+  --on-dark:#ffffff;
+  --on-dark-muted:#c3c4c8;
+  --on-primary:#ffffff;
+
+  /* brand */
+  --primary:#111111;
+  --primary-active:#000000;
+  --secondary:#1151ff;
+  --accent:#ed1aa0;
+
+  /* lines */
+  --hairline:#cacacb;
+  --hairline-soft:#e5e5e5;
+  --hairline-dark:rgba(255,255,255,.18);
+  --divider:rgba(163,163,166,.5);
+
+  /* type */
+  --font-display:'Archivo Black','Arial Black',sans-serif;
+  --font-body:'Inter',Helvetica,Arial,sans-serif;
+  --display-case:uppercase;
+  --display-tracking:-1px;
+
+  /* shape */
+  --radius-sm:18px;
+  --radius-md:24px;
+  --radius-lg:30px;
+  --radius-full:9999px;
+  --border-w:2px;
+
+  /* depth */
+  --shadow-sm:0 2px 4px rgba(0,0,0,.15);
+  --shadow-lg:0 16px 32px rgba(0,0,0,.18);
+
+  /* Activity formats — the brand's semantic code.
+     Deliberately CONSTANT across every theme: these four colours
+     identify Pulse / Clutch / Echo / Unbound wherever they appear. */
+  --pulse:#ed1aa0;   --pulse-ink:#ffffff;
+  --clutch:#1151ff;  --clutch-ink:#ffffff;
+  --echo:#FFE94D;    --echo-ink:#111111;
+  --unbound:#6BFF5C; --unbound-ink:#111111;
+}

@@ -1,0 +1,46 @@
+/* =============================================================
+   THEME — Apple
+   Restraint, generous white, one confident blue.
+   Palette and type derived from docs/Design styles.zip
+   (DESIGN-apple.md). Overrides only the token contract in
+   assets/css/tokens.css; no layout rule lives here.
+   ============================================================= */
+
+:root{
+  --canvas:#ffffff;
+  --canvas-soft:#f5f5f7;
+  --canvas-sink:#fafafc;
+  --surface:#ffffff;
+  --surface-alt:#f0f0f0;
+  --surface-dark:#1d1d1f;
+  --surface-dark-soft:#272729;
+
+  --ink:#1d1d1f;
+  --ink-muted:#333333;
+  --ink-faint:#7a7a7a;
+  --on-dark:#ffffff;
+  --on-dark-muted:#cccccc;
+  --on-primary:#ffffff;
+
+  --primary:#0066cc;
+  --primary-active:#0071e3;
+  --secondary:#0071e3;
+  --accent:#2997ff;
+
+  --hairline:#e0e0e0;
+  --hairline-soft:#f0f0f0;
+  --divider:rgba(0,0,0,.12);
+
+  --font-display:'Inter',-apple-system,'SF Pro Display',Helvetica,sans-serif;
+  --font-body:'Inter',-apple-system,Helvetica,sans-serif;
+  --display-case:none;
+  --display-tracking:-.02em;
+
+  --radius-sm:12px;
+  --radius-md:18px;
+  --radius-lg:28px;
+  --border-w:1px;
+
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.10);
+}

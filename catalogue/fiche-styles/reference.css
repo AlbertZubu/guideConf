@@ -66,7 +66,7 @@
 .hero__media::after{ background:linear-gradient(270deg, rgba(27,33,56,0) 45%, rgba(27,33,56,.92) 100%); }
 .hero__copy{ grid-column:1; grid-row:1; padding:46px 34px 30px var(--gutter); }
 .hero__eyebrow{ color:var(--accent); opacity:1; letter-spacing:.2em; }
-.hero__title{ font-size:50px; }
+.hero__title{ font-size:clamp(26px,7.4vw,50px); overflow-wrap:break-word; }
 .hero__sub{ color:var(--on-dark-muted); }
 
 /* facts as a headline row: the value first, the label under it */

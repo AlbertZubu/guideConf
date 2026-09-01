@@ -1,0 +1,46 @@
+/* =============================================================
+   THEME — Airbnb
+   Warm, roomy, one coral that carries every action.
+   Palette and type derived from docs/Design styles.zip
+   (DESIGN-airbnb.md). Overrides only the token contract in
+   assets/css/tokens.css; no layout rule lives here.
+   ============================================================= */
+
+:root{
+  --canvas:#ffffff;
+  --canvas-soft:#f7f7f7;
+  --canvas-sink:#f2f2f2;
+  --surface:#ffffff;
+  --surface-alt:#f2f2f2;
+  --surface-dark:#222222;
+  --surface-dark-soft:#3f3f3f;
+
+  --ink:#222222;
+  --ink-muted:#3f3f3f;
+  --ink-faint:#6a6a6a;
+  --on-dark:#ffffff;
+  --on-dark-muted:#c1c1c1;
+  --on-primary:#ffffff;
+
+  --primary:#ff385c;
+  --primary-active:#e00b41;
+  --secondary:#428bff;
+  --accent:#92174d;
+
+  --hairline:#dddddd;
+  --hairline-soft:#ebebeb;
+  --divider:rgba(0,0,0,.12);
+
+  --font-display:'Inter',Helvetica,Arial,sans-serif;
+  --font-body:'Inter',Helvetica,Arial,sans-serif;
+  --display-case:none;
+  --display-tracking:-.4px;
+
+  --radius-sm:12px;
+  --radius-md:16px;
+  --radius-lg:20px;
+  --border-w:1px;
+
+  --shadow-sm:0 1px 2px rgba(0,0,0,.08);
+  --shadow-lg:0 6px 20px rgba(0,0,0,.12);
+}

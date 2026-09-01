@@ -13,36 +13,18 @@
 
   Two data shapes are rendered: OVERVIEW fiches (no `days`) show
   objective / destinations / highlights / optional activities with no
-  itinerary; LEGACY fiches (with `days`) keep the two-day rail. Skins
-  live in fiche-styles/: the reference is "Nocturne" (dark indigo paper,
-  "Banner" hero with the facts promoted to headline size, light cards),
-  and ?style=encre|solaire|brume|cypres loads one of four re-tinted
-  variants on top of it. The floating skin bar at the
-  bottom of the page switches between the five; content is identical in
-  all of them.
+  itinerary; LEGACY fiches (with `days`) keep the two-day rail.
+  fiche-styles/reference.css carries the fiche's own layout and its
+  "Nocturne" look. Design themes are site-wide now: the shared bar from
+  assets/js/design-switcher.js overrides the token contract, so a fiche
+  follows whatever design the visitor picked anywhere on the site.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="normandy-in-3-journeys/styles/base.css">
 <link rel="stylesheet" href="fiche-styles/reference.css">
-<script>
-  /* Variant skins are a stylesheet layered on top of the reference:
-     ?style=<key> → fiche-styles/<key>.css. Unknown keys fall back to the
-     reference so a bad link never shows an unstyled page. */
-  const FICHE_SKINS = ["encre", "solaire", "brume", "cypres"];
-  const FICHE_SKIN = (() => {
-    const asked = new URLSearchParams(window.location.search).get("style");
-    return FICHE_SKINS.includes(asked) ? asked : "reference";
-  })();
-  if (FICHE_SKIN !== "reference") {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = `fiche-styles/${FICHE_SKIN}.css`;
-    document.head.appendChild(link);
-  }
-  document.documentElement.dataset.style = FICHE_SKIN;
-</script>
+<link rel="stylesheet" href="../assets/css/tokens.css">
 <style>
   /* Every fiche now runs 2 days / 1 night, so they all use the shared
      two-column .days grid built for Normandy's 2-day itinerary. The
@@ -58,28 +40,10 @@
      The stop name overlay keeps it from reading as a broken image. */
   .stop__media.is-fallback{ display:flex; align-items:flex-end; }
   .stop__media.is-fallback::after{ content:attr(data-alt); padding:14px; font-size:12px; font-weight:700; color:var(--on-dark); }
-  /* Floating skin bar — reference + the three variants. Purely a viewing
-     aid, so it stays out of print. */
-  .skinbar{
-    position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:99;
-    display:flex; gap:4px; padding:5px;
-    background:rgba(20,23,28,.88); border-radius:9999px;
-    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-    box-shadow:0 10px 28px rgba(0,0,0,.28);
-  }
-  .skinbar a{
-    font-family:'Inter','Archivo',sans-serif; font-size:11.5px; font-weight:600;
-    color:#b7bcc4; text-decoration:none; white-space:nowrap;
-    padding:7px 13px; border-radius:9999px; transition:color .15s ease;
-  }
-  .skinbar a:hover{ color:#ffffff; }
-  .skinbar a.active{ background:#ffffff; color:#14171c; }
-  @media print{ .skinbar{ display:none; } }
 </style>
 </head>
 <body>
 
-<nav class="skinbar" id="skinbar" aria-label="Visual variants"></nav>
 <article class="fiche" id="fiche"></article>
 
 <script src="../assets/data/excursion-fiches.js"></script>
@@ -93,18 +57,6 @@
   const data = slug && EXCURSION_FICHES[slug];
   const root = document.getElementById("fiche");
 
-  /* Skin bar: reference + the three variants, keeping ?slug intact. */
-  const SKIN_LABELS = { reference: "Référence", encre: "1 · Encre", solaire: "2 · Solaire", brume: "3 · Brume", cypres: "4 · Cyprès" };
-  const skinbar = document.getElementById("skinbar");
-  Object.entries(SKIN_LABELS).forEach(([key, label]) => {
-    const a = document.createElement("a");
-    const params = new URLSearchParams(window.location.search);
-    if (key === "reference") params.delete("style"); else params.set("style", key);
-    a.href = `${window.location.pathname}?${params.toString()}`;
-    a.textContent = label;
-    if (key === FICHE_SKIN) a.classList.add("active");
-    skinbar.appendChild(a);
-  });
 
   if (!data) {
     root.innerHTML = `<div class="fiche-missing">This fiche isn't available yet.</div>`;
@@ -297,5 +249,6 @@
 })();
 </script>
 
+<script src="../assets/js/design-switcher.js"></script>
 </body>
 </html>

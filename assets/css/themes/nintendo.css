@@ -1,0 +1,46 @@
+/* =============================================================
+   THEME — Nintendo 2001
+   Periwinkle chrome, red signal, unashamed retro.
+   Palette and type derived from docs/Design styles.zip
+   (DESIGN-nintendo-2001.md). Overrides only the token contract in
+   assets/css/tokens.css; no layout rule lives here.
+   ============================================================= */
+
+:root{
+  --canvas:#9fbee7;
+  --canvas-soft:#c0d5e6;
+  --canvas-sink:#8ba1d4;
+  --surface:#ffffff;
+  --surface-alt:#dedede;
+  --surface-dark:#21242e;
+  --surface-dark-soft:#3d4f97;
+
+  --ink:#21242e;
+  --ink-muted:#3d4f97;
+  --ink-faint:#60619c;
+  --on-dark:#ffffff;
+  --on-dark-muted:#acace7;
+  --on-primary:#ffffff;
+
+  --primary:#e60012;
+  --primary-active:#a7282b;
+  --secondary:#3d4f97;
+  --accent:#e48600;
+
+  --hairline:#8ba1d4;
+  --hairline-soft:#acace7;
+  --divider:rgba(33,36,46,.25);
+
+  --font-display:'Jost',Verdana,Geneva,sans-serif;
+  --font-body:Verdana,Geneva,'Jost',sans-serif;
+  --display-case:uppercase;
+  --display-tracking:0;
+
+  --radius-sm:4px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --border-w:2px;
+
+  --shadow-sm:0 2px 0 rgba(33,36,46,.35);
+  --shadow-lg:0 6px 0 rgba(33,36,46,.30);
+}
