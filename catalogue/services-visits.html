@@ -34,7 +34,7 @@
 
   .quicknav{ display:flex; gap:10px; flex-wrap:wrap; padding-bottom:44px; border-bottom:1px solid var(--hairline); margin-bottom:56px; }
   .quicknav a{ font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:9px 16px; border-radius:var(--radius-full); border:2px solid var(--ink); }
-  .quicknav a:hover{ background:var(--ink); color:#fff; }
+  .quicknav a:hover{ background:var(--ink); color:var(--canvas); }
 
   .callout{ display:flex; gap:14px; align-items:baseline; flex-wrap:wrap;
     border-left:4px solid var(--secondary); background:var(--canvas-soft);
@@ -62,7 +62,7 @@
   .service-card__media{ aspect-ratio:4/3; background:var(--surface-alt); position:relative; }
   .service-card__media img{ width:100%; height:100%; object-fit:cover; }
   .service-card__media.fallback{ display:flex; align-items:flex-end; background:linear-gradient(150deg, var(--secondary), var(--accent)); }
-  .service-card__media.fallback::after{ content:attr(data-alt); padding:14px; font-size:12.5px; font-weight:700; color:#fff; }
+  .service-card__media.fallback::after{ content:attr(data-alt); padding:14px; font-size:12.5px; font-weight:700; color:var(--on-dark); }
   .service-card__body{ padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
   .service-card__body h4{ font-family:var(--font-body); font-weight:800; text-transform:none; font-size:17px; letter-spacing:-.2px; margin:0 0 8px; }
   .service-card__kicker{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint, #9e9ea0); margin:-4px 0 8px; }
@@ -75,16 +75,16 @@
   .service-card__body li{ font-size:13px; color:var(--ink-muted); display:flex; align-items:baseline; gap:6px; }
   .service-card__body li::before{ content:"—"; color:var(--ink-faint); flex:none; }
   .service-card--soon{ opacity:.7; }
-  .soon-tag{ position:absolute; top:12px; left:12px; background:rgba(17,17,17,.75); color:#fff; font-size:10.5px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; padding:5px 10px; border-radius:var(--radius-full); }
+  .soon-tag{ position:absolute; top:12px; left:12px; background:var(--surface-dark); color:var(--on-dark); font-size:10.5px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; padding:5px 10px; border-radius:var(--radius-full); }
 
   footer.bottom{ padding:20px 0 60px; border-top:1px solid var(--hairline); margin-top:20px; }
   footer.bottom p{ font-size:13px; color:var(--ink-faint); }
 
   /* Category paper — one of the site's own accent hues, desaturated into the
      --canvas-soft band, mirrored on this category's homepage card. */
-  :root{ --tint:#f7ecf3; }
+  :root{ --tint:#f7ecf3; --tint:color-mix(in srgb, var(--accent) 8%, var(--canvas-soft)); }
   .service-card{ background:var(--tint); }
-  .quicknav a.current{ background:var(--ink); color:#fff; pointer-events:none; }
+  .quicknav a.current{ background:var(--ink); color:var(--canvas); pointer-events:none; }
 </style>
 </head>
 <body>
