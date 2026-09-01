@@ -16,16 +16,17 @@
    ============================================================= */
 (function () {
   var THEMES = [
-    { key: "reference",  label: "Référence" },
-    { key: "apple",      label: "Apple" },
-    { key: "airbnb",     label: "Airbnb" },
-    { key: "notion",     label: "Notion" },
-    { key: "claude",     label: "Claude",
-      font: "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" },
-    { key: "elevenlabs", label: "ElevenLabs" },
-    { key: "discord",    label: "Discord" },
-    { key: "nintendo",   label: "Nintendo 2001",
-      font: "https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" }
+    { key: "reference", label: "Référence" },
+    { key: "editorial", label: "Éditorial",
+      font: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" },
+    { key: "magazine",  label: "Magazine",
+      font: "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" },
+    { key: "brutal",    label: "Brutal" },
+    { key: "terminal",  label: "Terminal",
+      font: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" },
+    { key: "aurora",    label: "Aurora" },
+    { key: "bubble",    label: "Bubble",
+      font: "https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" }
   ];
   var KEYS = THEMES.map(function (t) { return t.key; });
   var STORE = "uptempo-design";

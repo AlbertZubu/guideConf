@@ -1,0 +1,78 @@
+/* =============================================================
+   EDITORIAL — Swiss print. No boxes, no shadows, no radius.
+   A serif display at magazine scale, hairlines as the only
+   separator, and a deliberately off-centre measure so the page
+   reads as a broadsheet rather than a grid of cards.
+   ============================================================= */
+:root{
+  --canvas:#fbfaf7; --canvas-soft:#f3f1ec; --canvas-sink:#e9e6df; --surface:#fbfaf7;
+  --surface-alt:#e9e6df; --surface-dark:#14130f; --surface-dark-soft:#22201a;
+  --ink:#14130f; --ink-muted:#4a473f; --ink-faint:#8d887c;
+  --on-dark:#fbfaf7; --on-dark-muted:#b8b3a6; --on-primary:#fbfaf7;
+  --primary:#14130f; --primary-active:#000; --secondary:#7a2016; --accent:#7a2016;
+  --hairline:#cfc9bc; --hairline-soft:#e3ded3; --divider:rgba(20,19,15,.18);
+  --font-display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-body:'Inter',Helvetica,Arial,sans-serif;
+  --display-case:none; --display-tracking:-.02em;
+  --radius-sm:0; --radius-md:0; --radius-lg:0; --radius-full:0; --border-w:1px;
+  --shadow-sm:none; --shadow-lg:none;
+  --card:var(--surface); --card-ink:var(--ink); --card-ink-muted:var(--ink-muted);
+  --card-ink-faint:var(--ink-faint); --card-line:var(--hairline);
+  --card-soft:rgba(20,19,15,.05); --card-accent:var(--accent);
+  --card-pastel-bg:rgba(122,32,22,.08); --card-pastel-ink:var(--accent);
+  --pastel-bg:rgba(122,32,22,.08); --pastel-ink:var(--accent);
+}
+
+/* Everything loses its box. Separation is a rule, never a fill. */
+.puzzle-cell, .principle, .method, .format-card, .service-card, .excursion,
+.dest-mini, .callout, .immersion, .region-nav a, .btn, .badge, .mini-cta,
+.dest-chip, .card, .frame, .excursion-card__media, .guide__photo{
+  border-radius:0 !important; box-shadow:none !important;
+}
+.puzzle-cell{
+  background:transparent !important; border:0; border-top:2px solid var(--ink);
+  padding:30px 0 40px; box-shadow:none;
+}
+.puzzle-cell:hover{ border-color:var(--accent); }
+.puzzle-grid{ gap:0 46px; }
+.puzzle-row{ gap:46px; }
+
+/* Display type at print scale, set in serif, ragged right. */
+.h-xl{ font-size:clamp(38px,8.2vw,110px); font-weight:400; line-height:.95; letter-spacing:-.03em; }
+.h-lg{ font-size:clamp(28px,5vw,60px); font-weight:400; letter-spacing:-.02em; }
+.puzzle-cell h3, .method h3, .format-card h3, .principle h3{
+  font-family:var(--font-display); font-weight:400; text-transform:none; letter-spacing:-.01em;
+}
+.eyebrow{ font-family:var(--font-body); font-size:11px; letter-spacing:.24em; }
+
+/* The hero stops being a dark slab and becomes a title page. */
+.hero{
+  background:var(--canvas) !important; color:var(--ink) !important;
+  clip-path:none !important; text-align:left;
+  padding-top:calc(var(--nav-h) + 90px); padding-bottom:0;
+  border-bottom:1px solid var(--hairline);
+}
+.hero__inner{ max-width:1160px; margin:0 auto; padding:0 24px; }
+.hero__sub{ max-width:46ch; margin-left:0; font-size:19px; line-height:1.55;
+  color:var(--ink-muted) !important; }
+.hero__ctas{ justify-content:flex-start; }
+.hero__ctas .btn--ghost{ color:var(--ink) !important; border-color:var(--ink) !important; }
+.hero__frame{ max-width:1160px; margin:44px auto 0; padding:0 24px; }
+.hero__frame .frame{ aspect-ratio:21/8; }
+
+/* Buttons become set text with a rule under it. */
+.btn{ background:none !important; border:0 !important; border-bottom:2px solid currentColor !important;
+  padding:4px 0 !important; color:var(--ink) !important; letter-spacing:.02em; }
+.btn:hover{ color:var(--accent) !important; }
+
+/* Four-up grids relax into a two-column reading rhythm. */
+.principles, .methods-grid{ grid-template-columns:1fr 1fr; gap:0 48px; }
+.principle, .method{ border-left:0; border-top:1px solid var(--hairline); padding:30px 0 34px; }
+.formats{ grid-template-columns:1fr; gap:0; }
+.format-card{ border-top:1px solid var(--hairline); padding:44px 0; }
+.guide{ grid-template-columns:1fr; gap:34px; }
+.guide__photo{ max-width:340px; }
+
+/* Motion: type rises, nothing bounces. */
+.reveal{ transform:translateY(14px); transition:opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
+.section{ padding:120px 0; }

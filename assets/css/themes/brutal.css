@@ -1,0 +1,71 @@
+/* =============================================================
+   BRUTAL — neo-brutalist. 3px black outlines, hard offset
+   shadows with no blur, clashing saturated fills, cards sitting
+   at slight angles, and a hover that slams the shadow shut.
+   ============================================================= */
+:root{
+  --canvas:#fdf3d8; --canvas-soft:#ffe9a8; --canvas-sink:#f6e3b0; --surface:#ffffff;
+  --surface-alt:#ffd6e8; --surface-dark:#131313; --surface-dark-soft:#242424;
+  --ink:#131313; --ink-muted:#3a3a3a; --ink-faint:#6d6d6d;
+  --on-dark:#fdf3d8; --on-dark-muted:#cfc8b0; --on-primary:#131313;
+  --primary:#ffe500; --primary-active:#ffd400; --secondary:#3d5bff; --accent:#ff4d6d;
+  --hairline:#131313; --hairline-soft:#131313; --divider:#131313;
+  --font-display:'Archivo Black','Arial Black',sans-serif;
+  --font-body:'Archivo','Inter',Helvetica,Arial,sans-serif;
+  --display-case:uppercase; --display-tracking:-.02em;
+  --radius-sm:0; --radius-md:0; --radius-lg:0; --radius-full:0; --border-w:3px;
+  --shadow-sm:4px 4px 0 var(--ink); --shadow-lg:8px 8px 0 var(--ink);
+  --card:var(--surface); --card-ink:var(--ink); --card-ink-muted:var(--ink-muted);
+  --card-ink-faint:var(--ink-faint); --card-line:var(--ink);
+  --card-soft:rgba(19,19,19,.08); --card-accent:var(--accent);
+  --card-pastel-bg:#ffd6e8; --card-pastel-ink:var(--ink);
+  --pastel-bg:#ffd6e8; --pastel-ink:var(--ink);
+}
+
+*{ border-radius:0 !important; }
+
+.puzzle-cell, .principle, .method, .service-card, .excursion, .callout, .immersion,
+.dest-mini, .format-card, .quote, .cta-band{
+  border:3px solid var(--ink) !important; box-shadow:7px 7px 0 var(--ink) !important;
+}
+.puzzle-cell{ background:var(--surface) !important; padding:26px; }
+.puzzle-cell--workshops{ background:#cfe0ff !important; }
+.puzzle-cell--visits{ background:#ffd6e8 !important; }
+.puzzle-cell--fulldays{ background:#ffe9a8 !important; }
+/* cards sit slightly off-axis, and straighten when you reach for them */
+.puzzle-cell{ transform:rotate(-.5deg); transition:transform .18s ease, box-shadow .18s ease; }
+.puzzle-cell:nth-child(even){ transform:rotate(.6deg); }
+.puzzle-cell:hover{ transform:rotate(0) translate(3px,3px); box-shadow:2px 2px 0 var(--ink) !important; }
+
+.h-xl{ font-size:clamp(30px,8vw,104px); line-height:.92; -webkit-text-stroke:0; }
+.h-lg{ font-size:clamp(24px,5vw,54px); }
+.hero{ background:var(--primary) !important; color:var(--ink) !important;
+  clip-path:none !important; border-bottom:4px solid var(--ink); }
+.hero__ctas .btn--ghost{ color:var(--ink) !important; border-color:var(--ink) !important; }
+.hero__sub{ color:var(--ink) !important; font-weight:600; }
+.navbar{ border-bottom:4px solid var(--ink) !important; background:var(--primary) !important; }
+
+.btn, .mini-cta, .dest-chip, .card-link, .region-nav a, .quicknav a{
+  border:3px solid var(--ink) !important; box-shadow:4px 4px 0 var(--ink) !important;
+  background:var(--surface) !important; color:var(--ink) !important; font-weight:800;
+  transition:transform .14s ease, box-shadow .14s ease;
+}
+.btn:hover, .mini-cta:hover, .dest-chip:hover, .quicknav a:hover{
+  transform:translate(3px,3px); box-shadow:1px 1px 0 var(--ink) !important;
+  background:var(--accent) !important; color:var(--ink) !important;
+}
+.badge{ border:2px solid var(--ink) !important; background:var(--surface) !important;
+  color:var(--ink) !important; font-weight:800; }
+
+.principles, .methods-grid{ grid-template-columns:repeat(2,1fr); gap:22px; }
+.principle, .method{ border:3px solid var(--ink) !important; box-shadow:7px 7px 0 var(--ink) !important;
+  background:var(--surface); padding:24px; }
+.principle:nth-child(2n){ background:#cfe0ff; }
+.principle:nth-child(3n){ background:#ffd6e8; }
+.formats{ grid-template-columns:1fr 1fr; gap:22px; }
+.format-card{ padding:32px; color:var(--ink) !important; }
+.format-card h3, .format-card p, .format-card__tagline{ color:var(--ink) !important; }
+
+/* motion: a snap, never a fade */
+.reveal{ transform:translate(-10px,10px); transition:opacity .28s ease, transform .28s cubic-bezier(.2,1.5,.4,1); }
+.reveal.in{ transform:none; }

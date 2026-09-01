@@ -1,0 +1,68 @@
+/* =============================================================
+   MAGAZINE — fashion editorial. Oversized condensed display set
+   tight, full-bleed imagery, black and bone with one hot accent,
+   and content that slides in from the side like a spread turning.
+   ============================================================= */
+:root{
+  --canvas:#f2f0eb; --canvas-soft:#e7e4dd; --canvas-sink:#dcd8cf; --surface:#f2f0eb;
+  --surface-alt:#dcd8cf; --surface-dark:#0d0d0d; --surface-dark-soft:#1a1a1a;
+  --ink:#0d0d0d; --ink-muted:#42403c; --ink-faint:#8a867e;
+  --on-dark:#f2f0eb; --on-dark-muted:#b3afa6; --on-primary:#f2f0eb;
+  --primary:#0d0d0d; --primary-active:#000; --secondary:#e8352e; --accent:#e8352e;
+  --hairline:#0d0d0d; --hairline-soft:#c6c2b9; --divider:rgba(13,13,13,.2);
+  --font-display:'Oswald','Archivo Black','Arial Narrow',sans-serif;
+  --font-body:'Inter',Helvetica,Arial,sans-serif;
+  --display-case:uppercase; --display-tracking:-.03em;
+  --radius-sm:0; --radius-md:0; --radius-lg:0; --radius-full:0; --border-w:1px;
+  --shadow-sm:none; --shadow-lg:none;
+  --card:var(--surface); --card-ink:var(--ink); --card-ink-muted:var(--ink-muted);
+  --card-ink-faint:var(--ink-faint); --card-line:var(--hairline);
+  --card-soft:rgba(13,13,13,.06); --card-accent:var(--accent);
+  --card-pastel-bg:rgba(232,53,46,.10); --card-pastel-ink:var(--accent);
+  --pastel-bg:rgba(232,53,46,.10); --pastel-ink:var(--accent);
+}
+
+*{ border-radius:0 !important; box-shadow:none !important; }
+
+.h-xl{ font-size:clamp(34px,9.4vw,140px); font-weight:700; line-height:.84;
+  letter-spacing:-.045em; overflow-wrap:normal; hyphens:none; }
+.h-lg{ font-size:clamp(30px,7vw,86px); font-weight:700; line-height:.9; letter-spacing:-.04em; }
+h1,h2,h3{ font-family:var(--font-display); text-transform:uppercase; }
+.puzzle-cell h3, .method h3, .principle h3, .format-card h3{
+  font-family:var(--font-display); font-size:clamp(22px,2.6vw,34px); line-height:.95; letter-spacing:-.02em;
+}
+.eyebrow{ font-family:var(--font-body); font-size:10.5px; letter-spacing:.3em; color:var(--accent); }
+
+/* the hero becomes a cover: type over a full-bleed frame */
+.hero{ background:var(--ink) !important; color:var(--on-dark) !important;
+  clip-path:none !important; padding-bottom:0; text-align:left; overflow:hidden; }
+.hero__inner{ max-width:1240px; margin:0 auto; padding:0 24px; }
+.hero__frame{ max-width:none; margin:40px 0 0; padding:0; }
+.hero__frame .frame{ aspect-ratio:21/7; }
+.hero__frame .frame img{ filter:grayscale(1) contrast(1.2); }
+.hero__sub{ max-width:38ch; margin-left:0; font-size:15px; letter-spacing:.02em; }
+
+/* panels lose their walls; a rule and a number carry the hierarchy */
+.puzzle-cell, .principle, .method, .format-card, .service-card, .excursion{
+  background:transparent !important; border:0 !important;
+  border-top:2px solid var(--ink) !important; padding:26px 0 34px;
+}
+.puzzle-cell:hover h3, .service-card:hover h4{ color:var(--accent); }
+.puzzle-grid, .puzzle-row{ gap:0 40px; }
+.principles, .methods-grid{ grid-template-columns:repeat(2,1fr); gap:0 40px; }
+.formats{ grid-template-columns:1fr 1fr; gap:0 40px; }
+.guide{ grid-template-columns:1fr 1.4fr; gap:40px; align-items:start; }
+.frame img, .service-card__media img{ filter:grayscale(1) contrast(1.12); transition:filter .5s ease; }
+.frame:hover img, .service-card:hover img{ filter:none; }
+
+.btn{ background:var(--ink) !important; color:var(--canvas) !important; border:0 !important;
+  text-transform:uppercase; letter-spacing:.14em; font-size:11.5px; font-weight:700; padding:16px 26px !important; }
+.btn--ghost{ background:transparent !important; color:var(--on-dark) !important;
+  border:1px solid currentColor !important; }
+.btn:hover{ background:var(--accent) !important; color:var(--canvas) !important; }
+.badge{ background:transparent !important; border:1px solid currentColor !important; letter-spacing:.16em; }
+
+/* motion: the spread slides in from the gutter */
+.reveal{ opacity:0; transform:translateX(-26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+.reveal.in{ opacity:1; transform:none; }
+.section{ padding:110px 0; }

@@ -1,0 +1,69 @@
+/* =============================================================
+   BUBBLE — soft toy. Everything is a pill or a blob, nothing has
+   a corner, colours are candy, shadows are thick and coloured,
+   and hovers overshoot before settling.
+   ============================================================= */
+:root{
+  --canvas:#fff6fb; --canvas-soft:#ffe9f4; --canvas-sink:#ffdcec; --surface:#ffffff;
+  --surface-alt:#ffe0f0; --surface-dark:#3b1d52; --surface-dark-soft:#52296f;
+  --ink:#3b1d52; --ink-muted:#6b4784; --ink-faint:#a184b5;
+  --on-dark:#fff6fb; --on-dark-muted:#e0c9ee; --on-primary:#ffffff;
+  --primary:#ff5fa2; --primary-active:#ef3d8b; --secondary:#5ad2ff; --accent:#ffc93d;
+  --hairline:#ffd0e6; --hairline-soft:#ffe4f1; --divider:rgba(59,29,82,.14);
+  --font-display:'Baloo 2','Archivo',Verdana,sans-serif;
+  --font-body:'Nunito','Inter',Helvetica,Arial,sans-serif;
+  --display-case:none; --display-tracking:-.01em;
+  --radius-sm:20px; --radius-md:28px; --radius-lg:40px; --radius-full:9999px; --border-w:0px;
+  --shadow-sm:0 6px 0 rgba(255,95,162,.18); --shadow-lg:0 18px 0 rgba(255,95,162,.16);
+  --card:var(--surface); --card-ink:var(--ink); --card-ink-muted:var(--ink-muted);
+  --card-ink-faint:var(--ink-faint); --card-line:var(--hairline);
+  --card-soft:rgba(255,95,162,.10); --card-accent:var(--primary);
+  --card-pastel-bg:rgba(255,201,61,.22); --card-pastel-ink:#8a5a00;
+  --pastel-bg:rgba(255,201,61,.22); --pastel-ink:#8a5a00;
+}
+
+.puzzle-cell, .principle, .method, .service-card, .excursion, .callout, .immersion,
+.dest-mini, .format-card, .quote, .frame, .excursion-card__media, .guide__photo, .cta-band{
+  border-radius:32px !important; border:0 !important;
+}
+.puzzle-cell, .principle, .method, .service-card, .excursion{
+  background:var(--surface) !important; padding:28px;
+  box-shadow:0 10px 0 rgba(255,95,162,.14), 0 20px 40px rgba(59,29,82,.08) !important;
+  transition:transform .32s cubic-bezier(.34,1.7,.5,1), box-shadow .32s ease;
+}
+.puzzle-cell:hover, .service-card:hover{
+  transform:translateY(-7px) scale(1.015);
+  box-shadow:0 18px 0 rgba(255,95,162,.16), 0 30px 60px rgba(59,29,82,.12) !important;
+}
+.puzzle-cell--workshops{ background:#e8f4ff !important; }
+.puzzle-cell--visits{ background:#ffe9f4 !important; }
+.puzzle-cell--fulldays{ background:#fff4d6 !important; }
+
+.h-xl{ font-size:clamp(32px,7.6vw,92px); font-weight:800; line-height:1.02; }
+.h-lg{ font-size:clamp(26px,4.6vw,52px); font-weight:800; }
+h1,h2,h3,h4{ font-family:var(--font-display); text-transform:none; }
+
+.navbar{ background:var(--canvas) !important; border-bottom:0 !important;
+  box-shadow:0 4px 20px rgba(59,29,82,.07); }
+.hero{ background:linear-gradient(170deg,#ffe9f4,#e8f4ff 60%,#fff4d6) !important;
+  color:var(--ink) !important; clip-path:none !important; border-radius:0 0 48px 48px; }
+.hero__sub{ color:var(--ink-muted) !important; }
+.hero__ctas .btn--ghost{ color:var(--ink) !important; border-color:var(--ink) !important; }
+
+.btn, .mini-cta, .dest-chip, .region-nav a, .quicknav a, .badge{
+  border-radius:9999px !important; border:0 !important; font-weight:700;
+  transition:transform .3s cubic-bezier(.34,1.7,.5,1);
+}
+.btn--primary{ background:var(--primary) !important; color:#fff !important;
+  box-shadow:0 6px 0 var(--primary-active) !important; }
+.btn:hover, .mini-cta:hover, .dest-chip:hover{ transform:translateY(-3px) scale(1.04); }
+.btn--primary:hover{ box-shadow:0 9px 0 var(--primary-active) !important; }
+
+.principles, .methods-grid{ grid-template-columns:repeat(2,1fr); gap:20px; }
+.principle, .method{ border-left:0 !important; }
+.formats{ gap:20px; }
+.format-card{ padding:34px; }
+
+.reveal{ transform:translateY(28px) scale(.96);
+  transition:opacity .6s ease, transform .7s cubic-bezier(.34,1.6,.5,1); }
+.reveal.in{ transform:none; }

@@ -1,0 +1,75 @@
+/* =============================================================
+   AURORA — glass over a moving gradient field. Frosted
+   translucent panels, very large radii, soft glows, and cards
+   that lift instead of flattening. The opposite of BRUTAL.
+   ============================================================= */
+:root{
+  --canvas:#070b1c; --canvas-soft:rgba(255,255,255,.06); --canvas-sink:#050817;
+  --surface:rgba(255,255,255,.08); --surface-alt:rgba(255,255,255,.12);
+  --surface-dark:rgba(4,7,20,.6); --surface-dark-soft:rgba(255,255,255,.06);
+  --ink:#f2f4ff; --ink-muted:#bcc3e8; --ink-faint:#8189b8;
+  --on-dark:#f2f4ff; --on-dark-muted:#bcc3e8; --on-primary:#0a0f24;
+  --primary:#8ce0ff; --primary-active:#b6ecff; --secondary:#a78bfa; --accent:#ff9ad5;
+  --hairline:rgba(255,255,255,.18); --hairline-soft:rgba(255,255,255,.10);
+  --divider:rgba(255,255,255,.16);
+  --font-display:'Inter',Helvetica,Arial,sans-serif;
+  --font-body:'Inter',Helvetica,Arial,sans-serif;
+  --display-case:none; --display-tracking:-.03em;
+  --radius-sm:18px; --radius-md:26px; --radius-lg:36px; --radius-full:9999px; --border-w:1px;
+  --shadow-sm:0 6px 20px rgba(0,0,0,.35); --shadow-lg:0 24px 70px rgba(0,0,0,.5);
+  --card:var(--surface); --card-ink:var(--ink); --card-ink-muted:var(--ink-muted);
+  --card-ink-faint:var(--ink-faint); --card-line:var(--hairline);
+  --card-soft:rgba(255,255,255,.07); --card-accent:var(--primary);
+  --card-pastel-bg:rgba(255,154,213,.16); --card-pastel-ink:var(--accent);
+  --pastel-bg:rgba(255,154,213,.16); --pastel-ink:var(--accent);
+}
+
+/* a slow aurora behind everything */
+body{ background:var(--canvas); position:relative; }
+body::before{
+  content:""; position:fixed; inset:-30%; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(42% 38% at 20% 25%, rgba(140,224,255,.35), transparent 65%),
+    radial-gradient(38% 34% at 78% 18%, rgba(167,139,250,.32), transparent 66%),
+    radial-gradient(46% 40% at 62% 80%, rgba(255,154,213,.28), transparent 64%);
+  filter:blur(30px); animation:aurora-drift 26s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift{
+  0%{ transform:translate3d(0,0,0) scale(1) }
+  50%{ transform:translate3d(3%,-2%,0) scale(1.08) }
+  100%{ transform:translate3d(-3%,2%,0) scale(1.04) }
+}
+@media (prefers-reduced-motion:reduce){ body::before{ animation:none } }
+
+.puzzle-cell, .principle, .method, .service-card, .excursion, .callout, .immersion,
+.dest-mini, .format-card, .quote, .cta-band, .fiche-modal{
+  background:var(--surface) !important;
+  border:1px solid var(--hairline) !important;
+  backdrop-filter:blur(18px) saturate(1.4); -webkit-backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 10px 40px rgba(0,0,0,.32) !important;
+}
+.puzzle-cell{ transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+.puzzle-cell:hover{ transform:translateY(-8px); box-shadow:0 26px 70px rgba(0,0,0,.45) !important;
+  border-color:rgba(255,255,255,.34) !important; }
+
+.navbar{ background:rgba(7,11,28,.55) !important; backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--hairline) !important; }
+.hero{ background:transparent !important; color:var(--ink) !important; clip-path:none !important; }
+.h-xl{ font-size:clamp(32px,7.4vw,96px); font-weight:700; letter-spacing:-.035em; line-height:1; }
+.h-lg{ font-size:clamp(26px,4.4vw,52px); font-weight:700; }
+.hero .h-xl{
+  background:linear-gradient(96deg,#ffffff,#8ce0ff 42%,#ff9ad5);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.btn--primary{ background:linear-gradient(96deg,#8ce0ff,#a78bfa) !important; color:#0a0f24 !important;
+  border:0 !important; box-shadow:0 8px 26px rgba(140,224,255,.35) !important; }
+.btn--ghost, .mini-cta, .dest-chip{ background:rgba(255,255,255,.08) !important;
+  border:1px solid var(--hairline) !important; color:var(--ink) !important; backdrop-filter:blur(10px); }
+
+.principles, .methods-grid{ grid-template-columns:repeat(2,1fr); gap:18px; }
+.principle, .method{ border:1px solid var(--hairline); padding:26px; }
+.formats{ gap:18px; }
+
+.reveal{ transform:translateY(30px) scale(.985); filter:blur(6px);
+  transition:opacity 1s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1), filter 1s ease; }
+.reveal.in{ transform:none; filter:none; }
