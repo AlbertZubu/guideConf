@@ -52,7 +52,7 @@ h1,h2,h3{ font-family:var(--font-display); text-transform:uppercase; }
 .puzzle-grid, .puzzle-row{ gap:0 40px; }
 .principles, .methods-grid{ grid-template-columns:repeat(2,1fr); gap:0 40px; }
 .formats{ grid-template-columns:1fr 1fr; gap:0 40px; }
-.guide{ grid-template-columns:1fr 1.4fr; gap:40px; align-items:start; }
+.guide{ grid-template-columns:minmax(240px,330px) 1fr; gap:48px; align-items:start; }
 .frame img, .service-card__media img{ filter:contrast(1.05); transition:filter .5s ease; }
 .frame:hover img, .service-card:hover img{ filter:contrast(1.1) saturate(1.08); }
 
