@@ -27,9 +27,11 @@
 /* Everything loses its box. Separation is a rule, never a fill. */
 .puzzle-cell, .principle, .method, .format-card, .service-card, .excursion,
 .dest-mini, .callout, .immersion, .region-nav a, .btn, .badge, .mini-cta,
-.dest-chip, .card, .frame, .excursion-card__media, .guide__photo{
+.dest-chip, .card, .frame, .excursion-card__media{
   border-radius:0 !important; box-shadow:none !important;
 }
+/* one deliberate exception: the portrait stays rounded */
+.guide__photo, .guide__photo img{ border-radius:22px !important; overflow:hidden; }
 .puzzle-cell{
   background:transparent !important; border:0; border-top:2px solid var(--ink);
   padding:30px 0 40px; box-shadow:none;
@@ -54,7 +56,7 @@
   border-bottom:1px solid var(--hairline);
 }
 .hero__inner{ max-width:1160px; margin:0 auto; padding:0 24px; }
-.hero__sub{ max-width:46ch; margin-left:0; font-size:19px; line-height:1.55;
+.hero__sub{ max-width:none; margin-left:0; font-size:19px; line-height:1.55;
   color:var(--ink-muted) !important; }
 .hero__ctas{ justify-content:flex-start; }
 .hero__ctas .btn--ghost{ color:var(--ink) !important; border-color:var(--ink) !important; }
