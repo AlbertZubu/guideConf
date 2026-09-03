@@ -29,7 +29,7 @@ const DEFAULT_FORMATS = [
   { cls: "clutch", name: "Clutch", text: "An onboard sequence that uses transfer time to unlock the key ideas needed to understand what comes next." }
 ];
 
-const CLOSING_DEFAULT = "Tell us your dates, your group and what you'd like them to walk away understanding — we'll adjust the program around it.";
+const CLOSING_DEFAULT = "Tell me your dates, your group and what you'd like them to walk away understanding — I'll adjust the program around it.";
 const FINEPRINT_DEFAULT = "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives.";
 
 const EXCURSION_FICHES = {
