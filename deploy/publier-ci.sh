@@ -76,11 +76,29 @@ echo "  $NB fichier(s) sauvegardés"
 # ------------------------------------------------------------- publication
 
 say "Envoi"
+# --exclude-glob compare le motif au chemin COMPLET, pas au nom de fichier :
+# « .git » ne correspond donc jamais à « .git/objects/pack/xxx », et couper le
+# « / » final des motifs revenait à n'exclure rien du tout. On traduit chaque
+# motif en expression régulière ancrée, ce que lftp compare bien au chemin
+# relatif de chaque entrée.
+regex() { printf '%s' "${1//./\\.}"; }
 EXCL=""
 while IFS= read -r motif; do
   [[ -z "$motif" || "$motif" == \#* ]] && continue
-  EXCL+=" --exclude-glob ${motif%/}"
+  if [[ "$motif" == */ ]]; then          # un dossier, et tout ce qu'il contient
+    corps=$(regex "${motif%/}")
+    if [[ "$corps" == */* ]]; then       # chemin : ancré sur la racine du site
+      EXCL+=" --exclude ^${corps}/"
+    else                                 # simple nom : à n'importe quelle profondeur
+      EXCL+=" --exclude (^|/)${corps}/"
+    fi
+  elif [[ "$motif" == \** ]]; then       # *.pdf, *.bak, *~ …
+    EXCL+=" --exclude $(regex "${motif#\*}")\$"
+  else                                   # un nom exact
+    EXCL+=" --exclude (^|/)$(regex "$motif")\$"
+  fi
 done < "$EXCLUSIONS"
+echo "  exclusions :$EXCL"
 
 SEC=""
 if [[ "${ESSAI:-false}" == "true" ]]; then
