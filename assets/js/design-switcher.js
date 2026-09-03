@@ -158,4 +158,13 @@
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", start);
   } else { start(); }
+
+  /* The review tool rides along here rather than in a <script> tag on every
+     page: gated behind ?annotate=1, a visitor never downloads it at all. */
+  if (new URLSearchParams(location.search).get("annotate") === "1") {
+    var a = document.createElement("script");
+    a.src = BASE + "assets/js/annotate.js";
+    a.defer = true;
+    document.head.appendChild(a);
+  }
 })();
