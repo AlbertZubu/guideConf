@@ -1,125 +1,46 @@
-# Publie le site sur l'hébergement mutualisé OVH à chaque push sur master.
+# Publie le site sur OVH à chaque push sur master.
 #
-# Pourquoi depuis GitHub et non depuis le Pi : OVH bannit l'IP source dès la
-# première authentification refusée, et le Pi sort par une IP de VPN partagée
-# déjà bannie. Les runners GitHub sortent par des IP propres et changeantes.
-#
-# Le mot de passe FTP vit dans les secrets du dépôt, jamais dans ce fichier.
-# La liste des exclusions est celle de deploy/exclusions.txt : une seule source.
+# Ce fichier n'est qu'un lanceur : toute la logique est dans
+# deploy/publier-ci.sh. C'est volontaire — un jeton OAuth sans la portée
+# « workflow » ne peut pas écrire ici, alors qu'il pousse le script sans
+# problème. Corriger la publication ne doit jamais obliger à repasser par
+# l'interface web de GitHub.
 
 name: Publier sur OVH
 
 on:
   push:
     branches: [master]
-  workflow_dispatch:        # bouton « Run workflow » dans l'onglet Actions
+  workflow_dispatch:
     inputs:
       essai:
         description: "Essai à blanc : montre ce qui partirait, n'écrit rien"
         type: boolean
         default: false
 
-concurrency:                # deux publications simultanées se marcheraient dessus
+concurrency:
   group: publication-ovh
   cancel-in-progress: false
 
 jobs:
   publier:
     runs-on: ubuntu-latest
-    env:
-      HOTE: ${{ secrets.OVH_FTP_HOTE }}
-      UTILISATEUR: ${{ secrets.OVH_FTP_UTILISATEUR }}
-      MOT_DE_PASSE: ${{ secrets.OVH_FTP_MOT_DE_PASSE }}
-      DOSSIER: guide
-      URL: https://uptempo.media/guide/
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Installer lftp
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Préparer les identifiants
-        run: |
-          umask 077
-          printf 'machine %s login %s password %s\n' \
-            "$HOTE" "$UTILISATEUR" "$MOT_DE_PASSE" > ~/.netrc
+      - run: bash deploy/publier-ci.sh
+        env:
+          OVH_HOTE: ${{ secrets.OVH_FTP_HOTE }}
+          OVH_UTILISATEUR: ${{ secrets.OVH_FTP_UTILISATEUR }}
+          OVH_MOT_DE_PASSE: ${{ secrets.OVH_FTP_MOT_DE_PASSE }}
+          ESSAI: ${{ inputs.essai }}
 
-      # Deux dispositions possibles chez OVH et on ne peut pas deviner laquelle :
-      # le compte s'ouvre sur le dossier personnel (racine web = www/), ou bien
-      # il est enfermé dans la racine web, qui contient déjà les sites. Repère de
-      # la seconde : les sites voisins cv/ et jewels/ sont visibles tout de suite.
-      - name: Trouver la racine web
-        run: |
-          LISTE=$(lftp -e "set ssl:verify-certificate yes; set net:timeout 20; \
-                           set net:max-retries 2; cls -1 /; bye" "$HOTE")
-          echo "Contenu de la racine :"; sed 's/^/    /' <<<"$LISTE"
-          vu() { grep -qx -e "$1" -e "$1/" <<<"$LISTE"; }
-          if vu www; then
-            echo "CIBLE=/www/$DOSSIER" >> "$GITHUB_ENV"
-          elif vu cv && vu jewels; then
-            echo "CIBLE=/$DOSSIER" >> "$GITHUB_ENV"
-          else
-            echo "::error::Racine web introuvable : ni www/, ni les sites voisins attendus."
-            exit 1
-          fi
-
-      # mirror -R --delete efface à distance ce qui n'existe pas ici. Sur un
-      # chemin faux il viderait l'hébergement entier, qui porte aussi /cv et
-      # /jewels : le chemin doit se terminer par le nom du sous-dossier.
-      - name: Vérifier la cible
-        run: |
-          echo "Cible : $CIBLE"
-          [[ "$CIBLE" == */"$DOSSIER" && "$CIBLE" != "/" ]] \
-            || { echo "::error::Chemin distant suspect : $CIBLE"; exit 1; }
-
-      - name: Sauvegarder l'ancien site
-        run: |
-          mkdir -p /tmp/ancien
-          lftp -e "set ssl:verify-certificate yes; set net:timeout 20; \
-                   mirror --parallel=4 '$CIBLE/' /tmp/ancien/; bye" "$HOTE" || true
-          echo "Fichiers sauvegardés : $(find /tmp/ancien -type f | wc -l)"
-
-      - name: Conserver la sauvegarde comme artefact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ancien-site-avant-ecrasement
           path: /tmp/ancien
           retention-days: 30
           if-no-files-found: warn
-
-      - name: Envoyer le site
-        run: |
-          EXCL=""
-          while IFS= read -r motif; do
-            [[ -z "$motif" || "$motif" == \#* ]] && continue
-            EXCL+=" --exclude-glob ${motif%/}"
-          done < deploy/exclusions.txt
-          SEC=""
-          [[ "${{ inputs.essai }}" == "true" ]] && { SEC="--dry-run"; echo "ESSAI : rien ne sera écrit"; }
-          lftp -e "set ssl:verify-certificate yes; set net:timeout 20; \
-                   set net:max-retries 3; \
-                   mirror -R --delete --parallel=4 --verbose $SEC $EXCL \
-                     ./ '$CIBLE/'; bye" "$HOTE"
-
-      - name: Tester le résultat
-        if: ${{ inputs.essai != true }}
-        run: |
-          sleep 5
-          ECHECS=0
-          # Ce qui doit répondre.
-          for u in "" catalogue/ assets/css/tokens.css assets/js/design-switcher.js \
-                   assets/data/excursions-data.js catalogue/services.html; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$URL$u")
-            [[ "$code" == 200 ]] && echo "  200  /$u" \
-              || { echo "::warning::$code sur /$u — attendu 200"; ECHECS=$((ECHECS+1)); }
-          done
-          # Ce qui ne doit surtout pas être là.
-          for u in node_modules/ .git/config docs/ swap/ CLAUDE.md \
-                   normandy-3-journeys-1-page-paysage.pdf catalogue/normandy-in-3-journeys/; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$URL$u")
-            [[ "$code" == 404 || "$code" == 403 ]] && echo "  $code  /$u (absent, attendu)" \
-              || { echo "::error::$code sur /$u — ce fichier ne devrait pas être publié"; ECHECS=$((ECHECS+1)); }
-          done
-          (( ECHECS == 0 )) || { echo "::error::$ECHECS anomalie(s)"; exit 1; }
-          echo "Publié : $URL"
