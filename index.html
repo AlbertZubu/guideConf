@@ -451,10 +451,28 @@
       <div class="wrap"><div class="cta-band reveal"><div class="cta-band__grid">
         <div><span class="eyebrow">Get In Touch</span><h2>Ready To Transform Your Journey?</h2><p class="body-lg">Tell us about your group, your dates and what you'd like students or participants to walk away understanding. We'll come back with a tailored programme.</p>
         </div>
-        <form class="form" onsubmit="event.preventDefault(); alert('Thanks — this is a template form. Wire it up to your email or booking tool.');">
-          <textarea placeholder="Write as much as you'd like — tell us about your group, your dates, your goals. Just don't forget to include your contact details so we can reach you!" style="min-height:180px;" required></textarea>
+        <!-- L'hebergement est statique : il n'y a pas de serveur pour recevoir un
+             POST. Le bouton compose donc un message dans le logiciel de courrier
+             du visiteur, vers l'adresse deja utilisee sur uptempo.media/guide.
+             L'adresse reste visible en clair juste en dessous : si le navigateur
+             n'a aucun client mail configure, mailto: n'ouvre rien et sans ce
+             repli le formulaire serait un cul-de-sac silencieux. -->
+        <form class="form" id="contactForm">
+          <textarea id="contactMessage" placeholder="Write as much as you'd like — tell us about your group, your dates, your goals. Just don't forget to include your contact details so we can reach you!" style="min-height:180px;" required></textarea>
           <button type="submit" class="btn btn--primary" style="background:#fff;color:#111;padding:22px 30px;font-size:16px;">Send — We'll Get Back to You</button>
+          <p class="body-md" style="margin-top:14px;opacity:.75;">This opens your email app. You can also write directly to <a href="mailto:guide@uptempo.media" style="color:inherit;text-decoration:underline;">guide@uptempo.media</a>.</p>
         </form>
+        <script>
+          document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var message = document.getElementById("contactMessage").value.trim();
+            if (!message) return;
+            window.location.href =
+              "mailto:guide@uptempo.media" +
+              "?subject=" + encodeURIComponent("UpTempo — journey enquiry") +
+              "&body=" + encodeURIComponent(message);
+          });
+        </script>
       </div></div></div>
     </section>
   </main>

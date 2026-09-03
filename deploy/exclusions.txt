@@ -1,0 +1,31 @@
+# Ce qui ne part JAMAIS sur l'hébergement public.
+#
+# Le dossier du projet pèse 433 Mo, le site en pèse 28. Tout le reste est du
+# matériel de travail : dépendances, dépôt Git, archives, brouillons.
+
+.git/
+.github/
+.gitignore
+.claude/
+deploy/
+node_modules/
+docs/
+swap/
+
+# Ancienne version React de la Normandie, plus liée depuis aucune page
+# (cf. le commentaire en tête de assets/data/excursions-data.js).
+catalogue/normandy-in-3-journeys/
+
+# 24 Mo de PDF que plus aucune page ne référence.
+*.pdf
+*.zip
+*.md
+
+.DS_Store
+*~
+*.bak
+
+# La copie de l'ancien site, faite avant le premier écrasement. deploy/ est déjà
+# exclu plus haut ; on le redit ici parce que renvoyer l'ancien site par-dessus
+# le nouveau serait la pire erreur possible de ce script.
+sauvegarde-ancien-guide/
