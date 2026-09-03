@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UpTempo — Excursion Fiche</title>
 <!--
-  Generic renderer for every catalogue excursion that isn't the Normandy
+  Generic renderer for every catalog excursion that isn't the Normandy
   flagship: same markup skeleton as normandy-in-3-journeys/fiche.html, but
   the content comes from assets/data/excursion-fiches.js instead of being
   hand-written per file, since these 17 fiches share one structure and
@@ -29,13 +29,13 @@
   /* Every fiche now runs 2 days / 1 night, so they all use the shared
      two-column .days grid built for Normandy's 2-day itinerary. The
      solo layout below is kept as a fallback for any future single-day
-     fiche: a lone day gets a narrower, centred column instead of
+     fiche: a lone day gets a narrower, centerd column instead of
      stretching full width, which would blow the paragraph measure out
      past a readable line length. */
   .days.days--solo{ display:block; max-width:640px; margin:0 auto; }
   .fiche-missing{ padding:80px 40px; text-align:center; font-family:'Archivo',sans-serif; color:#55565a; }
   /* Only one real photo exists per excursion (carried over from the
-     catalogue card) — most stops fall back to this gradient placeholder
+     catalog card) — most stops fall back to this gradient placeholder
      rather than showing a mismatched photo borrowed from another stop.
      The stop name overlay keeps it from reading as a broken image. */
   .stop__media.is-fallback{ display:flex; align-items:flex-end; }
@@ -177,7 +177,7 @@
       <div class="intro__text">
         <h2 class="label">Pedagogical objective</h2>
         ${data.intro.map((p) => `<p>${p}</p>`).join("")}
-        <p class="immersion-note"><b>Run in French.</b> The journey is led in French, pitched at the group's level — participants practise the language continuously because it is what the day is made of, not an exercise bolted onto it.</p>
+        <p class="immersion-note"><b>Run in French.</b> The journey is led in French, pitched at the group's level — participants practice the language continuously because it is what the day is made of, not an exercise bolted onto it.</p>
       </div>
       ${data.days ? `
       <div class="intro__legend">
@@ -218,7 +218,7 @@
 
     <section class="mods-sec">
       <h2 class="label">Activities</h2>
-      <p class="mods-lead">Every journey can be enriched with a selection of these optional signature activities — chosen with you when the programme is built, and placed exactly where the itinerary calls for a key concept, a skill, or a moment the group will keep.</p>
+      <p class="mods-lead">Every journey can be enriched with a selection of these optional signature activities — chosen with you when the program is built, and placed exactly where the itinerary calls for a key concept, a skill, or a moment the group will keep.</p>
       ${data.formats.map((f) => {
         const items = data.activities.filter((a) => a.tag === f.cls);
         if (!items.length) return "";

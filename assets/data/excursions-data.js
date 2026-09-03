@@ -1,7 +1,7 @@
 /* =============================================================
-   EXCURSIONS — shared catalogue data, consumed by:
+   EXCURSIONS — shared catalog data, consumed by:
    - the horizontal carousel embedded on the homepage (index.html)
-   - catalogue/index.html (the full catalogue overview)
+   - catalogue/index.html (the full catalog overview)
    Every excursion (flagship included) now renders through
    catalogue/fiche-template.html + assets/data/excursion-fiches.js.
    The old bespoke Normandy build (React app + multi-design fiche) is
@@ -95,7 +95,7 @@ const EXCURSIONS = [
     title: "Gardens of the Renaissance",
     region: "Loire Valley",
     stops: ["Chenonceau — Gardens over the water", "Chambord — Nature on a royal scale", "Villandry — The formal garden, perfected"],
-    blurb: "The whole Renaissance, read through its most photogenic invention: the garden — geometry, colour and staging four centuries before Instagram.",
+    blurb: "The whole Renaissance, read through its most photogenic invention: the garden — geometry, color and staging four centuries before Instagram.",
     image: "assets/images/excursions/loire_jardins.webp",
     link: "catalogue/fiche-template.html?slug=loire-gardens",
     catalogueLink: "../catalogue/fiche-template.html?slug=loire-gardens",
@@ -147,10 +147,10 @@ const EXCURSIONS = [
   },
   {
     slug: "troyes",
-    title: "Troyes, City of Medieval Colour",
+    title: "Troyes, City of Medieval Color",
     region: "Eastern France",
     stops: ["Troyes — Half-timbered houses", "Troyes — Flamboyant stained glass"],
-    blurb: "Half-timbered houses, flamboyant stained glass and preserved lanes — a plunge into the medieval city and its recovered colours.",
+    blurb: "Half-timbered houses, flamboyant stained glass and preserved lanes — a plunge into the medieval city and its recovered colors.",
     image: "assets/images/excursions/est_vitrail.jpeg",
     link: "catalogue/fiche-template.html?slug=troyes",
     catalogueLink: "../catalogue/fiche-template.html?slug=troyes",
@@ -205,7 +205,7 @@ const EXCURSIONS = [
     title: "Bordeaux, City of Stone and Estuary",
     region: "Bordeaux",
     stops: ["Bordeaux — UNESCO-listed quays", "Arcachon — The basin", "Dune du Pilat — Ocean landscapes"],
-    blurb: "From the UNESCO-listed quays to the Dune du Pilat — a journey linking the historic centre, the Arcachon Basin and vast ocean landscapes.",
+    blurb: "From the UNESCO-listed quays to the Dune du Pilat — a journey linking the historic center, the Arcachon Basin and vast ocean landscapes.",
     image: "assets/images/excursions/bordeaux_arcachon.jpg",
     link: "catalogue/fiche-template.html?slug=bordeaux-estuary",
     catalogueLink: "../catalogue/fiche-template.html?slug=bordeaux-estuary",
@@ -233,8 +233,8 @@ function renderExcursionCarousel(containerId, linkResolver) {
   const el = document.getElementById(containerId);
   if (!el) return;
   el.innerHTML = EXCURSIONS.map((ex) => {
-    /* Carousel cards always land on the catalogue (anchored to the
-       excursion) — the fiche modal is opened from the catalogue page. */
+    /* Carousel cards always land on the catalog (anchored to the
+       excursion) — the fiche modal is opened from the catalog page. */
     const href = linkResolver(ex.slug);
     return `<a class="excursion-card" href="${href}">
       <div class="excursion-card__media"><img src="${excursionImage(ex)}" alt="${ex.title}" loading="lazy" onerror="this.closest('.excursion-card__media').classList.add('fallback');this.remove();"></div>

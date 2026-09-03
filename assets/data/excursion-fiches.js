@@ -1,10 +1,10 @@
 /* =============================================================
-   EXCURSION FICHES — detailed content for the catalogue's modal.
+   EXCURSION FICHES — detailed content for the catalog's modal.
    Consumed by catalogue/fiche-template.html?slug=<slug>, rendered
    with the same markup/skin as the Normandy flagship fiche (see
    catalogue/normandy-in-3-journeys/fiche.html + styles/base.css).
 
-   All catalogue excursions live here. Two data shapes coexist:
+   All catalog excursions live here. Two data shapes coexist:
    - OVERVIEW fiches (the redesigned Normandy four): no day-by-day
      itinerary — instead `destinations`, `highlights` and a flat
      `activities` list of optional modules. This is the target format.
@@ -29,7 +29,7 @@ const DEFAULT_FORMATS = [
   { cls: "clutch", name: "Clutch", text: "An onboard sequence that uses transfer time to unlock the key ideas needed to understand what comes next." }
 ];
 
-const CLOSING_DEFAULT = "Tell us your dates, your group and what you'd like them to walk away understanding — we'll adjust the programme around it.";
+const CLOSING_DEFAULT = "Tell us your dates, your group and what you'd like them to walk away understanding — we'll adjust the program around it.";
 const FINEPRINT_DEFAULT = "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives.";
 
 const EXCURSION_FICHES = {
@@ -49,7 +49,7 @@ const EXCURSION_FICHES = {
       { label: "Overnight", value: "Bayeux or Honfleur" }
     ],
     intro: [
-      "A complete first encounter with Normandy, built around the three legacies that define it: the Middle Ages that made it a power, the Impressionism it inspired, and the seaside villégiature that made it France's favourite escape.",
+      "A complete first encounter with Normandy, built around the three legacies that define it: the Middle Ages that made it a power, the Impressionism it inspired, and the seaside villégiature that made it France's favorite escape.",
       "Across Rouen, Bayeux, Omaha and Honfleur, students keep meeting the same lesson from different angles: one region, layered by a thousand years of very different ambitions."
     ],
     formats: [
@@ -67,7 +67,7 @@ const EXCURSION_FICHES = {
     highlights: [
       { text: "Rouen Cathedral", desc: "The Gothic giant Monet painted thirty times.", image: "catalogue/normandy-in-3-journeys/images/rouen.jpg" },
       { text: "Omaha Beach and the American Cemetery", desc: "Where history's greatest landing is remembered, name by name.", image: "catalogue/normandy-in-3-journeys/images/omaha.jpg" },
-      { text: "The Bayeux Tapestry", desc: "Seventy metres of embroidery telling the conquest of England.", image: "assets/images/excursions/normandie_medieval.png" },
+      { text: "The Bayeux Tapestry", desc: "Seventy meters of embroidery telling the conquest of England.", image: "assets/images/excursions/normandie_medieval.png" },
       { text: "Boat cruise on the Seine estuary", desc: "Normandy from the water, the way painters and sailors saw it first.", image: "assets/images/excursions/wiki/seine_estuary.jpg" },
       { text: "The old harbour of Honfleur", desc: "The postcard port where Impressionism learned to paint.", image: "catalogue/normandy-in-3-journeys/images/honfleur.jpg" },
       { text: "Cider tasting", desc: "Normandy's signature drink, straight from the orchard.", image: "assets/images/excursions/wiki/cider.jpg" }
@@ -78,7 +78,7 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "Spaceship Cathedral",
         text: "What is a cathedral, really? This activity recontextualises the building as the most ambitious machine of its century — an engineering project so far beyond its time that today's honest comparison isn't another monument, but a rocket or a flying saucer." },
       { tag: "echo", title: "Ceremony",
-        text: "An American remembrance ceremony organised with the American Cemetery: colours, silence, and the weight of a ritual performed where it means the most." },
+        text: "An American remembrance ceremony organized with the American Cemetery: colors, silence, and the weight of a ritual performed where it means the most." },
       { tag: "echo", title: "Letters to a Soldier",
         text: "Readings from real wartime correspondence — soldiers writing to their families, their friends, each other — read aloud above the beach they were written about." },
       { tag: "unbound", title: "The One and Only",
@@ -141,7 +141,7 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "Cinéma 360°",
         text: "In the circular cinema above Arromanches, archive footage plays on every side at once — a short, immersive plunge into the hundred days of the Battle of Normandy, on the very spot it overlooks." },
       { tag: "echo", title: "Ceremony",
-        text: "An American remembrance ceremony organised with the American Cemetery: colours, silence, and the weight of a ritual performed where it means the most." },
+        text: "An American remembrance ceremony organized with the American Cemetery: colors, silence, and the weight of a ritual performed where it means the most." },
       { tag: "echo", title: "Letters to a Soldier",
         text: "Readings from real wartime correspondence — soldiers writing to their families, their friends, each other — read aloud above the beach they were written about." },
       { tag: "clutch", title: "The Most Complex Operation in War History",
@@ -191,7 +191,7 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "You Are the Artist",
         text: "A photography workshop on the go: armed with the Impressionists' own questions — where is the light, what is the instant, what do I leave out? — students shoot the landscape the way Monet painted it, and discover their eye has already changed." },
       { tag: "pulse", title: "The Watercolor Challenge",
-        text: "A series of fast, easy watercolor mini-challenges running all along the excursion — thirty seconds of sky here, a harbour in three colours there — with the final round painted in Monet's own garden. No skill required: the point is to look the way painters look." },
+        text: "A series of fast, easy watercolor mini-challenges running all along the excursion — thirty seconds of sky here, a harbour in three colors there — with the final round painted in Monet's own garden. No skill required: the point is to look the way painters look." },
       { tag: "unbound", title: "The One and Only",
         text: "A deliberate change of focus in the museum: students commit to a single work — Monet's cathedral, say — and give it everything: time, questions, close reading, then the walk outside to face its subject. Learning to let the rest go is the skill." },
       { tag: "unbound", title: "Speed Control",
@@ -203,7 +203,7 @@ const EXCURSION_FICHES = {
       { tag: "clutch", title: "Claude Monet, Your Worst Best Friend",
         text: "Genius, tyrant, charmer, recluse — an onboard portrait of Monet's famously complicated personality, so that students arrive at his house knowing the man, not just the brand." },
       { tag: "clutch", title: "The End of an Eternal Debate",
-        text: "For centuries art fought over one question: colour or line? Colourists against draughtsmen, from the Renaissance to the Academy. This onboard sequence shows how Impressionism finally answered the oldest argument in art history." }
+        text: "For centuries art fought over one question: color or line? Colorists against draftsmen, from the Renaissance to the Academy. This onboard sequence shows how Impressionism finally answered the oldest argument in art history." }
     ],
     closingSub: CLOSING_DEFAULT,
     fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Honfleur or Le Havre depending on season and availability."
@@ -240,7 +240,7 @@ const EXCURSION_FICHES = {
       { text: "Mont Saint-Michel", desc: "An abbey stacked on a rock in the sea — the Wonder of the West.", image: "assets/images/excursions/wiki/msm.jpg" },
       { text: "Rouen Cathedral", desc: "Gothic ambition at full height, in the dukes' own capital.", image: "assets/images/excursions/wiki/rouen_cathedral.jpg" },
       { text: "Caen Castle", desc: "William the Conqueror's fortress — one of the largest in Europe.", image: "assets/images/excursions/wiki/caen_castle.jpg" },
-      { text: "The Bayeux Tapestry", desc: "The conquest of England, told in seventy metres of wool.", image: "assets/images/excursions/normandie_medieval.png" }
+      { text: "The Bayeux Tapestry", desc: "The conquest of England, told in seventy meters of wool.", image: "assets/images/excursions/normandie_medieval.png" }
     ],
     activities: [
       { tag: "pulse", title: "Debunk the Middle Ages",
@@ -307,7 +307,7 @@ const EXCURSION_FICHES = {
       { tag: "echo", title: "The Tuffeau Quarries: Misery Behind the Beauty",
         text: "Testimonies from the quarries where the white tuffeau stone was cut — the crushing, dangerous human reality behind the valley's most beautiful façades. A necessary counterpoint: every wonder was paid for by someone." },
       { tag: "echo", title: "A Boat on the Loire",
-        text: "A slow boat ride on the river that made the valley: no commentary race, just the current, the sandbanks and the châteaux drifting past the way travellers saw them for five centuries." },
+        text: "A slow boat ride on the river that made the valley: no commentary race, just the current, the sandbanks and the châteaux drifting past the way travelers saw them for five centuries." },
       { tag: "clutch", title: "The Renaissance Explained in Twenty Minutes",
         text: "A fast, precise onboard briefing on the intellectual, economic and artistic revolution — humanism, printing, banking, perspective — so students step off the bus already equipped to read what they see." },
       { tag: "clutch", title: "François I: The Renaissance Superstar",
@@ -368,7 +368,7 @@ const EXCURSION_FICHES = {
       { tag: "echo", title: "The Tuffeau Quarries: Misery Behind the Beauty",
         text: "Testimonies from the quarries where the white tuffeau stone was cut — the crushing, dangerous human reality behind the valley's most beautiful façades. A necessary counterpoint: every wonder was paid for by someone." },
       { tag: "echo", title: "A Boat on the Loire",
-        text: "A slow boat ride on the river that made the valley: no commentary race, just the current, the sandbanks and the châteaux drifting past the way travellers saw them for five centuries." },
+        text: "A slow boat ride on the river that made the valley: no commentary race, just the current, the sandbanks and the châteaux drifting past the way travelers saw them for five centuries." },
       { tag: "clutch", title: "The Renaissance Explained in Twenty Minutes",
         text: "A fast, precise onboard briefing on the intellectual, economic and artistic revolution — humanism, printing, banking, perspective — so students step off the bus already equipped to read what they see." },
       { tag: "clutch", title: "François I: The Renaissance Superstar",
@@ -427,11 +427,11 @@ const EXCURSION_FICHES = {
       { tag: "echo", title: "A Night in a Renaissance Château",
         text: "For groups who choose it, the hotel is swapped for a night inside a Renaissance château: stone stairs, creaking parquet, and lights-out in the very architecture the journey is about. The most direct way to understand a château — sleep in it." },
       { tag: "echo", title: "A Boat on the Loire",
-        text: "A slow boat ride on the river that made the valley: no commentary race, just the current, the sandbanks and the châteaux drifting past the way travellers saw them for five centuries." },
+        text: "A slow boat ride on the river that made the valley: no commentary race, just the current, the sandbanks and the châteaux drifting past the way travelers saw them for five centuries." },
       { tag: "clutch", title: "The Renaissance Explained in Twenty Minutes",
         text: "A fast, precise onboard briefing on the intellectual, economic and artistic revolution — humanism, printing, banking, perspective — so students step off the bus already equipped to read what they see." },
       { tag: "clutch", title: "The Renaissance Shopping List",
-        text: "Tomatoes, maize, chocolate, new fabrics, new luxuries — an onboard tour of everything that arrived in Europe with the Renaissance. The era stops being abstract the moment students realise how empty the table was before it." },
+        text: "Tomatoes, maize, chocolate, new fabrics, new luxuries — an onboard tour of everything that arrived in Europe with the Renaissance. The era stops being abstract the moment students realize how empty the table was before it." },
       { tag: "clutch", title: "Art Theory Explained: The French Garden",
         text: "A compact onboard masterclass on the French formal garden — geometry, perspective, the mastery of nature as a statement of power — the keys that turn every parterre of the journey into a readable text." },
       { tag: "clutch", title: "What's in a Label?",
@@ -454,7 +454,7 @@ const EXCURSION_FICHES = {
       { label: "Overnight", value: "Amiens or Beauvais" }
     ],
     intro: [
-      "Gothic architecture was born, perfected and pushed to its breaking point within a hundred kilometres of Paris. This journey visits the three places that determined the art's destiny: the basilica where it was invented, the cathedral where it reached perfection, and the choir where it flew too high.",
+      "Gothic architecture was born, perfected and pushed to its breaking point within a hundred kilometers of Paris. This journey visits the three places that determined the art's destiny: the basilica where it was invented, the cathedral where it reached perfection, and the choir where it flew too high.",
       "Along the way, students discover that Gothic is more than an architecture — it's the mentality of an entire era, readable in stone, glass and light."
     ],
     formats: [
@@ -628,11 +628,11 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "The Millésime Tasting",
         text: "A guided tasting built around vintage champagne: what a millésime is, why some years earn one and others don't, and how weather, chalk and patience end up in the glass. Tasting becomes a lesson in terroir and time." },
       { tag: "pulse", title: "Down in the Crayères",
-        text: "A descent into the underground champagne cellars — Gallo-Roman chalk quarries turned into kilometres of galleries where millions of bottles sleep at a constant temperature. Geology, history and craft, thirty metres below the street." },
+        text: "A descent into the underground champagne cellars — Gallo-Roman chalk quarries turned into kilometers of galleries where millions of bottles sleep at a constant temperature. Geology, history and craft, thirty meters below the street." },
       { tag: "echo", title: "A Boat on the Canal",
         text: "A slow boat ride on the water that threads the city: no commentary race, just the current, the banks and the skyline the winegrowers and merchants have always known." },
       { tag: "clutch", title: "Dom Pérignon: The Monk Behind the Bubbles",
-        text: "An onboard portrait of the Benedictine cellar master whose obsessive rigour helped turn a flawed local wine into a global legend — and how much of his story is history, and how much is very good marketing." },
+        text: "An onboard portrait of the Benedictine cellar master whose obsessive rigor helped turn a flawed local wine into a global legend — and how much of his story is history, and how much is very good marketing." },
       { tag: "clutch", title: "Champagne Expert in Twenty Minutes",
         text: "A fast, precise onboard briefing on how champagne is actually made — grapes, blending, second fermentation, riddling, dosage — so students walk into the cellars already able to ask the right questions." },
       { tag: "clutch", title: "What's in a Label?",
@@ -644,8 +644,8 @@ const EXCURSION_FICHES = {
 
   troyes: {
     eyebrow: "Educational journey · Eastern France",
-    title: "Troyes, City of Medieval Colour",
-    sub: "Half-timbered lanes, flamboyant glass and a street plan shaped like a champagne cork — the Middle Ages in colour.",
+    title: "Troyes, City of Medieval Color",
+    sub: "Half-timbered lanes, flamboyant glass and a street plan shaped like a champagne cork — the Middle Ages in color.",
     heroImage: "assets/images/excursions/est_vitrail.jpeg",
     heroAlt: "Stained glass in Troyes",
     facts: [
@@ -666,7 +666,7 @@ const EXCURSION_FICHES = {
       { name: "Troyes", image: "assets/images/excursions/est_vitrail.jpeg" }
     ],
     highlights: [
-      { text: "The Medieval Centre", desc: "A street plan shaped like a champagne cork, lined with leaning timber houses.", image: "assets/images/excursions/wiki/troyes_centre.jpg" },
+      { text: "The Medieval Center", desc: "A street plan shaped like a champagne cork, lined with leaning timber houses.", image: "assets/images/excursions/wiki/troyes_centre.jpg" },
       { text: "The Cité du Vitrail", desc: "France's stained-glass capital, from the 12th century to today.", image: "assets/images/excursions/est_vitrail.jpeg" },
       { text: "Saint-Pierre-et-Saint-Paul Cathedral", desc: "Walls of flamboyant Gothic glass, meant to be read like books.", image: "assets/images/excursions/wiki/troyes_cathedral.jpg" },
       { text: "Sainte-Madeleine Church", desc: "One of the finest carved stone rood screens in France." },
@@ -678,13 +678,13 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "Spot the Details",
         text: "A precision visit built on details: timber frames, corbels, tracery, masonry. By the end, students can date a building at a single glance — and sort the Middle Ages from the Renaissance anywhere they travel next." },
       { tag: "pulse", title: "Walk the Cork",
-        text: "A walking activity tracing the historic centre's famous cork-shaped street plan on foot — a lesson in how a medieval fair town grows, told by its own streets, courtyards and leaning façades." },
+        text: "A walking activity tracing the historic center's famous cork-shaped street plan on foot — a lesson in how a medieval fair town grows, told by its own streets, courtyards and leaning façades." },
       { tag: "unbound", title: "The One and Only",
         text: "A deliberate change of focus at the Cité du Vitrail: instead of covering the museum, students commit to a single window and give it everything — time, questions, close reading. Learning to let the rest go is the skill." },
       { tag: "clutch", title: "Middle Ages Experts in Twenty Minutes",
         text: "A fast, precise onboard briefing that hands students the essential keys — feudal society, the Church, the city — so they step off the train already equipped to read what they see." },
       { tag: "clutch", title: "Art Theory Explained: Stained Glass",
-        text: "A compact onboard masterclass on the art of stained glass — how a window is made, how it is read panel by panel, and why medieval Europe treated coloured light as the closest thing to heaven." },
+        text: "A compact onboard masterclass on the art of stained glass — how a window is made, how it is read panel by panel, and why medieval Europe treated colored light as the closest thing to heaven." },
       { tag: "clutch", title: "The Wall Street of the Middle Ages",
         text: "Troyes was one of the great fair towns of medieval Europe — a place where merchants from Italy to Flanders met, traded and invented modern finance. An onboard tour of the Champagne fairs, and why a troy ounce is still called a troy ounce." },
       { tag: "clutch", title: "What's in a Label?",
@@ -706,7 +706,7 @@ const EXCURSION_FICHES = {
       { label: "Return", value: "Paris" }
     ],
     intro: [
-      "In 1918, the front line came within sixty kilometres of Paris — and American, French and German soldiers fought over the valleys this journey crosses. One day along that stretch of the Western Front, to understand 1914–18 where it nearly reached the capital.",
+      "In 1918, the front line came within sixty kilometers of Paris — and American, French and German soldiers fought over the valleys this journey crosses. One day along that stretch of the Western Front, to understand 1914–18 where it nearly reached the capital.",
       "From a cemetery to a battlefield monument to Europe's largest Great War museum, students study not just what happened, but how a century of remembrance was built on top of it."
     ],
     formats: [
@@ -732,7 +732,7 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "Terrain as Strategy",
         text: "A viewpoint activity using the Marne valley's own landscape to explain why armies fought where they fought — geography as a military decision, not a backdrop." },
       { tag: "echo", title: "Ceremony",
-        text: "An American remembrance ceremony organised with the American Cemetery: colours, silence, and the weight of a ritual performed where it means the most." },
+        text: "An American remembrance ceremony organized with the American Cemetery: colors, silence, and the weight of a ritual performed where it means the most." },
       { tag: "echo", title: "Letters to a Soldier",
         text: "Readings from real wartime correspondence — soldiers writing to their families, their friends, each other — read aloud on the ground they wrote about." },
       { tag: "unbound", title: "The One and Only",
@@ -782,7 +782,7 @@ const EXCURSION_FICHES = {
       { text: "Cézanne's Studio", desc: "The Atelier des Lauves, left the way the painter left it.", image: "assets/images/excursions/wiki/cezanne_studio.jpg" },
       { text: "Saint-Sauveur Cathedral", desc: "Sixteen centuries of styles stacked in a single building.", image: "assets/images/excursions/wiki/st_sauveur.jpg" },
       { text: "Boat Ride in the Calanques", desc: "White cliffs and turquoise water — a national park visited by sea.", image: "assets/images/excursions/wiki/calanques.jpg" },
-      { text: "Provence Wine Tasting", desc: "The crus of Provence, tasted a few kilometres from the vines.", image: "assets/images/excursions/wiki/wine_tasting.jpg" }
+      { text: "Provence Wine Tasting", desc: "The crus of Provence, tasted a few kilometers from the vines.", image: "assets/images/excursions/wiki/wine_tasting.jpg" }
     ],
     activities: [
       { tag: "pulse", title: "You Are the Artist",
@@ -798,7 +798,7 @@ const EXCURSION_FICHES = {
       { tag: "clutch", title: "Cézanne: The Father of Us All",
         text: "Picasso said it, not us. An onboard portrait of the stubborn Aixois who painted one mountain over eighty times and quietly invented modern art — so students arrive in his city knowing why it mattered." },
       { tag: "clutch", title: "What Is a Calanque, Exactly?",
-        text: "An onboard geology briefing on the coast ahead: how these narrow limestone fjords were carved, why the water is that colour, and why the whole coastline is now a protected national park." },
+        text: "An onboard geology briefing on the coast ahead: how these narrow limestone fjords were carved, why the water is that color, and why the whole coastline is now a protected national park." },
       { tag: "clutch", title: "What's in a Label?",
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],
@@ -841,7 +841,7 @@ const EXCURSION_FICHES = {
     ],
     activities: [
       { tag: "pulse", title: "A Port That Never Stopped Changing",
-        text: "A walking activity along the Vieux-Port tracing waves of arrival — Greek, Roman, colonial, postwar — still visible in the city's neighbourhoods, accents and street food. Immigration as the city's oldest tradition." },
+        text: "A walking activity along the Vieux-Port tracing waves of arrival — Greek, Roman, colonial, postwar — still visible in the city's neighborhoods, accents and street food. Immigration as the city's oldest tradition." },
       { tag: "pulse", title: "Water That Carved Stone",
         text: "A short field geology activity using the calanques themselves: how limestone, vanished rivers and millions of years combine into a coastline found almost nowhere else in Europe." },
       { tag: "echo", title: "A Boat in the Calanques",
@@ -853,7 +853,7 @@ const EXCURSION_FICHES = {
       { tag: "clutch", title: "Marseille Explained in Twenty Minutes",
         text: "A fast, precise onboard briefing on France's oldest city — Greek colony, plague port, gateway of empire, capital of the Mediterranean — so students read the harbour as the 2,600-year-old crossroads it is." },
       { tag: "clutch", title: "What Is a Calanque, Exactly?",
-        text: "An onboard geology briefing on the coast ahead: how these narrow limestone fjords were carved, why the water is that colour, and why the whole coastline is now a protected national park." }
+        text: "An onboard geology briefing on the coast ahead: how these narrow limestone fjords were carved, why the water is that color, and why the whole coastline is now a protected national park." }
     ],
     closingSub: CLOSING_DEFAULT,
     fineprint: "Educational journey designed by UpTempo — itinerary, timings, activities and French level adjusted to each group's age, size and objectives. Accommodation in Cassis."
@@ -888,8 +888,8 @@ const EXCURSION_FICHES = {
     ],
     highlights: [
       { text: "The Palais des Papes", desc: "The largest Gothic palace in Europe — the Vatican in exile.", image: "assets/images/excursions/wiki/palais_papes.jpg" },
-      { text: "The Arles Amphitheatre", desc: "A Roman arena still hosting crowds after two thousand years.", image: "assets/images/excursions/wiki/arles_amphi.jpg" },
-      { text: "The Pont du Gard", desc: "Rome's engineering masterpiece — fifty kilometres of aqueduct for one city.", image: "assets/images/excursions/provence_pontdugard.jpeg" },
+      { text: "The Arles Amphitheater", desc: "A Roman arena still hosting crowds after two thousand years.", image: "assets/images/excursions/wiki/arles_amphi.jpg" },
+      { text: "The Pont du Gard", desc: "Rome's engineering masterpiece — fifty kilometers of aqueduct for one city.", image: "assets/images/excursions/provence_pontdugard.jpeg" },
       { text: "Van Gogh's Arles", desc: "The streets and cafés he painted in one incandescent year.", image: "assets/images/excursions/wiki/van_gogh_cafe.jpg" },
       { text: "The Pont d'Avignon", desc: "Half a bridge — and a song the whole world knows.", image: "assets/images/excursions/wiki/pont_avignon.jpg" }
     ],
@@ -897,7 +897,7 @@ const EXCURSION_FICHES = {
       { tag: "pulse", title: "Spot the Details",
         text: "A precision visit built on details: Roman arches, Romanesque portals, Gothic vaults. By the end, students can date a building at a single glance — and read Provence as the two-thousand-year palimpsest it is." },
       { tag: "pulse", title: "Engineer an Aqueduct",
-        text: "A hands-on problem-solving activity beneath the Pont du Gard itself: how do you move water fifty kilometres using nothing but gravity and a fall of 34 centimetres per kilometre? Roman engineering, solved by hand." },
+        text: "A hands-on problem-solving activity beneath the Pont du Gard itself: how do you move water fifty kilometers using nothing but gravity and a fall of 34 centimeters per kilometer? Roman engineering, solved by hand." },
       { tag: "pulse", title: "Kayak the Aqueduct",
         text: "Paddling the Gardon river straight under the Pont du Gard — the monument at its full height, seen from the water it was built to cross. Architecture as an experience no viewpoint can match." },
       { tag: "echo", title: "Sunset at the Pont du Gard",
@@ -907,7 +907,7 @@ const EXCURSION_FICHES = {
       { tag: "clutch", title: "Ancient Rome Explained in Twenty Minutes",
         text: "A fast, precise onboard briefing on how Rome built an empire — roads, water, arenas, concrete — so students walk into Arles reading Roman infrastructure as the power move it was." },
       { tag: "clutch", title: "When the Pope Lived in France",
-        text: "For sixty-seven years the centre of Christendom was not Rome but Avignon — an onboard tour of the political crisis that moved a papacy, and the fortress-palace it built to prove the point." },
+        text: "For sixty-seven years the center of Christendom was not Rome but Avignon — an onboard tour of the political crisis that moved a papacy, and the fortress-palace it built to prove the point." },
       { tag: "clutch", title: "Van Gogh: One Year, Three Hundred Paintings",
         text: "An onboard portrait of Van Gogh's Arles year — the light that drew him, the frenzy that consumed him, and the three hundred works it produced — so students walk his streets knowing what happened there." }
     ],
@@ -947,7 +947,7 @@ const EXCURSION_FICHES = {
     highlights: [
       { text: "The UNESCO Quays of Bordeaux", desc: "The 'Port of the Moon' — the largest 18th-century urban ensemble in France.", image: "assets/images/excursions/wiki/bordeaux_quays.jpg" },
       { text: "The Place de la Bourse and Water Mirror", desc: "The world's largest reflecting pool, facing the century's finest façade.", image: "assets/images/excursions/wiki/bourse_bordeaux.jpg" },
-      { text: "The Dune du Pilat", desc: "Europe's tallest sand dune — over 100 metres high, and still moving.", image: "assets/images/excursions/wiki/dune_pilat.jpg" },
+      { text: "The Dune du Pilat", desc: "Europe's tallest sand dune — over 100 meters high, and still moving.", image: "assets/images/excursions/wiki/dune_pilat.jpg" },
       { text: "The Arcachon Basin", desc: "Oyster ports, tides, and the famous cabanes tchanquées on stilts.", image: "assets/images/excursions/wiki/arcachon_bay.jpg" },
       { text: "La Cité du Vin", desc: "Wine as a world civilisation, in a building shaped like a swirl.", image: "assets/images/excursions/wiki/cite_du_vin.jpg" },
       { text: "Oyster Tasting", desc: "Straight from the water, in a working oysterman's cabane.", image: "assets/images/excursions/wiki/oysters.jpg" }
@@ -970,7 +970,7 @@ const EXCURSION_FICHES = {
       { tag: "clutch", title: "Bordeaux Explained in Twenty Minutes",
         text: "A fast, precise onboard briefing on how a river port became one of Europe's richest cities — the Port of the Moon, the wine trade, the Atlantic economy — so students read the façades as the fortunes they are." },
       { tag: "clutch", title: "Where the Ocean Meets the Land",
-        text: "An onboard geography masterclass on the coast ahead: how tides build an oyster basin, how wind builds a hundred-metre dune, and why this shoreline never stops redrawing itself." },
+        text: "An onboard geography masterclass on the coast ahead: how tides build an oyster basin, how wind builds a hundred-meter dune, and why this shoreline never stops redrawing itself." },
       { tag: "clutch", title: "What's in a Label?",
         text: "Appellation d'origine — the French idea that a product belongs to its land. An onboard decoding of AOC, AOP and cru: everything a French label promises, guarantees or merely suggests. The one concept that unlocks every local product in France, from wine and champagne to cheese and cider." }
     ],

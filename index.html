@@ -23,7 +23,7 @@
     --divider:rgba(163,163,166,.5);
     /* Service-category papers: the site's own blue / pink / yellow hues
        desaturated into the --canvas-soft band, so they tint the card
-       without introducing colours the palette doesn't already use. */
+       without introducing colors the palette doesn't already use. */
     --paper-workshops:#eceef7; --paper-visits:#f7ecf3; --paper-fulldays:#f5f2e4;
     --font-display:'Archivo Black','Arial Black',sans-serif; --font-body:Helvetica,Arial,sans-serif;
     --radius-sm:18px; --radius-md:24px; --radius-lg:30px; --radius-full:9999px;
@@ -113,8 +113,8 @@
   .puzzle-cell:hover{ border-color:var(--secondary); transform:translateY(-3px);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.7), var(--shadow-lg); }
   /* One card system, no per-category wash. At 6-8% the old tints read as
-     muddy, and a coloured rule would put blue and pink back in play — the
-     two colours Clutch and Pulse own. The cards are told apart by their
+     muddy, and a colored rule would put blue and pink back in play — the
+     two colors Clutch and Pulse own. The cards are told apart by their
      title, badge and thumbnails, which is already enough to scan. */
   .puzzle-cell{ background:var(--surface); }
   @media (max-width:560px){ .puzzle-row{ flex-direction:column; } .puzzle-row > .puzzle-col, .puzzle-row > .puzzle-cell, .puzzle-col--split > .puzzle-cell{ flex:none; } }
@@ -195,7 +195,7 @@
   .guide__photo span{ font-size:64px; font-family:var(--font-display); color:var(--on-dark); }
   .guide__photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 0%; }
   .guide__photo{ box-shadow:var(--shadow-lg); }
-  /* ---------- Guide — ICON STYLE C: "Outlined medallion" (hairline circle in the accent colour, icon beside the text, not above it) ---------- */
+  /* ---------- Guide — ICON STYLE C: "Outlined medallion" (hairline circle in the accent color, icon beside the text, not above it) ---------- */
   .guide__facts{ display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:30px; }
   .guide__fact{ padding:18px 20px; border-left:1px dotted var(--divider); display:grid; grid-template-columns:46px 1fr; gap:16px; align-items:start; }
   .guide__fact:first-child{ border-left:none; padding-left:0; }
@@ -216,7 +216,7 @@
   .field-exp b{ font-size:13px; letter-spacing:0; text-transform:none; margin-bottom:2px; }
   @media (max-width:840px){ .guide{ grid-template-columns:1fr; text-align:center; } .guide__photo{ max-width:280px; margin:0 auto; } .guide__facts{ text-align:left; } }
 
-  /* ---------- Methods — ICON STYLE B: "Inline rule" (bare icon on the same baseline as the title, sitting on a coloured underline) ---------- */
+  /* ---------- Methods — ICON STYLE B: "Inline rule" (bare icon on the same baseline as the title, sitting on a colored underline) ---------- */
   .methods-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
   .method{ padding:0 22px; border-left:1px dotted var(--divider); } .method:first-child{ border-left:none; padding-left:0; }
   .method__head{ display:flex; align-items:center; gap:11px; padding-bottom:14px; margin-bottom:16px; border-bottom:2px solid currentColor; }
@@ -247,7 +247,7 @@
   /* head = icon + title + tagline on the left, photo filling the empty space on the right */
   .format-card__head{ display:flex; align-items:center; gap:22px; margin-bottom:22px; }
   .format-card__head-text{ flex:1 1 auto; min-width:0; }
-  /* holds a hand-drawn line illustration, inheriting the card's ink colour */
+  /* holds a hand-drawn line illustration, inheriting the card's ink color */
   .format-card__media{ flex:none; width:150px; height:134px; border-radius:22px; background:rgba(255,255,255,.16); box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; padding:10px; }
   .format-card__media svg{ width:100%; height:100%; display:block; }
   .format-card--anchor .format-card__media, .format-card--echo .format-card__media{ background:rgba(0,0,0,.07); box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.12); }
@@ -276,7 +276,7 @@
   <nav class="navbar">
     <a href="#top" class="logo">UPTEMPO</a>
     <div class="nav-spacer"></div>
-    <div class="nav-cta"><a href="#cta" class="btn btn--primary">Request a Programme</a></div>
+    <div class="nav-cta"><a href="#cta" class="btn btn--primary">Request a Program</a></div>
   </nav>
 
   <main id="top">
@@ -284,8 +284,8 @@
       <div class="hero__inner reveal in">
         <span class="eyebrow" style="color:var(--pulse)">Learning &amp; Experience Engineering</span>
         <h1 class="h-xl">Transform Activities Into Understanding</h1>
-        <p class="hero__sub">UpTempo designs workshops, programmes and excursions for study-abroad groups in France — run in French at your group's level, so students practise the language while they learn something else entirely.</p>
-        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:var(--canvas);color:var(--ink);">Go to Catalogue</a><a href="#services" class="btn btn--ghost">Booster Activities</a></div>
+        <p class="hero__sub">UpTempo designs workshops, programs and excursions for study-abroad groups in France — run in French at your group's level, so students practice the language while they learn something else entirely.</p>
+        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:var(--canvas);color:var(--ink);">Go to Catalog</a><a href="#services" class="btn btn--ghost">Booster Activities</a></div>
       </div>
       <div class="hero__frame reveal"><div class="frame" data-alt="Group exploring a historic European town"><img src="assets/images/hero.png" alt="Group of participants exploring a historic European town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
     </section>
@@ -295,7 +295,7 @@
         <div class="section-head reveal"><span class="eyebrow">the Philosophy</span><h2 class="h-lg">Four Principles Behind Every move</h2><p class="body-lg">Every excursion, workshop or activity we design is built on the same foundations — regardless of destination, age group or subject.</p></div>
         <div class="principles reveal-stagger">
           <div class="principle reveal" style="--i:0"><div class="principle__icon" style="background:rgba(237,26,160,.12); color:#ed1aa0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/></svg></div><h3>Meaningful Experiences Memorable Moments</h3><p>We design for memorable moments, not checklists of sights. Every stop earns its place because it makes an idea click, not because it's famous.</p></div>
-          <div class="principle reveal" style="--i:1"><div class="principle__icon" style="background:rgba(17,81,255,.12); color:#1151ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div><h3>Insightful Perspectives Timeless Understanding</h3><p>We favour questions over information. Participants leave with a way of looking at history, art or landscape they can reuse long after the trip.</p></div>
+          <div class="principle reveal" style="--i:1"><div class="principle__icon" style="background:rgba(17,81,255,.12); color:#1151ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div><h3>Insightful Perspectives Timeless Understanding</h3><p>We favor questions over information. Participants leave with a way of looking at history, art or landscape they can reuse long after the trip.</p></div>
           <div class="principle reveal" style="--i:2"><div class="principle__icon" style="background:rgba(46,157,46,.12); color:#2f9e22"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg></div><h3>Cultural Connection Authentic Contexts</h3><p>Places are explored in their authentic context — local life, food and everyday culture sit alongside monuments and museums, and the day is led in French so the language is lived rather than studied.</p></div>
           <div class="principle reveal" style="--i:3"><div class="principle__icon" style="background:rgba(202,160,0,.16); color:#caa000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Organizational Support Expert Guidance</h3><p>Coordinating transport, securing permits, anticipating the unexpected — that's my role. I'm present at every stage: beforehand to prepare your project with precision, on the ground to ensure everything unfolds without a hitch, and ready to adapt the plan if needed. Your peace of mind is my priority.</p></div>
         </div>
@@ -305,7 +305,7 @@
 
     <section class="section section--alt" id="services">
       <div class="wrap">
-        <div class="section-head reveal"><span class="eyebrow">the Services</span><h2 class="h-lg">Ways to Travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region programme — there is a format that fits your educational needs, your timing and your level of energy. Every one of them runs in French, adapted to the level of your group.</p></div>
+        <div class="section-head reveal"><span class="eyebrow">the Services</span><h2 class="h-lg">Ways to Travel with UpTempo</h2><p class="body-lg">From a two-hour workshop to a multi-day cross-region program — there is a format that fits your educational needs, your timing and your level of energy. Every one of them runs in French, adapted to the level of your group.</p></div>
         <div class="puzzle-grid reveal-stagger">
           <div class="puzzle-row">
             <div class="puzzle-col puzzle-col--split">
@@ -317,7 +317,7 @@
                 </div>
                 <div class="cell-foot"><a href="catalogue/services-workshops.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a></div>
               </div>
-              <div class="puzzle-cell puzzle-cell--visits reveal" style="--i:1"><a class="cell-overlay" href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" aria-label="See all visits"></a><div class="badges"><span class="badge">1–3h</span></div><h3>Visits</h3><p>Any classic visit you need — museum, monument or neighbourhood — led in French at your group's level. Alongside them, dedicated formats that go further, built to meet a precise objective and leave more behind than a photo.</p>
+              <div class="puzzle-cell puzzle-cell--visits reveal" style="--i:1"><a class="cell-overlay" href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" aria-label="See all visits"></a><div class="badges"><span class="badge">1–3h</span></div><h3>Visits</h3><p>Any classic visit you need — museum, monument or neighborhood — led in French at your group's level. Alongside them, dedicated formats that go further, built to meet a precise objective and leave more behind than a photo.</p>
                 <div class="cell-thumbs">
                   <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Winter Ready"><div class="frame" data-alt="Winter Ready"><img src="assets/images/visits/winter-ready.jpg" alt="Winter Ready" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
                   <a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" title="Events"><div class="frame" data-alt="Events"><img src="assets/images/visits/events.jpg" alt="Events" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></a>
@@ -326,7 +326,7 @@
                 <div class="cell-foot"><a href="catalogue/services-visits.html" onclick="openFicheModal(this.href);return false;" class="card-link">Learn more →</a></div>
               </div>
             </div>
-            <div class="puzzle-cell puzzle-cell--fulldays reveal" style="--i:2"><a class="cell-overlay" href="catalogue/services-full-days.html" onclick="openFicheModal(this.href);return false;" aria-label="See all full days"></a><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day spent doing something real — one subject, several connected places, and French as the working language from morning to evening. Participants pick up a skill or a subject, and practise the language without ever sitting down to study it.</p>
+            <div class="puzzle-cell puzzle-cell--fulldays reveal" style="--i:2"><a class="cell-overlay" href="catalogue/services-full-days.html" onclick="openFicheModal(this.href);return false;" aria-label="See all full days"></a><div class="badges"><span class="badge">Full day</span></div><h3>Full Days</h3><p>A full day spent doing something real — one subject, several connected places, and French as the working language from morning to evening. Participants pick up a skill or a subject, and practice the language without ever sitting down to study it.</p>
               <div class="day-group">
                 <a class="day-group__head" href="catalogue/services-full-days.html#in-your-city" onclick="openFicheModal(this.href);return false;"><b>In Your City</b><span>Three formats, run where your group is based.</span></a>
                 <div class="day-grid">
@@ -350,7 +350,7 @@
               </div>
             </div>
           </div>
-          <div class="puzzle-cell reveal" style="--i:3"><a class="cell-overlay" href="catalogue/index.html" aria-label="See the excursion catalogue"></a><div class="badges"><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programmes chaining several destinations and themes into one continuous narrative, lived in French from the coach to the dinner table — our flagship format. Available in two formats:</p>
+          <div class="puzzle-cell reveal" style="--i:3"><a class="cell-overlay" href="catalogue/index.html" aria-label="See the excursion catalog"></a><div class="badges"><span class="badge">2–5 days</span></div><h3>Escapes</h3><p>Multi-day programs chaining several destinations and themes into one continuous narrative, lived in French from the coach to the dinner table — our flagship format. Available in two formats:</p>
             <div class="format-mini">
               <div class="format-mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="11" rx="3"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.3"/><circle cx="16.5" cy="19" r="1.3"/></svg></div>
               <div><b>Classic</b><p>Round-trip by coach from Paris. Best suited to larger groups, or groups looking for comfort and ease.</p></div>
@@ -362,7 +362,7 @@
             <div class="excursions">
               <div class="excursions__head">
                 <h3></h3>
-                <a href="catalogue/index.html" class="card-link">View The Full Catalogue →</a>
+                <a href="catalogue/index.html" class="card-link">View The Full Catalog →</a>
               </div>
               <div class="excursions__viewport"><div class="excursion-carousel" id="excursionCarousel"></div></div>
             </div>
@@ -376,7 +376,7 @@
       <div class="wrap">
         <div class="guide reveal">
         <div><div class="guide__photo"><span>UT</span><img src="assets/images/cv.png" alt="Portrait of your guide" loading="lazy" onerror="this.remove();"></div></div>
-        <div><span class="eyebrow">The Guide</span><h2 class="h-lg">One Contact Throughout</h2><p class="body-lg">One contact from the first email to the coach home — the person who designs the programme is the person who prepares it, books it and guides it on the day. Over 20 years of cultural mediation across museums, heritage sites and school programmes, with a Master's in History and an MBA behind every itinerary: enough academic depth to be rigorous, and enough operational rigor to run smoothly on the day.</p>
+        <div><span class="eyebrow">The Guide</span><h2 class="h-lg">One Contact Throughout</h2><p class="body-lg">One contact from the first email to the coach home — the person who designs the program is the person who prepares it, books it and guides it on the day. Over 20 years of cultural mediation across museums, heritage sites and school programs, with a Master's in History and an MBA behind every itinerary: enough academic depth to be rigorous, and enough operational rigor to run smoothly on the day.</p>
           <div class="guide__facts">
             <div class="guide__fact">
               <span class="guide__fact-ico" style="color:#1151ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
@@ -404,7 +404,7 @@
     </section>
 
     <section class="section" id="methods">
-      <div class="wrap"><div class="section-head reveal"><span class="eyebrow">Methods</span><h2 class="h-lg">How We Build Programmes</h2><p class="body-lg">Four steps turn a destination brief into a finished, field-tested programme.</p></div>
+      <div class="wrap"><div class="section-head reveal"><span class="eyebrow">Methods</span><h2 class="h-lg">How We Build Programs</h2><p class="body-lg">Four steps turn a destination brief into a finished, field-tested program.</p></div>
         <div class="methods-grid reveal-stagger">
           <div class="method reveal" style="--i:0"><div class="method__head" style="color:#caa000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0l-4.6-4.6a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/></svg><h3>Engineering</h3></div><p class="method__sub">Educational excellence starts with intentional engineering.</p><ul><li>Define ambitious educational objectives.</li><li>Engineer every sequence around those objectives.</li><li>Build the right balance between learning, discovery, interaction and free time.</li><li>Design a coherent experience rather than a succession of visits.</li><li>Refine every detail through continuous field experience.</li></ul></div>
           <div class="method reveal" style="--i:1"><div class="method__head" style="color:#ed1aa0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg><h3>Narrative</h3></div><p class="method__sub">Engagement begins with the right questions, not with more information.</p><ul><li>Connect the destination with contemporary issues.</li><li>Challenge assumptions and common narratives.</li><li>Stimulate curiosity through questions and discussion.</li><li>Turn information into understanding.</li><li>Keep participants intellectually engaged from beginning to end.</li></ul></div>
@@ -449,11 +449,11 @@
 
     <section class="section" id="cta">
       <div class="wrap"><div class="cta-band reveal"><div class="cta-band__grid">
-        <div><span class="eyebrow">Get In Touch</span><h2>Ready To Transform Your Journey?</h2><p class="body-lg">Tell us about your group, your dates and what you'd like students or participants to walk away understanding. We'll come back with a tailored programme.</p>
+        <div><span class="eyebrow">Get In Touch</span><h2>Ready To Transform Your Journey?</h2><p class="body-lg">Tell us about your group, your dates and what you'd like students or participants to walk away understanding. We'll come back with a tailored program.</p>
         </div>
         <!-- L'hebergement est statique : il n'y a pas de serveur pour recevoir un
              POST. Le bouton compose donc un message dans le logiciel de courrier
-             du visiteur, vers l'adresse deja utilisee sur uptempo.media/guide.
+             du visiteur, vers l'adresse deja utilizee sur uptempo.media/guide.
              L'adresse reste visible en clair juste en dessous : si le navigateur
              n'a aucun client mail configure, mailto: n'ouvre rien et sans ce
              repli le formulaire serait un cul-de-sac silencieux. -->
