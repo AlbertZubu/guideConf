@@ -110,11 +110,14 @@ if [[ "$VOIE" == "ssh" ]]; then
   main pour voir la disposition :  ssh $HOTE_SSH 'pwd; ls'"
   fi
 else
+  # lftp préfixe chaque entrée d'un « / » et suffixe les dossiers d'un autre :
+  # la racine sort en « /cv/ », pas en « cv ». On normalise avant de comparer.
   LISTE="$(lftp -u "$UTILISATEUR," "$HOTE_FTP" \
-             -e "set ssl:verify-certificate yes; set net:timeout 20; set net:max-retries 2; set net:reconnect-interval-base 5; cls -1 /; bye" 2>/dev/null || true)"
+             -e "set ssl:verify-certificate yes; set net:timeout 20; set net:max-retries 2; set net:reconnect-interval-base 5; cls -1 /; bye" 2>/dev/null \
+           | sed 's#^/##; s#/$##' | grep -v '^$' || true)"
   [[ -n "$LISTE" ]] || mort "Connexion FTP établie mais la racine est illisible.
   Vérifiez le mot de passe dans ~/.netrc."
-  vu() { grep -qx -e "$1" -e "$1/" <<<"$LISTE"; }
+  vu() { grep -qx "$1" <<<"$LISTE"; }
   if vu www; then
     DISTANT="/www/$DOSSIER"
     say "Racine web : /www (le compte s'ouvre sur le dossier personnel)"

@@ -1,0 +1,46 @@
+# Publie le site sur OVH à chaque push sur master.
+#
+# Ce fichier n'est qu'un lanceur : toute la logique est dans
+# deploy/publier-ci.sh. C'est volontaire — un jeton OAuth sans la portée
+# « workflow » ne peut pas écrire ici, alors qu'il pousse le script sans
+# problème. Corriger la publication ne doit jamais obliger à repasser par
+# l'interface web de GitHub.
+
+name: Publier sur OVH
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      essai:
+        description: "Essai à blanc : montre ce qui partirait, n'écrit rien"
+        type: boolean
+        default: false
+
+concurrency:
+  group: publication-ovh
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - run: bash deploy/publier-ci.sh
+        env:
+          OVH_HOTE: ${{ secrets.OVH_FTP_HOTE }}
+          OVH_UTILISATEUR: ${{ secrets.OVH_FTP_UTILISATEUR }}
+          OVH_MOT_DE_PASSE: ${{ secrets.OVH_FTP_MOT_DE_PASSE }}
+          ESSAI: ${{ inputs.essai }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ancien-site-avant-ecrasement
+          path: /tmp/ancien
+          retention-days: 30
+          if-no-files-found: warn
