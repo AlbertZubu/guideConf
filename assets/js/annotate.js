@@ -26,7 +26,7 @@
   function save() { try { sessionStorage.setItem(STORE, JSON.stringify(NOTES)); } catch (e) {} }
 
   /* ---- a readable, specific selector for one element --------- */
-  var NOISE = /^(reveal|in|is-|has-|active|open|current|js-)/;
+  var NOISE = /^(reveal|in|is-|has-|active|open|current|js-|an-)/;
   function classesOf(el) {
     if (typeof el.className !== "string") return [];
     return el.className.trim().split(/\s+/).filter(function (c) { return c && !NOISE.test(c); });
