@@ -113,6 +113,28 @@ lftp_faire "mirror -R --delete --parallel=4 --verbose $SEC $EXCL ./ '$CIBLE/'"
 
 [[ -z "$SEC" ]] || { echo "  essai terminé"; exit 0; }
 
+# ------------------------------------------------------------------ purge
+#
+# Une exclusion lftp vaut pour les deux côtés du miroir : un fichier exclu est
+# ignoré à distance aussi, donc --delete ne le supprimera jamais. Tout ce qui a
+# été publié par erreur avant d'être exclu resterait donc en ligne à vie. On
+# efface donc activement ce qui ne doit pas exister, au lieu de se contenter de
+# ne pas l'envoyer. Idempotent : rien à faire si rien ne traîne.
+
+say "Purge de ce qui ne doit pas être publié"
+PURGE=""
+while IFS= read -r motif; do
+  [[ -z "$motif" || "$motif" == \#* ]] && continue
+  chemin="${motif%/}"
+  [[ "$chemin" == *[\*\?]* ]] && continue      # les globs ne désignent pas un chemin
+  [[ -z "$chemin" || "$chemin" == .* && ${#chemin} -le 2 ]] && continue
+  PURGE+="rm -rf '$CIBLE/$chemin'; "
+done < "$EXCLUSIONS"
+if [[ -n "$PURGE" ]]; then
+  echo "  $PURGE"
+  lftp_faire "${PURGE}" >/dev/null 2>&1 || true
+fi
+
 # ------------------------------------------------------------ vérification
 
 say "Tests"
