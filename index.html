@@ -196,7 +196,7 @@
   .guide{ display:grid; grid-template-columns:384px 1fr; gap:56px; align-items:center; }
   .guide__photo{ position:relative; width:100%; aspect-ratio:1/1; border-radius:var(--radius-lg); background:linear-gradient(150deg, var(--secondary), var(--accent)); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg); overflow:hidden; }
   .guide__photo span{ font-size:64px; font-family:var(--font-display); color:var(--on-dark); }
-  .guide__photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 0%; }
+  .guide__photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 15%; }
   .guide__photo{ box-shadow:var(--shadow-lg); }
   /* ---------- Guide — ICON STYLE C: "Outlined medallion" (hairline circle in the accent color, icon beside the text, not above it) ---------- */
   .guide > div > .h-lg{ margin-bottom:32px; }
@@ -272,6 +272,7 @@
   .cta-band h2{ margin-top:14px; font-size:clamp(28px,3.6vw,44px); }
   .cta-band .eyebrow{ color:var(--pulse); }
   .cta-band p.body-lg{ color:rgba(255,255,255,.75); margin-top:14px; }
+  .cta-band .body-md{ color:var(--on-dark); }
   .form{ display:flex; flex-direction:column; gap:12px; }
   .form input, .form textarea{ width:100%; padding:14px 16px; border-radius:var(--radius-md); border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08); color:var(--on-dark); font-family:'Inter',sans-serif; font-size:14.5px; }
   .form textarea{ min-height:96px; resize:vertical; } .form .btn{ margin-top:4px; align-self:flex-start; }
@@ -297,7 +298,7 @@
         <span class="eyebrow" style="color:var(--pulse)">Learning &amp; Experience Engineering</span>
         <h1 class="h-xl">Transform Activities Into Understanding</h1>
         <p class="hero__sub">UpTempo designs workshops, programs and excursions for study-abroad groups in France — turning a destination into a lesson worth remembering, built on field knowledge, participatory formats and a genuine sense of place.</p>
-        <div class="hero__ctas"><a href="#services" class="btn btn--primary" style="background:var(--canvas);color:var(--ink);">Services</a><a href="#formats" class="btn btn--ghost">Booster Activities</a></div>
+        <div class="hero__ctas"><a href="#services" class="btn btn--ghost">Services</a><a href="#formats" class="btn btn--ghost">Booster Activities</a></div>
       </div>
       <div class="hero__frame reveal"><div class="frame" data-alt="Group exploring a historic European town"><img src="assets/images/hero.png" alt="Group of participants exploring a historic European town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div></div>
     </section>
