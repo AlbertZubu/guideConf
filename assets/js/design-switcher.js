@@ -72,15 +72,20 @@
   }
 
   /* ---- carry the theme across navigation -------------------- */
+  var REVIEW = new URLSearchParams(location.search).get("annotate") === "1";
+  function carry(u) {
+    if (current === "reference") u.searchParams.delete("style");
+    else u.searchParams.set("style", current);
+    if (REVIEW) u.searchParams.set("annotate", "1");
+    return u;
+  }
   function retarget() {
     document.querySelectorAll("a[href]").forEach(function (a) {
       var h = a.getAttribute("href");
       if (!h || h.charAt(0) === "#" || /^(https?:|mailto:|tel:|javascript:)/i.test(h)) return;
       try {
-        var u = new URL(h, location.href);
+        var u = carry(new URL(h, location.href));
         if (u.origin !== location.origin) return;
-        if (current === "reference") u.searchParams.delete("style");
-        else u.searchParams.set("style", current);
         a.setAttribute("href", u.pathname + u.search + u.hash);
       } catch (e) {}
     });
@@ -89,9 +94,7 @@
       var s = f.getAttribute("src");
       if (!s || s === "about:blank") return;
       try {
-        var u = new URL(s, location.href);
-        if (current === "reference") u.searchParams.delete("style");
-        else u.searchParams.set("style", current);
+        var u = carry(new URL(s, location.href));
         var next = u.pathname + u.search + u.hash;
         if (next !== s) f.setAttribute("src", next);
       } catch (e) {}
@@ -161,7 +164,7 @@
 
   /* The review tool rides along here rather than in a <script> tag on every
      page: gated behind ?annotate=1, a visitor never downloads it at all. */
-  if (new URLSearchParams(location.search).get("annotate") === "1") {
+  if (REVIEW) {
     var a = document.createElement("script");
     a.src = BASE + "assets/js/annotate.js";
     a.defer = true;

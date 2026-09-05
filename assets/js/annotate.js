@@ -248,6 +248,21 @@
     }
   };
 
+  /* When a fiche opens in the modal, that iframe carries its own toolbar:
+     this one steps aside so only the layer being reviewed shows a bar. */
+  var overlay = document.getElementById("ficheModalOverlay");
+  if (overlay) {
+    var sync = function () {
+      var open = overlay.classList.contains("open");
+      bar.style.display = open ? "none" : "";
+      [].forEach.call(document.querySelectorAll(".an-pin"), function (p) {
+        p.style.display = open ? "none" : "";
+      });
+    };
+    new MutationObserver(sync).observe(overlay, { attributes: true, attributeFilter: ["class"] });
+    sync();
+  }
+
   var t;
   window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(drawPins, 150); });
   drawPins();
