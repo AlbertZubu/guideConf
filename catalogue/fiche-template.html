@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UpTempo — Excursion Fiche</title>
 <!--
-  Generic renderer for every catalog excursion that isn't the Normandy
+  Generic renderer for every catalog excursion that isn’t the Normandy
   flagship: same markup skeleton as normandy-in-3-journeys/fiche.html, but
   the content comes from assets/data/excursion-fiches.js instead of being
   hand-written per file, since these 17 fiches share one structure and
@@ -14,7 +14,7 @@
   Two data shapes are rendered: OVERVIEW fiches (no `days`) show
   objective / destinations / highlights / optional activities with no
   itinerary; LEGACY fiches (with `days`) keep the two-day rail.
-  fiche-styles/reference.css carries the fiche's own layout and its
+  fiche-styles/reference.css carries the fiche’s own layout and its
   "Nocturne" look. Design themes are site-wide now: the shared bar from
   assets/js/design-switcher.js overrides the token contract, so a fiche
   follows whatever design the visitor picked anywhere on the site.
@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="../assets/css/tokens.css">
 <style>
   /* Every fiche now runs 2 days / 1 night, so they all use the shared
-     two-column .days grid built for Normandy's 2-day itinerary. The
+     two-column .days grid built for Normandy’s 2-day itinerary. The
      solo layout below is kept as a fallback for any future single-day
      fiche: a lone day gets a narrower, centerd column instead of
      stretching full width, which would blow the paragraph measure out
@@ -59,7 +59,7 @@
 
 
   if (!data) {
-    root.innerHTML = `<div class="fiche-missing">This fiche isn't available yet.</div>`;
+    root.innerHTML = `<div class="fiche-missing">This fiche isn’t available yet.</div>`;
     return;
   }
 
@@ -175,12 +175,12 @@
 
     <section class="intro${data.days ? "" : " intro--overview"}">
       <div class="intro__text">
-        <h2 class="label">Educational objective</h2>
+        <h2 class="label">Educational Objective</h2>
         ${data.intro.map((p) => `<p>${p}</p>`).join("")}
       </div>
       ${data.days ? `
       <div class="intro__legend">
-        <h2 class="label">Signature formats</h2>
+        <h2 class="label">Signature Formats</h2>
         <ul class="legend">
           ${data.formats.map((f) => `<li class="legend__item legend__item--${f.cls}"><b>${f.name}</b>${f.text}</li>`).join("")}
         </ul>

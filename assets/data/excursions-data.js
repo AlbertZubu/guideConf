@@ -15,7 +15,7 @@
    pattern used everywhere else on the site.
    ============================================================= */
 
-/* Directory the site is served from, derived from this script's own URL,
+/* Directory the site is served from, derived from this script’s own URL,
    so the same relative image paths work from any page depth. */
 const EXCURSION_BASE = (() => {
   const src = document.currentScript && document.currentScript.src;
@@ -39,8 +39,8 @@ const EXCURSIONS = [
     slug: "impressionist-normandy",
     title: "The Birthplace of Impressionism",
     region: "Normandy",
-    stops: ["Rouen — Monet's cathedral", "Honfleur & Étretat — The painters' coast", "Giverny — Monet's house and gardens"],
-    blurb: "Why did modern art happen here? Two days in the landscapes where painting learned to chase the light — from Monet's cathedral to his garden.",
+    stops: ["Rouen — Monet’s cathedral", "Honfleur & Étretat — The painters' coast", "Giverny — Monet’s house and gardens"],
+    blurb: "Why did modern art happen here? Two days in the landscapes where painting learned to chase the light — from Monet’s cathedral to his garden.",
     image: "assets/images/excursions/normandie_etretat.jpg",
     link: "catalogue/fiche-template.html?slug=impressionist-normandy",
     catalogueLink: "../catalogue/fiche-template.html?slug=impressionist-normandy",
@@ -59,10 +59,10 @@ const EXCURSIONS = [
   },
   {
     slug: "medieval-normandy",
-    title: "Normandy's Golden Age",
+    title: "Normandy’s Golden Age",
     region: "Normandy",
-    stops: ["Rouen — The medieval capital", "Caen & Bayeux — The Conqueror's cities", "Mont Saint-Michel — The Wonder"],
-    blurb: "The Middle Ages that made Normandy a power — the Conqueror's castle, the Tapestry, the great cathedral, and the abbey on the rock.",
+    stops: ["Rouen — The medieval capital", "Caen & Bayeux — The Conqueror’s cities", "Mont Saint-Michel — The Wonder"],
+    blurb: "The Middle Ages that made Normandy a power — the Conqueror’s castle, the Tapestry, the great cathedral, and the abbey on the rock.",
     image: "assets/images/excursions/normandie_medieval.png",
     link: "catalogue/fiche-template.html?slug=medieval-normandy",
     catalogueLink: "../catalogue/fiche-template.html?slug=medieval-normandy",
@@ -83,7 +83,7 @@ const EXCURSIONS = [
     slug: "loire-renaissance",
     title: "Lights of the Renaissance",
     region: "Loire Valley",
-    stops: ["Chenonceau — The ladies' château", "Amboise — Leonardo's last home", "Chambord — François I's dream"],
+    stops: ["Chenonceau — The ladies' château", "Amboise — Leonardo’s last home", "Chambord — François I’s dream"],
     blurb: "The intellectual, economic and artistic revolution of the Renaissance, told through three great châteaux — with Leonardo da Vinci at its heart.",
     image: "assets/images/excursions/loire_chenonceau.jpeg",
     link: "catalogue/fiche-template.html?slug=loire-renaissance",
@@ -116,7 +116,7 @@ const EXCURSIONS = [
     slug: "christmas-markets",
     title: "Christmas, the Flemish Way",
     region: "Northern France",
-    stops: ["Arras — The Grand'Place market", "Lille — The European city", "Ghent & Bruges — Flanders under the lights"],
+    stops: ["Arras — The Grand’Place market", "Lille — The European city", "Ghent & Bruges — Flanders under the lights"],
     blurb: "Four cities where the magic of Christmas is a local art form — markets, lights, beer and traditions with deep medieval roots.",
     image: "assets/images/excursions/nord_noel.jpeg",
     link: "catalogue/fiche-template.html?slug=christmas-markets",
@@ -182,8 +182,8 @@ const EXCURSIONS = [
     slug: "marseille-calanques",
     title: "Marseille and the Calanques",
     region: "Provence",
-    stops: ["Marseille — France's oldest city", "Cassis — The calanques"],
-    blurb: "From France's oldest city to the calanques — an immersion in Mediterranean culture, its ports, its landscapes and its contrasts.",
+    stops: ["Marseille — France’s oldest city", "Cassis — The calanques"],
+    blurb: "From France’s oldest city to the calanques — an immersion in Mediterranean culture, its ports, its landscapes and its contrasts.",
     image: "assets/images/excursions/provence_marseille.jpeg",
     link: "catalogue/fiche-template.html?slug=marseille-calanques",
     catalogueLink: "../catalogue/fiche-template.html?slug=marseille-calanques",
