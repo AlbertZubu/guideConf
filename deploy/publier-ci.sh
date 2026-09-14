@@ -142,7 +142,7 @@ sleep 5
 ECHECS=0
 
 # Ce qui doit répondre.
-for u in "" catalogue/ assets/css/tokens.css assets/js/design-switcher.js \
+for u in "" catalogue/ assets/css/tokens.css assets/js/workbench.js \
          assets/data/excursions-data.js catalogue/services.html; do
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$URL$u")
   if [[ "$code" == 200 ]]; then echo "  200  /$u"
