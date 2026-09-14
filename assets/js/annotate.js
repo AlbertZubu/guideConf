@@ -1,22 +1,24 @@
 /* =============================================================
    ANNOTATE — a review pass you run on the page itself.
 
-   Add ?annotate=1 to any URL and a toolbar appears. Tap elements
-   to pin numbered notes to them, keep going across the whole
-   page, then press Export once: every note comes out as one
-   block of text carrying the CSS selector, the element's own
-   words and your remark.
+   Une barre apparaît en bas de chaque page. On touche un élément
+   pour y épingler une note numérotée, on continue sur toute la
+   page, puis on exporte une fois : chaque note ressort avec son
+   sélecteur CSS, les mots de l'élément et la remarque.
 
-   The selector is the point. A screenshot shows a symptom; a
-   selector says which element, so the fix needs no guesswork.
+   Le sélecteur est tout l'intérêt. Une capture montre un symptôme ;
+   un sélecteur dit de quel élément il s'agit, et la correction n'a
+   plus rien à deviner.
 
-   Nothing loads unless the parameter is present, so a visitor
-   never sees any of this. Notes survive a reload (sessionStorage)
-   and the export names the viewport width and the active design,
-   because a complaint at 344px is not the same as at 1440px.
+   Chargé par assets/js/workbench.js, qui ne le fait que sur une
+   machine locale — un visiteur du site publié n'en voit jamais
+   rien. Les notes survivent à un rechargement (sessionStorage) et
+   l'export nomme la largeur de la fenêtre, parce qu'un reproche à
+   344 px n'est pas le même qu'à 1440 px.
    ============================================================= */
 (function () {
-  if (new URLSearchParams(location.search).get("annotate") !== "1") return;
+  /* Garde de sûreté : seul le workbench arme ce drapeau. */
+  if (!window.UPTEMPO_WORKBENCH) return;
 
   var NOTES = [];
   var STORE = "uptempo-annotate:" + location.pathname;
@@ -99,10 +101,6 @@
     '<button class="go" id="anExport">Exporter</button>' +
     '<button id="anClear">Vider</button>';
   document.body.appendChild(bar);
-
-  /* the design switcher sits in the same corner — step aside */
-  var dbar = document.querySelector(".designbar");
-  if (dbar) dbar.style.display = "none";
 
   var $pick = bar.querySelector("#anPick"),
       $count = bar.querySelector("#anCount"),
@@ -201,8 +199,6 @@
   function buildText() {
     var head = "Page : " + location.pathname.split("/").pop() +
       "  —  " + window.innerWidth + " px de large";
-    var design = document.documentElement.dataset.design;
-    if (design) head += "  —  design : " + design;
     var body = NOTES.map(function (n, i) {
       var l = (i + 1) + ". " + n.sel;
       if (n.text) l += '\n   élément : « ' + n.text + ' »';

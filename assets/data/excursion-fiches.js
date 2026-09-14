@@ -124,6 +124,8 @@ const EXCURSION_FICHES = {
       { name: "Sword", image: "assets/images/excursions/wiki/sword.jpg" },
       { name: "Juno", image: "assets/images/excursions/wiki/juno.jpg" },
       { name: "Gold", image: "assets/images/excursions/wiki/gold.jpg" },
+      { name: "Arromanches" },
+      { name: "Bayeux", image: "catalogue/normandy-in-3-journeys/images/bayeux.jpg" },
       { name: "Omaha", image: "catalogue/normandy-in-3-journeys/images/omaha.jpg" },
       { name: "Utah", image: "assets/images/excursions/wiki/utah.jpg" }
     ],
@@ -177,6 +179,7 @@ const EXCURSION_FICHES = {
     destinations: [
       { name: "Rouen", image: "assets/images/excursions/normandy_rouen.jpg" },
       { name: "Honfleur", image: "catalogue/normandy-in-3-journeys/images/honfleur.jpg" },
+      { name: "Le Havre" },
       { name: "Étretat", image: "assets/images/excursions/normandie_etretat.jpg" },
       { name: "Giverny", image: "assets/images/excursions/wiki/giverny.jpg" }
     ],
@@ -234,6 +237,8 @@ const EXCURSION_FICHES = {
       { name: "Rouen", image: "assets/images/excursions/normandy_rouen.jpg" },
       { name: "Caen", image: "assets/images/excursions/wiki/caen_castle.jpg" },
       { name: "Bayeux", image: "catalogue/normandy-in-3-journeys/images/bayeux.jpg" },
+      { name: "Granville" },
+      { name: "Saint-Malo" },
       { name: "Mont Saint-Michel", image: "assets/images/excursions/wiki/msm.jpg" }
     ],
     highlights: [
@@ -286,6 +291,7 @@ const EXCURSION_FICHES = {
     destinations: [
       { name: "Chambord", image: "assets/images/excursions/loire_chambord.webp" },
       { name: "Blois", image: "assets/images/excursions/wiki/blois.jpg" },
+      { name: "Tours" },
       { name: "Chenonceau", image: "assets/images/excursions/loire_chenonceau.jpeg" }
     ],
     highlights: [
@@ -345,6 +351,7 @@ const EXCURSION_FICHES = {
     destinations: [
       { name: "Chenonceau", image: "assets/images/excursions/loire_chenonceau.jpeg" },
       { name: "Amboise", image: "assets/images/excursions/wiki/amboise.jpg" },
+      { name: "Tours" },
       { name: "Chambord", image: "assets/images/excursions/loire_chambord.webp" }
     ],
     highlights: [
@@ -406,6 +413,7 @@ const EXCURSION_FICHES = {
     destinations: [
       { name: "Chenonceau", image: "assets/images/excursions/loire_chenonceau.jpeg" },
       { name: "Chambord", image: "assets/images/excursions/loire_chambord.webp" },
+      { name: "Tours" },
       { name: "Villandry", image: "assets/images/excursions/loire_jardins.webp" }
     ],
     highlights: [
