@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- Page générée par occitanie/generer.mjs depuis catalogue/services.html. Ne pas modifier ici : modifier la source ou les règles, puis relancer. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UpTempo — Catalog of Services</title>
+<meta name="description" content="The full UpTempo services catalog — Workshops, Visits and Full Days, format by format.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<style>
+  :root{
+    --primary:#111111; --secondary:#1151ff; --accent:#ed1aa0;
+    --canvas:#ffffff; --canvas-soft:#f5f5f5; --surface-alt:#e5e5e5;
+    --ink:#111111; --ink-muted:#55565a; --ink-faint:#9e9ea0; --hairline:#cacacb;
+    --pulse:#ed1aa0; --clutch:#1151ff;
+    --divider:rgba(163,163,166,.5);
+    --font-display:'Archivo Black','Arial Black',sans-serif; --font-body:'Inter',Helvetica,Arial,sans-serif;
+    --radius-md:18px; --radius-lg:26px; --radius-full:9999px;
+  }
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;} html,body{margin:0;padding:0;}
+  body{ background:var(--canvas); color:var(--ink); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  img{max-width:100%; display:block;} a{color:inherit; text-decoration:none;}
+  h1,h2,h3{ margin:0; font-family:var(--font-display); text-transform:uppercase; } p{ margin:0; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--secondary); }
+
+  header.top{ padding:36px 0 8px; }
+  header.top .back{ font-size:13.5px; font-weight:700; color:var(--secondary); display:inline-flex; align-items:center; gap:6px; }
+  header.top .back:hover{ text-decoration:underline; }
+  header.top h1{ font-size:clamp(32px,5vw,54px); letter-spacing:-1px; line-height:1; margin:16px 0 14px; }
+  header.top p{ font-size:17px; line-height:1.6; color:var(--ink-muted); max-width:680px; margin:0 0 28px; }
+
+  .quicknav{ display:flex; gap:10px; flex-wrap:wrap; padding-bottom:44px; border-bottom:1px solid var(--hairline); margin-bottom:56px; }
+  .quicknav a{ font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:9px 16px; border-radius:var(--radius-full); border:2px solid var(--ink); }
+  .quicknav a:hover{ background:var(--ink); color:var(--canvas); }
+
+  .immersion{ display:flex; gap:14px; align-items:baseline; flex-wrap:wrap;
+    border-left:4px solid var(--secondary); background:var(--canvas-soft);
+    border-radius:0 14px 14px 0; padding:16px 20px; margin:0 0 30px; max-width:760px; }
+  .immersion b{ font-size:12px; font-weight:800; letter-spacing:.9px; text-transform:uppercase;
+    color:var(--secondary); white-space:nowrap; }
+  .immersion span{ flex:1 1 320px; font-size:15px; line-height:1.6; color:var(--ink-muted); }
+  .callout{ display:flex; gap:14px; align-items:baseline; flex-wrap:wrap;
+    border-left:4px solid var(--secondary); background:var(--canvas-soft);
+    border-radius:0 14px 14px 0; padding:16px 20px; margin:0 0 30px; max-width:760px; }
+  .callout b{ font-size:12px; font-weight:800; letter-spacing:.9px; text-transform:uppercase;
+    color:var(--secondary); white-space:nowrap; }
+  .callout span{ flex:1 1 320px; font-size:15px; line-height:1.6; color:var(--ink-muted); }
+  .service-section{ padding-bottom:80px; scroll-margin-top:24px; }
+  .service-section__head{ max-width:720px; margin-bottom:34px; }
+  .service-section__head h2{ font-size:clamp(26px,3.6vw,40px); letter-spacing:-.5px; margin:8px 0 14px; }
+  .service-section__head p{ font-size:15.5px; line-height:1.6; color:var(--ink-muted); margin:0 0 8px; }
+
+  .sub-head{ display:flex; align-items:baseline; gap:12px; margin:44px 0 20px; }
+  .sub-head h3{ font-size:20px; letter-spacing:-.3px; font-family:var(--font-body); font-weight:800; text-transform:none; }
+  .sub-head p{ font-size:14px; color:var(--ink-muted); }
+
+  .service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .service-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px){ .service-grid{ grid-template-columns:1fr; } }
+
+  .service-card{
+    background:var(--canvas-soft); border:2px solid var(--ink); border-radius:var(--radius-lg);
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .service-card__media{ aspect-ratio:4/3; background:var(--surface-alt); position:relative; }
+  .service-card__media img{ width:100%; height:100%; object-fit:cover; }
+  .service-card__media.fallback{ display:flex; align-items:flex-end; background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .service-card__media.fallback::after{ content:attr(data-alt); padding:14px; font-size:12.5px; font-weight:700; color:var(--on-dark); }
+  .service-card__body{ padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
+  .service-card__body h4{ font-family:var(--font-body); font-weight:800; text-transform:none; font-size:17px; letter-spacing:-.2px; margin:0 0 8px; }
+  .service-card__kicker{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint, #9e9ea0); margin:-4px 0 8px; }
+  /* Out of Town: the explainer card sits on the left, the destination list
+     runs beside it as compact rows so the whole block stays on one screen. */
+  .oot{ display:grid; grid-template-columns:minmax(240px,300px) 1fr; gap:22px; }
+  @media (max-width:820px){ .oot{ grid-template-columns:1fr; } }
+  .oot__dests{ display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:1fr; gap:8px; }
+  @media (max-width:520px){ .oot__dests{ grid-template-columns:1fr; grid-auto-rows:auto; } }
+  .dest-mini{ display:flex; align-items:center; gap:11px; padding:8px 12px;
+    border:1px solid var(--hairline, #cacacb); border-radius:12px; background:var(--canvas, #fff); }
+  .dest-mini__media{ flex:none; width:46px; height:46px; border-radius:9px; overflow:hidden;
+    background:var(--surface-alt, #e5e5e5); }
+  .dest-mini__media img{ width:100%; height:100%; object-fit:cover; }
+  .dest-mini__media.fallback{ background:linear-gradient(150deg, var(--secondary), var(--accent)); }
+  .dest-mini__body{ min-width:0; }
+  .dest-mini b{ display:block; font-size:12.5px; font-weight:800; letter-spacing:-.2px; line-height:1.2; }
+  .dest-mini span{ display:block; font-size:10.5px; color:var(--ink-muted, #55565a); margin-top:2px; line-height:1.3; }
+  .service-card__body p{ font-size:14px; line-height:1.55; color:var(--ink-muted); }
+  .service-card__body ul{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:5px; }
+  .service-card__body li{ font-size:13px; color:var(--ink-muted); display:flex; align-items:baseline; gap:6px; }
+  .service-card__body li::before{ content:"—"; color:var(--ink-faint); flex:none; }
+
+  footer.bottom{ padding:20px 0 60px; border-top:1px solid var(--hairline); margin-top:20px; }
+  footer.bottom p{ font-size:13px; color:var(--ink-faint); }
+</style>
+<link rel="stylesheet" href="../assets/css/themes/magazine.css">
+<style>
+  /* occitanie : 4 destinations en grandes vignettes */
+  .oot__dests{ grid-auto-rows:auto; align-content:start; }
+  .dest-mini{ flex-direction:column; align-items:stretch; padding:0; overflow:hidden; gap:0; }
+  .dest-mini__media{ width:100%; height:170px; border-radius:0; }
+  .dest-mini__body{ padding:10px 12px 12px; }
+  .dest-mini b{ font-size:14px; }
+  .dest-mini span{ font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="back" href="index.html#services">← Back to UpTempo</a>
+    <h1>Catalog of Services</h1>
+    <p>Every format UpTempo builds for study-abroad programs, grouped by category. Workshops, Visits and Full Days each cover a range of specific formats — browse them below, or get in touch to combine a few into a program built around your group.</p>
+  </header>
+
+  <nav class="quicknav">
+    <a href="#workshops">Workshops</a>
+    <a href="#visits">Visits</a>
+    <a href="#full-days">Full Days</a>
+    <a href="#in-your-city">— In Your City</a>
+    <a href="#out-of-town">— Out of Town</a>
+  </nav>
+
+  <section class="service-section" id="workshops">
+    <div class="service-section__head">
+      <span class="eyebrow">01 — Workshops</span>
+      <h2>Workshops</h2>
+      <p>Workshops built to give students practical, linguistic and cultural tools they can use throughout their stay.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Frenchness 101"><img src="../assets/images/workshops/frenchness-101.jpg" alt="Frenchness 101" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Frenchness 101</h4>
+          <p>For students who have just arrived in France. It gives them the key landmarks they need to navigate French culture, pick up the right reflexes and start using the right tools from day one.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Autonomous Language Learning"><img src="../assets/images/workshops/all.jpg" alt="Autonomous Language Learning" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>A.L.L.</h4>
+          <p class="service-card__kicker">Autonomous Language Learning</p>
+          <p>Methods, resources and habits that let students keep learning French on their own — efficiently and effectively — for the rest of their stay.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Table Talk Games"><img src="../assets/images/workshops/table-talk-games.jpg" alt="Table Talk Games" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Table Talk Games</h4>
+          <p>Board-game sessions that get participants talking in a relaxed, natural atmosphere. Games lower the barrier to speaking and practicing the language without feeling like a traditional class — though every session is carefully prepared, educationally and linguistically, in advance.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="service-section" id="visits">
+    <div class="service-section__head">
+      <span class="eyebrow">02 — Visits</span>
+      <h2>Visits</h2>
+      <p>Any classic visit can be arranged on request — museums, monuments, neighborhoods, historic sites or a specific theme chosen by the client. Alongside these, several dedicated categories of visits respond to particular situations and needs.</p>
+    </div>
+    <div class="callout">
+      <b>The classics, and then some</b>
+      <span>Every standard visit is available on request — the museums, monuments, neighborhoods and historic sites you would book anywhere, prepared and led properly. What sets a UpTempo visit apart is what sits alongside them: formats built for specific situations and specific objectives, so a visit does more than tick a landmark off a list.</span>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Winter Ready"><img src="../assets/images/visits/winter-ready.jpg" alt="Winter Ready" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Winter Ready</h4>
+          <p>A selection of visits built specifically to work through winter — short days, cold weather, early nightfall or conditions that limit outdoor activity. Each one is designed from the ground up to stay enjoyable, relevant and suited to the season’s constraints.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Events"><img src="../assets/images/visits/events.jpg" alt="Events" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Events</h4>
+          <p>Support for groups attending a specific event in France, such as:</p>
+          <ul>
+            <li>A concert</li>
+            <li>A chess tournament</li>
+            <li>A sporting event</li>
+            <li>An international meet</li>
+            <li>A convention or trade fair</li>
+          </ul>
+          <p style="margin-top:10px;">The guide prepares the event in advance so participants can make the most of it, then stays on hand throughout — handling logistics, acting as a point of reference, contributing to the group’s safety, and resolving any issues or friction that come up.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Craft and Masters"><img src="../assets/images/visits/craft-and-masters.webp" alt="Craft and Masters" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Craft and Masters</h4>
+          <p>Visits and encounters with people who have a trade, a craft or a specific expertise to share — a baker, an artisan, a painter, or anyone able to open up their work to visitors. Every meeting is prepared in advance to brief participants and tailor the experience to the group.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="service-section" id="full-days">
+    <div class="service-section__head">
+      <span class="eyebrow">03 — Full Days</span>
+      <h2>Full Days</h2>
+      <p>Full-day experiences built to take the time to explore a subject properly — layering different approaches into one deeper experience. Full Days fall into two broad categories.</p>
+    </div>
+
+    <div class="immersion">
+      <b>French or English</b>
+      <span>Full Days run in French or in English, depending on your group’s level — several Toulouse study-abroad programs require no French at all. In French, they become immersion days: the language is not a subject added to the program but the working language of everything that happens in it, pitched at your group’s level, and participants practice it continuously because the day requires it.</span>
+    </div>
+    <div class="sub-head" id="in-your-city">
+      <h3>In Your City</h3>
+      <p>Full days organized in the city where participants live or are staying — three formats.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Taste &amp; Learn"><img src="../assets/images/full-days/taste-and-learn.jpg" alt="Taste &amp; Learn" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Taste &amp; Learn</h4>
+          <p>A full day exploring one theme, alternating theoretical and participatory talks with outdoor visits and hands-on experiences, punctuated by two tasting moments. Tasting is also where the language flows most easily: describing what you taste is the most natural French exercise there is, and nobody experiences it as one.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Urban Trek"><img src="../assets/images/full-days/trek.jpg" alt="Urban Trek" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Urban Trek</h4>
+          <p>An urban hike built around walking and discovery. The day has a light sporting dimension while staying accessible, grounded in gentle physical activity. The route is punctuated with breaks, tastings and visits, and everything along it is narrated and discussed in French — walking stays the thread running through the whole experience.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Lab"><img src="../assets/images/full-days/lab.jpg" alt="Lab" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+        <div class="service-card__body">
+          <h4>Lab</h4>
+          <p>An intensive day built around deep learning or hands-on project work, usually run in one place with little travel involved. This is where immersion works hardest: the whole point is to pick up a new practice <em>in French</em> — the instructions, the questions, the problem-solving and the talk around the table all happen in the language, so participants are too busy making something to notice they are practicing it. They might, for example:</p>
+          <ul>
+            <li>Build a website in a day</li>
+            <li>Create an Android app</li>
+            <li>Discover and practice photography</li>
+            <li>Take part in a painting intensive</li>
+            <li>Explore another creative or technical practice</li>
+          </ul>
+          <p style="margin-top:10px;">By the end of the day, participants have gained a skill, tried a new practice, or produced something concrete — and have spent hours using French for a real purpose rather than as an exercise.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="sub-head" id="out-of-town">
+      <h3>Out of Town</h3>
+      <p>Full days organized outside the city where participants live or are staying.</p>
+    </div>
+    <div class="oot">
+      <article class="service-card">
+        <div class="service-card__media" data-alt="Out of Town">
+          <img src="../assets/images/full-days/out-of-town.jpg" alt="Out of Town" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();">
+        </div>
+        <div class="service-card__body">
+          <h4>Out of Town</h4>
+          <p>The same full-day depth, taken beyond the city — a walled city, a cathedral or a hilltop village reached by coach or train, then explored properly, in French or in English, with the travel time itself put to use. Tell me where your group should go and I build the day around it.<br><small style="opacity:.7">Photos: Wikimedia Commons, CC BY-SA — Chensiyuan (Carcassonne), Krzysztof Golik (Albi), Carsten Steger (Cordes-sur-Ciel), Abxbay (Moissac).</small></p>
+        </div>
+      </article>
+      <div class="oot__dests">
+        <div class="dest-mini">
+          <div class="dest-mini__media"><img src="../assets/images/destinations/carcassonne.jpg" alt="Carcassonne" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+          <div class="dest-mini__body"><b>Carcassonne</b><span>The medieval walled city</span></div>
+        </div>
+        <div class="dest-mini">
+          <div class="dest-mini__media"><img src="../assets/images/destinations/albi.jpg" alt="Albi" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+          <div class="dest-mini__body"><b>Albi</b><span>The red-brick episcopal city</span></div>
+        </div>
+        <div class="dest-mini">
+          <div class="dest-mini__media"><img src="../assets/images/destinations/cordes-sur-ciel.jpg" alt="Cordes-sur-Ciel" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+          <div class="dest-mini__body"><b>Cordes-sur-Ciel</b><span>The Gothic hilltop village</span></div>
+        </div>
+        <div class="dest-mini">
+          <div class="dest-mini__media"><img src="../assets/images/destinations/moissac.jpg" alt="Moissac" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
+          <div class="dest-mini__body"><b>Moissac</b><span>The Romanesque abbey cloister</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bottom">
+    <p>Looking for a specific destination instead? See the <a href="../catalogue/index.html" style="color:var(--secondary); font-weight:700;">Excursion Catalog →</a></p>
+  </footer>
+</div>
+
+<script src="../assets/js/workbench.js"></script>
+</body>
+</html>

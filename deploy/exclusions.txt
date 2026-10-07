@@ -29,3 +29,6 @@ catalogue/normandy-in-3-journeys/
 # exclu plus haut ; on le redit ici parce que renvoyer l'ancien site par-dessus
 # le nouveau serait la pire erreur possible de ce script.
 sauvegarde-ancien-guide/
+
+# Générateur de la version Occitanie : outil de travail, pas une page.
+occitanie/generer.mjs
