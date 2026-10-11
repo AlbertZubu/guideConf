@@ -17,7 +17,7 @@ La branche `occitanie` sert la recherche d'emploi de guide en Occitanie.
 ## Règles
 - Un style de référence ; des variantes seulement sur demande.
 - Fond clair, mobile d'abord. Ne rien inventer (dates, tarifs, références clients).
-- Site public : mentions légales obligatoires (page à ajouter, voir le Webmaster).
+- Site public : mentions légales obligatoires (page à ajouter, voir la Production).
 
 ## À faire relevé par l'audit (9 oct. 2026)
 - Ajouter la page de mentions légales.
