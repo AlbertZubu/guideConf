@@ -59,20 +59,6 @@
 
   if (!isWorkbench()) return;
 
-  /* Les outils de relecture et le widget privé ne chargent que dans l'atelier.
-     Sur uptempo.media, on ne demande même pas le script du widget. */
-  if (location.protocol !== 'file:') {
-    window.REMARQUES_NOM = 'UpTempo · Guide';
-    window.REMARQUES_VUE = function () {
-      var h = document.querySelector('main h1, h1');
-      return (location.hash || '') + (h ? ' · ' + h.textContent.replace(/\s+/g, ' ').trim().slice(0, 60) : '');
-    };
-    var remarques = document.createElement('script');
-    remarques.src = '/boss/remarques-micro.js';
-    remarques.defer = true;
-    document.head.appendChild(remarques);
-  }
-
   /* annotate.js vérifie ce drapeau avant de s'installer : la garde d'hôte
      reste écrite une seule fois, ici, et un chargement accidentel du script
      par un autre chemin ne réveillerait pas l'outil sur le site public. */
