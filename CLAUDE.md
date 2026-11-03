@@ -18,6 +18,7 @@ La branche `occitanie` sert la recherche d'emploi de guide en Occitanie.
 - Un style de référence ; des variantes seulement sur demande.
 - Fond clair, mobile d'abord. Ne rien inventer (dates, tarifs, références clients).
 - Site public : mentions légales obligatoires (page à ajouter, voir la Production).
+- Le widget de remarques et l’outil de relecture ne se chargent que sur les hôtes privés/Meshnet via `assets/js/workbench.js`. Sur `uptempo.media`, le script ne demande pas `/boss/remarques-micro.js` et aucun widget ne s’affiche.
 
 ## À faire relevé par l'audit (9 oct. 2026)
 - Ajouter la page de mentions légales.
