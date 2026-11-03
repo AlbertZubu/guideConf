@@ -97,13 +97,22 @@
 </style>
 <link rel="stylesheet" href="../assets/css/themes/magazine.css">
 <style>
-  /* occitanie : 4 destinations en grandes vignettes */
-  .oot__dests{ grid-auto-rows:auto; align-content:start; }
-  .dest-mini{ flex-direction:column; align-items:stretch; padding:0; overflow:hidden; gap:0; }
-  .dest-mini__media{ width:100%; height:170px; border-radius:0; }
-  .dest-mini__body{ padding:10px 12px 12px; }
-  .dest-mini b{ font-size:14px; }
-  .dest-mini span{ font-size:12px; }
+  .oot__dests{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;align-content:start;gap:9px}
+  .dest-mini{min-height:94px;align-items:flex-start;padding:13px 12px;text-decoration:none;color:var(--ink);transition:background .18s ease,border-color .18s ease}
+  .dest-mini:hover{background:var(--canvas-soft);border-color:var(--ink)}
+  .dest-mini:focus-visible{outline:3px solid var(--secondary);outline-offset:2px}
+  .dest-mini__media{display:grid;place-items:center;width:36px;height:36px;border-radius:0;background:var(--canvas-soft);color:var(--secondary);flex:none}
+  .dest-mini__media svg{width:24px;height:24px}
+  .dest-mini__body{display:block;min-width:0}
+  .dest-mini b{font-size:16px;line-height:1.2}
+  .dest-mini span{font-size:13px;line-height:1.4}
+  header.top{padding:28px 0 6px}
+  header.top p{margin-bottom:10px}
+  .quicknav{padding-bottom:24px;margin-bottom:30px}
+  .immersion span{font-size:16px;line-height:1.55}
+  .occ-region-access{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:0;color:var(--secondary);font-size:16px;font-weight:800;text-underline-offset:4px}
+  .occ-region-access:hover,.occ-region-access:focus-visible{color:var(--ink);text-decoration:underline}
+  @media(max-width:560px){.oot__dests{grid-template-columns:1fr}.dest-mini{min-height:72px}}
 </style>
 </head>
 <body>
@@ -115,6 +124,7 @@
     <h1>Full Days</h1>
     <p>Full-day experiences built to take the time to explore a subject properly — layering different approaches into one deeper experience, in your city or out of town.</p>
   </header>
+<a class="occ-region-access" href="excursions.html">Browse the six excursion regions from Toulouse →</a>
 
   <nav class="quicknav">
     <a class="current" href="#">Full Days</a>
@@ -124,7 +134,7 @@
 
   <div class="immersion">
     <b>French or English</b>
-      <span>Full Days run in French or in English, depending on your group’s level — several Toulouse study-abroad programs require no French at all. In French, they become immersion days: the language is not a subject added to the program but the working language of everything that happens in it, pitched at your group’s level, and participants practice it continuously because the day requires it.</span>
+      <span>Full Days can run in French or English, at your group’s level. When in French, the language becomes part of the activity throughout the day.</span>
   </div>
 
   <section class="service-section" id="full-days">
@@ -176,32 +186,40 @@
         </div>
         <div class="service-card__body">
           <h4>Out of Town</h4>
-          <p>The same full-day depth, taken beyond the city — a walled city, a cathedral or a hilltop village reached by coach or train, then explored properly, in French or in English, with the travel time itself put to use. Tell me where your group should go and I build the day around it.<br><small style="opacity:.7">Photos: Wikimedia Commons, CC BY-SA — Chensiyuan (Carcassonne), Krzysztof Golik (Albi), Carsten Steger (Cordes-sur-Ciel), Abxbay (Moissac).</small></p>
+          <p>A full day beyond Toulouse, built around one clear subject and a small number of connected experiences. Nearby destinations suit a day out; farther regions can be shaped as a longer escape. The group’s interests set the direction.</p>
         </div>
       </article>
       <div class="oot__dests">
-        <div class="dest-mini">
-          <div class="dest-mini__media"><img src="../assets/images/destinations/carcassonne.jpg" alt="Carcassonne" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-          <div class="dest-mini__body"><b>Carcassonne</b><span>The medieval walled city</span></div>
-        </div>
-        <div class="dest-mini">
-          <div class="dest-mini__media"><img src="../assets/images/destinations/albi.jpg" alt="Albi" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-          <div class="dest-mini__body"><b>Albi</b><span>The red-brick episcopal city</span></div>
-        </div>
-        <div class="dest-mini">
-          <div class="dest-mini__media"><img src="../assets/images/destinations/cordes-sur-ciel.jpg" alt="Cordes-sur-Ciel" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-          <div class="dest-mini__body"><b>Cordes-sur-Ciel</b><span>The Gothic hilltop village</span></div>
-        </div>
-        <div class="dest-mini">
-          <div class="dest-mini__media"><img src="../assets/images/destinations/moissac.jpg" alt="Moissac" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-          <div class="dest-mini__body"><b>Moissac</b><span>The Romanesque abbey cloister</span></div>
-        </div>
+        <a class="dest-mini" href="excursions.html#north">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 10l7-7 7 7M5 14l7 7 7-7"/></svg></span>
+          <span class="dest-mini__body"><b>Montauban & the Quercy</b><span>Romanesque heritage · river towns · limestone villages</span></span>
+        </a>
+        <a class="dest-mini" href="excursions.html#east">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16M6 21V8l6-5 6 5v13M9 11h6M9 15h6"/></svg></span>
+          <span class="dest-mini__body"><b>Albi & the Tarn</b><span>Brick heritage · medieval towns · vineyard culture</span></span>
+        </a>
+        <a class="dest-mini" href="excursions.html#west">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M5 18V9l7-5 7 5v9M8 18v-5h8v5"/></svg></span>
+          <span class="dest-mini__body"><b>Agen & Bordeaux</b><span>Garonne cities · architecture · wine landscapes</span></span>
+        </a>
+        <a class="dest-mini" href="excursions.html#ariege">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l6-8 4 5 3-4 5 7M3 21h18"/></svg></span>
+          <span class="dest-mini__body"><b>Ariège & the Pyrenees</b><span>Fortresses · prehistory · mountain landscapes</span></span>
+        </a>
+        <a class="dest-mini" href="excursions.html#bearn">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7M3 21h18M5 5l4 4M5 5v4M5 5h4"/></svg></span>
+          <span class="dest-mini__body"><b>Pau, Béarn & Lourdes</b><span>Royal history · pilgrimage · Pyrenean horizons</span></span>
+        </a>
+        <a class="dest-mini" href="excursions.html#basque">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c3-3 5 3 8 0s5 3 10 0M3 14c3-3 5 3 8 0s5 3 10 0M3 20c3-3 5 3 8 0s5 3 10 0"/></svg></span>
+          <span class="dest-mini__body"><b>Bayonne, Biarritz & the Basque coast</b><span>Basque culture · coastal heritage · Atlantic life</span></span>
+        </a>
       </div>
     </div>
   </section>
 
   <footer class="bottom">
-    <p>Looking for a multi-day journey instead? See the <a href="../catalogue/index.html" style="color:var(--secondary); font-weight:700;">Excursion Catalog →</a></p>
+    <p>Looking for a multi-day journey instead? See the <a href="excursions.html" style="color:var(--secondary); font-weight:700;">Excursion Catalog →</a></p>
   </footer>
 </div>
 

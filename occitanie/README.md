@@ -20,5 +20,4 @@ Relancer le script après toute modification du site principal.
 Local : http://100.96.55.59/guide/occitanie/ — publié (après un push sur master) :
 https://uptempo.media/guide/occitanie/
 
-Le catalogue des excursions de plusieurs jours (`../catalogue/`) reste commun aux deux
-versions.
+La page `excursions.html` est le catalogue régional partagé depuis l’accueil et les pages de services Occitanie ; le catalogue Paris n’est plus utilisé dans cette branche.

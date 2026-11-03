@@ -9,12 +9,9 @@
 //
 //   node occitanie/generer.mjs
 //
-// Les corrections viennent du plan de prospection (Pro1, onglet Brochure) :
-//   2. « Hors de Paris » → « Hors de Toulouse » : Carcassonne · Albi · Cordes-sur-Ciel · Moissac
-//   3. « le français comme langue de travail » → « en français ou en anglais, selon le niveau »
-//   4. Classic en autocar et Intrepid en train, depuis Toulouse
-//   5. Disponibilité : toute l'année sur réservation ; avril-juin et septembre-octobre se remplissent vite
-//   6. Logo ACCENT : déjà absent du site (rien à faire)
+// La déclinaison Occitanie remplace les exemples par six zones autour de Toulouse.
+// Les sorties proches se prêtent à la journée ; les secteurs plus éloignés sont présentés
+// comme des inspirations, sans publier de circuits détaillés ni promettre un transport fixe.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -39,31 +36,45 @@ function remplacer(html, page, [avant, apres, attendu = 1]) {
 // ------------------------------------------------------------------ textes communs
 
 const DESTINATIONS = [
-  ['carcassonne', 'Carcassonne', 'The medieval walled city'],
-  ['albi', 'Albi', 'The red-brick episcopal city'],
-  ['cordes-sur-ciel', 'Cordes-sur-Ciel', 'The Gothic hilltop village'],
-  ['moissac', 'Moissac', 'The Romanesque abbey cloister'],
+  ['north', 'Montauban & the Quercy', 'Romanesque heritage · river towns · limestone villages', 'north'],
+  ['east', 'Albi & the Tarn', 'Brick heritage · medieval towns · vineyard culture', 'east'],
+  ['west', 'Agen & Bordeaux', 'Garonne cities · architecture · wine landscapes', 'west'],
+  ['ariege', 'Ariège & the Pyrenees', 'Fortresses · prehistory · mountain landscapes', 'south'],
+  ['bearn', 'Pau, Béarn & Lourdes', 'Royal history · pilgrimage · Pyrenean horizons', 'southwest'],
+  ['basque', 'Bayonne, Biarritz & the Basque coast', 'Basque culture · coastal heritage · Atlantic life', 'coast'],
 ];
 
-// Photos Wikimedia Commons sous licence CC BY-SA : l'auteur doit être cité.
-const CREDITS =
-  '<br><small style="opacity:.7">Photos: Wikimedia Commons, CC BY-SA — Chensiyuan (Carcassonne), Krzysztof Golik (Albi), Carsten Steger (Cordes-sur-Ciel), Abxbay (Moissac).</small>';
+const ICONS = {
+  north: '<path d="M12 3v18M5 10l7-7 7 7M5 14l7 7 7-7"/>',
+  east: '<path d="M4 21h16M6 21V8l6-5 6 5v13M9 11h6M9 15h6"/>',
+  west: '<path d="M3 18h18M5 18V9l7-5 7 5v9M8 18v-5h8v5"/>',
+  south: '<path d="M3 19l6-8 4 5 3-4 5 7M3 21h18"/>',
+  southwest: '<path d="M3 18l6-8 4 5 3-4 5 7M3 21h18M5 5l4 4M5 5v4M5 5h4"/>',
+  coast: '<path d="M3 8c3-3 5 3 8 0s5 3 10 0M3 14c3-3 5 3 8 0s5 3 10 0M3 20c3-3 5 3 8 0s5 3 10 0"/>',
+};
 
-const tuile = ([fichier, nom, accroche]) => `<div class="dest-mini">
-          <div class="dest-mini__media"><img src="../assets/images/destinations/${fichier}.jpg" alt="${nom}" loading="lazy" onerror="this.parentElement.classList.add('fallback');this.remove();"></div>
-          <div class="dest-mini__body"><b>${nom}</b><span>${accroche}</span></div>
-        </div>`;
+const tuile = ([slug, nom, accroche, icone]) => `<a class="dest-mini" href="excursions.html#${slug}">
+          <span class="dest-mini__media" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[icone]}</svg></span>
+          <span class="dest-mini__body"><b>${nom}</b><span>${accroche}</span></span>
+        </a>`;
 
-// Quatre destinations au lieu de huit : la grille prévue pour huit lignes étirait les
-// cases. On leur donne plutôt une grande photo.
 const STYLE_DESTINATIONS = `<style>
-  /* occitanie : 4 destinations en grandes vignettes */
-  .oot__dests{ grid-auto-rows:auto; align-content:start; }
-  .dest-mini{ flex-direction:column; align-items:stretch; padding:0; overflow:hidden; gap:0; }
-  .dest-mini__media{ width:100%; height:170px; border-radius:0; }
-  .dest-mini__body{ padding:10px 12px 12px; }
-  .dest-mini b{ font-size:14px; }
-  .dest-mini span{ font-size:12px; }
+  .oot__dests{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;align-content:start;gap:9px}
+  .dest-mini{min-height:94px;align-items:flex-start;padding:13px 12px;text-decoration:none;color:var(--ink);transition:background .18s ease,border-color .18s ease}
+  .dest-mini:hover{background:var(--canvas-soft);border-color:var(--ink)}
+  .dest-mini:focus-visible{outline:3px solid var(--secondary);outline-offset:2px}
+  .dest-mini__media{display:grid;place-items:center;width:36px;height:36px;border-radius:0;background:var(--canvas-soft);color:var(--secondary);flex:none}
+  .dest-mini__media svg{width:24px;height:24px}
+  .dest-mini__body{display:block;min-width:0}
+  .dest-mini b{font-size:16px;line-height:1.2}
+  .dest-mini span{font-size:13px;line-height:1.4}
+  header.top{padding:28px 0 6px}
+  header.top p{margin-bottom:10px}
+  .quicknav{padding-bottom:24px;margin-bottom:30px}
+  .immersion span{font-size:16px;line-height:1.55}
+  .occ-region-access{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:0;color:var(--secondary);font-size:16px;font-weight:800;text-underline-offset:4px}
+  .occ-region-access:hover,.occ-region-access:focus-visible{color:var(--ink);text-decoration:underline}
+  @media(max-width:560px){.oot__dests{grid-template-columns:1fr}.dest-mini{min-height:72px}}
 </style>
 </head>`;
 
@@ -82,12 +93,12 @@ function destinations(html, page) {
 const LANGUE_PLEINE_JOURNEE = [
   /<b>French at the center<\/b>\s*<span>Full Days are immersion days\.[^<]*<\/span>/,
   `<b>French or English</b>
-      <span>Full Days run in French or in English, depending on your group’s level — several Toulouse study-abroad programs require no French at all. In French, they become immersion days: the language is not a subject added to the program but the working language of everything that happens in it, pitched at your group’s level, and participants practice it continuously because the day requires it.</span>`,
+      <span>Full Days can run in French or English, at your group’s level. When in French, the language becomes part of the activity throughout the day.</span>`,
 ];
 
 const HORS_VILLE = [
   'The same full-day depth, taken beyond the city — a château, a cathedral or a village reached by coach or train, then explored properly, in French, with the travel time itself put to use. Tell me where your group should go and I build the day around it.',
-  `The same full-day depth, taken beyond the city — a walled city, a cathedral or a hilltop village reached by coach or train, then explored properly, in French or in English, with the travel time itself put to use. Tell me where your group should go and I build the day around it.${CREDITS}`,
+  'A full day beyond Toulouse, built around one clear subject and a small number of connected experiences. Nearby destinations suit a day out; farther regions can be shaped as a longer escape. The group’s interests set the direction.',
 ];
 
 // Pages du catalogue : même profondeur (un dossier sous la racine), seuls les liens
@@ -104,6 +115,22 @@ function liens(html, page, regles) {
     html = html.split(a).join(b);
   }
   return html;
+}
+
+function remplacerBlocDiv(html, classe, contenu) {
+  const debut = html.indexOf(`<div class="${classe}"`);
+  if (debut < 0) throw new Error(`bloc .${classe} absent`);
+  const tags = /<div\b[^>]*>|<\/div>/g;
+  tags.lastIndex = debut;
+  let profondeur = 0;
+  let fin = -1;
+  let m;
+  while ((m = tags.exec(html))) {
+    profondeur += m[0].startsWith('</') ? -1 : 1;
+    if (profondeur === 0) { fin = tags.lastIndex; break; }
+  }
+  if (fin < 0) throw new Error(`bloc .${classe} incomplet`);
+  return html.slice(0, debut) + contenu + html.slice(fin);
 }
 
 // ------------------------------------------------------------------ pages
@@ -126,6 +153,10 @@ const PAGES = [
       ],
       ['for study-abroad groups in France —', 'for study-abroad groups in Toulouse and across Occitanie —'],
       [
+        'for study-abroad groups in Toulouse and across Occitanie — turning a destination into a lesson worth remembering, built on field knowledge, participatory formats and a genuine sense of place.',
+        'for study-abroad groups in Toulouse and across Occitanie, shaped around local culture and your group’s learning goals.',
+      ],
+      [
         'one subject, several connected places, and French as the working language from morning to evening. Participants pick up a skill or a subject, and practice the language without ever sitting down to study it.',
         'one subject, several connected places, in French or in English, depending on the group’s level. Participants pick up a skill or a subject — and, in French, practice the language without ever sitting down to study it.',
       ],
@@ -137,7 +168,7 @@ const PAGES = [
       ['Round-trip by coach from Paris.', 'Round-trip by coach from Toulouse.'],
       [
         'High-speed train from Paris, with local coach transfers on arrival.',
-        'By train from Toulouse, with local coach transfers on arrival.',
+        'Rail-led departures from Toulouse, with local transfers at destination where practical.',
       ],
       [
         'I am Albert Tshizubu, the guide behind UpTempo — one contact',
@@ -184,9 +215,37 @@ for (const p of PAGES) {
   let html = readFileSync(path.join(RACINE, p.source), 'utf8');
   html = p.chemins(html);
   for (const r of p.regles) html = remplacer(html, p.cible, r);
+  html = html.replaceAll('../catalogue/index.html', 'excursions.html');
+  if (p.cible === 'index.html') {
+    html = remplacerBlocDiv(html, 'excursions', `<div class="excursions">
+              <div class="excursions__head"><h3>From Toulouse</h3><a href="excursions.html" class="card-link">Explore all six regions →</a></div>
+              <p class="body-md">Nearby day explorations and longer escapes farther afield. Browse broad themes and places, without a fixed route.</p>
+            </div>`);
+    const chips = `<div class="dest-chips">
+                  <a class="dest-chip" href="excursions.html#north">Montauban &amp; Quercy</a>
+                  <a class="dest-chip" href="excursions.html#east">Albi &amp; Tarn</a>
+                  <a class="dest-chip" href="excursions.html#west">Agen &amp; Bordeaux</a>
+                  <a class="dest-chip" href="excursions.html#ariege">Ariège</a>
+                  <a class="dest-chip" href="excursions.html#bearn">Pau &amp; Lourdes</a>
+                  <a class="dest-chip" href="excursions.html#basque">Basque Coast</a>
+                </div>`;
+    const chipsRe = /<div class="dest-chips">[\s\S]*?<\/div>/g;
+    if ((html.match(chipsRe) || []).length !== 1) throw new Error('index.html : bloc dest-chips inattendu');
+    html = html.replace(chipsRe, chips);
+    const cta = '<div class="hero__ctas"><a href="#services" class="btn btn--ghost">Services</a><a href="#formats" class="btn btn--ghost">Booster Activities</a></div>';
+    if ((html.split(cta).length - 1) !== 1) throw new Error('index.html : groupe de boutons du hero inattendu');
+    html = html.replace(cta, cta + '<a class="occ-region-home" href="excursions.html">Explore Toulouse excursion regions →</a>');
+    html = html.replace('</head>', '<style>.hero{padding-top:calc(var(--nav-h) + 48px);padding-bottom:58px}.hero__sub{margin-top:18px}.hero__ctas{margin-top:22px}.hero__frame{margin-top:38px}.occ-region-home{display:block;width:fit-content;margin:10px auto 0;color:var(--on-dark);font-size:16px;font-weight:800;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:5px}.occ-region-home:hover{color:var(--accent)}</style>\n</head>');
+    html = html.replace('<script src="../assets/data/excursions-data.js"></script>\n', '');
+    html = html.replace("renderExcursionCarousel('excursionCarousel', (slug) => 'excursions.html#excursion-' + slug);\n(() => { const c = document.getElementById('excursionCarousel'); if (c) c.innerHTML += c.innerHTML; })();\n", '');
+  }
   if (p.destinations) {
     html = destinations(html, p.cible);
     html = remplacer(html, p.cible, ['</head>', STYLE_DESTINATIONS]);
+    const regionLink = '<a class="occ-region-access" href="excursions.html">Browse the six excursion regions from Toulouse →</a>';
+    const heads = html.split('</header>').length - 1;
+    if (heads !== 1) throw new Error(p.cible + ' : en-tête inattendu (' + heads + ').');
+    html = html.replace('</header>', '</header>\n' + regionLink);
   }
   // Contrôle sur le texte visible : scripts, styles et commentaires exclus.
   const visible = html.replace(/<(script|style)[\s\S]*?<\/\1>|<!--[\s\S]*?-->/g, '');
