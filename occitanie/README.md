@@ -17,7 +17,7 @@ si le site principal change à cet endroit, le script s'arrête et le dit.
 
 Relancer le script après toute modification du site principal.
 
-Local : http://100.96.55.59/guide/occitanie/ — publié (après un push sur master) :
+Local Meshnet : https://100.96.55.59/guide/occitanie/ — publié (après un push sur master) :
 https://uptempo.media/guide/occitanie/
 
 La page `excursions.html` est le catalogue régional partagé depuis l’accueil et les pages de services Occitanie ; le catalogue Paris n’est plus utilisé dans cette branche.
